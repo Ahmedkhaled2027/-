@@ -5,26 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر كارميلا - إكسسوارات البنات</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             background-color: #1a1a1a;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             margin: 0;
             color: #ffffff;
         }
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: space-between;
+            gap: 10px;
         }
         .product {
             background: #242424;
-            max-width: 400px;
-            width: 45%;
-            margin: 20px auto;
+            width: calc(50% - 5px);
+            margin-bottom: 10px;
             border-radius: 16px;
-            padding: 20px;
+            padding: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -36,12 +39,12 @@
             border-radius: 12px;
         }
         .description {
-            font-size: 16px;
-            margin: 15px 0;
+            font-size: 14px;
+            margin: 10px 0;
             color: #cccccc;
         }
         .price {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #fff;
         }
@@ -53,7 +56,7 @@
         
         <div class="product">
             <a href="https://wa.me/201055436305">
-                <img src="Kit/IMG-20261116-WA0059.jpg" alt="ساعة حريمي">
+                <img src="Kit/IMG-20261116-WA0059.jpg" alt="مصفاه متحركه">
             </a>
             <p class="description">مصفاه متحركه</p>
             <div class="price">300</div>
@@ -61,7 +64,7 @@
 
         <div class="product">
             <a href="https://wa.me/201055436305">
-                <img src="Kit/IMG-20261116-WA0056.jpg" alt="ساعة حريمي">
+                <img src="Kit/IMG-20261116-WA0056.jpg" alt="طقم 6 قطع">
             </a>
             <p class="description">طقم 6 قطع</p>
             <div class="price">350</div>
