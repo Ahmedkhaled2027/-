@@ -1,111 +1,140 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caramela Store</title>
-<style>
-:root {
---primary-color: #d4a373;
---secondary-color: #faedcd;
---text-color: #333;
---bg-color: #fefae0;
-}
-body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin: 0;
-background-color: var(--bg-color);
-color: var(--text-color);
-text-align: center;
-}
-header {
-padding: 20px;
-background-color: white;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.logo {
-font-size: 2.5rem;
-font-weight: bold;
-color: var(--primary-color);
-}
-.announcement {
-background-color: var(--secondary-color);
-padding: 15px;
-margin: 20px auto;
-max-width: 800px;
-border-radius: 8px;
-font-weight: bold;
-}
-.contact-section {
-display: flex;
-justify-content: center;
-gap: 15px;
-margin: 20px 0;
-}
-.btn {
-padding: 12px 25px;
-background-color: var(--primary-color);
-color: white;
-text-decoration: none;
-border-radius: 25px;
-font-weight: bold;
-transition: opacity 0.3s;
-}
-.btn:hover {
-opacity: 0.8;
-}
-.categories-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 20px;
-padding: 20px;
-max-width: 1200px;
-margin: 0 auto;
-}
-.category-card {
-background: white;
-border-radius: 12px;
-overflow: hidden;
-box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-transition: transform 0.3s;
-}
-.category-card:hover {
-transform: translateY(-5px);
-}
-.category-card img {
-width: 100%;
-height: 200px;
-object-fit: cover;
-}
-.category-card h3 {
-margin: 15px 0;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caramela Store</title>
+    <style>
+        :root {
+            --primary-color: #d4a373;
+            --secondary-color: #333333;
+            --text-color: #ffffff;
+            --bg-color: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .announcement {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: 1px solid var(--primary-color);
+        }
+
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: opacity 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: var(--secondary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-card h3 {
+            margin: 15px 0;
+            color: var(--text-color);
+        }
+    </style>
 </head>
 <body>
+
 <header>
-<!-- استبدل النص التالي بصورة اللوجو الخاص بك -->
-<div class="logo">CARAMELA</div>
+    <div class="logo">CARAMELA</div>
 </header>
+
 <div class="announcement">
-الطلب من شي أن الاوردر بنفس سعر الابليكشن ومن غير جمارك وهيوصلك خلال 10 لـ 15 يوم
-والطلب من كاراميل التوصيل خلال يومين عمل
+    الطلب من شي أن الاوردر بنفس سعر الابليكشن ومن غير جمارك وهيوصلك خلال 10 لـ 15 يوم<br>
+    الطلب من كاراميل التوصيل خلال يومين عمل
 </div>
-<div class="contact-section">
-<a href="https://wa.me/201112348224" class="whatsapp-link">للتواصل على الواتس أب</a>
-<a href="https://play.google.com/store/apps/details?id=com.zzkko" class="SHIN-link">لتنزيل برنامج شي أن</a>
-</div>
+
+<section class="contact-section">
+    <a href="https://wa.me/201112348224" class="btn">للتواصل على الواتس أب</a>
+    <a href="https://play.google.com/store/apps/details?id=com.zzkko" class="btn">لتنزيل برنامج شي أن</a>
+</section>
+
 <div class="categories-grid">
-<div class="category-card">
-<img src="IMG-20261116-WA0032.jpg" alt="كراميلا">
-<h3>كاراميلا</h3>
+    <div class="category-card">
+        <img src="placeholder.jpg" alt="ملابس نسائي">
+        <h3>ملابس نسائي</h3>
+    </div>
+    <div class="category-card">
+        <img src="placeholder.jpg" alt="ملابس رجالي">
+        <h3>ملابس رجالي</h3>
+    </div>
+    <div class="category-card">
+        <img src="placeholder.jpg" alt="إكسسوارات">
+        <h3>إكسسوارات</h3>
+    </div>
+    <div class="category-card">
+        <img src="placeholder.jpg" alt="مستلزمات المنزل">
+        <h3>مستلزمات المنزل</h3>
+    </div>
 </div>
-<div class="category-card">
-<img src="IMG-20261116-WA0031.jpg" alt="شى أن">
-<h3>شى أن</h3>
-</div>
-</div>
+
 </body>
 </html>
 
