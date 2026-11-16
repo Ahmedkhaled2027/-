@@ -1,100 +1,120 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-<meta property="og:title" content="Caramela">
-<meta property="og:description" content="CaramelaShinStore">
-<meta property="og:image" content="[https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/IMG-20261114-WA0000.jpg](https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/IMG-20261114-WA0000.jpg)">
-<meta property="og:url" content="[https://caramelashinstore.github.io/Carmela.store/](https://caramelashinstore.github.io/Carmela.store/)">
-<meta property="og:type" content="website">
-
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caramela Store</title>
 <style>
-  body {
-    background-color: #f5f5dc;
-    font-family: sans-serif;
-    margin: 0;
-  }
-  header {
-    background-color: #f5f5dc;
-    color: black;
-    padding: 20px;
-    text-align: center;
-  }
-  h1 {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 0;
-  }
-  .whatsapp-section {
-    background-color: #28a745;
-    padding: 15px;
-    text-align: center;
-  }
-  .whatsapp-link {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-      .SHIN-section {
-    background-color: #f5f5dc;
-    padding: 15px;
-    text-align: center;
-  }
-  .SHIN-link {
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
+:root {
+--primary-color: #d4a373;
+--secondary-color: #faedcd;
+--text-color: #333;
+--bg-color: #fefae0;
+}
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+background-color: var(--bg-color);
+color: var(--text-color);
+text-align: center;
+}
+header {
+padding: 20px;
+background-color: white;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.logo {
+font-size: 2.5rem;
+font-weight: bold;
+color: var(--primary-color);
+}
+.announcement {
+background-color: var(--secondary-color);
+padding: 15px;
+margin: 20px auto;
+max-width: 800px;
+border-radius: 8px;
+font-weight: bold;
+}
+.contact-section {
+display: flex;
+justify-content: center;
+gap: 15px;
+margin: 20px 0;
+}
+.btn {
+padding: 12px 25px;
+background-color: var(--primary-color);
+color: white;
+text-decoration: none;
+border-radius: 25px;
+font-weight: bold;
+transition: opacity 0.3s;
+}
+.btn:hover {
+opacity: 0.8;
+}
+.categories-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 20px;
+padding: 20px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.category-card {
+background: white;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+transition: transform 0.3s;
+}
+.category-card:hover {
+transform: translateY(-5px);
+}
+.category-card img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+}
+.category-card h3 {
+margin: 15px 0;
+}
 </style>
 </head>
 <body>
-
 <header>
-  <h1>Caramela</h1>
+<!-- استبدل النص التالي بصورة اللوجو الخاص بك -->
+<div class="logo">CARAMELA</div>
 </header>
-<header>
-  <h1>الطلب من شى أن الاوردر بنفس سعر الابلكيشن ومن غير جمارك وهيوصلك خلال 10 ل15 يوم</h1>
-<h1>الطلب من كاراميل التوصيل خلال يومين عمل <h1>
-</header>
-  
-<section class="whatsapp-section">
-  <a href="https://wa.me/201112348224" class="whatsapp-link">
-    🟢  للتواصل على الواتس أب
-  </a>
-</section>
-<section class="SHIN-section">
-  <a href="https://play.google.com/store/apps/details?id=com.zzkko" class="SHIN-link">
-    🟢 لتنزيل برنامج شى أن
-  </a>
-</section>
-<main>
-  <section>
-    <a href="girls.html"><img src="IMG-20261116-WA0031.jpg" alt="شى ان "></a>
-  </section>
-  <section>
-    <a href="mens.html"><img src="IMG-20261116-WA0032.jpg" alt=" كاراميل"></a>
-  </section>
-  <section>
-</main>
+<div class="announcement">
+الطلب من شي أن الاوردر بنفس سعر الابليكشن ومن غير جمارك وهيوصلك خلال 10 لـ 15 يوم
 
+الطلب من كاراميل التوصيل خلال يومين عمل
+</div>
+<div class="contact-section">
+<a href="#" class="btn">للتواصل على الواتس أب</a>
+<a href="#" class="btn">لتنزيل برنامج شي أن</a>
+</div>
+<div class="categories-grid">
+<div class="category-card">
+<img src="placeholder.jpg" alt="ملابس نسائي">
+<h3>ملابس نسائي</h3>
+</div>
+<div class="category-card">
+<img src="placeholder.jpg" alt="ملابس رجالي">
+<h3>ملابس رجالي</h3>
+</div>
+<div class="category-card">
+<img src="placeholder.jpg" alt="إكسسوارات">
+<h3>إكسسوارات</h3>
+</div>
+<div class="category-card">
+<img src="placeholder.jpg" alt="مستلزمات المنزل">
+<h3>مستلزمات المنزل</h3>
+</div>
+</div>
 </body>
 </html>
+
