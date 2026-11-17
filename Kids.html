@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إكسسوارات البنات - متجر كارميلا</title>
+    <title>ملابس الأطفال - متجر كارميلا</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -175,28 +175,11 @@
 
     <main class="container">
         <div class="page-header">
-            <h1>إكسسوارات البنات</h1>
-            <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
+            <h1>ملابس الأطفال</h1>
+            <p>تشكيلة مميزة ومريحة من أروع ملابس الأطفال بأفضل الأسعار</p>
         </div>
 
-        <div class="products-grid" id="productsGrid">
-            
-            <!-- نموذج جاهز لإضافة منتج جديد (انسخ القالب ده وكرره لكل منتج جديد) -->
-            <div class="product-card">
-                <div class="product-img-box" onclick="openModal('Girls/ اسم_الصورة.jpg')">
-                    <img src="Girls/ اسم_الصورة.jpg" alt="اسم المنتج" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <div>
-                        <div class="product-title">اسم المنتج هنا</div>
-                        <div class="product-price">100<span>جنيه</span></div>
-                    </div>
-                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20اسم%20المنتج%20100%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
-                </div>
-            </div>
-            <!-- نهاية النموذج -->
-
-        </div>
+        <div class="products-grid" id="productsGrid"></div>
     </main>
 
     <!-- Modal لعرض الصورة المكبرة -->
@@ -209,12 +192,30 @@
         <p>جميع الحقوق محفوظة &copy; Caramela Store</p>
     </footer>
 
-    <script>
+    <!-- JavaScript Modules -->
+    <script type="module">
+        // 1. بيانات منتجات ملابس الأطفال (أضف منتجاتك وصورها هنا بكل سهولة)
+        const productsData = [
+            {
+                name: "طقم أطفال كيوت",
+                price: 250,
+                image: "Kids/IMG-20261117-WA0001.jpg"
+            },
+            {
+                name: "سورتيت أطفال قطن",
+                price: 120,
+                image: "Kids/IMG-20261117-WA0002.jpg"
+            }
+        ];
+
+        const whatsappNumber = "201055436305";
+        const grid = document.getElementById("productsGrid");
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImg");
         const modalClose = document.getElementById("modalClose");
 
-        function openModal(imgSrc) {
+        // 2. مكتبة تشغيل الـ Modal وتكبير الصور
+        window.openModal = function(imgSrc) {
             modalImg.src = imgSrc;
             modal.style.display = "flex";
         }
@@ -228,6 +229,39 @@
                 modal.style.display = "none";
             }
         });
+
+        // 3. مكتبة توليد وعرض المنتجات أوتوماتيكياً
+        function renderProducts() {
+            const fragment = document.createDocumentFragment();
+
+            productsData.forEach(product => {
+                const message = `اريد طلب ${product.name} بسعر ${product.price} جنيه`;
+                const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+                const card = document.createElement("div");
+                card.className = "product-card";
+
+                card.innerHTML = `
+                    <div class="product-img-box" onclick="openModal('${product.image}')">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    </div>
+                    <div class="product-details">
+                        <div>
+                            <div class="product-title">${product.name}</div>
+                            <div class="product-price">${product.price}<span>جنيه</span></div>
+                        </div>
+                        <a href="${whatsappLink}" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    </div>
+                `;
+
+                fragment.appendChild(card);
+            });
+
+            grid.appendChild(fragment);
+        }
+
+        // تشغيل المكتبة عند تحميل الصفحة
+        document.addEventListener("DOMContentLoaded", renderProducts);
     </script>
 </body>
 </html>
