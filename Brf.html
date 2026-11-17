@@ -200,7 +200,6 @@
 
     <!-- JavaScript Modules -->
     <script type="module">
-        // 1. مكتبة بيانات العطور والمستحضرات
         const productsData = [
             {
                 name: "عطر Lively For Men Paris",
@@ -235,7 +234,6 @@
         const modalImg = document.getElementById("modalImg");
         const modalClose = document.getElementById("modalClose");
 
-        // 2. مكتبة تشغيل الـ Modal وتكبير الصور
         window.openModal = function(imgSrc) {
             modalImg.src = imgSrc;
             modal.style.display = "flex";
@@ -251,7 +249,6 @@
             }
         });
 
-        // 3. مكتبة توليد وعرض كاردات المنتجات أوتوماتيكياً
         function renderProducts() {
             const fragment = document.createDocumentFragment();
 
@@ -272,6 +269,20 @@
                             <div class="product-price">${product.price}<span>جنيه</span></div>
                         </div>
                         <a href="${whatsappLink}" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    </div>
+                `;
+
+                fragment.appendChild(card);
+            });
+
+            grid.appendChild(fragment);
+        }
+
+        document.addEventListener("DOMContentLoaded", renderProducts);
+    </script>
+</body>
+</html>
+blank" rel="noopener noreferrer">اطلب الآن</a>
                     </div>
                 `;
 
