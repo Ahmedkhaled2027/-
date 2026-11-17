@@ -17,7 +17,7 @@
             --text-main: #2c2521;
             --text-muted: #7c726a;
             --border-light: rgba(184, 134, 86, 0.2);
-            --shadow-soft: 0 8px 24px -8px rgba(44, 37, 33, 0.08);
+            --shadow-soft: 0 4px 16px rgba(44, 37, 33, 0.06);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
@@ -29,33 +29,34 @@
         .logo { font-size: 1.4rem; font-weight: 800; color: #dfb185; letter-spacing: 3px; text-transform: uppercase; }
         .header-spacer { width: 80px; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 25px 12px 50px; width: 100%; flex: 1; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
         
-        .page-header { text-align: center; margin-bottom: 30px; background: linear-gradient(135deg, #f7f1eb 0%, #f4ede3 100%); padding: 30px 15px; border-radius: 20px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
-        .page-header h1 { font-size: 1.7rem; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
-        .page-header p { font-size: 0.9rem; color: var(--text-muted); }
+        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #f7f1eb 0%, #f4ede3 100%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
+        .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* شبكة عمودين ثابتة ومتناسقة جداً للجوال */
+        /* نظام صفوف منتظمة (منتجين بجوار بعض تماماً بدون فراغات) */
         .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 12px; 
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .product-card { 
             background: var(--bg-card); 
-            border-radius: 16px; 
+            border-radius: 14px; 
             overflow: hidden; 
             border: 1px solid rgba(184, 134, 86, 0.12); 
             box-shadow: var(--shadow-soft); 
             display: flex; 
             flex-direction: column; 
-            height: 100%;
+            width: calc(50% - 5px);
+            margin-bottom: 0;
         }
         
         .product-img-box { 
             width: 100%; 
-            height: 150px; 
+            height: 140px; 
             background: #f7f4f0; 
             position: relative; 
             overflow: hidden; 
@@ -75,7 +76,7 @@
         }
 
         .product-details { 
-            padding: 12px; 
+            padding: 10px; 
             display: flex; 
             flex-direction: column; 
             flex: 1; 
@@ -84,7 +85,7 @@
         }
         
         .product-title { 
-            font-size: 0.85rem; 
+            font-size: 0.82rem; 
             font-weight: 700; 
             color: var(--text-main); 
             margin-bottom: 6px; 
@@ -97,12 +98,12 @@
         }
         
         .product-price { 
-            font-size: 1.1rem; 
+            font-size: 1.05rem; 
             font-weight: 800; 
             color: var(--primary-dark); 
-            margin-bottom: 10px; 
+            margin-bottom: 8px; 
         }
-        .product-price span { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-right: 3px; }
+        .product-price span { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-right: 3px; }
 
         .order-btn { 
             display: flex; 
@@ -110,23 +111,25 @@
             justify-content: center; 
             gap: 6px; 
             width: 100%; 
-            padding: 9px; 
+            padding: 8px; 
             background: var(--dark-surface); 
             color: #ffffff; 
-            border-radius: 10px; 
-            font-size: 0.83rem; 
+            border-radius: 8px; 
+            font-size: 0.8rem; 
             font-weight: 700; 
+            transition: background 0.2s ease; 
         }
         .order-btn:hover { background: var(--primary); }
 
         footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(184, 134, 86, 0.15); margin-top: auto; background: #f7f2ec; }
 
         @media (min-width: 768px) {
-            .products-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-            .product-img-box { height: 190px; }
-            .product-title { font-size: 1rem; }
-            .product-price { font-size: 1.3rem; }
-            .order-btn { padding: 11px; font-size: 0.9rem; }
+            .products-grid { gap: 16px; }
+            .product-card { width: calc(33.333% - 11px); }
+            .product-img-box { height: 180px; }
+            .product-title { font-size: 0.95rem; }
+            .product-price { font-size: 1.2rem; }
+            .order-btn { padding: 10px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -218,6 +221,184 @@
                         <img src="Kit/IMG-20261116-WA0062.jpg" alt="طبق بلاستيك متين" loading="lazy">
                     </a>
                 </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طبق بلاستيك متين</div>
+                        <div class="product-price">95<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طبق%20بلاستيك%20متين%2095%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20صنيه%20تحمير%20بالشبكه%20260%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0063.jpg" alt="صنيه تحمير" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">صنيه تحمير بالشبكه داخل الفرن</div>
+                        <div class="product-price">260<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20صنيه%20تحمير%20بالشبكه%20260%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20تركي%20جرانيت%202200%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0064.jpg" alt="طقم تركي جرانيت" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم تركى جرانيت</div>
+                        <div class="product-price">2200<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20تركي%20جرانيت%202200%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20240%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0065.jpg" alt="طقم 6 قطع" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم 6 قطع</div>
+                        <div class="product-price">240<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20240%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20سكاكين%20850%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0066.jpg" alt="طقم سكاكين" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم سكاكين أسماك</div>
+                        <div class="product-price">850<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20سكاكين%20850%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20منتج%201800%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0071.jpg" alt="طقم مميز" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم مميز</div>
+                        <div class="product-price">1800<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20منتج%201800%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%2012%20قطعه%201500%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0075.jpg" alt="طقم 12 قطعه" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم 12 قطعه</div>
+                        <div class="product-price">1500<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%2012%20قطعه%201500%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%206%20قطع%2080%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0076.jpg" alt="6 قطع" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">6 قطع</div>
+                        <div class="product-price">80<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%206%20قطع%2080%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20250%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0081.jpg" alt="طقم بلانك ماكس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم 6 قطع بلانك ماكس</div>
+                        <div class="product-price">250<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20250%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20معطر%20روائح%20100%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0082.jpg" alt="معطر" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">معطر روائح طبيعية</div>
+                        <div class="product-price">100<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20معطر%20روائح%20100%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0085.jpg" alt="صينية استانلس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم صواني استانلس</div>
+                        <div class="product-price">1600<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0086.jpg" alt="صينية استانلس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم صواني استانلس</div>
+                        <div class="product-price">1600<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="product-img-link">
+                        <img src="Kit/IMG-20261116-WA0087.jpg" alt="صينية استانلس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم صواني استانلس</div>
+                        <div class="product-price">1600<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div clasiv>
                 <div class="product-details">
                     <div>
                         <div class="product-title">طبق بلاستيك متين</div>
