@@ -3,157 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر كارميلا - إكسسوارات البنات</title>
+    <title>هدايا وتذكارات - متجر كارميلا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
+        :root {
+            --primary: #b88656;
+            --primary-dark: #946940;
+            --bg-main: #fcf9f5;
+            --bg-card: #ffffff;
+            --dark-surface: #2b231e;
+            --text-main: #2c2521;
+            --text-muted: #7c726a;
+            --border-light: rgba(184, 134, 86, 0.2);
+            --shadow-soft: 0 4px 16px rgba(44, 37, 33, 0.06);
         }
-        body {
-            background-color: #1a1a1a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 10px;
-            margin: 0;
-            color: #ffffff;
-        }
-        .container {
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        a { text-decoration: none; color: inherit; }
+        
+        header { background: rgba(43, 35, 30, 0.95); backdrop-filter: blur(12px); padding: 14px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(184, 134, 86, 0.15); display: flex; align-items: center; justify-content: space-between; }
+        .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #f5f0eb; background: rgba(255, 255, 255, 0.1); padding: 7px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; transition: all 0.2s ease; }
+        .back-btn:hover { background: var(--primary); color: #fff; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #dfb185; letter-spacing: 3px; text-transform: uppercase; }
+        .header-spacer { width: 80px; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
+        
+        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #f7f1eb 0%, #f4ede3 100%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
+        .page-header p { font-size: 0.85rem; color: var(--text-muted); }
+
+        .products-grid { 
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             gap: 10px;
         }
-        .product {
-            background: #242424;
+        
+        .product-card { 
+            background: var(--bg-card); 
+            border-radius: 14px; 
+            overflow: hidden; 
+            border: 1px solid rgba(184, 134, 86, 0.12); 
+            box-shadow: var(--shadow-soft); 
+            display: flex; 
+            flex-direction: column; 
             width: calc(50% - 5px);
-            margin-bottom: 10px;
-            border-radius: 16px;
-            padding: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            margin-bottom: 0;
         }
-        img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto;
-            border-radius: 12px;
+        
+        .product-img-box { 
+            width: 100%; 
+            height: 160px; 
+            background: #f7f4f0; 
+            position: relative; 
+            overflow: hidden; 
         }
-        .description {
-            font-size: 14px;
-            margin: 10px 0;
-            color: #cccccc;
+        
+        .product-img-link { 
+            display: block; 
+            width: 100%; 
+            height: 100%; 
         }
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
+        
+        .product-img-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center; 
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover img { transform: scale(1.04); }
+
+        .product-details { 
+            padding: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            flex: 1; 
+            justify-content: space-between; 
+            text-align: right; 
+            gap: 8px;
+        }
+        
+        .product-title { 
+            font-size: 0.82rem; 
+            font-weight: 700; 
+            color: var(--text-main); 
+            display: -webkit-box; 
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical; 
+            overflow: hidden; 
+            min-height: 2.6em; 
+            line-height: 1.3em; 
+        }
+        
+        .product-price { 
+            font-size: 1.05rem; 
+            font-weight: 800; 
+            color: var(--primary-dark); 
+        }
+        .product-price span { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-right: 3px; }
+
+        .order-btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 6px; 
+            width: 100%; 
+            padding: 8px; 
+            background: var(--dark-surface); 
+            color: #ffffff; 
+            border-radius: 8px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            transition: background 0.2s ease; 
+        }
+        .order-btn:hover { background: var(--primary); }
+
+        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(184, 134, 86, 0.15); margin-top: auto; background: #f7f2ec; }
+
+        @media (min-width: 768px) {
+            .products-grid { gap: 16px; }
+            .product-card { width: calc(33.333% - 11px); }
+            .product-img-box { height: 200px; }
+            .product-title { font-size: 0.95rem; }
+            .product-price { font-size: 1.2rem; }
+            .order-btn { padding: 10px; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
+    <header>
+        <a href="index.html" class="back-btn">→ الرئيسية</a>
+        <div class="logo">CARAMEL</div>
+        <div class="header-spacer"></div>
+    </header>
 
-    <div class="container">
-        
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%AD%D9%81%D8%B8%D9%87%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D9%85%D8%A7%D8%A1%20%D9%85%D8%B9%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D9%85%20200%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0007.jpg" alt="محفظة بالاسماء">
-            </a>
-            <p class="description">محفظه بالاسماء مع تحديد الاسم</p>
-            <div class="price">200</div>
+    <main class="container">
+        <div class="page-header">
+            <h1>الهدايا والتذكارات</h1>
+            <p>اختر الهدية المميزة لمن تحب واطلبها بسهولة عبر الواتساب</p>
         </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%B1%D8%A7%D9%8A%D8%A7%20%D8%B3%D8%AD%D8%B1%D9%8A%D9%87%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20300%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0006.jpg" alt="مرايا سحرية">
-            </a>
-            <p class="description">مرايا سحريه بصورتك</p>
-            <div class="price">300</div>
-        </div>
+        <div class="products-grid">
+            <!-- 1 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0007.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0007.jpg" alt="محفظة بالاسماء" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">محفظه بالاسماء مع تحديد الاسم</div>
+                        <div class="product-price">200<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%AD%D9%81%D8%B8%D9%87%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D9%85%D8%A7%D8%A1%20%D9%85%D8%B9%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D9%85%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-         <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B3%D8%A7%D8%B9%D8%A9%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%2030%D9%81%D9%8A40%20280%20%D8%AC%D9%86%D9%8A%D9%87">
-      <img src="Amnh/IMG-20261117-WA0019.jpg" alt="مج ابيض بصورتك">
-            </a>
-            <p class="description">>ساعة بصورتك 30في40</p>
-            <div class="price">280</div>
-        </div>
+            <!-- 2 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0006.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0006.jpg" alt="مرايا سحرية" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">مرايا سحريه بصورتك</div>
+                        <div class="product-price">300<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%B1%D8%A7%D9%8A%D8%A7%20%D8%B3%D8%AD%D8%B1%D9%8A%D9%87%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20300%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-           <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%AC%20%D8%A7%D8%A8%D9%8A%D8%B6%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20160%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0003.jpg" alt="ساعة بصورتك 30في40">
-            </a>
-            <p class="description">مج أبيض بصورتك</p>
-            <div class="price">160</div>
-        </div>
+            <!-- 3 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0019.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0019.jpg" alt="ساعة بصورتك" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">ساعة بصورتك 30 في 40</div>
+                        <div class="product-price">280<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B3%D8%A7%D8%B9%D8%A9%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%2030%D9%81%D9%8A40%20280%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%D8%AF%D9%8A%D9%84%20%D8%A7%D9%84%D8%B9%D8%B1%D8%B3%D8%A7%D9%86%20130%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0018.jpg" alt="منديل العرسان">
-            </a>
-            <p class="description">منديل العرسان</p>
-            <div class="price">130</div>
-        </div>
+            <!-- 4 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0003.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0003.jpg" alt="مج أبيض" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">مج أبيض بصورتك</div>
+                        <div class="product-price">160<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%AC%20%D8%A7%D8%A8%D9%8A%D8%B6%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D8%A7%D8%A8%D9%84%D9%88%D9%87%2030%D9%81%D9%8A40%20220%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0017.jpg" alt="تابلوه 30في40">
-            </a>
-            <p class="description">تابلوه 30في40</p>
-            <div class="price">220</div>
-        </div>
+            <!-- 5 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0018.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0018.jpg" alt="منديل العرسان" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">منديل العرسان</div>
+                        <div class="product-price">130<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%D8%AF%D9%8A%D9%84%20%D8%A7%D9%84%D8%B9%D8%B1%D8%B3%D8%A7%D9%86%20130%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D8%A7%D8%A8%D9%84%D9%88%D9%87%2060%D9%81%D9%8A90%20500%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0016.jpg" alt="تابلوه 60في90">
-            </a>
-            <p class="description">تابلوه 60في90</p>
-            <div class="price">500</div>
-        </div>
+            <!-- 6 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0017.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0017.jpg" alt="تابلوه" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">تابلوه 30 في 40</div>
+                        <div class="product-price">220<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D8%A7%D8%A8%D9%84%D9%88%D9%87%2030%D9%81%D9%8A40%20220%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A8%D8%B1%D9%88%D8%A7%D8%B2%2021%D9%81%D9%8A15%20100%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0014.jpg" alt="برواز 21في15">
-            </a>
-            <p class="description">برواز 21في15</p>
-            <div class="price">100</div>
-        </div>
+            <!-- 7 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0016.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0016.jpg" alt="تابلوه كبير" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">تابلوه 60 في 90</div>
+                        <div class="product-price">500<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D8%A7%D8%A8%D9%84%D9%88%D9%87%2060%D9%81%D9%8A90%20500%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D8%A8%D8%A7%D9%89%D8%AD%D8%A9%20%D8%AC%D8%B1%D8%A7%D8%A8%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20100%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0009.jpg" alt="طباعه جراب بصورتك">
-            </a>
-            <p class="description">طباعه جراب بصورتك</p>
-            <div class="price">100</div>
-        </div>
+            <!-- 8 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0014.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0014.jpg" alt="برواز" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">برواز 21 في 15</div>
+                        <div class="product-price">100<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A8%D8%B1%D9%88%D8%A7%D8%B2%2021%D9%81%D9%8A15%20100%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%AC%20%D8%B3%D8%AD%D8%B1%D9%8A%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20230%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0004.jpg" alt="مج سحري بصورتك">
-            </a>
-            <p class="description">مج سحري بصورتك</p>
-            <div class="price">230</div>
-        </div>
+            <!-- 9 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0009.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0009.jpg" alt="طباعة جراب" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طباعه جراب بصورتك</div>
+                        <div class="product-price">100<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D8%A8%D8%A7%D9%8A%D8%AD%D8%A9%20%D8%AC%D8%B1%D8%A7%D8%A8%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20100%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D9%8A%D8%AF%D8%A7%D9%84%D9%8A%D8%A7%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20%D8%A7%D9%88%20%D8%A7%D9%84%D9%84%D9%88%D8%AC%D9%8030%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0001.jpg" alt="ميداليا بصورتك او اللوجو">
-            </a>
-            <p class="description">ميداليا بصورتك او اللوجو</p>
-            <div class="price">30</div>
-        </div>
+            <!-- 10 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0004.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0004.jpg" alt="مج سحري" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">مج سحري بصورتك</div>
+                        <div class="product-price">230<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%AC%20%D8%B3%D8%AD%D8%B1%D9%8A%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20230%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-        <div class="product">
-            <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D8%A8%D9%82%20%D9%88%D9%81%D9%86%D8%AC%D8%A7%D9%86%20%D8%B7%D8%A8%D8%A7%D8%B9%D9%87%20%D8%A8%D8%A7%D8%B3%D9%85%D9%83%20170%20%D8%AC%D9%86%D9%8A%D9%87">
-                <img src="Amnh/IMG-20261117-WA0036.jpg" alt="طبق وفنجان طباعه باسمك">
-            </a>
-            <p class="description">طبق وفنجان طباعه باسمك</p>
-            <div class="price">170</div>
-        </div>
+            <!-- 11 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0001.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0001.jpg" alt="ميدالية" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">ميداليا بصورتك او اللوجو</div>
+                        <div class="product-price">30<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D9%8A%D8%AF%D8%A7%D9%84%D9%8A%D8%A7%20%D8%A8%D8%B5%D9%88%D8%B1%D8%AA%D9%83%20%D8%A7%D9%88%20%D8%A7%D9%84%D9%84%D9%88%D8%AC%D9%8030%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
 
-    </div>
+            <!-- 12 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="Amnh/IMG-20261117-WA0036.jpg" class="product-img-link" target="_blank">
+                        <img src="Amnh/IMG-20261117-WA0036.jpg" alt="طبق وفنجان" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طبق وفنجان طباعه باسمك</div>
+                        <div class="product-price">170<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D8%A8%D9%82%20%D9%88%D9%81%D9%86%D8%AC%D8%A7%D9%86%20%D8%B7%D8%A8%D8%A7%D8%B9%D9%87%20%D8%A8%D8%A7%D8%B3%D9%85%D9%83%20170%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; Caramela Store</p>
+    </footer>
 </body>
 </html>
