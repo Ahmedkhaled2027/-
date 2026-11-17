@@ -1,15 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مستلزمات المنزل - متجر كارميلا</title>
-
-    <!-- خط Cairo العصري -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --primary: #c89666;
@@ -21,251 +19,56 @@
             --text-muted: #6e6761;
             --border-light: rgba(200, 150, 102, 0.25);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* الهيدر العلوي */
-        header {
-            background: rgba(24, 21, 18, 0.96);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 14px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #f3ede6;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 7px 14px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .back-btn:hover {
-            background: var(--primary-dark);
-            color: #fff;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .header-spacer {
-            width: 80px;
-        }
-
-        /* الحاوية الرئيسية */
-        .container {
-            max-width: 1150px;
-            margin: 0 auto;
-            padding: 25px 16px 50px;
-            width: 100%;
-            flex: 1;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
-        .page-header h1 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .page-header p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* شبكة عرض المنتجات */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        /* بطاقة المنتج */
-        .product-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 8px 25px -8px rgba(24, 21, 18, 0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 35px -10px rgba(200, 150, 102, 0.25);
-            border-color: var(--border-light);
-        }
-
-        .product-img-box {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background: #f2ede7;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* ضبط الصورة لتظهر كاملة تماماً */
-            padding: 10px;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-img-box img {
-            transform: scale(1.03);
-        }
-
-        .product-details {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            justify-content: space-between;
-            text-align: right;
-        }
-
-        .product-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 6px;
-        }
-
-        .product-price {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 14px;
-        }
-
-        .product-price span {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-right: 4px;
-        }
-
-        .order-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 11px;
-            background: var(--dark-surface);
-            color: #ffffff;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            transition: background 0.25s ease;
-        }
-
-        .order-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        /* الفوتر */
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            margin-top: auto;
-        }
-
-        /* عرض منتجين في الصف على الموبايل */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        a { text-decoration: none; color: inherit; }
+        header { background: rgba(24, 21, 18, 0.96); backdrop-filter: blur(12px); padding: 14px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between; }
+        .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #f3ede6; background: rgba(255, 255, 255, 0.08); padding: 7px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
+        .back-btn:hover { background: var(--primary-dark); color: #fff; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; }
+        .header-spacer { width: 80px; }
+        .container { max-width: 1150px; margin: 0 auto; padding: 25px 16px 50px; width: 100%; flex: 1; }
+        .page-header { text-align: center; margin-bottom: 28px; }
+        .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); }
+        .page-header p { font-size: 0.9rem; color: var(--text-muted); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        .product-card { background: var(--bg-card); border-radius: 20px; overflow: hidden; border: 1px solid rgba(0, 0, 0, 0.06); box-shadow: 0 8px 25px -8px rgba(24, 21, 18, 0.07); display: flex; flex-direction: column; transition: transform 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img-box { width: 100%; aspect-ratio: 1 / 1; background: #f2ede7; overflow: hidden; position: relative; }
+        .product-img-box img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+        .product-details { padding: 16px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; text-align: right; }
+        .product-title { font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+        .product-price { font-size: 1.35rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 14px; }
+        .product-price span { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-right: 4px; }
+        .order-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 11px; background: var(--dark-surface); color: #ffffff; border-radius: 12px; font-size: 0.9rem; font-weight: 700; transition: background 0.25s ease; }
+        .order-btn:hover { background: var(--primary-dark); }
+        footer { text-align: center; padding: 20px; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(0, 0, 0, 0.05); margin-top: auto; }
         @media (max-width: 540px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            .product-card {
-                border-radius: 16px;
-            }
-            .product-details {
-                padding: 12px;
-            }
-            .product-title {
-                font-size: 0.9rem;
-            }
-            .product-price {
-                font-size: 1.15rem;
-                margin-bottom: 10px;
-            }
-            .order-btn {
-                padding: 9px;
-                font-size: 0.82rem;
-            }
-            .header-spacer {
-                display: none;
-            }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .product-card { border-radius: 16px; }
+            .product-details { padding: 12px; }
+            .product-title { font-size: 0.9rem; }
+            .product-price { font-size: 1.15rem; margin-bottom: 10px; }
+            .order-btn { padding: 9px; font-size: 0.82rem; }
+            .header-spacer { display: none; }
         }
     </style>
 </head>
 <body>
-
     <header>
         <a href="index.html" class="back-btn">→ الرئيسية</a>
         <div class="logo">CARAMEL</div>
         <div class="header-spacer"></div>
     </header>
-
     <main class="container">
         <div class="page-header">
             <h1>مستلزمات المنزل</h1>
             <p>اختر ما يناسب منزلك واطلبه فوراً عبر الواتساب</p>
         </div>
-
         <div class="products-grid">
-
-            <!-- منتج 1 -->
             <div class="product-card">
                 <div class="product-img-box">
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%B5%D9%81%D8%A7%D9%87%20%D9%85%D8%AA%D8%AD%D8%B1%D9%83%D9%87%20300%20%D8%AC%D9%86%D9%8A%D9%87">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20مصفاه%20متحركه%20300%20جنيه">
                         <img src="Kit/IMG-20261116-WA0059.jpg" alt="مصفاه متحركه" loading="lazy">
                     </a>
                 </div>
@@ -274,14 +77,12 @@
                         <div class="product-title">مصفاه متحركه</div>
                         <div class="product-price">300<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%B5%D9%81%D8%A7%D9%87%20%D9%85%D8%AA%D8%AD%D8%B1%D9%83%D9%87%20300%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20مصفاه%20متحركه%20300%20جنيه" class="order-btn">اطلب الآن</a>
                 </div>
             </div>
-
-            <!-- منتج 2 -->
             <div class="product-card">
                 <div class="product-img-box">
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D9%82%D9%85%206%20%D9%82%D8%B7%D8%B9%20350%20%D8%AC%D9%86%D9%8A%D9%87">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20350%20جنيه">
                         <img src="Kit/IMG-20261116-WA0056.jpg" alt="طقم 6 قطع" loading="lazy">
                     </a>
                 </div>
@@ -290,14 +91,12 @@
                         <div class="product-title">طقم 6 قطع</div>
                         <div class="product-price">350<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D9%82%D9%85%206%20%D9%82%D8%B7%D8%B9%20350%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20350%20جنيه" class="order-btn">اطلب الآن</a>
                 </div>
             </div>
-
-            <!-- منتج 3 -->
             <div class="product-card">
                 <div class="product-img-box">
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D9%82%D9%85%206%20%D9%82%D8%B7%D8%B9%20250%20%D8%AC%D9%86%D9%8A%D9%87">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20250%20جنيه">
                         <img src="Kit/IMG-20261116-WA0057.jpg" alt="طقم 6 قطع" loading="lazy">
                     </a>
                 </div>
@@ -306,13 +105,248 @@
                         <div class="product-title">طقم 6 قطع</div>
                         <div class="product-price">250<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B7%D9%82%D9%85%206%20%D9%82%D8%B7%D8%B9%20250%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20250%20جنيه" class="order-btn">اطلب الآن</a>
                 </div>
             </div>
-
-            <!-- منتج 4 -->
             <div class="product-card">
                 <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20قطع%203%2040%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0060.jpg" alt="قطع 3" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">قطع 3</div>
+                        <div class="product-price">40<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20قطع%203%2040%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20mصفاه%203%20احجام%20140%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0061.jpg" alt="مصفاه 3 احجام" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">مصفاه 3 احجام</div>
+                        <div class="product-price">140<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20مصفاه%203%20احجام%20140%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طبق%20بلاستيك%20متين%2095%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0062.jpg" alt="طبق بلاستيك متين" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طبق بلاستيك متين</div>
+                        <div class="product-price">95<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طبق%20بلاستيك%20متين%2095%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20صنيه%20تحمير%20بالشبكه%20260%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0063.jpg" alt="صنيه تحمير" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">صنيه تحمير بالشبكه الفرن</div>
+                        <div class="product-price">260<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20صنيه%20تحمير%20بالشبكه%20260%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20تركي%20جرانيت%202200%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0064.jpg" alt="طقم تركي جرانيت" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم تركى جرانيت</div>
+                        <div class="product-price">2200<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20تركي%20جرانيت%202200%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20240%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0065.jpg" alt="طقم 6 قطع" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم 6 قطع</div>
+                        <div class="product-price">240<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20240%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20سكاكين%20850%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0066.jpg" alt="طقم سكاكين" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم سكاكين أسماك</div>
+                        <div class="product-price">850<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20سكاكين%20850%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20منتج%201800%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0071.jpg" alt="منتج" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم مميز</div>
+                        <div class="product-price">1800<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20منتج%201800%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%2012%20قطعه%201500%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0075.jpg" alt="طقم 12 قطعه" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم 12 قطعه</div>
+                        <div class="product-price">1500<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%2012%20قطعه%201500%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%206%20قطع%2080%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0076.jpg" alt="6 قطع" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">6 قطع</div>
+                        <div class="product-price">80<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%206%20قطع%2080%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20250%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0081.jpg" alt="طقم بلانك ماكس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم 6 قطع بلانك ماكس</div>
+                        <div class="product-price">250<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20250%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20معطر%20روائح%20100%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0082.jpg" alt="معطر" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">معطر روائح طبيعية</div>
+                        <div class="product-price">100<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20معطر%20روائح%20100%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0085.jpg" alt="صينية استانلس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم صواني استانلس</div>
+                        <div class="product-price">1600<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0086.jpg" alt="صينية استانلس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم صواني استانلس</div>
+                        <div class="product-price">1600<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0087.jpg" alt="صينية استانلس" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم صواني استانلس</div>
+                        <div class="product-price">1600<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%20صواني%201600%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20زيت%20مساج%2070%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0104.jpg" alt="زيت مساج" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">زيت مساج</div>
+                        <div class="product-price">70<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20زيت%20مساج%2070%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20500%20جنيه">
+                        <img src="Kit/IMG-20261116-WA0101.jpg" alt="طقم 6 قطع" loading="lazy">
+                    </a>
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">طقم 6 قطع</div>
+                        <div class="product-price">500<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20طقم%206%20قطع%20500%20جنيه" class="order-btn">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="prod    <div class="product-img-box">
                     <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%82%D8%B7%D8%B9%203%2040%20%D8%AC%D9%86%D9%8A%D9%87">
                         <img src="Kit/IMG-20261116-WA0060.jpg" alt="قطع 3" loading="lazy">
                     </a>
