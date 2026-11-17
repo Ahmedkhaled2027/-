@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عطور ومستحضرات - متجر كارميلا</title>
+    <title>العطور والبرفانات - متجر كارميلا</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
             --dark-surface: #1e293b;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --border-light: rgba(59, 130, 246, 0.35);
-            --shadow-soft: 0 4px 16px rgba(59, 130, 246, 0.08);
+            --border-light: rgba(59, 130, 246, 0.2);
+            --shadow-soft: 0 4px 16px rgba(30, 41, 59, 0.08);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
@@ -31,40 +31,34 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
         
-        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #e0f2fe 0%, #bfdbfe 100%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #e0f2fe 100%, #bae6fd 0%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
         .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
         .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
         .products-grid { 
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
         
         .product-card { 
             background: var(--bg-card); 
-            border-radius: 16px; 
+            border-radius: 14px; 
             overflow: hidden; 
-            border: 2px solid var(--border-light); 
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.1); 
+            border: 1px solid rgba(59, 130, 246, 0.12); 
+            box-shadow: var(--shadow-soft); 
             display: flex; 
             flex-direction: column; 
-            width: calc(50% - 6px);
+            width: calc(50% - 5px);
             margin-bottom: 0;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.18);
         }
         
         .product-img-box { 
             width: 100%; 
             height: 160px; 
-            background: #f0f7ff; 
+            background: #f8fafc; 
             position: relative; 
-            overflow: hidden;
+            overflow: hidden; 
             cursor: pointer;
         }
         
@@ -78,7 +72,7 @@
         .product-card:hover img { transform: scale(1.04); }
 
         .product-details { 
-            padding: 12px; 
+            padding: 10px; 
             display: flex; 
             flex-direction: column; 
             flex: 1; 
@@ -160,7 +154,7 @@
             color: var(--primary);
         }
 
-        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(59, 130, 246, 0.2); margin-top: auto; background: #e0f2fe; }
+        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(59, 130, 246, 0.2); margin-top: auto; background: #e2e8f0; }
 
         @media (min-width: 768px) {
             .products-grid { gap: 16px; }
@@ -181,65 +175,230 @@
 
     <main class="container">
         <div class="page-header">
-            <h1>عطور ومستحضرات</h1>
-            <p>أرقى العطور العالمية والمحلية الفاخرة، اضغط على أي صورة لتكبيرها</p>
+            <h1>العطور والبرفانات</h1>
+            <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
         </div>
 
         <div class="products-grid">
-            
-            <!-- منتج 1: عطر Lively -->
+            <!-- 1 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0067.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0067.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان مميز</div>
+                        <div class="product-price">160<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0068.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0068.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان مميز</div>
+                        <div class="product-price">160<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0069.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0069.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان مميز</div>
+                        <div class="product-price">160<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0077.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0077.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان فخم</div>
+                        <div class="product-price">200<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0078.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0078.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان صغير</div>
+                        <div class="product-price">45<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%2045%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0079.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0079.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان فخم</div>
+                        <div class="product-price">200<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0080.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0080.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان فخم</div>
+                        <div class="product-price">200<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0083.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0083.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان أنيق</div>
+                        <div class="product-price">150<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20150%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0084.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0084.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان أنيق</div>
+                        <div class="product-price">150<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20150%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0102.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0102.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان كلاسيك</div>
+                        <div class="product-price">100<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20100%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0103.jpg')">
+                    <img src="Prfa/IMG-20261116-WA0103.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان كلاسيك</div>
+                        <div class="product-price">100<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20100%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- المنتجات الجديدة -->
             <div class="product-card">
                 <div class="product-img-box" onclick="openModal('Brf/77750.webp')">
-                    <img src="Brf/77750.webp" alt="عطر Lively For Men Paris" loading="lazy">
+                    <img src="Brf/77750.webp" alt="Lively For Men Paris" loading="lazy">
                 </div>
                 <div class="product-details">
                     <div>
-                        <div class="product-title">عطر Lively For Men Paris</div>
+                        <div class="product-title">Lively For Men Paris</div>
                         <div class="product-price">175<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20Lively%20For%20Men%20Paris%20بسعر%20175%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20Lively%20For%20Men%20Paris%20%D8%A8%D8%B3%D8%B9%D8%B1%20175%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
-            <!-- منتج 2: عطر مصمم الذهب -->
             <div class="product-card">
                 <div class="product-img-box" onclick="openModal('Brf/77741.webp')">
-                    <img src="Brf/77741.webp" alt="عطر مصمم الذهب من لطافة" loading="lazy">
+                    <img src="Brf/77741.webp" alt="مصمم الذهب من لطافة" loading="lazy">
                 </div>
                 <div class="product-details">
                     <div>
-                        <div class="product-title">عطر مصمم الذهب من لطافة</div>
+                        <div class="product-title">مصمم الذهب من لطافة</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20مصمم%20الذهب%20من%20لطافة%20بسعر%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%B0%D9%87%D8%A8%20%D9%85%D9%86%20%D9%84%D8%B7%D8%A7%D9%81%D8%A9%20%D8%A8%D8%B3%D8%B9%D8%B1%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
-            <!-- منتج 3: عطر قصة الوردي -->
             <div class="product-card">
                 <div class="product-img-box" onclick="openModal('Brf/77742.webp')">
-                    <img src="Brf/77742.webp" alt="عطر قصة الوردي" loading="lazy">
+                    <img src="Brf/77742.webp" alt="قصة الوردي" loading="lazy">
                 </div>
                 <div class="product-details">
                     <div>
-                        <div class="product-title">عطر قصة الوردي</div>
+                        <div class="product-title">قصة الوردي</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20قصة%20الوردي%20بسعر%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D9%82%D8%B5%D8%A9%20%D8%A7%D9%84%D9%88%D8%B1%D8%AF%D9%8A%20%D8%A8%D8%B3%D8%B9%D8%B1%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
-            <!-- منتج 4: عطر مصمم الأسود -->
             <div class="product-card">
                 <div class="product-img-box" onclick="openModal('Brf/77740.webp')">
-                    <img src="Brf/77740.webp" alt="عطر مصمم الأسود Black Intense من لطافة" loading="lazy">
+                    <img src="Brf/77740.webp" alt="مصمم الأسود Black Intense من لطافة" loading="lazy">
                 </div>
                 <div class="product-details">
                     <div>
-                        <div class="product-title">عطر مصمم الأسود Black Intense من لطافة</div>
+                        <div class="product-title">مصمم الأسود Black Intense من لطافة</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20مصمم%20الأسود%20Black%20Intense%20من%20لطافة%20بسعر%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%AF%20Black%20Intense%20%D8%A8%D8%B3%D8%B9%D8%B1%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Brf/77743.webp')">
+                    <img src="Brf/77743.webp" alt="يارا من لطافة" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">يارا من لطافة</div>
+                        <div class="product-price">375<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D9%8A%D8%A7%D8%B1%D8%A7%20%D9%85%D9%86%20%D9%84%D8%B7%D8%A7%D9%81%D8%A9%20%D8%A8%D8%B3%D8%B9%D8%B1%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+   lank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
