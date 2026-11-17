@@ -9,29 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #db2777;
-            --primary-dark: #be185d;
-            --bg-main: #fdf2f8;
+            --primary: #f472b6;
+            --primary-dark: #db2777;
+            --bg-main: #fff5f8;
             --bg-card: #ffffff;
             --dark-surface: #2b231e;
             --text-main: #2c2521;
             --text-muted: #7c726a;
-            --border-light: rgba(219, 39, 119, 0.2);
+            --border-light: rgba(244, 114, 182, 0.2);
             --shadow-soft: 0 4px 16px rgba(44, 37, 33, 0.06);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
         a { text-decoration: none; color: inherit; }
         
-        header { background: rgba(43, 35, 30, 0.95); backdrop-filter: blur(12px); padding: 14px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(219, 39, 119, 0.15); display: flex; align-items: center; justify-content: space-between; }
+        header { background: rgba(43, 35, 30, 0.95); backdrop-filter: blur(12px); padding: 14px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(244, 114, 182, 0.15); display: flex; align-items: center; justify-content: space-between; }
         .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #f5f0eb; background: rgba(255, 255, 255, 0.1); padding: 7px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; transition: all 0.2s ease; }
-        .back-btn:hover { background: var(--primary); color: #fff; }
+        .back-btn:hover { background: var(--primary-dark); color: #fff; }
         .logo { font-size: 1.4rem; font-weight: 800; color: #f472b6; letter-spacing: 3px; text-transform: uppercase; }
         .header-spacer { width: 80px; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
         
-        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #ffe4e6 0%, #fbcfe8 100%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
         .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
         .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
@@ -45,7 +45,7 @@
             background: var(--bg-card); 
             border-radius: 14px; 
             overflow: hidden; 
-            border: 1px solid rgba(219, 39, 119, 0.12); 
+            border: 1px solid rgba(244, 114, 182, 0.12); 
             box-shadow: var(--shadow-soft); 
             display: flex; 
             flex-direction: column; 
@@ -56,7 +56,7 @@
         .product-img-box { 
             width: 100%; 
             height: 160px; 
-            background: #fdf2f8; 
+            background: #fff1f2; 
             position: relative; 
             overflow: hidden;
             cursor: pointer;
@@ -114,7 +114,7 @@
             font-weight: 700; 
             transition: background 0.2s ease; 
         }
-        .order-btn:hover { background: var(--primary); }
+        .order-btn:hover { background: var(--primary-dark); }
 
         /* Modal لتكبير الصور */
         .image-modal {
@@ -154,7 +154,7 @@
             color: var(--primary);
         }
 
-        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(219, 39, 119, 0.15); margin-top: auto; background: #fce7f3; }
+        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(244, 114, 182, 0.15); margin-top: auto; background: #ffe4e6; }
 
         @media (min-width: 768px) {
             .products-grid { gap: 16px; }
@@ -176,7 +176,7 @@
     <main class="container">
         <div class="page-header">
             <h1>ملابس الأطفال</h1>
-            <p>تشكيلة مميزة ومريحة من أروع ملابس الأطفال بأفضل الأسعار</p>
+            <p>أروع وأشيك ملابس الأطفال المريحة لأجمل صغار، اضغط على الصورة للتكبير واطلب فوراً</p>
         </div>
 
         <div class="products-grid" id="productsGrid"></div>
@@ -194,15 +194,15 @@
 
     <!-- JavaScript Modules -->
     <script type="module">
-        // 1. بيانات منتجات ملابس الأطفال (أضف منتجاتك وصورها هنا بكل سهولة)
+        // 1. مكتبة بيانات منتجات ملابس الأطفال (كل اللي عليك تضيف منتجك هنا والسعر واسم الصورة)
         const productsData = [
             {
-                name: "طقم أطفال كيوت",
+                name: "طقم أطفال كيوت ومريح",
                 price: 250,
                 image: "Kids/IMG-20261117-WA0001.jpg"
             },
             {
-                name: "سورتيت أطفال قطن",
+                name: "سورتيت أطفال قطن عالي الجودة",
                 price: 120,
                 image: "Kids/IMG-20261117-WA0002.jpg"
             }
@@ -230,7 +230,7 @@
             }
         });
 
-        // 3. مكتبة توليد وعرض المنتجات أوتوماتيكياً
+        // 3. مكتبة توليد وعرض كاردات المنتجات أوتوماتيكياً
         function renderProducts() {
             const fragment = document.createDocumentFragment();
 
