@@ -185,7 +185,79 @@
             <p>أرقى العطور العالمية والمحلية الفاخرة، اضغط على أي صورة لتكبيرها</p>
         </div>
 
-        <div class="products-grid" id="productsGrid"></div>
+        <div class="products-grid">
+            
+            <!-- منتج 1: عطر Lively -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Brf/77750.webp')">
+                    <img src="Brf/77750.webp" alt="عطر Lively For Men Paris" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">عطر Lively For Men Paris</div>
+                        <div class="product-price">175<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20Lively%20For%20Men%20Paris%20بسعر%20175%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- منتج 2: عطر مصمم الذهب -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Brf/77741.webp')">
+                    <img src="Brf/77741.webp" alt="عطر مصمم الذهب من لطافة" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">عطر مصمم الذهب من لطافة</div>
+                        <div class="product-price">375<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20مصمم%20الذهب%20من%20لطافة%20بسعر%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- منتج 3: عطر قصة الوردي -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Brf/77742.webp')">
+                    <img src="Brf/77742.webp" alt="عطر قصة الوردي" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">عطر قصة الوردي</div>
+                        <div class="product-price">375<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20قصة%20الوردي%20بسعر%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- منتج 4: عطر مصمم الأسود -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Brf/77740.webp')">
+                    <img src="Brf/77740.webp" alt="عطر مصمم الأسود Black Intense من لطافة" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">عطر مصمم الأسود Black Intense من لطافة</div>
+                        <div class="product-price">375<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20مصمم%20الأسود%20Black%20Intense%20من%20لطافة%20بسعر%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+            <!-- منتج 5: عطر يارا -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Brf/77743.webp')">
+                    <img src="Brf/77743.webp" alt="عطر يارا من لطافة" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">عطر يارا من لطافة</div>
+                        <div class="product-price">375<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20عطر%20يارا%20من%20لطافة%20بسعر%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <!-- Modal لعرض الصورة المكبرة -->
@@ -198,43 +270,12 @@
         <p>جميع الحقوق محفوظة &copy; Caramela Store</p>
     </footer>
 
-    <!-- JavaScript Modules -->
-    <script type="module">
-        const productsData = [
-            {
-                name: "عطر Lively For Men Paris",
-                price: 175,
-                image: "Brf/77750.webp"
-            },
-            {
-                name: "عطر مصمم الذهب من لطافة",
-                price: 375,
-                image: "Brf/77741.webp"
-            },
-            {
-                name: "عطر قصة الوردي",
-                price: 375,
-                image: "Brf/77742.webp"
-            },
-            {
-                name: "عطر مصمم الأسود Black Intense من لطافة",
-                price: 375,
-                image: "Brf/77740.webp"
-            },
-            {
-                name: "عطر يارا من لطافة",
-                price: 375,
-                image: "Brf/77743.webp"
-            }
-        ];
-
-        const whatsappNumber = "201055436305";
-        const grid = document.getElementById("productsGrid");
+    <script>
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImg");
         const modalClose = document.getElementById("modalClose");
 
-        window.openModal = function(imgSrc) {
+        function openModal(imgSrc) {
             modalImg.src = imgSrc;
             modal.style.display = "flex";
         }
@@ -248,33 +289,9 @@
                 modal.style.display = "none";
             }
         });
-
-        function renderProducts() {
-            const fragment = document.createDocumentFragment();
-
-            productsData.forEach(product => {
-                const message = `اريد طلب ${product.name} بسعر ${product.price} جنيه`;
-                const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-                const card = document.createElement("div");
-                card.className = "product-card";
-
-                card.innerHTML = `
-                    <div class="product-img-box" onclick="openModal('${product.image}')">
-                        <img src="${product.image}" alt="${product.name}" loading="lazy">
-                    </div>
-                    <div class="product-details">
-                        <div>
-                            <div class="product-title">${product.name}</div>
-                            <div class="product-price">${product.price}<span>جنيه</span></div>
-                        </div>
-                        <a href="${whatsappLink}" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
-                    </div>
-                `;
-
-                fragment.appendChild(card);
-            });
-
+    </script>
+</body>
+</html>
             grid.appendChild(fragment);
         }
 
