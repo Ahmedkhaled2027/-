@@ -134,12 +134,8 @@
             height: 140px;
             background: #f7f4f0;
             overflow: hidden;
-        }
-
-        .product-img-link {
-            display: block;
-            width: 100%;
-            height: 100%;
+            cursor: pointer;
+            position: relative;
         }
 
         .product-img-box img {
@@ -207,6 +203,44 @@
             background: var(--primary);
         }
 
+        /* Modal لعرض الصورة مكبرة */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color .2s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -255,12 +289,18 @@
 
     <div class="page-header">
         <h1>مستلزمات المنزل</h1>
-        <p>اختر ما يناسب منزلك واطلبه فوراً عبر الواتساب</p>
+        <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
     </div>
 
     <div class="products-grid" id="productsGrid"></div>
 
 </main>
+
+<!-- Modal لعرض الصورة -->
+<div class="image-modal" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img id="modalImg" src="" alt="صورة مكبرة">
+</div>
 
 <footer>
     <p>جميع الحقوق محفوظة &copy; Caramela Store</p>
@@ -363,24 +403,39 @@
     ];
 
     const grid = document.getElementById("productsGrid");
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.getElementById("modalClose");
+
+    // إغلاق النافذة عند الضغط على زر X أو خارج الصورة
+    modalClose.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 
     function createProduct(product) {
-        const message = `اريد طلب ${product.name} ${product.price} جنيه`;
-        const whatsappLink =
-            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const message = `اريد طلب ${product.name} بسعر ${product.price} جنيه`;
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const imgSrc = `Kit/${product.image}`;
 
         const card = document.createElement("div");
         card.className = "product-card";
 
         const imageBox = document.createElement("div");
         imageBox.className = "product-img-box";
-
-        const imageLink = document.createElement("a");
-        imageLink.className = "product-img-link";
-        imageLink.href = whatsappLink;
+        
+        // الضغط على الصورة يكبرها
+        imageBox.addEventListener("click", () => {
+            modalImg.src = imgSrc;
+            modal.style.display = "flex";
+        });
 
         const image = document.createElement("img");
-        image.src = `Kit/${product.image}`;
+        image.src = imgSrc;
         image.alt = product.name;
         image.loading = "lazy";
         image.onerror = function () {
@@ -388,8 +443,55 @@
             imageBox.style.background = "#eee6dc";
         };
 
-        imageLink.appendChild(image);
-        imageBox.appendChild(imageLink);
+        imageBox.appendChild(image);
+
+        const details = document.createElement("div");
+        details.className = "product-details";
+
+        const info = document.createElement("div");
+
+        const title = document.createElement("div");
+        title.className = "product-title";
+        title.textContent = product.name;
+
+        const price = document.createElement("div");
+        price.className = "product-price";
+        price.textContent = product.price;
+
+        const currency = document.createElement("span");
+        currency.textContent = "جنيه";
+
+        price.appendChild(currency);
+        info.appendChild(title);
+        info.appendChild(price);
+
+        const orderButton = document.createElement("a");
+        orderButton.className = "order-btn";
+        orderButton.href = whatsappLink;
+        orderButton.target = "_blank";
+        orderButton.rel = "noopener noreferrer";
+        orderButton.textContent = "اطلب الآن";
+
+        details.appendChild(info);
+        details.appendChild(orderButton);
+
+        card.appendChild(imageBox);
+        card.appendChild(details);
+
+        return card;
+    }
+
+    const fragment = document.createDocumentFragment();
+
+    products.forEach(product => {
+        fragment.appendChild(createProduct(product));
+    });
+
+    grid.appendChild(fragment);
+</script>
+
+</body>
+</html>
 
         const details = document.createElement("div");
         details.className = "product-details";
