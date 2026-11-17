@@ -4,36 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إكسسوارات البنات - متجر كارميلا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #1a1a1a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-            color: #ffffff;
+        :root {
+            --primary: #db2777;
+            --primary-dark: #be185d;
+            --bg-main: #fdf2f8;
+            --bg-card: #ffffff;
+            --dark-surface: #2b231e;
+            --text-main: #2c2521;
+            --text-muted: #7c726a;
+            --border-light: rgba(219, 39, 119, 0.2);
+            --shadow-soft: 0 4px 16px rgba(44, 37, 33, 0.06);
         }
-        .product {
-            background: #242424;
-            max-width: 400px;
-            margin: 20px auto;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        a { text-decoration: none; color: inherit; }
+        
+        header { background: rgba(43, 35, 30, 0.95); backdrop-filter: blur(12px); padding: 14px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(219, 39, 119, 0.15); display: flex; align-items: center; justify-content: space-between; }
+        .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #f5f0eb; background: rgba(255, 255, 255, 0.1); padding: 7px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; transition: all 0.2s ease; }
+        .back-btn:hover { background: var(--primary); color: #fff; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #f472b6; letter-spacing: 3px; text-transform: uppercase; }
+        .header-spacer { width: 80px; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
+        
+        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
+        .page-header p { font-size: 0.85rem; color: var(--text-muted); }
+
+        .products-grid { 
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        
+        .product-card { 
+            background: var(--bg-card); 
+            border-radius: 14px; 
+            overflow: hidden; 
+            border: 1px solid rgba(219, 39, 119, 0.12); 
+            box-shadow: var(--shadow-soft); 
+            display: flex; 
+            flex-direction: column; 
+            width: calc(50% - 5px);
+            margin-bottom: 0;
+        }
+        
+        .product-img-box { 
+            width: 100%; 
+            height: 160px; 
+            background: #fdf2f8; 
+            position: relative; 
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .product-img-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center; 
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover img { transform: scale(1.04); }
+
+        .product-details { 
+            padding: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            flex: 1; 
+            justify-content: space-between; 
+            text-align: right; 
+            gap: 8px;
+        }
+        
+        .product-title { 
+            font-size: 0.82rem; 
+            font-weight: 700; 
+            color: var(--text-main); 
+            display: -webkit-box; 
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical; 
+            overflow: hidden; 
+            min-height: 2.6em; 
+            line-height: 1.3em; 
+        }
+        
+        .product-price { 
+            font-size: 1.05rem; 
+            font-weight: 800; 
+            color: var(--primary-dark); 
+        }
+        .product-price span { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-right: 3px; }
+
+        .order-btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 6px; 
+            width: 100%; 
+            padding: 8px; 
+            background: var(--dark-surface); 
+            color: #ffffff; 
+            border-radius: 8px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            transition: background 0.2s ease; 
+        }
+        .order-btn:hover { background: var(--primary); }
+
+        /* Modal لتكبير الصور */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 85vh;
             border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color .2s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(219, 39, 119, 0.15); margin-top: auto; background: #fce7f3; }
+
+        @media (min-width: 768px) {
+            .products-grid { gap: 16px; }
+            .product-card { width: calc(33.333% - 11px); }
+            .product-img-box { height: 200px; }
+            .product-title { font-size: 0.95rem; }
+            .product-price { font-size: 1.2rem; }
+            .order-btn { padding: 10px; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
+    <header>
+        <a href="index.html" class="back-btn">→ الرئيسية</a>
+        <div class="logo">CARAMEL</div>
+        <div class="header-spacer"></div>
+    </header>
 
+    <main class="container">
+        <div class="page-header">
+            <h1>إكسسوارات البنات</h1>
+            <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            
+            <!-- نموذج جاهز لإضافة منتج جديد (انسخ القالب ده وكرره لكل منتج جديد) -->
+            <div class="product-card">
+                <div class="product-img-box" onclick="openModal('Girls/ اسم_الصورة.jpg')">
+                    <img src="Girls/ اسم_الصورة.jpg" alt="اسم المنتج" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">اسم المنتج هنا</div>
+                        <div class="product-price">100<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=اريد%20طلب%20اسم%20المنتج%20100%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                </div>
+            </div>
+            <!-- نهاية النموذج -->
+
+        </div>
+    </main>
+
+    <!-- Modal لعرض الصورة المكبرة -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <img id="modalImg" src="" alt="صورة مكبرة">
     </div>
 
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; Caramela Store</p>
+    </footer>
+
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        const modalClose = document.getElementById("modalClose");
+
+        function openModal(imgSrc) {
+            modalImg.src = imgSrc;
+            modal.style.display = "flex";
+        }
+
+        modalClose.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
