@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -367,8 +366,8 @@
 
     function createProduct(product) {
         const message = `اريد طلب ${product.name} ${product.price} جنيه`;
-        const whatsappLink =
-            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const imagePath = `Kit/${product.image}`;
 
         const card = document.createElement("div");
         card.className = "product-card";
@@ -378,10 +377,11 @@
 
         const imageLink = document.createElement("a");
         imageLink.className = "product-img-link";
-        imageLink.href = whatsappLink;
+        imageLink.href = imagePath; // فتح الصورة مباشرة عند النقر عليها
+        imageLink.target = "_blank"; // تفتح في تبويب جديد أو معاينة
 
         const image = document.createElement("img");
-        image.src = `Kit/${product.image}`;
+        image.src = imagePath;
         image.alt = product.name;
         image.loading = "lazy";
         image.onerror = function () {
@@ -391,6 +391,55 @@
 
         imageLink.appendChild(image);
         imageBox.appendChild(imageLink);
+
+        const details = document.createElement("div");
+        details.className = "product-details";
+
+        const info = document.createElement("div");
+
+        const title = document.createElement("div");
+        title.className = "product-title";
+        title.textContent = product.name;
+
+        const price = document.createElement("div");
+        price.className = "product-price";
+        price.textContent = product.price;
+
+        const currency = document.createElement("span");
+        currency.textContent = "جنيه";
+
+        price.appendChild(currency);
+        info.appendChild(title);
+        info.appendChild(price);
+
+        const orderButton = document.createElement("a");
+        orderButton.className = "order-btn";
+        orderButton.href = whatsappLink; // زر اطلب الآن يوجه للواتساب
+        orderButton.target = "_blank";
+        orderButton.rel = "noopener noreferrer";
+        orderButton.textContent = "اطلب الآن";
+
+        details.appendChild(info);
+        details.appendChild(orderButton);
+
+        card.appendChild(imageBox);
+        card.appendChild(details);
+
+        return card;
+    }
+
+    const fragment = document.createDocumentFragment();
+
+    products.forEach(product => {
+        fragment.appendChild(createProduct(product));
+    });
+
+    grid.appendChild(fragment);
+</script>
+
+</body>
+</html>
+
 
         const details = document.createElement("div");
         details.className = "product-details";
