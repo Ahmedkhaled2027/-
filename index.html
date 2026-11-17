@@ -5,158 +5,366 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر كارامل - Caramel Store</title>
     
-    <!-- وسوم المعاينة لظهر الصورة واسم المتجر عند المشاركة -->
+    <!-- وسوم المعاينة عند المشاركة -->
     <meta property="og:title" content="متجر كارامل - Caramel Store">
     <meta property="og:description" content="كل حاجه تحتاجها عند كارميلا وأرخص الاسعار والتوصيل لباب المنزل فأسرع وقت ولو حابب تطلب من شى أن هنجبهالك بنفس سعر الابلكيشن ومن غير جمارك">
     <meta property="og:image" content="https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/IMG-20261114-WA0000.jpg">
     <meta property="og:type" content="website">
 
+    <!-- استدعاء خط Cairo العصري -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #d4a373;
-            --primary-glow: rgba(212, 163, 115, 0.4);
-            --bg-color: #f4f0ea;
-            --card-bg: #e9e4dc;
-            --header-bg: #1b1815;
-            --text-color: #000000;
-            --text-muted: #9ca3af;
+            --primary: #c89666;
+            --primary-dark: #a67649;
+            --bg-main: #faf8f5;
+            --bg-card: #ffffff;
+            --dark-surface: #181512;
+            --text-main: #221f1d;
+            --text-muted: #6e6761;
+            --border-light: rgba(200, 150, 102, 0.25);
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            background-color: var(--bg-color);
-            color: black;
-            text-align: center;
-            min-height: 100vh;
+            padding: 0;
         }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         a {
             text-decoration: none;
+            color: inherit;
         }
+
+        /* الهيدر العلوي */
         header {
-            padding: 24px 20px;
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(24, 21, 18, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 18px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
         }
+
         .logo {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: 2px;
+            color: var(--primary);
+            letter-spacing: 4px;
             text-transform: uppercase;
+            display: inline-block;
         }
-        .announcement {
-            background: #e9e4dc;
-            padding: 20px;
-            margin: 25px auto;
-            max-width: 750px;
-            width: 90%;
-            border-radius: 16px;
-            font-weight: 500;
-            line-height: 1.8;
-            border: 1px solid rgba(212, 163, 115, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            font-size: 0.95rem;
+
+        .logo span {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #d6ccc2;
+            font-weight: 400;
+            margin-top: -4px;
         }
-        .contact-section {
+
+        /* الحاوية الرئيسية */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* قسم الترحيب والوصف */
+        .hero-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 32px 24px;
+            margin: 30px auto 35px;
+            text-align: center;
+            box-shadow: 0 12px 35px -10px rgba(24, 21, 18, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary), #e6ccb2);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(200, 150, 102, 0.12);
+            color: var(--primary-dark);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            max-width: 680px;
+            margin: 0 auto 26px;
+            font-weight: 600;
+        }
+
+        /* أزرار التواصل */
+        .actions-group {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 30px auto;
-            max-width: 600px;
-            padding: 0 20px;
+            gap: 14px;
             flex-wrap: wrap;
         }
+
         .btn {
-            padding: 14px 28px;
-            background: linear-gradient(135deg, #d4a373, #faedcd);
-            color: #0f0f0f;
-            text-decoration: none;
-            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 14px;
             font-weight: 700;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-            box-shadow: 0 4px 15px var(--primary-glow);
             font-size: 0.95rem;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
         }
-        .btn:hover {
+
+        .btn-primary {
+            background: var(--dark-surface);
+            color: #ffffff;
+            box-shadow: 0 8px 20px -6px rgba(24, 21, 18, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--primary-glow);
-            opacity: 0.95;
+            box-shadow: 0 10px 25px -6px rgba(166, 118, 73, 0.5);
         }
+
+        .btn-secondary {
+            background: #f3ede6;
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            background: #e9dfd3;
+            transform: translateY(-2px);
+        }
+
+        /* عنوان الأقسام */
+        .section-title {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .section-title h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .section-title p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* شبكة الأقسام */
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px 20px 50px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px;
+            padding-bottom: 50px;
         }
+
         .category-card {
-            background: var(--card-bg);
-            border-radius: 20px;
+            background: var(--bg-card);
+            border-radius: 22px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
         }
+
         .category-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 163, 115, 0.4);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px -12px rgba(200, 150, 102, 0.25);
         }
+
+        .img-wrapper {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+            background: #eee;
+        }
+
         .category-card img {
             width: 100%;
-            height: 220px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
+
         .category-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
-        .category-card h3 {
-            margin: 20px 0;
-            color: var(--text-color);
+
+        .card-body {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+        }
+
+        .card-info h3 {
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .card-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .card-arrow {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #f5efe8;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .card-arrow {
+            background: var(--primary);
+            color: #fff;
+            transform: translateX(-4px);
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: auto;
+        }
+
+        /* تحسين العرض على الشاشات الصغيرة */
+        @media (max-width: 480px) {
+            .hero-box {
+                padding: 24px 18px;
+                margin-top: 20px;
+            }
+            .btn {
+                width: 100%;
+            }
+            .img-wrapper {
+                height: 210px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">CARAMEL</div>
+        <div class="logo">
+            CARAMEL
+            <span>STORE & FASHION</span>
+        </div>
     </header>
 
-    <div class="announcement">
-     كل حاجه تحتاجها عند كارميلا وأرخص الاسعار والتوصيل لباب المنزل فأسرع وقت ولو حابب تطلب من شى أن هنجبهالك بنفس سعر الابلكيشن ومن غير جمارك 
-    </div>
-
-    <section class="contact-section">
-        <a href="https://wa.me/201055436305" class="btn">للتواصل على الواتس أب</a>
-        <a href="https://play.google.com/store/apps" class="btn">لتنزيل برنامج شى أن</a>
-    </section>
-
-    <div class="categories-grid">
-        <a href="girls.html">
-            <div class="category-card">
-                <img src="IMG-20261116-WA0032.jpg" alt="إكسسوارات بنات">
-                <h3>كاراميل ستور</h3>
+    <main class="container">
+        <section class="hero-box">
+            <div class="hero-badge">✨ أرخص الأسعار وأسرع توصيل</div>
+            <p class="hero-text">
+                كل حاجة تحتاجها عند كارميلا بأرخص الأسعار والتوصيل لباب المنزل في أسرع وقت، ولو حابب تطلب من شي إن هنجيبهالك بنفس سعر الأبلكيشن وبدون جمارك.
+            </p>
+            <div class="actions-group">
+                <a href="https://wa.me/201055436305" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                    تواصل معنا عبر واتساب
+                </a>
+                <a href="https://play.google.com/store/apps" class="btn btn-secondary">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    تنزيل تطبيق شي إن
+                </a>
             </div>
-        </a>
+        </section>
 
-        <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B4%D9%8A%20%D8%A5%D9%86">
-            <div class="category-card">
-                <img src="IMG-20261116-WA0031.jpg" alt="شى أن">
-                <h3>شى أن</h3>
-            </div>
-        </a>
-    </div>
+        <div class="section-title">
+            <h2>تصفح الأقسام</h2>
+            <p>اختر القسم المناسب وابدأ التسوق الآن</p>
+        </div>
+
+        <section class="categories-grid">
+            <a href="girls.html" class="category-card">
+                <div class="img-wrapper">
+                    <img src="IMG-20261116-WA0032.jpg" alt="إكسسوارات بنات">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <h3>كاراميل ستور</h3>
+                        <span>تشكيلة مميزة ومتوفرة للتوصيل الفوري</span>
+                    </div>
+                    <div class="card-arrow">←</div>
+                </div>
+            </a>
+
+            <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B4%D9%8A%20%D8%A5%D9%86" class="category-card">
+                <div class="img-wrapper">
+                    <img src="IMG-20261116-WA0031.jpg" alt="شى أن">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <h3>طلبات شي إن (SHEIN)</h3>
+                        <span>بنفس سعر التطبيق وبدون أي جمارك</span>
+                    </div>
+                    <div class="card-arrow">←</div>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        جميع الحقوق محفوظة &copy; متجر كارامل - Caramel Store
+    </footer>
 
 </body>
 </html>
