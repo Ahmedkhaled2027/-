@@ -3,84 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إكسسوارات البنات - متجر كارميلا</title>
+    <title>أقسام المتجر - متجر كارميلا</title>
+
+    <!-- خط Cairo العصري -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --primary: #c89666;
+            --primary-dark: #a67649;
+            --bg-main: #faf8f5;
+            --bg-card: #ffffff;
+            --dark-surface: #181512;
+            --text-main: #221f1d;
+            --text-muted: #6e6761;
+            --border-light: rgba(200, 150, 102, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #1a1a1a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* الهيدر العلوي */
+        header {
+            background: rgba(24, 21, 18, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 14px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #f3ede6;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 7px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-dark);
+            color: #fff;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .header-spacer {
+            width: 80px;
+        }
+
+        /* الحاوية الرئيسية */
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 25px 16px 50px;
+            width: 100%;
+            flex: 1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .page-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .page-header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* شبكة عرض الأقسام */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* بطاقة القسم */
+        .category-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 25px -8px rgba(24, 21, 18, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 35px -10px rgba(200, 150, 102, 0.25);
+            border-color: var(--border-light);
+        }
+
+        .category-img-box {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #f2ede7;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover .category-img-box img {
+            transform: scale(1.06);
+        }
+
+        .category-footer {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+        }
+
+        .category-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .arrow-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .category-card:hover .arrow-icon {
+            background: var(--dark-surface);
+            color: #fff;
+        }
+
+        /* الفوتر */
+        footer {
             text-align: center;
             padding: 20px;
-            margin: 0;
-            color: #ffffff;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: auto;
         }
-        .product {
-            background: #242424;
-            max-width: 400px;
-            margin: 20px auto;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border-radius: 12px;
+
+        /* تحسين التجاوب مع الموبايل */
+        @media (max-width: 540px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .category-card {
+                border-radius: 16px;
+            }
+            .category-footer {
+                padding: 12px;
+            }
+            .category-name {
+                font-size: 0.9rem;
+            }
+            .arrow-icon {
+                width: 30px;
+                height: 30px;
+            }
+            .header-spacer {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-         <div class="product">
-        <a href="Home.html">
-            <img src="IMG-20261116-WA0036.jpg" alt="مستلزمات المنزل">
-        </a>
-    </div>
-        
-    <div class="product">
-        <a href="Lab.html">
-        <img src="IMG-20261116-WA0040.jpg" alt="ساعة حريمي">
-    </div>
-</a>
-    
-    <div class="product">
-       <a href="Tfs.html"> 
-        <img src="IMG-20261116-WA0042.jpg" alt="ساعة حريمي">
-    </div>
-</a>
-    
-    <div class="product">
-       <a href="kids.html">
-        <img src="IMG-20261116-WA0038.jpg" alt="ساعة حريمي">
-    </div>
-     </a>   
-    
-    <div class="product">
-     <a href="Wmn.html">
-        <img src="IMG-20261116-WA0035.jpg" alt="ساعة حريمي">
-    </div>
-     </a>   
-   
-    <div class="product">
-      <a href="Mn.html">
-        <img src="IMG-20261116-WA0037.jpg" alt="ساعة حريمي">
-    </div>
-   </a>     
-  
-    <div class="product">
-   <a href="Amn.html">   
-        <img src="1794812775286.jpg" alt="ساعة حريمي">
-    </div>
-   </a>     
- 
-    <div class="product">
-  <a href="Brf.html">
-        <img src="IMG-20261116-WA0039.jpg" alt="ساعة حريمي">
-    </div>
-</a>
-    
+    <header>
+        <a href="index.html" class="back-btn">→ الرئيسية</a>
+        <div class="logo">CARAMEL</div>
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>تصفح أقسام المتجر</h1>
+            <p>اختر القسم المناسب وابدأ التسوق الآن</p>
+        </div>
+
+        <div class="categories-grid">
+            
+            <!-- القسم 1 -->
+            <a href="Home.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="IMG-20261116-WA0036.jpg" alt="مستلزمات المنزل" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">مستلزمات المنزل</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+            <!-- القسم 2 -->
+            <a href="Lab.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="IMG-20261116-WA0040.jpg" alt="ساعات وإكسسوارات" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">الساعات والإكسسوارات</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+            <!-- القسم 3 -->
+            <a href="Tfs.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="IMG-20261116-WA0042.jpg" alt="قسم 3" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">قسم خاص</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+            <!-- القسم 4 -->
+            <a href="kids.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="IMG-20261116-WA0038.jpg" alt="أطفال" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">ملابس وإكسسوارات الأطفال</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+            <!-- القسم 5 -->
+            <a href="Wmn.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="IMG-20261116-WA0035.jpg" alt="نساء" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">أزياء وموضة النساء</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+            <!-- القسم 6 -->
+            <a href="Mn.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="IMG-20261116-WA0037.jpg" alt="رجال" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">أزياء وموضة الرجال</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+            <!-- القسم 7 -->
+            <a href="Amn.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="1794812775286.jpg" alt="قسم آخر" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">تشكيلة مميزة</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+            <!-- القسم 8 -->
+            <a href="Brf.html" class="category-card">
+                <div class="category-img-box">
+                    <img src="IMG-20261116-WA0039.jpg" alt="عطور ومستحضرات" loading="lazy">
+                </div>
+                <div class="category-footer">
+                    <span class="category-name">عطور ومستحضرات</span>
+                    <div class="arrow-icon">←</div>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        جميع الحقوق محفوظة &copy; متجر كارميل - Caramel Store
+    </footer>
+
 </body>
 </html>
-
