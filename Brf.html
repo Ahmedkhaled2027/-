@@ -35,7 +35,7 @@
         .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
         .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* تصميم صندوق البحث مع الزرار */
+        /* تصميم صندوق البحث الأنيق (خانة + زرار بحث فقط) */
         .search-box-wrapper {
             display: flex;
             gap: 8px;
@@ -53,10 +53,10 @@
             box-shadow: var(--shadow-soft);
         }
         .search-btn {
-            background: var(--primary);
+            background: var(--dark-surface);
             color: white;
             border: none;
-            padding: 0 20px;
+            padding: 0 22px;
             border-radius: 12px;
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
@@ -66,18 +66,7 @@
             box-shadow: var(--shadow-soft);
         }
         .search-btn:hover {
-            background: var(--primary-dark);
-        }
-        .reset-btn {
-            background: #64748b;
-            color: white;
-            border: none;
-            padding: 0 15px;
-            border-radius: 12px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
+            background: var(--primary);
         }
 
         .products-grid { 
@@ -230,7 +219,7 @@
             <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
         </div>
 
-        <!-- خانة البحث مع زرار بحث وإلغاء -->
+        <!-- خانة البحث وزرار بحث أنيق بدون زرار إلغاء -->
         <div class="search-box-wrapper">
             <input 
                 type="text" 
@@ -238,7 +227,6 @@
                 placeholder="ابحث عن اسم العطر أو السعر..." 
             />
             <button class="search-btn" onclick="searchProducts()">بحث</button>
-            <button class="reset-btn" onclick="resetSearch()">إلغاء</button>
         </div>
 
         <div class="products-grid">
@@ -267,7 +255,7 @@
                         <div class="product-title">عطر مصمم الأسود Black Intense من لطافة</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%AF%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%A3%D8%B3%D9%88%D8%AF%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -281,7 +269,7 @@
                         <div class="product-title">عطر مصمم الذهب من لطافة</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%B0%D9%87%D8%A8%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%B0%D9%87%D8%A8%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -295,7 +283,7 @@
                         <div class="product-title">عطر قصة الوردي</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%82%D8%B5%D8%A9%20%D8%A7%D9%84%D9%88%D8%B1%D8%AF%D9%8A%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%82%D8%B5%D8%A9%20%D8%A7%D9%84%D9%88%D8%B1%D8%AF%D9%8A%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -309,7 +297,7 @@
                         <div class="product-title">عطر يارا من لطافة</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%8A%D8%A7%D8%B1%D8%A7%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%8A%D8%A7%D8%B1%D8%A7%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -323,7 +311,7 @@
                         <div class="product-title">بارفان مميز</div>
                         <div class="product-price">160<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -337,7 +325,7 @@
                         <div class="product-title">بارفان مميز</div>
                         <div class="product-price">160<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -351,7 +339,7 @@
                         <div class="product-title">بارفان مميز</div>
                         <div class="product-price">160<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20160%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -365,7 +353,7 @@
                         <div class="product-title">بارفان فخم</div>
                         <div class="product-price">200<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -379,7 +367,7 @@
                         <div class="product-title">بارفان صغير</div>
                         <div class="product-price">45<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%2045%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%2045%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -393,7 +381,7 @@
                         <div class="product-title">بارفان فخم</div>
                         <div class="product-price">200<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -407,7 +395,7 @@
                         <div class="product-title">بارفان فخم</div>
                         <div class="product-price">200<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20200%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
@@ -421,11 +409,18 @@
                         <div class="product-title">بارفان أنيق</div>
                         <div class="product-price">150<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20150%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20150%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
 
             <!-- 9 -->
             <div class="product-card">
                 <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0084.jpg')">
-                    <img src="Prfa/IMG-20261116-WA0084.jpg" alt="بارفان" loading="l
+                    <img src="Prfa/IMG-20261116-WA0084.jpg" alt="بارفان" loading="lazy">
+                </div>
+                <div class="product-details">
+                    <div>
+                        <div class="product-title">بارفان أنيق</div>
+                        <div class="product-price">150<span>جنيه</span></div>
+                    </div>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20150%20%D8%
