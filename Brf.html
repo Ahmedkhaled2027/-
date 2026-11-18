@@ -31,7 +31,7 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
         
-        .page-header { text-align: center; margin-bottom: 25px; background: linear-gradient(135deg, #e0f2fe 100%, #bae6fd 0%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .page-header { text-align: center; margin-bottom: 20px; background: linear-gradient(135deg, #e0f2fe 100%, #bae6fd 0%); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
         .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
         .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
@@ -185,9 +185,18 @@
             <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
         </div>
 
+        <!-- خانة البحث المضافة -->
+        <div style="margin-bottom: 20px;">
+            <input 
+                type="text" 
+                id="searchInput" 
+                onkeyup="filterProducts()" 
+                placeholder="ابحث عن عطر أو بارفان..." 
+                style="width: 100%; box-sizing: border-box; padding: 12px 15px; background: #ffffff; border: 2px solid var(--border-light); color: var(--text-main); border-radius: 12px; font-size: 0.9rem; outline: none; box-shadow: var(--shadow-soft);"
+            />
+        </div>
+
         <div class="products-grid">
-            
-            <!-- المنتجات الجديدة المضافة في الأول -->
             
             <!-- عطر Lively -->
             <div class="product-card">
@@ -247,7 +256,7 @@
 
             <!-- عطر يارا -->
             <div class="product-card">
-                <div class="product-img-box" onclick="openModal('Brf/77743.webp')">
+                <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096833.webp')">
                     <img src="Prfa/compressed_1794950096833.webp" alt="عطر يارا من لطافة" loading="lazy">
                 </div>
                 <div class="product-details">
@@ -255,12 +264,9 @@
                         <div class="product-title">عطر يارا من لطافة</div>
                         <div class="product-price">375<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%B9%D8%B7%D8%B1%20%D9%8A%D8%A7%D8%B1%D8%A7%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%B9%D8%B0%D8%B1%20%D9%8A%D8%A7%D8%B1%D8%A7%20375%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
                 </div>
             </div>
-
-
-            <!-- باقي المنتجات الأصلية -->
 
             <!-- 1 -->
             <div class="product-card">
@@ -398,56 +404,4 @@
                         <div class="product-title">بارفان كلاسيك</div>
                         <div class="product-price">100<span>جنيه</span></div>
                     </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20100%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
-                </div>
-            </div>
-
-            <!-- 11 -->
-            <div class="product-card">
-                <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0103.jpg')">
-                    <img src="Prfa/IMG-20261116-WA0103.jpg" alt="بارفان" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <div>
-                        <div class="product-title">بارفان كلاسيك</div>
-                        <div class="product-price">100<span>جنيه</span></div>
-                    </div>
-                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%A8%D8%A7%D8%B1%D9%81%D8%A7%D9%86%20100%20%D8%AC%D9%86%D9%8A%D9%87" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Modal لعرض الصورة المكبرة -->
-    <div class="image-modal" id="imageModal">
-        <span class="modal-close" id="modalClose">&times;</span>
-        <img id="modalImg" src="" alt="صورة مكبرة">
-    </div>
-
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; Caramela Store</p>
-    </footer>
-
-    <script>
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImg");
-        const modalClose = document.getElementById("modalClose");
-
-        function openModal(imgSrc) {
-            modalImg.src = imgSrc;
-            modal.style.display = "flex";
-        }
-
-        modalClose.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
-
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-    </script>
-</body>
-</html>
+                    <a href="https://wa.me/201055436305?text=%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B
