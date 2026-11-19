@@ -133,20 +133,19 @@
             position: sticky;
             top: 64px;
             z-index: 90;
-            background: rgba(7, 9, 15, 0.78);
+            background: rgba(7, 9, 15, 0.72);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             padding: 10px 4px;
             margin-bottom: 20px;
-            border-radius: 24px;
+            border-radius: 999px;
         }
 
         .search-box-wrapper {
             display: flex;
-            align-items: center;
             gap: 8px;
-            background: rgba(18, 25, 43, 0.94);
-            padding: 6px 8px;
+            background: rgba(18, 25, 43, 0.92);
+            padding: 6px 8px 6px 8px;
             border-radius: 999px;
             border: 1px solid var(--glass-border);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
@@ -168,41 +167,17 @@
             font-size: 0.92rem;
             outline: none;
             font-family: 'Cairo', sans-serif;
-            min-width: 0;
         }
 
         .search-box-wrapper input::placeholder {
             color: #64748b;
         }
 
-        .clear-search-btn {
-            display: none;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-dim);
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-        }
-
-        .clear-search-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            color: #fca5a5;
-        }
-
         .search-btn {
             background: linear-gradient(135deg, #f59e0b, #ea580c);
             color: #07090f;
             border: none;
-            padding: 0 22px;
-            height: 40px;
+            padding: 0 24px;
             border-radius: 999px;
             font-family: 'Cairo', sans-serif;
             font-weight: 800;
@@ -210,83 +185,11 @@
             cursor: pointer;
             box-shadow: 0 4px 18px rgba(245, 158, 11, 0.35);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            flex-shrink: 0;
         }
 
         .search-btn:hover {
             transform: scale(1.03);
             box-shadow: 0 6px 24px rgba(245, 158, 11, 0.55);
-        }
-
-        /* شريط تفاصيل نتائج البحث */
-        .search-meta-bar {
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-            padding: 8px 14px;
-            border-radius: 14px;
-            background: rgba(245, 158, 11, 0.08);
-            border: 1px solid rgba(245, 158, 11, 0.22);
-            font-size: 0.82rem;
-            color: #fde68a;
-        }
-
-        .search-meta-badge {
-            font-weight: 700;
-        }
-
-        .search-meta-hint {
-            color: var(--text-dim);
-            font-size: 0.76rem;
-        }
-
-        /* تظليل الحروف أو الكلمات أو الأرقام المطابقة */
-        mark.search-highlight {
-            background: rgba(245, 158, 11, 0.32);
-            color: #fef08a;
-            padding: 0 3px;
-            border-radius: 4px;
-            font-weight: 800;
-        }
-
-        /* رسالة عدم وجود نتائج */
-        .no-results-box {
-            display: none;
-            width: 100%;
-            text-align: center;
-            padding: 42px 20px;
-            background: rgba(20, 27, 45, 0.72);
-            border: 1px dashed rgba(245, 158, 11, 0.35);
-            border-radius: 22px;
-            color: var(--text-dim);
-        }
-
-        .no-results-box h3 {
-            color: var(--text-pure);
-            font-size: 1.05rem;
-            margin-bottom: 6px;
-        }
-
-        .no-results-reset-btn {
-            margin-top: 14px;
-            background: rgba(245, 158, 11, 0.16);
-            color: #fbbf24;
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            padding: 8px 18px;
-            border-radius: 999px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .no-results-reset-btn:hover {
-            background: var(--glow-amber);
-            color: #07090f;
         }
 
         /* كروت المنتجات الزجاجية المضيئة */
@@ -325,27 +228,6 @@
             overflow: hidden;
             cursor: pointer;
             border-radius: 16px;
-        }
-
-        .product-img-box::after {
-            content: "تكبير";
-            position: absolute;
-            bottom: 8px;
-            left: 8px;
-            background: rgba(7, 9, 15, 0.72);
-            color: #fde68a;
-            border: 1px solid rgba(245, 158, 11, 0.35);
-            padding: 2px 9px;
-            border-radius: 999px;
-            font-size: 0.68rem;
-            font-weight: 700;
-            opacity: 0.92;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        .product-card:hover .product-img-box::after {
-            opacity: 1;
-            transform: translateY(-2px);
         }
 
         .product-img-box img {
@@ -425,7 +307,7 @@
             box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
         }
 
-        /* نافذة تكبير الصورة السينمائية */
+        /* نافذة تكبير الصورة */
         .image-modal {
             display: none;
             position: fixed;
@@ -435,91 +317,43 @@
             width: 100%;
             height: 100%;
             background: rgba(3, 5, 10, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             align-items: center;
             justify-content: center;
             padding: 20px;
-            animation: fadeInModal 0.22s ease;
-        }
-
-        .modal-content-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 94%;
-            max-height: 90vh;
-            gap: 12px;
-            animation: zoomInModal 0.28s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .image-modal img {
-            max-width: 100%;
-            max-height: 76vh;
-            border-radius: 20px;
+            max-width: 92%;
+            max-height: 85vh;
+            border-radius: 18px;
             object-fit: contain;
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            box-shadow: 0 24px 65px rgba(0, 0, 0, 0.85);
-        }
-
-        .modal-caption-bar {
-            width: 100%;
-            background: rgba(18, 25, 43, 0.92);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .modal-product-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-pure);
-        }
-
-        .modal-product-price {
-            font-size: 1rem;
-            font-weight: 900;
-            color: #fbbf24;
-            white-space: nowrap;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
         }
 
         .modal-close {
             position: absolute;
             top: 20px;
-            left: 24px;
+            left: 28px;
             color: #ffffff;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: bold;
             cursor: pointer;
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
-            z-index: 1001;
         }
 
         .modal-close:hover {
             background: var(--glow-amber);
             color: #07090f;
-            transform: rotate(90deg);
-        }
-
-        @keyframes fadeInModal {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes zoomInModal {
-            from { opacity: 0; transform: scale(0.92); }
-            to { opacity: 1; transform: scale(1); }
         }
 
         footer {
@@ -556,7 +390,7 @@
 
     <div class="page-header">
         <h1>العطور والبرفانات</h1>
-        <p>اضغط على أي صورة لتكبيرها، أو ابحث بالاسم أو الحرف أو السعر أدناه</p>
+        <p>اضغط على أي صورة لتكبيرها، أو ابحث بالاسم أو السعر أدناه</p>
     </div>
 
     <!-- خانة البحث وزرار البحث -->
@@ -565,17 +399,11 @@
             <input
                 type="text"
                 id="searchQuery"
-                placeholder="ابحث بحرف، اسم، سعر، أو اكتب مثلًا: أقل من 200"
+                placeholder="ابحث عن المنتج أو السعر المناسب"
                 oninput="handleSearchInput()"
                 onkeyup="if(event.key === 'Enter') triggerSearch();"
             >
-            <button type="button" class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()" title="مسح البحث">&times;</button>
-            <button type="button" class="search-btn" onclick="triggerSearch()">بحث</button>
-        </div>
-
-        <div class="search-meta-bar" id="searchMetaBar">
-            <span class="search-meta-badge" id="searchMetaBadge"></span>
-            <span class="search-meta-hint">نصيحة: جرّب حرفًا، رقم سعر، أو (&lt; 200)</span>
+            <button class="search-btn" onclick="triggerSearch()">بحث</button>
         </div>
     </div>
 
@@ -583,7 +411,7 @@
     <div class="products-grid" id="productsContainer">
 
         <div class="product-card">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950472010.webp', this)">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950472010.webp')">
                 <img src="Prfa/compressed_1794950472010.webp" alt="Lively For Men Paris" loading="lazy">
             </div>
             <div class="product-details">
@@ -596,7 +424,7 @@
         </div>
 
         <div class="product-card">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096546.webp', this)">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096546.webp')">
                 <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود" loading="lazy">
             </div>
             <div class="product-details">
@@ -609,7 +437,7 @@
         </div>
 
         <div class="product-card">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096662.webp', this)">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096662.webp')">
                 <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب" loading="lazy">
             </div>
             <div class="product-details">
@@ -622,4 +450,102 @@
         </div>
 
         <div class="product-card">
-            <div cl
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096748.webp')">
+                <img src="Prfa/compressed_1794950096748.webp" alt="قصة الوردي" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">عطر قصة الوردي</div>
+                    <div class="product-price">375<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20قصة%20الوردي%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096833.webp')">
+                <img src="Prfa/compressed_1794950096833.webp" alt="يارا من لطافة" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">عطر يارا من لطافة</div>
+                    <div class="product-price">375<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20يارا%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0067.jpg')">
+                <img src="Prfa/IMG-20261116-WA0067.jpg" alt="بارفان مميز" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان مميز</div>
+                    <div class="product-price">160<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0068.jpg')">
+                <img src="Prfa/IMG-20261116-WA0068.jpg" alt="بارفان مميز" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان مميز</div>
+                    <div class="product-price">160<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0069.jpg')">
+                <img src="Prfa/IMG-20261116-WA0069.jpg" alt="بارفان مميز" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان مميز</div>
+                    <div class="product-price">160<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0077.jpg')">
+                <img src="Prfa/IMG-20261116-WA0077.jpg" alt="بارفان فخم" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان فخم</div>
+                    <div class="product-price">200<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20200%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0078.jpg')">
+                <img src="Prfa/IMG-20261116-WA0078.jpg" alt="بارفان صغير" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان صغير</div>
+                    <div class="product-price">45<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%2045%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0079.jpg')">
+                <img src="Prfa/IMG-20261116-WA0079.jpg" alt="بارفان فخم" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان فخم</div>
+                    <div class="product-price">200<span>جنيه</span></div>
+                </div>
