@@ -179,10 +179,9 @@
             type="text"
             id="searchQuery"
             placeholder="ابحث بالاسم أو السعر المناسب..."
-            oninput="if(this.value.trim() === '') resetAllProducts();"
-            onkeyup="if(event.key === 'Enter') triggerSearch();"
+            autocomplete="off"
         >
-        <button class="search-btn" onclick="triggerSearch()">بحث</button>
+        <button type="button" class="search-btn" id="searchBtn">بحث</button>
     </div>
 
     <div class="products-grid" id="productsContainer">
@@ -397,7 +396,7 @@
 
         <div class="empty-state" id="emptyState">
             <p>مفيش عطور مطابقة للي كتبته دلوقتي.</p>
-            <button type="button" class="show-all-btn" onclick="resetAllProducts()">عرض كل العطور</button>
+            <button type="button" class="show-all-btn" id="showAllBtn">عرض كل العطور</button>
         </div>
 
     </div>
@@ -424,9 +423,11 @@
         document.getElementById('imageModal').style.display = "none";
     }
 
-    function resetAllProducts() {
-        const input = document.getElementById('searchQuery');
-        const cards = document.getElementsByClassName('product-card');
-        const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchQuery');
+    const searchBtn = document.getElementById('searchBtn');
+    const showAllBtn = document.getElementById('showAllBtn');
+    const cards = document.querySelectorAll('.product-card');
+    const emptyState = document.getElementById('emptyState');
 
-      
+    function showAllProducts() {
+        sea
