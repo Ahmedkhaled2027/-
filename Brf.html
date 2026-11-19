@@ -573,8 +573,35 @@ button {
     }
 }
 </style>
-</head>
+</head>  
+<body>
 
+<header>
+    <a href="index.html" class="back-btn">→ الرئيسية</a>
+    <div class="logo">CARAMEL</div>
+    <div class="header-spacer"></div>
+</header>
+
+<main class="container">
+
+    <div class="page-header">
+        <h1>العطور والبرفانات</h1>
+        <p>اضغط على أي صورة لتكبيرها، أو ابحث بالاسم أو السعر أدناه</p>
+    </div>
+
+    <!-- خانة البحث وزرار البحث -->
+    <div class="sticky-search-bar">
+    <div class="search-box-wrapper">
+        <input
+            type="text"
+            id="searchQuery"
+            placeholder="ابحث عن المنتج أو السعر المناسب"
+            oninput="handleSearchInput()"
+            onkeyup="if(event.key === 'Enter') triggerSearch();"
+        >
+        <button class="search-btn" onclick="triggerSearch()">بحث</button>
+    </div>
+    </div>
 <body>
 
 <header class="header">
