@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أقسام المتجر - متجر كارميلا</title>
 
-    <!-- خط Cairo العصري -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #c89666;
-            --primary-dark: #a67649;
-            --bg-main: #faf8f5;
+            --caramel: #c89666;
+            --caramel-dark: #9e6d40;
+            --espresso: #1c1714;
+            --espresso-soft: #2e2621;
+            --cream-soft: #f6efe6;
+            --bg-main: #faf7f2;
             --bg-card: #ffffff;
-            --dark-surface: #181512;
-            --text-main: #221f1d;
-            --text-muted: #6e6761;
-            --border-light: rgba(200, 150, 102, 0.25);
+            --text-main: #1f1b18;
+            --text-muted: #6c645c;
+            --border-gold: rgba(200, 150, 102, 0.25);
+            --shadow-main: 0 10px 28px -10px rgba(28, 23, 20, 0.1);
         }
 
         * {
@@ -43,92 +45,243 @@
             color: inherit;
         }
 
-        /* الهيدر العلوي */
         header {
-            background: rgba(24, 21, 18, 0.96);
+            background: rgba(28, 23, 20, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 14px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(200, 150, 102, 0.22);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
         }
 
         .back-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #f3ede6;
+            color: var(--cream-soft);
             background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(200, 150, 102, 0.25);
             padding: 7px 14px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 0.85rem;
-            font-weight: 600;
-            transition: background 0.2s;
+            font-weight: 700;
+            transition: all 0.2s ease;
         }
 
         .back-btn:hover {
-            background: var(--primary-dark);
-            color: #fff;
+            background: var(--caramel);
+            color: #ffffff;
+            border-color: var(--caramel);
+        }
+
+        .logo-wrap {
+            text-align: center;
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--caramel);
             letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .logo-sub {
+            font-size: 0.58rem;
+            font-weight: 700;
+            color: var(--cream-soft);
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .header-spacer {
-            width: 80px;
+            width: 86px;
         }
 
-        /* الحاوية الرئيسية */
         .container {
-            max-width: 1150px;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 25px 16px 50px;
+            padding: 22px 14px 50px;
             width: 100%;
             flex: 1;
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 28px;
+        .hero-banner {
+            background: linear-gradient(130deg, var(--espresso) 0%, var(--espresso-soft) 62%, var(--caramel-dark) 100%);
+            color: #ffffff;
+            padding: 28px 22px;
+            border-radius: 24px;
+            border: 1px solid rgba(200, 150, 102, 0.35);
+            box-shadow: 0 14px 32px -12px rgba(28, 23, 20, 0.24);
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .page-header h1 {
-            font-size: 1.6rem;
+        .hero-badge {
+            display: inline-block;
+            width: fit-content;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--cream-soft);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(246, 239, 230, 0.22);
+            padding: 4px 12px;
+            border-radius: 999px;
+        }
+
+        .hero-banner h1 {
+            font-size: 1.65rem;
             font-weight: 800;
-            color: var(--text-main);
+            line-height: 1.3;
+            color: #ffffff;
         }
 
-        .page-header p {
+        .hero-banner p {
             font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 680px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .hero-line {
+            width: 54px;
+            height: 3px;
+            background: var(--caramel);
+            border-radius: 999px;
+        }
+
+        .wa-direct-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--caramel);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .wa-direct-btn:hover {
+            background: #b58250;
+            transform: translateY(-1px);
+        }
+
+        .whatsapp-icon {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .filter-bar {
+            position: sticky;
+            top: 66px;
+            z-index: 90;
+            padding: 6px 0 12px;
+            background: linear-gradient(to bottom, rgba(250, 247, 242, 0.96), rgba(250, 247, 242, 0.84));
+            backdrop-filter: blur(10px);
+            margin-bottom: 6px;
+        }
+
+        .filter-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 6px;
+            border-radius: 16px;
+            border: 1px solid var(--border-gold);
+            box-shadow: var(--shadow-main);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .filter-box input {
+            flex: 1;
+            min-width: 0;
+            height: 38px;
+            padding: 0 12px;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 0.86rem;
+            font-weight: 600;
+            outline: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .filter-box input::placeholder {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .clear-btn {
+            height: 36px;
+            padding: 0 14px;
+            border-radius: 11px;
+            border: none;
+            background: var(--espresso);
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .clear-btn:hover {
+            background: var(--caramel);
+        }
+
+        .sections-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 4px 14px;
+            font-size: 0.82rem;
+            font-weight: 700;
             color: var(--text-muted);
         }
 
-        /* شبكة عرض الأقسام */
+        .sections-count {
+            color: var(--caramel-dark);
+        }
+
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
             gap: 20px;
         }
 
-        /* بطاقة القسم العامة */
         .category-card {
             background: var(--bg-card);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px -8px rgba(24, 21, 18, 0.07);
+            box-shadow: var(--shadow-main);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .category-img-box {
@@ -150,18 +303,47 @@
             transform: scale(1.06);
         }
 
+        .category-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(28, 23, 20, 0.78);
+            backdrop-filter: blur(6px);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
         .category-footer {
-            padding: 16px;
+            padding: 15px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #fff;
+            gap: 10px;
+            background: #ffffff;
+            flex: 1;
+        }
+
+        .category-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .category-name {
-            font-size: 1.05rem;
-            font-weight: 700;
+            font-size: 1.02rem;
+            font-weight: 800;
             color: var(--text-main);
+            line-height: 1.3;
+        }
+
+        .category-sub {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
         }
 
         .arrow-icon {
@@ -171,73 +353,87 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s ease;
+            font-weight: 800;
+            flex-shrink: 0;
+            transition: all 0.22s ease;
         }
 
-        /* -----------------------------------------
-           تخصيص ألوان وتأثيرات كل قسم (البرتشن والأزرار)
-           ----------------------------------------- */
-
-        /* 1. مستلزمات المنزل (بني / بيج دافئ) */
-        .card-home { border: 2px solid rgba(184, 134, 86, 0.3); }
-        .card-home:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(184, 134, 86, 0.3); border-color: #b88656; }
+        /* تخصيص ألوان وتأثيرات كل قسم */
+        .card-home { border: 2px solid rgba(184, 134, 86, 0.28); }
+        .card-home:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(184, 134, 86, 0.28); border-color: #b88656; }
         .card-home .arrow-icon { background: #fcf9f5; color: #946940; }
         .card-home:hover .arrow-icon { background: #2b231e; color: #fff; }
 
-        /* 2. مستلزمات الدراسة (أزرق سماوي) */
-        .card-school { border: 2px solid rgba(2, 132, 199, 0.3); }
-        .card-school:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(2, 132, 199, 0.3); border-color: #0284c7; }
+        .card-school { border: 2px solid rgba(2, 132, 199, 0.28); }
+        .card-school:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(2, 132, 199, 0.28); border-color: #0284c7; }
         .card-school .arrow-icon { background: #f0f9ff; color: #0369a1; }
-        .card-school:hover .arrow-icon { background: #2b231e; color: #fff; }
+        .card-school:hover .arrow-icon { background: #1e3a5f; color: #fff; }
 
-        /* 3. التفصيل والمكرميات (بني كلاسيكي) */
-        .card-tafse { border: 2px solid rgba(184, 134, 86, 0.3); }
-        .card-tafse:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(184, 134, 86, 0.3); border-color: #b88656; }
-        .card-tafse .arrow-icon { background: #fcf9f5; color: #946940; }
-        .card-tafse:hover .arrow-icon { background: #2b231e; color: #fff; }
+        .card-tafse { border: 2px solid rgba(82, 98, 75, 0.3); }
+        .card-tafse:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(82, 98, 75, 0.28); border-color: #52624b; }
+        .card-tafse .arrow-icon { background: #f4f6f3; color: #3b4736; }
+        .card-tafse:hover .arrow-icon { background: #3b4736; color: #fff; }
 
-        /* 4. ملابس وإكسسوارات الأطفال (وردي كيوت) */
-        .card-kids { border: 2px solid rgba(244, 114, 182, 0.35); }
-        .card-kids:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(244, 114, 182, 0.35); border-color: #f472b6; }
-        .card-kids .arrow-icon { background: #fff5f8; color: #db2777; }
-        .card-kids:hover .arrow-icon { background: #2b231e; color: #fff; }
+        .card-kids { border: 2px solid rgba(29, 111, 138, 0.28); }
+        .card-kids:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(29, 111, 138, 0.28); border-color: #1d6f8a; }
+        .card-kids .arrow-icon { background: #eef7fa; color: #1d6f8a; }
+        .card-kids:hover .arrow-icon { background: #1d6f8a; color: #fff; }
 
-        /* 5. أزياء وموضة النساء (موف / وردي هادئ) */
-        .card-women { border: 2px solid rgba(217, 119, 6, 0.3); }
-        .card-women:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(217, 119, 6, 0.3); border-color: #d97706; }
+        .card-women { border: 2px solid rgba(217, 119, 6, 0.28); }
+        .card-women:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(217, 119, 6, 0.28); border-color: #d97706; }
         .card-women .arrow-icon { background: #fdf8f6; color: #b45309; }
         .card-women:hover .arrow-icon { background: #2b231e; color: #fff; }
 
-        /* 6. أزياء وموضة الرجال (رمادي هادئ وأرضي) */
-        .card-men { border: 2px solid rgba(71, 85, 105, 0.3); }
-        .card-men:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(71, 85, 105, 0.3); border-color: #475569; }
-        .card-men .arrow-icon { background: #f8fafc; color: #334155; }
-        .card-men:hover .arrow-icon { background: #1e293b; color: #fff; }
+        .card-men { border: 2px solid rgba(45, 58, 75, 0.28); }
+        .card-men:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(45, 58, 75, 0.28); border-color: #2d3a4b; }
+        .card-men .arrow-icon { background: #f1f4f8; color: #1c2530; }
+        .card-men:hover .arrow-icon { background: #1c2530; color: #fff; }
 
-        /* 7. تشكيلة مميزة / الإكسسوارات (أصفر ذهبي دافئ) */
-        .card-gifts { border: 2px solid rgba(217, 119, 6, 0.3); }
-        .card-gifts:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(217, 119, 6, 0.3); border-color: #d97706; }
-        .card-gifts .arrow-icon { background: #fffbeb; color: #b45309; }
-        .card-gifts:hover .arrow-icon { background: #2b231e; color: #fff; }
+        .card-gifts { border: 2px solid rgba(219, 39, 119, 0.28); }
+        .card-gifts:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(219, 39, 119, 0.28); border-color: #db2777; }
+        .card-gifts .arrow-icon { background: #fdf2f8; color: #be185d; }
+        .card-gifts:hover .arrow-icon { background: #7a2648; color: #fff; }
 
-        /* 8. عطور ومستحضرات (أزرق ملكي) */
-        .card-perfume { border: 2px solid rgba(59, 130, 246, 0.3); }
-        .card-perfume:hover { transform: translateY(-5px); box-shadow: 0 16px 35px -10px rgba(59, 130, 246, 0.3); border-color: #3b82f6; }
+        .card-perfume { border: 2px solid rgba(59, 130, 246, 0.28); }
+        .card-perfume:hover { transform: translateY(-5px); box-shadow: 0 16px 34px -10px rgba(59, 130, 246, 0.28); border-color: #3b82f6; }
         .card-perfume .arrow-icon { background: #f0f7ff; color: #1d4ed8; }
         .card-perfume:hover .arrow-icon { background: #1e293b; color: #fff; }
 
-        /* الفوتر */
-        footer {
+        .empty-sections {
+            display: none;
             text-align: center;
-            padding: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            margin-top: auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 18px;
+            padding: 28px 16px;
+            margin-top: 14px;
+            box-shadow: var(--shadow-main);
         }
 
-        /* تحسين التجاوب مع الموبايل */
+        .empty-sections p {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px 16px;
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(28, 23, 20, 0.08);
+            margin-top: auto;
+            background: #f2ede6;
+        }
+
         @media (max-width: 540px) {
+            .hero-banner {
+                padding: 22px 16px;
+                border-radius: 20px;
+            }
+            .hero-banner h1 {
+                font-size: 1.38rem;
+            }
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -246,14 +442,18 @@
                 border-radius: 16px;
             }
             .category-footer {
-                padding: 12px;
+                padding: 11px 12px;
             }
             .category-name {
-                font-size: 0.9rem;
+                font-size: 0.88rem;
+            }
+            .category-sub {
+                font-size: 0.68rem;
             }
             .arrow-icon {
-                width: 30px;
-                height: 30px;
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
             }
             .header-spacer {
                 display: none;
@@ -265,112 +465,226 @@
 
     <header>
         <a href="index.html" class="back-btn">→ الرئيسية</a>
-        <div class="logo">CARAMEL</div>
+        <div class="logo-wrap">
+            <div class="logo">CARAMEL</div>
+            <div class="logo-sub">CARAMELA STORE</div>
+        </div>
         <div class="header-spacer"></div>
     </header>
 
     <main class="container">
-        <div class="page-header">
-            <h1>تصفح أقسام المتجر</h1>
-            <p>اختر القسم المناسب وابدأ التسوق الآن</p>
+        <section class="hero-banner">
+            <span class="hero-badge">CARAMEL • ALL SECTIONS</span>
+            <h1>تصفح أقسام متجر كارميلا</h1>
+            <p>اختار القسم اللي يناسبك من تشكيلة متنوعة تشمل المنزل، الدراسة، التفصيل والمكرميات، الأطفال، النساء، الرجال، الإكسسوارات والهدايا، والعطور.</p>
+            <div class="hero-actions">
+                <div class="hero-line"></div>
+                <a href="https://wa.me/201055436305?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D9%85%D9%8A%D9%84%D8%A7%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8" class="wa-direct-btn" target="_blank" rel="noopener noreferrer">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.443-9.89 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.743-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.076 4.487.709.306 1.263.489 1.694.629.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                    <span>تواصل للطلبات الخاصة</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="filter-bar">
+            <div class="filter-box">
+                <input
+                    type="text"
+                    id="sectionSearch"
+                    placeholder="ابحث عن قسم معين (مكرميات، أطفال، دراسة، عطور...)"
+                    autocomplete="off"
+                >
+                <button type="button" class="clear-btn" id="clearSectionBtn">الكل</button>
+            </div>
         </div>
 
-        <div class="categories-grid">
-            
-            <!-- القسم 1 -->
-            <a href="Home.html" class="category-card card-home">
+        <div class="sections-meta">
+            <span>عدد الأقسام: <strong class="sections-count" id="sectionsCount">8</strong></span>
+            <span>اضغط على أي قسم للدخول</span>
+        </div>
+
+        <div class="categories-grid" id="categoriesGrid">
+
+            <!-- 1 -->
+            <a href="Home.html" class="category-card card-home" data-keywords="منزل بيت ديكور مطبخ مستلزمات">
                 <div class="category-img-box">
+                    <span class="category-tag">01</span>
                     <img src="IMG-20261116-WA0036.jpg" alt="مستلزمات المنزل" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">مستلزمات المنزل</span>
+                    <div class="category-info">
+                        <span class="category-name">مستلزمات المنزل</span>
+                        <span class="category-sub">تنظيم وديكور البيت</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
-            <!-- القسم 2 -->
-            <a href="Lab.html" class="category-card card-school">
+            <!-- 2 -->
+            <a href="Lab.html" class="category-card card-school" data-keywords="دراسه مدرسه مكتبه اقلام كشاكيل طلاب">
                 <div class="category-img-box">
+                    <span class="category-tag">02</span>
                     <img src="IMG-20261116-WA0040.jpg" alt="مستلزمات الدراسة" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">مستلزمات الدراسه</span>
+                    <div class="category-info">
+                        <span class="category-name">مستلزمات الدراسة</span>
+                        <span class="category-sub">المكتبة والمدارس</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
-            <!-- القسم 3 -->
-            <a href="Tfs.html" class="category-card card-tafse">
+            <!-- 3 -->
+            <a href="Tfs.html" class="category-card card-tafse" data-keywords="تفصيل مكرميات مكرميه هاند ميد يدوي ستائر حائط">
                 <div class="category-img-box">
+                    <span class="category-tag">03</span>
                     <img src="IMG-20261116-WA0042.jpg" alt="التفصيل والمكرميات" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">التفصيل والمكرميات</span>
+                    <div class="category-info">
+                        <span class="category-name">التفصيل والمكرميات</span>
+                        <span class="category-sub">تنفيذ حسب الطلب والخيال</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
-            <!-- القسم 4 -->
-            <a href="kids.html" class="category-card card-kids">
+            <!-- 4 -->
+            <a href="kids.html" class="category-card card-kids" data-keywords="اطفال بيبي اولاد بنات ملابس سورتيت">
                 <div class="category-img-box">
-                    <img src="IMG-20261116-WA0038.jpg" alt="أطفال" loading="lazy">
+                    <span class="category-tag">04</span>
+                    <img src="IMG-20261116-WA0038.jpg" alt="ملابس وإكسسوارات الأطفال" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">ملابس وإكسسوارات الأطفال</span>
+                    <div class="category-info">
+                        <span class="category-name">ملابس وإكسسوارات الأطفال</span>
+                        <span class="category-sub">إطلالات مريحة للصغار</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
-            <!-- القسم 5 -->
-            <a href="Wmn.html" class="category-card card-women">
+            <!-- 5 -->
+            <a href="Wmn.html" class="category-card card-women" data-keywords="نساء حريمي موضه ازياء عبايات ملابس">
                 <div class="category-img-box">
-                    <img src="IMG-20261116-WA0035.jpg" alt="نساء" loading="lazy">
+                    <span class="category-tag">05</span>
+                    <img src="IMG-20261116-WA0035.jpg" alt="أزياء وموضة النساء" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">أزياء وموضة النساء</span>
+                    <div class="category-info">
+                        <span class="category-name">أزياء وموضة النساء</span>
+                        <span class="category-sub">أناقة وتشكيلة متنوعة</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
-            <!-- القسم 6 -->
-            <a href="Mn.html" class="category-card card-men">
+            <!-- 6 -->
+            <a href="Mn.html" class="category-card card-men" data-keywords="رجال رجالي موضه ازياء تيشيرت جاكيت">
                 <div class="category-img-box">
-                    <img src="IMG-20261116-WA0037.jpg" alt="رجال" loading="lazy">
+                    <span class="category-tag">06</span>
+                    <img src="IMG-20261116-WA0037.jpg" alt="أزياء وموضة الرجال" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">أزياء وموضة الرجال</span>
+                    <div class="category-info">
+                        <span class="category-name">أزياء وموضة الرجال</span>
+                        <span class="category-sub">خامات مختارة وإطلالة عصرية</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
-            <!-- القسم 7 -->
-            <a href="Amn.html" class="category-card card-gifts">
+            <!-- 7 -->
+            <a href="Amn.html" class="category-card card-gifts" data-keywords="اكسسوارات هدايا بنات توك مجوهرات">
                 <div class="category-img-box">
+                    <span class="category-tag">07</span>
                     <img src="1794812775286.jpg" alt="الإكسسوارات والهدايا" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">الإكسسوارات والهدايا</span>
+                    <div class="category-info">
+                        <span class="category-name">الإكسسوارات والهدايا</span>
+                        <span class="category-sub">لمسات مميزة وهدايا أنيقة</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
-            <!-- القسم 8 -->
-            <a href="Brf.html" class="category-card card-perfume">
+            <!-- 8 -->
+            <a href="Brf.html" class="category-card card-perfume" data-keywords="عطور برفانات مستحضرات تجميل عنايه روائح">
                 <div class="category-img-box">
+                    <span class="category-tag">08</span>
                     <img src="IMG-20261116-WA0039.jpg" alt="عطور ومستحضرات" loading="lazy">
                 </div>
                 <div class="category-footer">
-                    <span class="category-name">عطور ومستحضرات</span>
+                    <div class="category-info">
+                        <span class="category-name">عطور ومستحضرات</span>
+                        <span class="category-sub">عطور وعناية يومية</span>
+                    </div>
                     <div class="arrow-icon">←</div>
                 </div>
             </a>
 
+        </div>
+
+        <div class="empty-sections" id="emptySections">
+            <p>مفيش قسم مطابق للي بتدور عليه دلوقتي.</p>
+            <button type="button" class="clear-btn" id="resetEmptyBtn">عرض كل الأقسام</button>
         </div>
     </main>
 
     <footer>
         جميع الحقوق محفوظة &copy; متجر كارميل - Caramel Store
     </footer>
+
+    <script>
+        const sectionSearch = document.getElementById("sectionSearch");
+        const clearSectionBtn = document.getElementById("clearSectionBtn");
+        const resetEmptyBtn = document.getElementById("resetEmptyBtn");
+        const emptySections = document.getElementById("emptySections");
+        const sectionsCount = document.getElementById("sectionsCount");
+        const cards = Array.from(document.querySelectorAll(".category-card"));
+
+        function normalizeArabic(text) {
+            return String(text || "")
+                .toLowerCase()
+                .replace(/[إأآا]/g, "ا")
+                .replace(/ة/g, "ه")
+                .replace(/ى/g, "ي")
+                .replace(/ؤ/g, "و")
+                .replace(/ئ/g, "ي")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
+        cards.forEach((card) => {
+            const extra = card.getAttribute("data-keywords") || "";
+            card.dataset.search = normalizeArabic(`${card.innerText} ${extra}`);
+        });
+
+        function filterSections() {
+            const query = normalizeArabic(sectionSearch.value);
+            let matched = 0;
+
+            cards.forEach((card) => {
+                const show = !query || (card.dataset.search || "").includes(query);
+                card.style.display = show ? "flex" : "none";
+                if (show) matched++;
+            });
+
+            sectionsCount.textContent = matched;
+            emptySections.style.display = matched === 0 ? "block" : "none";
+        }
+
+        function resetSections() {
+            sectionSearch.value = "";
+            filterSections();
+        }
+
+        sectionSearch.addEventListener("input", filterSections);
+        clearSectionBtn.addEventListener("click", resetSections);
+        resetEmptyBtn.addEventListener("click", resetSections);
+    </script>
 
 </body>
 </html>
