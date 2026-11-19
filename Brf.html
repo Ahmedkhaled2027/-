@@ -34,7 +34,7 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
 
-        .page-header { text-align: center; margin-bottom: 16px; background: linear-gradient(135deg, #e0f2fe, #bae6fd); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .page-header { text-align: center; margin-bottom: 14px; background: linear-gradient(135deg, #e0f2fe, #bae6fd); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
         .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
         .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
@@ -44,8 +44,9 @@
             top: 64px;
             z-index: 90;
             padding: 6px 0 12px;
-            background: rgba(240, 247, 255, 0.85);
+            background: rgba(240, 247, 255, 0.82);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             margin-bottom: 12px;
         }
 
@@ -74,7 +75,7 @@
         }
 
         .search-box-wrapper input:focus {
-            background: rgba(240, 247, 255, 0.65);
+            background: rgba(240, 247, 255, 0.7);
         }
 
         .search-btn {
@@ -198,10 +199,8 @@
                 type="text"
                 id="searchQuery"
                 placeholder="ابحث عن المنتج أو السعر المناسب"
-                oninput="handleSearchInput()"
-                onkeyup="if(event.key === 'Enter') triggerSearch();"
             >
-            <button type="button" class="search-btn" onclick="triggerSearch()">بحث</button>
+            <button type="button" id="searchBtn" class="search-btn">بحث</button>
         </div>
     </div>
 
@@ -209,7 +208,7 @@
     <div class="products-grid" id="productsContainer">
 
         <div class="product-card" data-keywords="عطر برفان رجالي شبابي باريس lively for men paris هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950472010.webp')">
+            <div class="product-img-box" data-img="Prfa/compressed_1794950472010.webp">
                 <img src="Prfa/compressed_1794950472010.webp" alt="Lively For Men Paris" loading="lazy">
             </div>
             <div class="product-details">
@@ -222,7 +221,7 @@
         </div>
 
         <div class="product-card" data-keywords="عطر برفان مصمم الأسود بلاك انتنس لطافة رجالي فواح ثابت هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096546.webp')">
+            <div class="product-img-box" data-img="Prfa/compressed_1794950096546.webp">
                 <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود" loading="lazy">
             </div>
             <div class="product-details">
@@ -235,7 +234,7 @@
         </div>
 
         <div class="product-card" data-keywords="عطر برفان مصمم الذهب ذهبي لطافة رجالي نسائي فواح هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096662.webp')">
+            <div class="product-img-box" data-img="Prfa/compressed_1794950096662.webp">
                 <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب" loading="lazy">
             </div>
             <div class="product-details">
@@ -248,7 +247,7 @@
         </div>
 
         <div class="product-card" data-keywords="عطر برفان قصة الوردي بينك نسائي حريمي ناعم هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096748.webp')">
+            <div class="product-img-box" data-img="Prfa/compressed_1794950096748.webp">
                 <img src="Prfa/compressed_1794950096748.webp" alt="قصة الوردي" loading="lazy">
             </div>
             <div class="product-details">
@@ -261,7 +260,7 @@
         </div>
 
         <div class="product-card" data-keywords="عطر برفان يارا لطافة نسائي حريمي مشهور ثابت هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096833.webp')">
+            <div class="product-img-box" data-img="Prfa/compressed_1794950096833.webp">
                 <img src="Prfa/compressed_1794950096833.webp" alt="يارا من لطافة" loading="lazy">
             </div>
             <div class="product-details">
@@ -274,7 +273,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر مميز يومي">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0067.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0067.jpg">
                 <img src="Prfa/IMG-20261116-WA0067.jpg" alt="بارفان مميز" loading="lazy">
             </div>
             <div class="product-details">
@@ -287,7 +286,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر مميز يومي">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0068.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0068.jpg">
                 <img src="Prfa/IMG-20261116-WA0068.jpg" alt="بارفان مميز" loading="lazy">
             </div>
             <div class="product-details">
@@ -300,7 +299,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر مميز يومي">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0069.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0069.jpg">
                 <img src="Prfa/IMG-20261116-WA0069.jpg" alt="بارفان مميز" loading="lazy">
             </div>
             <div class="product-details">
@@ -313,7 +312,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر فخم مناسبات هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0077.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0077.jpg">
                 <img src="Prfa/IMG-20261116-WA0077.jpg" alt="بارفان فخم" loading="lazy">
             </div>
             <div class="product-details">
@@ -326,7 +325,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر صغير ميني جيب شنطه">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0078.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0078.jpg">
                 <img src="Prfa/IMG-20261116-WA0078.jpg" alt="بارفان صغير" loading="lazy">
             </div>
             <div class="product-details">
@@ -339,7 +338,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر فخم مناسبات هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0079.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0079.jpg">
                 <img src="Prfa/IMG-20261116-WA0079.jpg" alt="بارفان فخم" loading="lazy">
             </div>
             <div class="product-details">
@@ -352,7 +351,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر فخم مناسبات هديه">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0080.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0080.jpg">
                 <img src="Prfa/IMG-20261116-WA0080.jpg" alt="بارفان فخم" loading="lazy">
             </div>
             <div class="product-details">
@@ -365,7 +364,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر انيق هادئ">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0083.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0083.jpg">
                 <img src="Prfa/IMG-20261116-WA0083.jpg" alt="بارفان أنيق" loading="lazy">
             </div>
             <div class="product-details">
@@ -378,7 +377,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر انيق هادئ">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0084.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0084.jpg">
                 <img src="Prfa/IMG-20261116-WA0084.jpg" alt="بارفان أنيق" loading="lazy">
             </div>
             <div class="product-details">
@@ -391,7 +390,7 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر كلاسيك قديم اصلي">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0102.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0102.jpg">
                 <img src="Prfa/IMG-20261116-WA0102.jpg" alt="بارفان كلاسيك" loading="lazy">
             </div>
             <div class="product-details">
@@ -404,7 +403,12 @@
         </div>
 
         <div class="product-card" data-keywords="بارفان عطر كلاسيك قديم اصلي">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0103.jpg')">
+            <div class="product-img-box" data-img="Prfa/IMG-20261116-WA0103.jpg">
                 <img src="Prfa/IMG-20261116-WA0103.jpg" alt="بارفان كلاسيك" loading="lazy">
             </div>
-            
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان كلاسيك</div>
+                    <div class="product-price">100<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?te
