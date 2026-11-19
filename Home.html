@@ -93,7 +93,7 @@
 
         .page-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             background: linear-gradient(135deg,#f7f1eb,#f4ede3);
             padding: 25px 15px;
             border-radius: 16px;
@@ -110,6 +110,82 @@
         .page-header p {
             font-size: .85rem;
             color: var(--text-muted);
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .search-box-wrapper input {
+            flex: 1;
+            padding: 13px 16px;
+            background: #fff;
+            border: 2px solid var(--border-light);
+            color: var(--text-main);
+            border-radius: 12px;
+            font-size: .92rem;
+            outline: none;
+            box-shadow: var(--shadow-soft);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .search-box-wrapper input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-btn {
+            background: var(--dark-surface);
+            color: #fff;
+            border: none;
+            padding: 0 20px;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: .88rem;
+            cursor: pointer;
+            transition: background .2s;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .search-btn:hover {
+            background: var(--primary);
+        }
+
+        .empty-state {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 26px 14px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .empty-state p {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .show-all-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: .82rem;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .show-all-btn:hover {
+            background: var(--primary-dark);
         }
 
         .products-grid {
@@ -292,7 +368,22 @@
         <p>كل مستلزمات بيتك ولو ملقتش اللى عاوزه ابعتلنا نجبلك خلى بيتك كارميل</p>
     </div>
 
+    <div class="search-box-wrapper">
+        <input
+            type="text"
+            id="searchQuery"
+            placeholder="ابحث عن المنتج أو السعر المناسب"
+            autocomplete="off"
+        >
+        <button type="button" class="search-btn" id="searchBtn">بحث</button>
+    </div>
+
     <div class="products-grid" id="productsGrid"></div>
+
+    <div class="empty-state" id="emptyState">
+        <p>مفيش منتجات مطابقة للي كتبته دلوقتي.</p>
+        <button type="button" class="show-all-btn" id="showAllBtn">عرض كل المنتجات</button>
+    </div>
 
 </main>
 
@@ -369,6 +460,10 @@
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const modalClose = document.getElementById("modalClose");
+    const searchInput = document.getElementById("searchQuery");
+    const searchBtn = document.getElementById("searchBtn");
+    const emptyState = document.getElementById("emptyState");
+    const showAllBtn = document.getElementById("showAllBtn");
 
     modalClose.addEventListener("click", () => {
         modal.style.display = "none";
@@ -382,8 +477,7 @@
     function createProduct(product) {
         const message = `اريد طلب ${product.name} بسعر ${product.price} جنيه`;
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        
-        // دالة ذكية لتحديد مسار الصورة الصحيح دون أخطاء
+
         let imgSrc = product.image;
         if (!imgSrc.startsWith("Kit/") && !imgSrc.startsWith("http")) {
             imgSrc = `Kit/${imgSrc}`;
@@ -394,7 +488,7 @@
 
         const imageBox = document.createElement("div");
         imageBox.className = "product-img-box";
-        
+
         imageBox.addEventListener("click", () => {
             modalImg.src = imgSrc;
             modal.style.display = "flex";
@@ -447,13 +541,56 @@
         return card;
     }
 
-    const fragment = document.createDocumentFragment();
+    function renderProducts(list) {
+        grid.innerHTML = "";
 
-    products.forEach(product => {
-        fragment.appendChild(createProduct(product));
+        if (!list.length) {
+            emptyState.style.display = "block";
+            return;
+        }
+
+        emptyState.style.display = "none";
+        const fragment = document.createDocumentFragment();
+        list.forEach(product => {
+            fragment.appendChild(createProduct(product));
+        });
+        grid.appendChild(fragment);
+    }
+
+    function applyHomeSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query === "") {
+            renderProducts(products);
+            return;
+        }
+
+        const filtered = products.filter(product => {
+            const nameMatch = String(product.name).toLowerCase().includes(query);
+            const priceMatch = String(product.price).toLowerCase().includes(query);
+            return nameMatch || priceMatch;
+        });
+
+        renderProducts(filtered);
+    }
+
+    renderProducts(products);
+
+    searchBtn.addEventListener("click", applyHomeSearch);
+    showAllBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        renderProducts(products);
     });
-
-    grid.appendChild(fragment);
+    searchInput.addEventListener("input", () => {
+        if (searchInput.value.trim() === "") {
+            renderProducts(products);
+        }
+    });
+    searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            applyHomeSearch();
+        }
+    });
 </script>
 
 </body>
