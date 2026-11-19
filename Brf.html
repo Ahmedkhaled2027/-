@@ -114,12 +114,15 @@
             color: var(--text-muted);
         }
 
+        /* تصميم صندوق البحث مع زرار البحث للضمان */
         .search-box-wrapper {
+            display: flex;
+            gap: 8px;
             margin-bottom: 20px;
         }
 
         .search-box-wrapper input {
-            width: 100%;
+            flex: 1;
             padding: 14px 18px;
             background: white;
             border: 2px solid var(--border-light);
@@ -133,6 +136,24 @@
 
         .search-box-wrapper input:focus {
             border-color: var(--primary);
+        }
+
+        .search-btn {
+            background: var(--dark-surface);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .search-btn:hover {
+            background: var(--primary);
         }
 
         .products-grid {
@@ -323,7 +344,7 @@
         <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
     </div>
 
-    <!-- البحث -->
+    <!-- البحث مع زرار بحث ضامن -->
     <div class="search-box-wrapper">
         <input
             type="text"
@@ -331,6 +352,7 @@
             placeholder="ابحث باسم المنتج أو السعر..."
             autocomplete="off"
         >
+        <button class="search-btn" onclick="performSearch()">بحث</button>
     </div>
 
     <!-- المنتجات -->
@@ -540,30 +562,4 @@
                     <div class="product-title">بارفان كلاسيك</div>
                     <div class="product-price">100<span>جنيه</span></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20100%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
-            </div>
-        </div>
-
-    </div>
-</main>
-
-<footer>
-    <p>جميع الحقوق محفوظة © متجر كارميلا 2026</p>
-</footer>
-
-<!-- نافذة تكبير الصورة -->
-<div id="imageModal" class="image-modal" onclick="closeModal()">
-    <span class="modal-close">&times;</span>
-    <img id="modalImg" src="" alt="صورة مكبرة">
-</footer>
-
-<script>
-    function openModal(imgSrc) {
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImg');
-        modal.style.display = "flex";
-        modalImg.src = imgSrc;
-    }
-
-    function closeModal() {
-        document.getElementById('imageModal').st
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20100%20جنيه" class="order-btn" target="_blank
