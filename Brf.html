@@ -10,8 +10,61 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<style>
-:root {
+‏    <style>
+‏        :root {
+‏            --primary: #3b82f6;
+‏            --primary-dark: #1d4ed8;
+‏            --bg-main: #f0f7ff;
+‏            --bg-card: #ffffff;
+‏            --dark-surface: #1e293b;
+‏            --text-main: #0f172a;
+‏            --text-muted: #64748b;
+‏            --border-light: rgba(59, 130, 246, 0.35);
+‏       --shadow-soft: 0 4px 16px rgba(30, 41, 59, 0.08);
+‏ .sticky-search-bar {
+‏    position: sticky;
+‏    top: 64px; /* قريب من ارتفاع الهيدر */
+‏    z-index: 90;
+‏    background: rgba(240, 247, 255, 0.92);
+‏    backdrop-filter: blur(12px);
+‏    padding: 10px 4px;
+‏    margin-bottom: 16px;
+‏    border-radius: 16px;
+‏}
+‏
+‏.sticky-search-bar .search-box-wrapper {
+‏    margin-bottom: 0;
+‏}
+‏
+‏.sticky-search-bar .search-box-wrapper input {
+‏    border-radius: 999px;
+‏    padding: 12px 18px;
+‏}
+‏
+‏.sticky-search-bar .search-box-wrapper .search-btn {
+‏    border-radius: 999px;
+‏    padding: 0 22px;
+‏}
+‏        
+‏
+‏        * { box-sizing: border-box; margin: 0; padding: 0; }
+‏        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+‏        a { text-decoration: none; color: inherit; }
+‏
+‏        header { background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(12px); padding: 14px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(59, 130, 246, 0.2); display: flex; align-items: center; justify-content: space-between; }
+‏        .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #f8fafc; background: rgba(255,255,255,0.1); padding: 7px 14px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
+‏        .back-btn:hover { background: var(--primary); color: white; }
+‏        .logo { font-size: 1.4rem; font-weight: 800; color: #93c5fd; letter-spacing: 3px; }
+‏        .header-spacer { width: 80px; }
+‏
+‏        .container { max-width: 1100px; margin: 0 auto; padding: 20px 10px 40px; width: 100%; flex: 1; }
+‏
+‏        .page-header { text-align: center; margin-bottom: 20px; background: linear-gradient(135deg, #e0f2fe, #bae6fd); padding: 25px 15px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+‏        .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
+‏        .page-header p { font-size: 0.85rem; color: var(--text-muted); }
+‏
+‏    
+    :root {
     --green: #14362c;
     --green2: #1f4e3f;
     --gold: #c6a66a;
