@@ -4,32 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر كارامل - Caramel Store</title>
-    
-    <!-- ربط ملف التطبيق (PWA Manifest) -->
+
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#c89666">
 
-    <!-- وسوم المعاينة عند المشاركة -->
     <meta property="og:title" content="متجر كارامل - Caramel Store">
     <meta property="og:description" content="كل حاجه تحتاجها عند كارميلا وأرخص الاسعار واللى مش موجود نجيبهولك والتوصيل لباب المنزل فأسرع وقت ولو حابب تطلب من شى أن هنجبهالك بنفس سعر الابلكيشن ومن غير جمارك">
     <meta property="og:image" content="https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/compressed_1794939645943.webp">
     <meta property="og:type" content="website">
 
-    <!-- استدعاء خط Cairo العصري -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #c89666;
-            --primary-dark: #a67649;
-            --bg-main: #faf8f5;
+            --caramel: #c89666;
+            --caramel-dark: #9e6d40;
+            --espresso: #1c1714;
+            --espresso-soft: #2e2621;
+            --cream-soft: #f6efe6;
+            --bg-main: #faf7f2;
             --bg-card: #ffffff;
-            --dark-surface: #181512;
-            --text-main: #221f1d;
-            --text-muted: #6e6761;
-            --border-light: rgba(200, 150, 102, 0.25);
+            --text-main: #1f1b18;
+            --text-muted: #6c645c;
+            --border-gold: rgba(200, 150, 102, 0.28);
+            --shadow-hero: 0 14px 36px -12px rgba(28, 23, 20, 0.14);
+            --shadow-card: 0 10px 28px -10px rgba(28, 23, 20, 0.09);
         }
 
         * {
@@ -42,7 +43,7 @@
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg-main);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.65;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -53,60 +54,69 @@
             color: inherit;
         }
 
-        /* الهيدر العلوي */
         header {
-            background: rgba(24, 21, 18, 0.95);
+            background: rgba(28, 23, 20, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 18px 20px;
+            padding: 15px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(200, 150, 102, 0.24);
             text-align: center;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--caramel);
             letter-spacing: 4px;
             text-transform: uppercase;
             display: inline-block;
+            line-height: 1.15;
         }
 
         .logo span {
             display: block;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: #d6ccc2;
-            font-weight: 400;
-            margin-top: -4px;
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            color: var(--cream-soft);
+            font-weight: 600;
+            margin-top: 2px;
         }
 
-        /* الحاوية الرئيسية */
         .container {
-            max-width: 1050px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 16px;
             width: 100%;
             flex: 1;
         }
 
-        /* قسم الترحيب والوصف */
         .hero-box {
             background: var(--bg-card);
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-gold);
             border-radius: 24px;
-            padding: 32px 24px;
-            margin: 30px auto 35px;
+            padding: 34px 24px 30px;
+            margin: 26px auto 32px;
             text-align: center;
-            box-shadow: 0 12px 35px -10px rgba(24, 21, 18, 0.06);
+            box-shadow: var(--shadow-hero);
             position: relative;
             overflow: hidden;
         }
 
-        /* إضافة اللوجو كخلفية شفافة في ظهر المربع */
+        .hero-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--caramel-dark), var(--caramel), #e6ccb2);
+            z-index: 2;
+        }
+
         .hero-box::after {
             content: "";
             position: absolute;
@@ -118,52 +128,66 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.08; /* تحكم في شفافية اللوجو في الخلفية */
+            opacity: 0.07;
             z-index: 0;
             pointer-events: none;
         }
 
-        /* لضمان ظهور العناصر فوق خلفية اللوجو بوضوح */
         .hero-box > * {
             position: relative;
             z-index: 1;
         }
 
-        .hero-box::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-dark), var(--primary), #e6ccb2);
-            z-index: 2;
-        }
-
         .hero-badge {
             display: inline-block;
-            background: rgba(200, 150, 102, 0.12);
-            color: var(--primary-dark);
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
+            background: rgba(200, 150, 102, 0.14);
+            color: var(--caramel-dark);
+            border: 1px solid rgba(200, 150, 102, 0.3);
+            padding: 5px 16px;
+            border-radius: 999px;
+            font-size: 0.84rem;
+            font-weight: 800;
             margin-bottom: 14px;
         }
 
+        .hero-title {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--espresso);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
         .hero-text {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-main);
-            max-width: 680px;
-            margin: 0 auto 26px;
+            max-width: 720px;
+            margin: 0 auto 24px;
             font-weight: 600;
         }
 
-        /* أزرار التواصل */
+        .features-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .feature-pill {
+            background: #faf5ef;
+            border: 1px solid var(--border-gold);
+            color: var(--text-main);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+        }
+
         .actions-group {
             display: flex;
             justify-content: center;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -171,93 +195,101 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 13px 26px;
+            gap: 9px;
+            padding: 12px 24px;
             border-radius: 14px;
+            font-family: 'Cairo', sans-serif;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
             cursor: pointer;
         }
 
         .btn-primary {
-            background: var(--dark-surface);
+            background: var(--espresso);
             color: #ffffff;
-            box-shadow: 0 8px 20px -6px rgba(24, 21, 18, 0.4);
+            box-shadow: 0 8px 20px -6px rgba(28, 23, 20, 0.38);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            background: var(--caramel-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -6px rgba(166, 118, 73, 0.5);
+            box-shadow: 0 12px 24px -6px rgba(158, 109, 64, 0.45);
         }
 
         .btn-secondary {
-            background: #f3ede6;
+            background: #f4eee6;
             color: var(--text-main);
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-gold);
         }
 
         .btn-secondary:hover {
-            background: #e9dfd3;
+            background: #e9dfd2;
             transform: translateY(-2px);
         }
 
-        /* عنوان الأقسام */
         .section-title {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
         .section-title h2 {
-            font-size: 1.4rem;
+            font-size: 1.42rem;
             font-weight: 800;
             color: var(--text-main);
+            margin-bottom: 4px;
         }
 
         .section-title p {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
         }
 
-        /* شبكة الأقسام */
+        .section-divider {
+            width: 46px;
+            height: 3px;
+            background: var(--caramel);
+            border-radius: 999px;
+            margin: 10px auto 0;
+        }
+
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 24px;
-            padding-bottom: 50px;
+            gap: 22px;
+            padding-bottom: 48px;
         }
 
         .category-card {
             background: var(--bg-card);
             border-radius: 22px;
             overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-            transition: all 0.35s ease;
+            border: 1px solid rgba(28, 23, 20, 0.08);
+            box-shadow: var(--shadow-card);
+            transition: all 0.32s ease;
             display: flex;
             flex-direction: column;
         }
 
         .category-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px -12px rgba(200, 150, 102, 0.25);
+            transform: translateY(-5px);
+            border-color: var(--caramel);
+            box-shadow: 0 18px 36px -12px rgba(200, 150, 102, 0.28);
         }
 
         .img-wrapper {
             width: 100%;
-            height: 240px;
+            height: 235px;
             overflow: hidden;
             position: relative;
-            background: #eee;
+            background: #f2ede7;
         }
 
         .category-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.55s ease;
         }
 
         .category-card:hover img {
@@ -265,22 +297,24 @@
         }
 
         .card-body {
-            padding: 20px 24px;
+            padding: 18px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             background: var(--bg-card);
+            flex: 1;
         }
 
         .card-info h3 {
-            font-size: 1.25rem;
+            font-size: 1.18rem;
             font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .card-info span {
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             color: var(--text-muted);
             display: block;
         }
@@ -290,41 +324,55 @@
             height: 38px;
             border-radius: 50%;
             background: #f5efe8;
-            color: var(--primary-dark);
+            color: var(--caramel-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            font-weight: 800;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
         }
 
         .category-card:hover .card-arrow {
-            background: var(--primary);
-            color: #fff;
+            background: var(--caramel);
+            color: #ffffff;
             transform: translateX(-4px);
         }
 
-        /* الفوتر */
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 0.85rem;
+            padding: 20px 16px;
+            font-size: 0.84rem;
             color: var(--text-muted);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 1px solid rgba(28, 23, 20, 0.08);
             margin-top: auto;
+            background: #f2ede6;
         }
 
-        /* تحسين العرض على الشاشات الصغيرة */
         @media (max-width: 480px) {
             .hero-box {
-                padding: 24px 18px;
-                margin-top: 20px;
+                padding: 24px 16px 22px;
+                margin-top: 18px;
+                border-radius: 20px;
+            }
+            .hero-title {
+                font-size: 1.35rem;
+            }
+            .hero-text {
+                font-size: 0.92rem;
             }
             .btn {
                 width: 100%;
+                padding: 11px 18px;
             }
             .img-wrapper {
-                height: 210px;
+                height: 205px;
+            }
+            .card-body {
+                padding: 15px 16px;
+            }
+            .card-info h3 {
+                font-size: 1.05rem;
             }
         }
     </style>
@@ -341,17 +389,25 @@
     <main class="container">
         <section class="hero-box">
             <div class="hero-badge">✨ أرخص الأسعار وأسرع توصيل</div>
+            <h1 class="hero-title">أهلاً بك في متجر كارامل</h1>
             <p class="hero-text">
-                كل حاجة تحتاجها عند كارميلا بأرخص الأسعار واللى مش موجود هنجبهولك والتوصيل لباب المنزل في أسرع وقت، ولو حابب تطلب من شي إن هنجيبهالك بنفس سعر الأبلكيشن وبدون جمارك.
+                كل حاجة تحتاجها عند كارميلا بأرخص الأسعار واللي مش موجود هنجيبهولك والتوصيل لباب المنزل في أسرع وقت، ولو حابب تطلب من شي إن هنجيبهالك بنفس سعر الأبلكيشن وبدون جمارك.
             </p>
+
+            <div class="features-strip">
+                <span class="feature-pill">توصيل سريع لباب البيت</span>
+                <span class="feature-pill">توفير أي منتج غير متاح</span>
+                <span class="feature-pill">طلبات SHEIN بدون جمارك</span>
+            </div>
+
             <div class="actions-group">
-                <a href="https://wa.me/201112348224" class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
-                      للشكاوى تواصل معنا عبر واتساب
+                <a href="https://wa.me/201112348224" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.443-9.89 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.743-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.076 4.487.709.306 1.263.489 1.694.629.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                    <span>للشكاوى تواصل معنا عبر واتساب</span>
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.zzkko" class="btn btn-secondary">
+                <a href="https://play.google.com/store/apps/details?id=com.zzkko" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
                     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    تنزيل تطبيق شي إن
+                    <span>تنزيل تطبيق شي إن</span>
                 </a>
             </div>
         </section>
@@ -359,12 +415,13 @@
         <div class="section-title">
             <h2>تصفح الأقسام</h2>
             <p>اختر القسم المناسب وابدأ التسوق الآن</p>
+            <div class="section-divider"></div>
         </div>
 
         <section class="categories-grid">
             <a href="girls.html" class="category-card">
                 <div class="img-wrapper">
-                    <img src="IMG-20261116-WA0032.jpg" alt="إكسسوارات بنات">
+                    <img src="IMG-20261116-WA0032.jpg" alt="كاراميل ستور" loading="lazy">
                 </div>
                 <div class="card-body">
                     <div class="card-info">
@@ -375,9 +432,9 @@
                 </div>
             </a>
 
-            <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B4%D9%8A%20%D8%A5%D9%86" class="category-card">
+            <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B4%D9%8A%20%D8%A5%D9%86" class="category-card" target="_blank" rel="noopener noreferrer">
                 <div class="img-wrapper">
-                    <img src="IMG-20261116-WA0031.jpg" alt="شى أن">
+                    <img src="IMG-20261116-WA0031.jpg" alt="طلبات شي إن" loading="lazy">
                 </div>
                 <div class="card-body">
                     <div class="card-info">
