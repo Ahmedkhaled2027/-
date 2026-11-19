@@ -38,7 +38,6 @@
         .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
         .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* صندوق البحث الاحترافي البسيط */
         .search-box-wrapper {
             display: flex;
             gap: 8px;
@@ -66,7 +65,7 @@
             background: var(--dark-surface);
             color: white;
             border: none;
-            padding: 0 20px;
+            padding: 0 22px;
             border-radius: 12px;
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
@@ -78,6 +77,41 @@
 
         .search-btn:hover {
             background: var(--primary);
+        }
+
+        .empty-state {
+            display: none;
+            width: 100%;
+            text-align: center;
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            padding: 28px 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .empty-state p {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .show-all-btn {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .show-all-btn:hover {
+            background: var(--primary-dark);
         }
 
         .products-grid { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -140,18 +174,17 @@
         <p>اضغط على أي صورة لتكبيرها، أو ابحث بالاسم أو السعر أدناه</p>
     </div>
 
-    <!-- خانة البحث وزرار البحث -->
     <div class="search-box-wrapper">
-        <input 
-            type="text" 
-            id="searchQuery" 
-            placeholder="اكتب اسم العطر أو السعر (مثل: يارا، 175)..." 
+        <input
+            type="text"
+            id="searchQuery"
+            placeholder="ابحث بالاسم أو السعر المناسب..."
+            oninput="if(this.value.trim() === '') resetAllProducts();"
             onkeyup="if(event.key === 'Enter') triggerSearch();"
         >
         <button class="search-btn" onclick="triggerSearch()">بحث</button>
     </div>
 
-    <!-- المنتجات -->
     <div class="products-grid" id="productsContainer">
 
         <div class="product-card">
@@ -362,6 +395,11 @@
             </div>
         </div>
 
+        <div class="empty-state" id="emptyState">
+            <p>مفيش عطور مطابقة للي كتبته دلوقتي.</p>
+            <button type="button" class="show-all-btn" onclick="resetAllProducts()">عرض كل العطور</button>
+        </div>
+
     </div>
 </main>
 
@@ -386,22 +424,9 @@
         document.getElementById('imageModal').style.display = "none";
     }
 
-    // دالة البحث المباشرة بدون أي تعقيدات
-    function triggerSearch() {
-        let query = document.getElementById('searchQuery').value.toLowerCase().trim();
-        let cards = document.getElementsByClassName('product-card');
+    function resetAllProducts() {
+        const input = document.getElementById('searchQuery');
+        const cards = document.getElementsByClassName('product-card');
+        const emptyState = document.getElementById('emptyState');
 
-        for (let i = 0; i < cards.length; i++) {
-            let cardText = cards[i].innerText.toLowerCase();
-            
-            if (query === "" || cardText.includes(query)) {
-                cards[i].style.display = "flex";
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
-    }
-</script>
-
-</body>
-</html>
+      
