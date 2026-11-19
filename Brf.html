@@ -38,31 +38,46 @@
         .page-header h1 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
         .page-header p { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* أزرار الفلترة السريعة بدلاً من خانة البحث المعقدة */
-        .filter-buttons {
+        /* صندوق البحث الاحترافي البسيط */
+        .search-box-wrapper {
             display: flex;
-            flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 20px;
-            justify-content: center;
         }
-        .filter-btn {
+
+        .search-box-wrapper input {
+            flex: 1;
+            padding: 14px 18px;
             background: white;
             border: 2px solid var(--border-light);
             color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            outline: none;
+            box-shadow: var(--shadow-soft);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .search-box-wrapper input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-btn {
+            background: var(--dark-surface);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 12px;
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background 0.2s;
             box-shadow: var(--shadow-soft);
         }
-        .filter-btn:hover, .filter-btn.active {
+
+        .search-btn:hover {
             background: var(--primary);
-            color: white;
-            border-color: var(--primary);
         }
 
         .products-grid { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -78,7 +93,6 @@
             width: calc(50% - 6px);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .product-card.hide { display: none !important; }
 
         .product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(59,130,246,0.18); }
         .product-img-box { width: 100%; height: 160px; background: #f0f7ff; position: relative; overflow: hidden; cursor: pointer; }
@@ -123,25 +137,24 @@
 
     <div class="page-header">
         <h1>العطور والبرفانات</h1>
-        <p>اختر التصنيف أو السعر لعرض العطور المطلوبة فوراً</p>
+        <p>اضغط على أي صورة لتكبيرها، أو ابحث بالاسم أو السعر أدناه</p>
     </div>
 
-    <!-- أزرار الفلترة السريعة (بديلة خانة البحث العقيمة) -->
-    <div class="filter-buttons">
-        <button class="filter-btn active" onclick="filterCategory('all', this)">الكل</button>
-        <button class="filter-btn" onclick="filterCategory('latafa', this)">عطور لطافة</button>
-        <button class="filter-btn" onclick="filterCategory('100', this)">100 جنيه</button>
-        <button class="filter-btn" onclick="filterCategory('150', this)">150 جنيه</button>
-        <button class="filter-btn" onclick="filterCategory('160', this)">160 جنيه</button>
-        <button class="filter-btn" onclick="filterCategory('175', this)">175 جنيه</button>
-        <button class="filter-btn" onclick="filterCategory('200', this)">200 جنيه</button>
-        <button class="filter-btn" onclick="filterCategory('375', this)">375 جنيه</button>
+    <!-- خانة البحث وزرار البحث -->
+    <div class="search-box-wrapper">
+        <input 
+            type="text" 
+            id="searchQuery" 
+            placeholder="اكتب اسم العطر أو السعر (مثل: يارا، 175)..." 
+            onkeyup="if(event.key === 'Enter') triggerSearch();"
+        >
+        <button class="search-btn" onclick="triggerSearch()">بحث</button>
     </div>
 
-    <!-- المنتجات مع تصنيفات واضحة -->
-    <div class="products-grid">
+    <!-- المنتجات -->
+    <div class="products-grid" id="productsContainer">
 
-        <div class="product-card" data-cat="175">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950472010.webp')">
                 <img src="Prfa/compressed_1794950472010.webp" alt="Lively For Men Paris" loading="lazy">
             </div>
@@ -154,7 +167,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="375 latafa">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096546.webp')">
                 <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود" loading="lazy">
             </div>
@@ -167,7 +180,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="375 latafa">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096662.webp')">
                 <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب" loading="lazy">
             </div>
@@ -180,7 +193,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="375">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096748.webp')">
                 <img src="Prfa/compressed_1794950096748.webp" alt="قصة الوردي" loading="lazy">
             </div>
@@ -193,7 +206,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="375 latafa">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096833.webp')">
                 <img src="Prfa/compressed_1794950096833.webp" alt="يارا من لطافة" loading="lazy">
             </div>
@@ -206,7 +219,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="160">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0067.jpg')">
                 <img src="Prfa/IMG-20261116-WA0067.jpg" alt="بارفان مميز" loading="lazy">
             </div>
@@ -219,7 +232,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="160">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0068.jpg')">
                 <img src="Prfa/IMG-20261116-WA0068.jpg" alt="بارفان مميز" loading="lazy">
             </div>
@@ -232,7 +245,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="160">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0069.jpg')">
                 <img src="Prfa/IMG-20261116-WA0069.jpg" alt="بارفان مميز" loading="lazy">
             </div>
@@ -245,7 +258,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="200">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0077.jpg')">
                 <img src="Prfa/IMG-20261116-WA0077.jpg" alt="بارفان فخم" loading="lazy">
             </div>
@@ -258,7 +271,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="45">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0078.jpg')">
                 <img src="Prfa/IMG-20261116-WA0078.jpg" alt="بارفان صغير" loading="lazy">
             </div>
@@ -271,7 +284,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="200">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0079.jpg')">
                 <img src="Prfa/IMG-20261116-WA0079.jpg" alt="بارفان فخم" loading="lazy">
             </div>
@@ -284,7 +297,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="200">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0080.jpg')">
                 <img src="Prfa/IMG-20261116-WA0080.jpg" alt="بارفان فخم" loading="lazy">
             </div>
@@ -293,11 +306,11 @@
                     <div class="product-title">بارفان فخم</div>
                     <div class="product-price">200<span>جنيه</span></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20200%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلبLa الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20200%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
         </div>
 
-        <div class="product-card" data-cat="150">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0083.jpg')">
                 <img src="Prfa/IMG-20261116-WA0083.jpg" alt="بارفان أنيق" loading="lazy">
             </div>
@@ -310,7 +323,7 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="150">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0084.jpg')">
                 <img src="Prfa/IMG-20261116-WA0084.jpg" alt="بارفان أنيق" loading="lazy">
             </div>
@@ -323,20 +336,20 @@
             </div>
         </div>
 
-        <div class="product-card" data-cat="100">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0102.jpg')">
                 <img src="Prfa/IMG-20261116-WA0102.jpg" alt="بارفان كلاسيك" loading="lazy">
             </div>
             <div class="product-details">
                 <div>
-                    <div class="product-title">بارفan كلاسيك</div>
+                    <div class="product-title">بارفان كلاسيك</div>
                     <div class="product-price">100<span>جنيه</span></div>
                 </div>
                 <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20100%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
         </div>
 
-        <div class="product-card" data-cat="100">
+        <div class="product-card">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0103.jpg')">
                 <img src="Prfa/IMG-20261116-WA0103.jpg" alt="بارفان كلاسيك" loading="lazy">
             </div>
@@ -373,26 +386,22 @@
         document.getElementById('imageModal').style.display = "none";
     }
 
-    // طريقة فلترة أزرار الفئات الفورية (مستحيل تفشل)
-    function filterCategory(category, btnElement) {
-        // تحديث تصميم الأزرار (تفعيل الزرار المختار)
-        let buttons = document.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        btnElement.classList.add('active');
+    // دالة البحث المباشرة بدون أي تعقيدات
+    function triggerSearch() {
+        let query = document.getElementById('searchQuery').value.toLowerCase().trim();
+        let cards = document.getElementsByClassName('product-card');
 
-        // فلترة الكروت
-        let cards = document.querySelectorAll('.product-card');
-        cards.forEach(card => {
-            let cardCategories = card.getAttribute('data-cat');
-            if (category === 'all' || cardCategories.includes(category)) {
-                card.classList.remove('hide');
+        for (let i = 0; i < cards.length; i++) {
+            let cardText = cards[i].innerText.toLowerCase();
+            
+            if (query === "" || cardText.includes(query)) {
+                cards[i].style.display = "flex";
             } else {
-                card.classList.add('hide');
+                cards[i].style.display = "none";
             }
-        });
+        }
     }
 </script>
 
 </body>
 </html>
-
