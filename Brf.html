@@ -1,804 +1,551 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#132d25">
-<title>العطور والبرفانات | CARAMEL</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --emerald: #132d25;
-    --emerald-2: #1f4639;
-    --gold: #c6a66a;
-    --gold-light: #ebd7aa;
-    --bg-perfume: #f6f1e7;
-    --bg-perfume-soft: #efe7d6;
-    --card-bg: #fffdf9;
-    --ink: #1e2722;
-    --muted: #7c7e74;
-    --line: #e5dcc9;
-    --shadow: 0 14px 34px rgba(19, 45, 37, .08);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Cairo', sans-serif;
-    background:
-        radial-gradient(circle at 10% 0%, rgba(198, 166, 106, 0.16), transparent 36%),
-        radial-gradient(circle at 90% 18%, rgba(198, 166, 106, 0.12), transparent 40%),
-        linear-gradient(180deg, #f8f4ec 0%, var(--bg-perfume) 55%, var(--bg-perfume-soft) 100%);
-    color: var(--ink);
-    min-height: 100vh;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button, input {
-    font-family: inherit;
-}
-
-/* HEADER */
-.header {
-    background: rgba(19, 45, 37, .97);
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid rgba(198,166,106,.35);
-    box-shadow: 0 6px 24px rgba(0,0,0,.14);
-}
-
-.header-inner {
-    max-width: 1250px;
-    margin: auto;
-    min-height: 70px;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(255,255,255,.09);
-    border: 1px solid rgba(255,255,255,.14);
-    border-radius: 30px;
-    padding: 8px 15px;
-    font-size: 12px;
-    font-weight: 700;
-    transition: .25s;
-}
-
-.back-btn:hover {
-    background: var(--gold);
-    color: #15251e;
-}
-
-.brand {
-    text-align: center;
-    line-height: 1.1;
-}
-
-.brand-name {
-    color: var(--gold-light);
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 3px;
-}
-
-.brand-sub {
-    font-size: 8px;
-    color: #cfc8b6;
-    letter-spacing: 4px;
-    margin-top: 5px;
-}
-
-.header-mark {
-    width: 85px;
-}
-
-/* MAIN */
-.container {
-    max-width: 1250px;
-    padding: 25px 16px 55px;
-    margin: auto;
-}
-
-/* HERO */
-.hero {
-    position: relative;
-    overflow: hidden;
-    min-height: 205px;
-    padding: 30px 25px;
-    border-radius: 23px;
-    background:
-        radial-gradient(circle at 15% 20%, rgba(198,166,106,.24), transparent 34%),
-        linear-gradient(125deg, #10261f, #1d4436 72%, #153228);
-    color: white;
-    box-shadow: 0 16px 36px rgba(19, 45, 37, .18);
-    display: flex;
-    align-items: center;
-    margin-bottom: 22px;
-    border: 1px solid rgba(198, 166, 106, .25);
-}
-
-.hero::before {
-    content: "C";
-    position: absolute;
-    left: 25px;
-    top: -90px;
-    font-family: Georgia, serif;
-    font-size: 300px;
-    line-height: 1;
-    color: rgba(235,215,170,.06);
-    pointer-events: none;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
-
-.hero-kicker {
-    color: var(--gold-light);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 9px;
-}
-
-.hero h1 {
-    font-size: clamp(25px, 5vw, 39px);
-    font-weight: 900;
-    line-height: 1.4;
-    margin-bottom: 5px;
-}
-
-.hero p {
-    color: #dcd7cb;
-    font-size: 12px;
-    max-width: 420px;
-}
-
-.hero-line {
-    width: 55px;
-    height: 3px;
-    border-radius: 5px;
-    background: var(--gold);
-    margin-top: 15px;
-}
-
-/* SEARCH */
-.search-sticky {
-    position: sticky;
-    top: 70px;
-    z-index: 90;
-    padding: 9px 0 14px;
-    background: rgba(246, 241, 231, .92);
-    backdrop-filter: blur(14px);
-}
-
-.search-box {
-    max-width: 650px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px;
-    border-radius: 50px;
-    background: var(--card-bg);
-    border: 1px solid var(--line);
-    box-shadow: 0 8px 24px rgba(19, 45, 37, .07);
-    transition: .25s;
-}
-
-.search-box:focus-within {
-    border-color: var(--gold);
-    box-shadow: 0 8px 26px rgba(198,166,106,.2);
-}
-
-.search-icon {
-    padding-right: 13px;
-    color: var(--gold);
-    font-size: 20px;
-}
-
-.search-box input {
-    flex: 1;
-    width: 100%;
-    min-width: 0;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: var(--ink);
-    font-size: 13px;
-    padding: 11px 0;
-}
-
-.search-box input::placeholder {
-    color: #9e9b91;
-}
-
-.search-btn {
-    border: 0;
-    border-radius: 40px;
-    background: var(--emerald);
-    color: white;
-    padding: 10px 22px;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.search-btn:hover {
-    background: var(--gold);
-    color: #17251d;
-}
-
-.search-message {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    min-height: 22px;
-    padding-top: 5px;
-}
-
-/* SECTION TITLE */
-.section-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin: 8px 2px 17px;
-}
-
-.section-heading h2 {
-    font-size: 18px;
-    font-weight: 900;
-    color: var(--emerald);
-}
-
-.section-heading span {
-    font-size: 10px;
-    color: var(--muted);
-}
-
-/* PRODUCTS */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 13px;
-}
-
-.product-card {
-    min-width: 0;
-    background: var(--card-bg);
-    border: 1px solid var(--line);
-    border-radius: 17px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 6px 18px rgba(19, 45, 37, .05);
-    transition: transform .25s, box-shadow .25s, border-color .25s;
-    animation: appear .45s both;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(198,166,106,.75);
-    box-shadow: var(--shadow);
-}
-
-.product-img-box {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    background: radial-gradient(circle at center, #ffffff 0%, #f5efe3 100%);
-    position: relative;
-    overflow: hidden;
-    cursor: zoom-in;
-    padding: 0;
-}
-
-.product-img-box::after {
-    content: "اضغط للتكبير";
-    position: absolute;
-    bottom: 9px;
-    right: 9px;
-    background: rgba(19, 45, 37, .88);
-    color: var(--gold-light);
-    padding: 4px 9px;
-    border-radius: 20px;
-    font-size: 8px;
-    opacity: 0;
-    transition: .25s;
-    pointer-events: none;
-}
-
-.product-card:hover .product-img-box::after {
-    opacity: 1;
-}
-
-.product-img-box img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform .35s;
-}
-
-.product-card:hover .product-img-box img {
-    transform: scale(1.055);
-}
-
-.product-details {
-    padding: 11px 11px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-}
-
-.product-title {
-    color: #222d26;
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 1.65;
-    min-height: 36px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.price-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-}
-
-.product-price {
-    color: var(--emerald);
-    font-size: 18px;
-    font-weight: 900;
-    line-height: 1.3;
-}
-
-.product-price span {
-    font-size: 9px;
-    color: #858277;
-    font-weight: 600;
-    margin-right: 3px;
-}
-
-.price-decoration {
-    width: 23px;
-    height: 2px;
-    background: var(--gold);
-    border-radius: 5px;
-}
-
-.order-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    padding: 9px 5px;
-    border-radius: 9px;
-    color: white;
-    background: var(--emerald);
-    font-size: 10px;
-    font-weight: 800;
-    transition: .25s;
-}
-
-.order-btn:hover {
-    background: var(--emerald-2);
-    box-shadow: 0 5px 13px rgba(19, 45, 37,.18);
-}
-
-.whatsapp-icon {
-    font-size: 13px;
-    color: var(--gold-light);
-}
-
-/* EMPTY SEARCH */
-.empty-state {
-    display: none;
-    text-align: center;
-    padding: 40px 15px;
-    color: var(--muted);
-    background: var(--card-bg);
-    border: 1px dashed #d7cbb4;
-    border-radius: 18px;
-    margin-top: 14px;
-}
-
-.empty-state.show {
-    display: block;
-}
-
-.empty-state strong {
-    display: block;
-    color: var(--emerald);
-    font-size: 17px;
-    margin-bottom: 5px;
-}
-
-/* FOOTER */
-.footer {
-    background: #10251f;
-    color: #d5d8cf;
-    text-align: center;
-    padding: 25px 15px;
-    border-top: 2px solid var(--gold);
-}
-
-.footer-logo {
-    color: var(--gold-light);
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    margin-bottom: 5px;
-}
-
-.footer p {
-    font-size: 10px;
-    color: #b7c0b6;
-}
-
-/* IMAGE VIEWER */
-.image-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-    background: rgba(8, 18, 14, .95);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 55px 15px 25px;
-    backdrop-filter: blur(8px);
-}
-
-.image-modal.open {
-    display: flex;
-    animation: fadeIn .2s ease;
-}
-
-.image-modal img {
-    max-width: 95%;
-    max-height: 82vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 13px;
-    box-shadow: 0 15px 55px rgba(0,0,0,.5);
-    animation: zoomIn .25s ease;
-}
-
-.modal-close {
-    position: absolute;
-    top: 13px;
-    left: 17px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 50%;
-    background: rgba(255,255,255,.12);
-    color: white;
-    font-size: 27px;
-    line-height: 1;
-    cursor: pointer;
-}
-
-.modal-close:hover {
-    background: var(--gold);
-    color: #15251e;
-}
-
-@keyframes appear {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes zoomIn {
-    from { transform: scale(.94); opacity: .5; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* TABLET */
-@media (min-width: 600px) {
-    .container {
-        padding-left: 22px;
-        padding-right: 22px;
-    }
-
-    .products-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 17px;
-    }
-
-    .product-details {
-        padding: 13px;
-    }
-
-    .product-title {
-        font-size: 13px;
-        min-height: 42px;
-    }
-
-    .product-price {
-        font-size: 21px;
-    }
-
-    .order-btn {
-        font-size: 11px;
-        padding: 10px;
-    }
-}
-
-/* DESKTOP */
-@media (min-width: 950px) {
-    .products-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 20px;
-    }
-
-    .hero {
-        min-height: 230px;
-        padding: 40px;
-    }
-
-    .hero p {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 380px) {
-    .container {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .products-grid {
-        gap: 9px;
-    }
-
-    .product-details {
-        padding: 9px;
-    }
-
-    .product-title {
-        font-size: 10px;
-    }
-
-    .product-price {
-        font-size: 16px;
-    }
-
-    .brand-name {
-        font-size: 20px;
-    }
-
-    .header-mark {
-        width: 65px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العطور والبرفانات - متجر كارميلا</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* BOOM EDITION: Dark Glass Atelier + Glow Accents */
+        :root {
+            --bg-void: #07090f;
+            --bg-elevated: rgba(17, 24, 39, 0.72);
+            --bg-card: rgba(20, 27, 45, 0.78);
+            --glow-amber: #f59e0b;
+            --glow-cyan: #38bdf8;
+            --text-pure: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.11);
+            --glass-border-hover: rgba(245, 158, 11, 0.55);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-void);
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(245, 158, 11, 0.16), transparent 36%),
+                radial-gradient(circle at 88% 22%, rgba(56, 189, 248, 0.14), transparent 38%),
+                radial-gradient(circle at 50% 95%, rgba(245, 158, 11, 0.10), transparent 45%);
+            color: var(--text-pure);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* هيدر زجاجي داكن بلمسة نيون خفيفة */
+        header {
+            background: rgba(7, 9, 15, 0.76);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 14px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-pure);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
+            padding: 7px 15px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--glow-amber);
+            color: #07090f;
+            border-color: var(--glow-amber);
+            box-shadow: 0 0 18px rgba(245, 158, 11, 0.45);
+        }
+
+        .logo {
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(90deg, #fde68a, #f59e0b, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-spacer { width: 80px; }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 24px 12px 52px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* بانر افتتاحي جريء */
+        .page-header {
+            text-align: center;
+            margin-bottom: 22px;
+            background: linear-gradient(145deg, rgba(24, 33, 56, 0.9), rgba(12, 16, 28, 0.95));
+            padding: 32px 18px;
+            border-radius: 26px;
+            border: 1px solid rgba(245, 158, 11, 0.28);
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+            background: linear-gradient(to left, #ffffff, #fcd34d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+        }
+
+        /* شريط بحث زجاجي مضيء */
+        .sticky-search-bar {
+            position: sticky;
+            top: 64px;
+            z-index: 90;
+            background: rgba(7, 9, 15, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 10px 4px;
+            margin-bottom: 20px;
+            border-radius: 999px;
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            gap: 8px;
+            background: rgba(18, 25, 43, 0.92);
+            padding: 6px 8px 6px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .search-box-wrapper:focus-within {
+            border-color: var(--glow-amber);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18), 0 12px 30px rgba(0, 0, 0, 0.65);
+        }
+
+        .search-box-wrapper input {
+            flex: 1;
+            padding: 10px 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-pure);
+            border-radius: 999px;
+            font-size: 0.92rem;
+            outline: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .search-box-wrapper input::placeholder {
+            color: #64748b;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            color: #07090f;
+            border: none;
+            padding: 0 24px;
+            border-radius: 999px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(245, 158, 11, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 24px rgba(245, 158, 11, 0.55);
+        }
+
+        /* كروت المنتجات الزجاجية المضيئة */
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 7px);
+            padding: 8px;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65), 0 0 22px rgba(245, 158, 11, 0.16);
+        }
+
+        .product-img-box {
+            width: 100%;
+            height: 170px;
+            background: #0f172a;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 16px;
+        }
+
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.07);
+        }
+
+        .product-details {
+            padding: 12px 6px 6px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            text-align: right;
+            gap: 10px;
+        }
+
+        .product-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-pure);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.6em;
+            line-height: 1.35em;
+        }
+
+        .product-price {
+            font-size: 1.12rem;
+            font-weight: 900;
+            color: #fbbf24;
+            margin-top: 3px;
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+
+        .product-price span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #fde68a;
+            margin-right: 3px;
+        }
+
+        .order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-pure);
+            border: 1px solid var(--glass-border);
+            border-radius: 13px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            transition: all 0.25s ease;
+        }
+
+        .order-btn:hover,
+        .product-card:hover .order-btn {
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            color: #07090f;
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+        }
+
+        /* نافذة تكبير الصورة */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 5, 10, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-modal img {
+            max-width: 92%;
+            max-height: 85vh;
+            border-radius: 18px;
+            object-fit: contain;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 28px;
+            color: #ffffff;
+            font-size: 2.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--glow-amber);
+            color: #07090f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            border-top: 1px solid var(--glass-border);
+            margin-top: auto;
+            background: rgba(10, 14, 24, 0.9);
+        }
+
+        @media (min-width: 768px) {
+            .page-header h1 { font-size: 2.15rem; }
+            .products-grid { gap: 18px; }
+            .product-card { width: calc(33.333% - 12px); padding: 10px; }
+            .product-img-box { height: 215px; }
+            .product-title { font-size: 0.95rem; }
+            .product-price { font-size: 1.18rem; }
+            .order-btn { padding: 11px; font-size: 0.86rem; }
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="header">
-    <div class="header-inner">
-        <a href="index.html" class="back-btn">← الرئيسية</a>
-
-        <div class="brand">
-            <div class="brand-name">CARAMEL</div>
-            <div class="brand-sub">LUXURY COLLECTION</div>
-        </div>
-
-        <div class="header-mark"></div>
-    </div>
+<header>
+    <a href="index.html" class="back-btn">→ الرئيسية</a>
+    <div class="logo">CARAMEL</div>
+    <div class="header-spacer"></div>
 </header>
 
 <main class="container">
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-kicker">CARAMEL • EXCLUSIVE COLLECTION</div>
-            <h1>عالم من العطور<br>يليق بذوقك</h1>
-            <p>اختار عطرك المفضل واترك بصمتك الخاصة في كل مكان.</p>
-            <div class="hero-line"></div>
-        </div>
-    </section>
+    <div class="page-header">
+        <h1>العطور والبرفانات</h1>
+        <p>اضغط على أي صورة لتكبيرها، أو ابحث بالاسم أو السعر أدناه</p>
+    </div>
 
-    <div class="search-sticky">
-        <div class="search-box">
-            <span class="search-icon">⌕</span>
+    <!-- خانة البحث وزرار البحث -->
+    <div class="sticky-search-bar">
+        <div class="search-box-wrapper">
             <input
-                type="search"
+                type="text"
                 id="searchQuery"
-                placeholder="ابحث عن اسم العطر أو السعر..."
-                autocomplete="off"
-                aria-label="ابحث عن منتج"
+                placeholder="ابحث عن المنتج أو السعر المناسب"
+                oninput="handleSearchInput()"
+                onkeyup="if(event.key === 'Enter') triggerSearch();"
             >
-            <button class="search-btn" id="searchButton" type="button">بحث</button>
+            <button class="search-btn" onclick="triggerSearch()">بحث</button>
         </div>
-        <div class="search-message" id="searchMessage"></div>
     </div>
 
-    <div class="section-heading">
-        <h2>تشكيلة العطور</h2>
-        <span>اختيارات كارميلا الخاصة</span>
-    </div>
-
+    <!-- المنتجات -->
     <div class="products-grid" id="productsContainer">
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950472010.webp')">
                 <img src="Prfa/compressed_1794950472010.webp" alt="Lively For Men Paris" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">عطر Lively For Men Paris</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">عطر Lively For Men Paris</div>
                     <div class="product-price">175<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20Lively%20175%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20Lively%20175%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
-                <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود Black Intense من لطافة" loading="lazy">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096546.webp')">
+                <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">عطر مصمم الأسود Black Intense من لطافة</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">عطر مصمم الأسود Black Intense من لطافة</div>
                     <div class="product-price">375<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20مصمم%20الأسود%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20مصمم%20الأسود%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
-                <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب من لطافة" loading="lazy">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096662.webp')">
+                <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">عطر مصمم الذهب من لطافة</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">عطر مصمم الذهب من لطافة</div>
                     <div class="product-price">375<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20مصمم%20الذهب%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20مصمم%20الذهب%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096748.webp')">
                 <img src="Prfa/compressed_1794950096748.webp" alt="قصة الوردي" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">عطر قصة الوردي</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">عطر قصة الوردي</div>
                     <div class="product-price">375<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20قصة%20الوردي%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20قصة%20الوردي%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096833.webp')">
                 <img src="Prfa/compressed_1794950096833.webp" alt="يارا من لطافة" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">عطر يارا من لطافة</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">عطر يارا من لطافة</div>
                     <div class="product-price">375<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20يارا%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20عطر%20يارا%20375%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0067.jpg')">
                 <img src="Prfa/IMG-20261116-WA0067.jpg" alt="بارفان مميز" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">بارفان مميز</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">بارفان مميز</div>
                     <div class="product-price">160<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0068.jpg')">
                 <img src="Prfa/IMG-20261116-WA0068.jpg" alt="بارفان مميز" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">بارفان مميز</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">بارفان مميز</div>
                     <div class="product-price">160<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0069.jpg')">
                 <img src="Prfa/IMG-20261116-WA0069.jpg" alt="بارفان مميز" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">بارفان مميز</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">بارفان مميز</div>
                     <div class="product-price">160<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0077.jpg')">
                 <img src="Prfa/IMG-20261116-WA0077.jpg" alt="بارفان فخم" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">بارفان فخم</div>
-                <div class="price-row">
+                <div>
+                    <div class="product-title">بارفان فخم</div>
                     <div class="product-price">200<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
                 </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20200%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer"><span class="whatsapp-icon">◉</span> اطلب الآن</a>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20200%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
             </div>
-        </article>
+        </div>
 
-        <article class="product-card">
-            <div class="product-img-box">
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0078.jpg')">
                 <img src="Prfa/IMG-20261116-WA0078.jpg" alt="بارفان صغير" loading="lazy">
             </div>
             <div class="product-details">
-                <div class="product-title">بارفان صغير</div>
-                <div
+                <div>
+                    <div class="product-title">بارفان صغير</div>
+                    <div class="product-price">45<span>جنيه</span></div>
+                </div>
+                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%2045%20جنيه" class="order-btn" target="_blank" rel="noopener noreferrer">اطلب الآن</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0079.jpg')">
+                <img src="Prfa/IMG-20261116-WA0079.jpg" alt="بارفان فخم" loading="lazy">
+            </div>
+            <div class="product-details">
+                <div>
+                    <div class="product-title">بارفان فخم</div>
+                    <div class="product-price">200<span>جنيه</span></div>
+                </div>
