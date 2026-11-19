@@ -6,7 +6,7 @@
     <title>متجر كارامل - Caramel Store</title>
 
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2f3e34">
+    <meta name="theme-color" content="#0f3d4c">
 
     <meta property="og:title" content="متجر كارامل - Caramel Store">
     <meta property="og:description" content="كل حاجه تحتاجها عند كارميلا وأرخص الاسعار واللى مش موجود نجيبهولك والتوصيل لباب المنزل فأسرع وقت ولو حابب تطلب من شى أن هنجبهالك بنفس سعر الابلكيشن ومن غير جمارك">
@@ -19,17 +19,17 @@
 
     <style>
         :root {
-            --olive-deep: #2f3e34;
-            --olive-mid: #46594c;
-            --olive-soft: #e4ebe6;
-            --brass: #b5895a;
-            --brass-dark: #8c643b;
-            --bg: #f5f7f4;
+            --petrol-deep: #0f3d4c;
+            --petrol-mid: #1b5e73;
+            --aqua-soft: #e3f1f6;
+            --coral: #e86f68;
+            --coral-dark: #c4524b;
+            --bg: #f4f9fb;
             --surface: #ffffff;
-            --text: #1c241e;
-            --muted: #5c6b61;
-            --line: rgba(47, 62, 52, 0.13);
-            --brass-line: rgba(181, 137, 90, 0.36);
+            --text: #10252d;
+            --muted: #546d77;
+            --line: rgba(15, 61, 76, 0.13);
+            --accent-line: rgba(27, 94, 115, 0.28);
         }
 
         * {
@@ -55,8 +55,8 @@
 
         /* شريط علوي رفيع للمزايا */
         .top-bar {
-            background: var(--brass);
-            color: var(--olive-deep);
+            background: var(--coral);
+            color: #ffffff;
             font-size: 0.78rem;
             font-weight: 800;
             padding: 6px 14px;
@@ -74,12 +74,12 @@
 
         /* هيدر رئيسي بلمسة عصرية */
         header {
-            background: rgba(47, 62, 52, 0.97);
+            background: rgba(15, 61, 76, 0.97);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(228, 235, 230, 0.24);
+            border-bottom: 1px solid rgba(227, 241, 246, 0.22);
         }
 
         .header-inner {
@@ -102,8 +102,8 @@
             width: 38px;
             height: 38px;
             border-radius: 11px;
-            background: linear-gradient(135deg, var(--brass), #d9b082);
-            color: var(--olive-deep);
+            background: linear-gradient(135deg, var(--coral), #ff968f);
+            color: #ffffff;
             font-weight: 800;
             font-size: 1.15rem;
             display: grid;
@@ -120,15 +120,15 @@
 
         .brand-tag {
             font-size: 0.65rem;
-            color: var(--olive-soft);
+            color: #9ad8ec;
             font-weight: 700;
             letter-spacing: 1.5px;
         }
 
         .header-wa {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--olive-soft);
-            border: 1px solid rgba(228, 235, 230, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(227, 241, 246, 0.3);
             padding: 7px 14px;
             border-radius: 11px;
             font-size: 0.8rem;
@@ -137,9 +137,8 @@
         }
 
         .header-wa:hover {
-            background: var(--brass);
-            color: #ffffff;
-            border-color: var(--brass);
+            background: var(--coral);
+            border-color: var(--coral);
         }
 
         .container {
@@ -161,10 +160,10 @@
 
         .hero-main {
             background: var(--surface);
-            border: 1px solid var(--brass-line);
+            border: 1px solid var(--accent-line);
             border-radius: 24px;
             padding: 28px 24px;
-            box-shadow: 0 12px 30px -12px rgba(47, 62, 52, 0.1);
+            box-shadow: 0 12px 30px -12px rgba(15, 61, 76, 0.11);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -176,9 +175,9 @@
             align-items: center;
             gap: 6px;
             width: fit-content;
-            background: var(--olive-soft);
-            color: var(--olive-deep);
-            border: 1px solid var(--brass-line);
+            background: var(--aqua-soft);
+            color: var(--petrol-deep);
+            border: 1px solid var(--accent-line);
             padding: 4px 12px;
             border-radius: 999px;
             font-size: 0.78rem;
@@ -188,7 +187,7 @@
         .hero-main h1 {
             font-size: 1.7rem;
             font-weight: 800;
-            color: var(--olive-deep);
+            color: var(--petrol-deep);
             line-height: 1.3;
         }
 
@@ -219,32 +218,32 @@
         }
 
         .btn-dark {
-            background: var(--olive-deep);
+            background: var(--petrol-deep);
             color: #ffffff;
         }
 
         .btn-dark:hover {
-            background: var(--brass-dark);
+            background: var(--coral-dark);
             transform: translateY(-2px);
         }
 
         .btn-outline {
-            background: var(--olive-soft);
-            color: var(--olive-deep);
-            border: 1px solid var(--brass-line);
+            background: var(--aqua-soft);
+            color: var(--petrol-deep);
+            border: 1px solid var(--accent-line);
         }
 
         .btn-outline:hover {
-            background: #d5dfd8;
+            background: #cfe6ef;
             transform: translateY(-2px);
         }
 
         .hero-side {
-            background: linear-gradient(155deg, var(--olive-deep) 0%, var(--olive-mid) 100%);
+            background: linear-gradient(155deg, var(--petrol-deep) 0%, var(--petrol-mid) 100%);
             color: #ffffff;
             border-radius: 24px;
             padding: 24px 20px;
-            border: 1px solid rgba(228, 235, 230, 0.28);
+            border: 1px solid rgba(227, 241, 246, 0.28);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -270,7 +269,7 @@
         .side-label {
             font-size: 0.72rem;
             font-weight: 700;
-            color: #e6c69c;
+            color: #ffaba5;
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
@@ -288,8 +287,8 @@
         }
 
         .stat-box {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(228, 235, 230, 0.24);
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(227, 241, 246, 0.25);
             border-radius: 14px;
             padding: 10px 8px;
             text-align: center;
@@ -299,12 +298,12 @@
             display: block;
             font-size: 0.9rem;
             font-weight: 800;
-            color: #f0d3ac;
+            color: #ffaba5;
         }
 
         .stat-box span {
             font-size: 0.68rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.88);
         }
 
         /* عنوان قسم البوابات */
@@ -315,13 +314,13 @@
             gap: 12px;
             margin-bottom: 18px;
             padding-bottom: 10px;
-            border-bottom: 1px dashed var(--brass-line);
+            border-bottom: 1px dashed var(--accent-line);
         }
 
         .section-head h2 {
             font-size: 1.35rem;
             font-weight: 800;
-            color: var(--olive-deep);
+            color: var(--petrol-deep);
         }
 
         .section-head span {
@@ -343,7 +342,7 @@
             border: 1px solid var(--line);
             border-radius: 22px;
             padding: 12px;
-            box-shadow: 0 10px 26px -12px rgba(47, 62, 52, 0.09);
+            box-shadow: 0 10px 26px -12px rgba(15, 61, 76, 0.1);
             display: flex;
             flex-direction: column;
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
@@ -351,8 +350,8 @@
 
         .gateway-card:hover {
             transform: translateY(-4px);
-            border-color: var(--brass);
-            box-shadow: 0 18px 34px -14px rgba(47, 62, 52, 0.16);
+            border-color: var(--coral);
+            box-shadow: 0 18px 34px -14px rgba(15, 61, 76, 0.18);
         }
 
         .gateway-media {
@@ -360,7 +359,7 @@
             height: 220px;
             border-radius: 16px;
             overflow: hidden;
-            background: var(--olive-soft);
+            background: var(--aqua-soft);
             position: relative;
         }
 
@@ -400,8 +399,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--olive-soft);
-            color: var(--olive-deep);
+            background: var(--aqua-soft);
+            color: var(--petrol-deep);
             padding: 10px 14px;
             border-radius: 12px;
             font-size: 0.84rem;
@@ -410,14 +409,14 @@
         }
 
         .gateway-card:hover .gateway-action {
-            background: var(--olive-deep);
+            background: var(--petrol-deep);
             color: #ffffff;
         }
 
         /* شريط خطوات طلب شي إن */
         .steps-strip {
-            background: var(--olive-soft);
-            border: 1px solid var(--brass-line);
+            background: var(--aqua-soft);
+            border: 1px solid var(--accent-line);
             border-radius: 20px;
             padding: 18px 20px;
             display: grid;
@@ -436,8 +435,8 @@
             display: inline-block;
             font-size: 0.72rem;
             font-weight: 800;
-            color: var(--brass-dark);
-            background: var(--olive-soft);
+            color: var(--coral-dark);
+            background: #fff0ef;
             padding: 2px 9px;
             border-radius: 999px;
             margin-bottom: 4px;
@@ -461,7 +460,7 @@
             font-size: 0.84rem;
             color: var(--muted);
             border-top: 1px solid var(--line);
-            background: #e9efe9;
+            background: #e8f2f6;
             margin-top: auto;
         }
 
