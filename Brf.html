@@ -64,7 +64,7 @@
         }
 
         .search-box-wrapper:focus-within {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             border-color: var(--gold);
             box-shadow: 0 8px 24px rgba(212, 175, 55, 0.22);
         }
@@ -118,7 +118,7 @@
             display: none;
             width: 100%;
             text-align: center;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
             border: 1.5px solid var(--gold-border);
             border-radius: 14px;
             padding: 24px 14px;
@@ -227,10 +227,8 @@
                 id="searchQuery"
                 placeholder="ابحث عن المنتج أو السعر المناسب"
                 autocomplete="off"
-                oninput="handleSearchInput()"
-                onkeyup="if(event.key === 'Enter') triggerSearch();"
             >
-            <button type="button" class="search-btn" onclick="triggerSearch()">بحث</button>
+            <button type="button" id="searchBtn" class="search-btn">بحث</button>
         </div>
     </div>
 
@@ -419,4 +417,5 @@
             </div>
         </div>
 
-        <div class="product-card" data-keywords
+        <div class="product-card" data-keywords="بارفان عطر كلاسيك قديم اصلي">
+            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0102.jpg')">
