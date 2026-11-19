@@ -6,7 +6,7 @@
     <title>متجر كارامل - Caramel Store</title>
 
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#12372a">
+    <meta name="theme-color" content="#6b1d45">
 
     <meta property="og:title" content="متجر كارامل - Caramel Store">
     <meta property="og:description" content="كل حاجه تحتاجها عند كارميلا وأرخص الاسعار واللى مش موجود نجيبهولك والتوصيل لباب المنزل فأسرع وقت ولو حابب تطلب من شى أن هنجبهالك بنفس سعر الابلكيشن ومن غير جمارك">
@@ -19,18 +19,17 @@
 
     <style>
         :root {
-            --emerald-deep: #12372a;
-            --emerald-mid: #1d4f3e;
-            --champagne-gold: #c59b52;
-            --terracotta: #d96b43;
-            --terracotta-dark: #b8532e;
-            --mint-soft: #e6f0ec;
-            --bg-main: #f9f7f2;
+            --plum-deep: #6b1d45;
+            --plum-mid: #8e2a5c;
+            --rose-soft: #e06d9f;
+            --rose-dark: #b94679;
+            --blush-tint: #fde8f1;
+            --bg-main: #fff8fa;
             --bg-card: #ffffff;
-            --text-main: #16241f;
-            --text-muted: #5e6e68;
-            --border-boutique: rgba(18, 55, 42, 0.14);
-            --shadow-boutique: 0 14px 34px -12px rgba(18, 55, 42, 0.14);
+            --text-main: #2b1420;
+            --text-muted: #785868;
+            --border-girly: rgba(224, 109, 159, 0.25);
+            --shadow-girly: 0 14px 34px -12px rgba(107, 29, 69, 0.14);
         }
 
         * {
@@ -55,16 +54,16 @@
         }
 
         header {
-            background: rgba(18, 55, 42, 0.97);
+            background: rgba(107, 29, 69, 0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 15px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid var(--champagne-gold);
+            border-bottom: 2px solid var(--rose-soft);
             text-align: center;
-            box-shadow: 0 6px 20px rgba(18, 55, 42, 0.18);
+            box-shadow: 0 6px 20px rgba(107, 29, 69, 0.16);
         }
 
         .logo {
@@ -81,7 +80,7 @@
             display: block;
             font-size: 0.65rem;
             letter-spacing: 2.5px;
-            color: var(--champagne-gold);
+            color: var(--blush-tint);
             font-weight: 700;
             margin-top: 2px;
         }
@@ -95,14 +94,14 @@
         }
 
         .hero-box {
-            background: linear-gradient(140deg, var(--emerald-deep) 0%, var(--emerald-mid) 72%, #245c49 100%);
+            background: linear-gradient(135deg, var(--plum-deep) 0%, var(--plum-mid) 68%, var(--rose-dark) 100%);
             color: #ffffff;
-            border: 1px solid rgba(197, 155, 82, 0.45);
+            border: 1px solid rgba(253, 232, 241, 0.35);
             border-radius: 26px;
             padding: 36px 24px 32px;
             margin: 26px auto 34px;
             text-align: center;
-            box-shadow: var(--shadow-boutique);
+            box-shadow: var(--shadow-girly);
             position: relative;
             overflow: hidden;
         }
@@ -130,9 +129,9 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(197, 155, 82, 0.18);
-            color: #f6e2b8;
-            border: 1px solid rgba(197, 155, 82, 0.45);
+            background: rgba(255, 255, 255, 0.14);
+            color: var(--blush-tint);
+            border: 1px solid rgba(253, 232, 241, 0.35);
             padding: 5px 16px;
             border-radius: 999px;
             font-size: 0.84rem;
@@ -150,7 +149,7 @@
 
         .hero-text {
             font-size: 1rem;
-            color: rgba(255, 255, 255, 0.92);
+            color: rgba(255, 255, 255, 0.94);
             max-width: 720px;
             margin: 0 auto 22px;
             font-weight: 600;
@@ -165,8 +164,8 @@
         }
 
         .feature-pill {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(253, 232, 241, 0.28);
             color: #ffffff;
             font-size: 0.78rem;
             font-weight: 700;
@@ -196,24 +195,24 @@
         }
 
         .btn-primary {
-            background: var(--terracotta);
-            color: #ffffff;
-            box-shadow: 0 10px 22px -6px rgba(217, 107, 67, 0.45);
+            background: #ffffff;
+            color: var(--plum-deep);
+            box-shadow: 0 10px 22px -6px rgba(43, 20, 32, 0.35);
         }
 
         .btn-primary:hover {
-            background: var(--terracotta-dark);
+            background: var(--blush-tint);
             transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: #ffffff;
-            color: var(--emerald-deep);
-            border: 1px solid rgba(197, 155, 82, 0.5);
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            border: 1px solid rgba(253, 232, 241, 0.45);
         }
 
         .btn-secondary:hover {
-            background: var(--mint-soft);
+            background: rgba(255, 255, 255, 0.24);
             transform: translateY(-2px);
         }
 
@@ -225,7 +224,7 @@
         .section-title h2 {
             font-size: 1.45rem;
             font-weight: 800;
-            color: var(--emerald-deep);
+            color: var(--plum-deep);
             margin-bottom: 4px;
         }
 
@@ -237,7 +236,7 @@
         .section-divider {
             width: 52px;
             height: 3px;
-            background: linear-gradient(90deg, var(--emerald-deep), var(--champagne-gold));
+            background: linear-gradient(90deg, var(--plum-mid), var(--rose-soft));
             border-radius: 999px;
             margin: 10px auto 0;
         }
@@ -251,24 +250,19 @@
 
         .category-card {
             background: var(--bg-card);
-            border-radius: 22px;
+            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid var(--border-boutique);
-            border-top: 3px solid var(--champagne-gold);
-            box-shadow: var(--shadow-boutique);
+            border: 1px solid var(--border-girly);
+            box-shadow: var(--shadow-girly);
             transition: all 0.32s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .category-card.card-shein {
-            border-top-color: var(--terracotta);
-        }
-
         .category-card:hover {
             transform: translateY(-6px);
-            border-color: var(--emerald-mid);
-            box-shadow: 0 20px 38px -12px rgba(18, 55, 42, 0.2);
+            border-color: var(--rose-soft);
+            box-shadow: 0 20px 38px -12px rgba(224, 109, 159, 0.28);
         }
 
         .img-wrapper {
@@ -276,16 +270,16 @@
             height: 235px;
             overflow: hidden;
             position: relative;
-            background: var(--mint-soft);
+            background: var(--blush-tint);
         }
 
         .card-badge {
             position: absolute;
             top: 12px;
             right: 12px;
-            background: rgba(18, 55, 42, 0.88);
-            color: #f6e2b8;
-            border: 1px solid rgba(197, 155, 82, 0.45);
+            background: rgba(107, 29, 69, 0.88);
+            color: var(--blush-tint);
+            border: 1px solid rgba(253, 232, 241, 0.35);
             font-size: 0.72rem;
             font-weight: 800;
             padding: 4px 12px;
@@ -293,10 +287,9 @@
             z-index: 2;
         }
 
-        .card-shein .card-badge {
-            background: rgba(184, 83, 46, 0.92);
+        .category-card.card-shein .card-badge {
+            background: rgba(185, 70, 121, 0.92);
             color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .category-card img {
@@ -337,8 +330,8 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--mint-soft);
-            color: var(--emerald-deep);
+            background: var(--blush-tint);
+            color: var(--plum-deep);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -348,13 +341,13 @@
         }
 
         .category-card:hover .card-arrow {
-            background: var(--emerald-deep);
+            background: var(--plum-deep);
             color: #ffffff;
             transform: translateX(-4px);
         }
 
         .category-card.card-shein:hover .card-arrow {
-            background: var(--terracotta);
+            background: var(--rose-dark);
             color: #ffffff;
         }
 
@@ -363,9 +356,9 @@
             padding: 20px 16px;
             font-size: 0.84rem;
             color: var(--text-muted);
-            border-top: 1px solid var(--border-boutique);
+            border-top: 1px solid var(--border-girly);
             margin-top: auto;
-            background: #eef3f0;
+            background: #faecf2;
         }
 
         @media (max-width: 480px) {
