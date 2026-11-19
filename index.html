@@ -6,7 +6,7 @@
     <title>متجر كارامل - Caramel Store</title>
 
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6b1d45">
+    <meta name="theme-color" content="#171b36">
 
     <meta property="og:title" content="متجر كارامل - Caramel Store">
     <meta property="og:description" content="كل حاجه تحتاجها عند كارميلا وأرخص الاسعار واللى مش موجود نجيبهولك والتوصيل لباب المنزل فأسرع وقت ولو حابب تطلب من شى أن هنجبهالك بنفس سعر الابلكيشن ومن غير جمارك">
@@ -19,17 +19,17 @@
 
     <style>
         :root {
-            --plum-deep: #6b1d45;
-            --plum-mid: #8e2a5c;
-            --rose-soft: #e06d9f;
-            --rose-dark: #b94679;
-            --blush-tint: #fde8f1;
-            --bg-main: #fff8fa;
+            --midnight: #171b36;
+            --royal-indigo: #312966;
+            --champagne: #e2a885;
+            --peach-copper: #c87d55;
+            --lavender-mist: #eef0fc;
+            --bg-main: #fcfbfe;
             --bg-card: #ffffff;
-            --text-main: #2b1420;
-            --text-muted: #785868;
-            --border-girly: rgba(224, 109, 159, 0.25);
-            --shadow-girly: 0 14px 34px -12px rgba(107, 29, 69, 0.14);
+            --text-main: #181a2f;
+            --text-muted: #626785;
+            --border-royal: rgba(49, 41, 102, 0.14);
+            --shadow-royal: 0 14px 34px -12px rgba(23, 27, 54, 0.15);
         }
 
         * {
@@ -54,16 +54,16 @@
         }
 
         header {
-            background: rgba(107, 29, 69, 0.97);
+            background: rgba(23, 27, 54, 0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 15px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid var(--rose-soft);
+            border-bottom: 2px solid var(--champagne);
             text-align: center;
-            box-shadow: 0 6px 20px rgba(107, 29, 69, 0.16);
+            box-shadow: 0 6px 20px rgba(23, 27, 54, 0.18);
         }
 
         .logo {
@@ -80,7 +80,7 @@
             display: block;
             font-size: 0.65rem;
             letter-spacing: 2.5px;
-            color: var(--blush-tint);
+            color: var(--champagne);
             font-weight: 700;
             margin-top: 2px;
         }
@@ -94,14 +94,14 @@
         }
 
         .hero-box {
-            background: linear-gradient(135deg, var(--plum-deep) 0%, var(--plum-mid) 68%, var(--rose-dark) 100%);
+            background: linear-gradient(135deg, var(--midnight) 0%, var(--royal-indigo) 70%, #483b8c 100%);
             color: #ffffff;
-            border: 1px solid rgba(253, 232, 241, 0.35);
+            border: 1px solid rgba(226, 168, 133, 0.42);
             border-radius: 26px;
             padding: 36px 24px 32px;
             margin: 26px auto 34px;
             text-align: center;
-            box-shadow: var(--shadow-girly);
+            box-shadow: var(--shadow-royal);
             position: relative;
             overflow: hidden;
         }
@@ -129,9 +129,9 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.14);
-            color: var(--blush-tint);
-            border: 1px solid rgba(253, 232, 241, 0.35);
+            background: rgba(226, 168, 133, 0.18);
+            color: #fae0cf;
+            border: 1px solid rgba(226, 168, 133, 0.45);
             padding: 5px 16px;
             border-radius: 999px;
             font-size: 0.84rem;
@@ -149,7 +149,7 @@
 
         .hero-text {
             font-size: 1rem;
-            color: rgba(255, 255, 255, 0.94);
+            color: rgba(255, 255, 255, 0.93);
             max-width: 720px;
             margin: 0 auto 22px;
             font-weight: 600;
@@ -164,8 +164,8 @@
         }
 
         .feature-pill {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(253, 232, 241, 0.28);
+            background: rgba(255, 255, 255, 0.11);
+            border: 1px solid rgba(255, 255, 255, 0.22);
             color: #ffffff;
             font-size: 0.78rem;
             font-weight: 700;
@@ -195,24 +195,24 @@
         }
 
         .btn-primary {
-            background: #ffffff;
-            color: var(--plum-deep);
-            box-shadow: 0 10px 22px -6px rgba(43, 20, 32, 0.35);
+            background: var(--champagne);
+            color: var(--midnight);
+            box-shadow: 0 10px 22px -6px rgba(226, 168, 133, 0.45);
         }
 
         .btn-primary:hover {
-            background: var(--blush-tint);
+            background: #f0bc9c;
             transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.12);
             color: #ffffff;
-            border: 1px solid rgba(253, 232, 241, 0.45);
+            border: 1px solid rgba(226, 168, 133, 0.45);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.24);
+            background: rgba(255, 255, 255, 0.22);
             transform: translateY(-2px);
         }
 
@@ -224,7 +224,7 @@
         .section-title h2 {
             font-size: 1.45rem;
             font-weight: 800;
-            color: var(--plum-deep);
+            color: var(--midnight);
             margin-bottom: 4px;
         }
 
@@ -236,7 +236,7 @@
         .section-divider {
             width: 52px;
             height: 3px;
-            background: linear-gradient(90deg, var(--plum-mid), var(--rose-soft));
+            background: linear-gradient(90deg, var(--royal-indigo), var(--champagne));
             border-radius: 999px;
             margin: 10px auto 0;
         }
@@ -252,17 +252,22 @@
             background: var(--bg-card);
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid var(--border-girly);
-            box-shadow: var(--shadow-girly);
+            border: 1px solid var(--border-royal);
+            border-top: 3px solid var(--royal-indigo);
+            box-shadow: var(--shadow-royal);
             transition: all 0.32s ease;
             display: flex;
             flex-direction: column;
         }
 
+        .category-card.card-shein {
+            border-top-color: var(--peach-copper);
+        }
+
         .category-card:hover {
             transform: translateY(-6px);
-            border-color: var(--rose-soft);
-            box-shadow: 0 20px 38px -12px rgba(224, 109, 159, 0.28);
+            border-color: var(--royal-indigo);
+            box-shadow: 0 20px 38px -12px rgba(49, 41, 102, 0.22);
         }
 
         .img-wrapper {
@@ -270,16 +275,16 @@
             height: 235px;
             overflow: hidden;
             position: relative;
-            background: var(--blush-tint);
+            background: var(--lavender-mist);
         }
 
         .card-badge {
             position: absolute;
             top: 12px;
             right: 12px;
-            background: rgba(107, 29, 69, 0.88);
-            color: var(--blush-tint);
-            border: 1px solid rgba(253, 232, 241, 0.35);
+            background: rgba(23, 27, 54, 0.88);
+            color: #fae0cf;
+            border: 1px solid rgba(226, 168, 133, 0.45);
             font-size: 0.72rem;
             font-weight: 800;
             padding: 4px 12px;
@@ -288,8 +293,9 @@
         }
 
         .category-card.card-shein .card-badge {
-            background: rgba(185, 70, 121, 0.92);
+            background: rgba(200, 125, 85, 0.94);
             color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .category-card img {
@@ -330,8 +336,8 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--blush-tint);
-            color: var(--plum-deep);
+            background: var(--lavender-mist);
+            color: var(--royal-indigo);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -341,13 +347,13 @@
         }
 
         .category-card:hover .card-arrow {
-            background: var(--plum-deep);
+            background: var(--royal-indigo);
             color: #ffffff;
             transform: translateX(-4px);
         }
 
         .category-card.card-shein:hover .card-arrow {
-            background: var(--rose-dark);
+            background: var(--peach-copper);
             color: #ffffff;
         }
 
@@ -356,9 +362,9 @@
             padding: 20px 16px;
             font-size: 0.84rem;
             color: var(--text-muted);
-            border-top: 1px solid var(--border-girly);
+            border-top: 1px solid var(--border-royal);
             margin-top: auto;
-            background: #faecf2;
+            background: #f1f2fa;
         }
 
         @media (max-width: 480px) {
