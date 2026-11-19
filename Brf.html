@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
+    
+      <style>
         :root {
             --primary: #3b82f6;
             --primary-dark: #1d4ed8;
@@ -20,36 +21,7 @@
             --text-muted: #64748b;
             --border-light: rgba(59, 130, 246, 0.35);
        --shadow-soft: 0 4px 16px rgba(30, 41, 59, 0.08);
-.sticky-search-bar {
-    position: sticky;
-    top: 64px;
-    z-index: 90;
-    background: rgba(240, 247, 255, 0.95);
-    backdrop-filter: blur(12px);
-    padding: 10px 0;
-    margin-bottom: 16px;
-}
-.search-box-wrapper {
-    display: flex;
-    align-items: center;
-    background: white;
-    border: 2px solid var(--border-light);
-    border-radius: 50px;
-    padding: 5px 20px;
-    max-width: 700px;
-    margin: 0 auto;
-}
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
-}
-.product-card {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-            .sticky-search-bar {
+ .sticky-search-bar {
     position: sticky;
     top: 64px; /* قريب من ارتفاع الهيدر */
     z-index: 90;
@@ -72,8 +44,7 @@
 .sticky-search-bar .search-box-wrapper .search-btn {
     border-radius: 999px;
     padding: 0 22px;
-}
-        
+}  
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Cairo', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
@@ -131,60 +102,157 @@
             padding: 0 20px;
             border-radius: 12px;
             font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background 0.2s;
-            box-shadow: var(--shadow-soft);
-        }
+/* تحديثات ستايل 2027 - بسيط وعصري (CSS فقط) */
+:root {
+    --primary: #111827;        /* أسود فحمي أنيق بدل الأزرق التقليدي */
+    --primary-dark: #000000;
+    --bg-main: #f8fafc;        /* خلفية فاتحة هادية ومريحة للعين */
+    --bg-card: #ffffff;
+    --dark-surface: #0f172a;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-light: #e2e8f0;
+    --shadow-soft: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
+}
 
-        .search-btn:hover {
-            background: var(--primary);
-        }
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    letter-spacing: -0.01em;
+}
 
-        .products-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+/* الهيدر الزجاجي العائم */
+header {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    color: var(--text-main) !important;
+}
 
-        .product-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid var(--border-light);
-            box-shadow: 0 6px 20px rgba(59,130,246,0.1);
-            display: flex;
-            flex-direction: column;
-            width: calc(50% - 6px);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+header .logo {
+    color: var(--text-main) !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
 
-        .product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(59,130,246,0.18); }
-        .product-img-box { width: 100%; height: 160px; background: #f0f7ff; position: relative; overflow: hidden; cursor: pointer; }
-        .product-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.3s ease; }
-        .product-card:hover img { transform: scale(1.04); }
+header .back-btn {
+    background: #f1f5f9 !important;
+    color: var(--text-main) !important;
+    border-radius: 999px;
+    font-weight: 600;
+}
 
-        .product-details { padding: 12px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; text-align: right; gap: 8px; }
-        .product-title { font-size: 0.82rem; font-weight: 700; color: var(--text-main); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.6em; line-height: 1.3em; }
-        .product-price { font-size: 1.05rem; font-weight: 800; color: var(--primary-dark); }
-        .product-price span { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-right: 3px; }
+/* البانر العلوي بتصميم هادي وبسيط */
+.page-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%) !important;
+    border: 1px solid var(--border-light);
+    border-radius: 28px !important;
+    padding: 32px 20px !important;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 24px;
+}
 
-        .order-btn { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 8px; background: var(--dark-surface); color: white; border-radius: 8px; font-size: 0.8rem; font-weight: 700; transition: background 0.2s ease; }
-        .order-btn:hover { background: var(--primary); }
+.page-header h1 {
+    color: var(--text-main) !important;
+    font-weight: 800;
+}
 
-        .image-modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
-        .image-modal img { max-width: 90%; max-height: 85vh; border-radius: 12px; object-fit: contain; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
-        .modal-close { position: absolute; top: 20px; left: 30px; color: white; font-size: 2.5rem; font-weight: bold; cursor: pointer; }
-        .modal-close:hover { color: var(--primary); }
+.page-header p {
+    color: var(--text-muted) !important;
+}
 
-        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(59,130,246,0.2); margin-top: auto; background: #e2e8f0; }
+/* شريط البحث الانسيابي */
+.sticky-search-bar {
+    background: rgba(248, 250, 252, 0.85) !important;
+    backdrop-filter: blur(14px);
+    padding: 12px 0 !important;
+}
 
-        @media (min-width: 768px) {
-            .products-grid { gap: 16px; }
-            .product-card { width: calc(33.333% - 11px); }
-            .product-img-box { height: 200px; }
-            .product-title { font-size: 0.95rem; }
-            .product-price { font-size: 1.2rem; }
-            .order-btn { padding: 10px; font-size: 0.85rem; }
-        }
-    </style>
+.search-box-wrapper {
+    background: #ffffff !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 999px !important;
+    padding: 6px 8px 6px 20px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.25s ease;
+}
+
+.search-box-wrapper:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08) !important;
+}
+
+.search-btn {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border-radius: 999px !important;
+    padding: 10px 24px !important;
+    font-weight: 600;
+}
+
+/* كروت المنتجات بنظام Bento الأنيق */
+.products-grid {
+    gap: 20px !important;
+}
+
+.product-card {
+    background: var(--bg-card) !important;
+    border: 1px solid rgba(226, 232, 240, 0.7) !important;
+    border-radius: 24px !important;
+    padding: 12px !important;
+    box-shadow: var(--shadow-soft) !important;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease !important;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.1) !important;
+}
+
+.product-img-box {
+    border-radius: 18px !important;
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+.product-details {
+    padding: 14px 6px 6px !important;
+    text-align: right;
+}
+
+.product-title {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: var(--text-main) !important;
+    margin-bottom: 6px;
+}
+
+.product-price {
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    color: #059669 !important; /* أخضر زمردي هادي للسعر */
+    margin-bottom: 12px;
+}
+
+/* زرار الطلب العصري */
+.product-details a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #f1f5f9 !important;
+    color: var(--text-main) !important;
+    border-radius: 14px !important;
+    padding: 10px !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+}
+
+.product-card:hover .product-details a {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+}
+</style>
 </head>
 
 <body>
