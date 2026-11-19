@@ -114,7 +114,7 @@
             color: var(--text-muted);
         }
 
-        /* تصميم صندوق البحث مع زرار البحث للضمان */
+        /* صندوق البحث */
         .search-box-wrapper {
             display: flex;
             gap: 8px;
@@ -344,21 +344,22 @@
         <p>اضغط على أي صورة لتكبيرها، أو اطلب مباشرة عبر الواتساب</p>
     </div>
 
-    <!-- البحث مع زرار بحث ضامن -->
+    <!-- البحث المباشر -->
     <div class="search-box-wrapper">
         <input
             type="text"
             id="searchInput"
-            placeholder="ابحث باسم المنتج أو السعر..."
+            oninput="filterProducts()"
+            placeholder="ابحث باسم العطر أو السعر..."
             autocomplete="off"
         >
-        <button class="search-btn" onclick="performSearch()">بحث</button>
+        <button class="search-btn" onclick="filterProducts()">بحث</button>
     </div>
 
-    <!-- المنتجات -->
+    <!-- المنتجات مع ربط الكلمات المفتاحية -->
     <div class="products-grid">
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="lively 175 عطر">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950472010.webp')">
                 <img src="Prfa/compressed_1794950472010.webp" alt="Lively For Men Paris" loading="lazy">
             </div>
@@ -371,7 +372,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="مصمم الأسود black intense لطافة 375 عطر">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096546.webp')">
                 <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود" loading="lazy">
             </div>
@@ -384,7 +385,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="مصمم الذهب لطافة 375 عطر">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096662.webp')">
                 <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب" loading="lazy">
             </div>
@@ -397,7 +398,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="قصة الوردي 375 عطر">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096748.webp')">
                 <img src="Prfa/compressed_1794950096748.webp" alt="قصة الوردي" loading="lazy">
             </div>
@@ -410,7 +411,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="يارا لطافة 375 عطر">
             <div class="product-img-box" onclick="openModal('Prfa/compressed_1794950096833.webp')">
                 <img src="Prfa/compressed_1794950096833.webp" alt="يارا من لطافة" loading="lazy">
             </div>
@@ -423,7 +424,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان مميز 160">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0067.jpg')">
                 <img src="Prfa/IMG-20261116-WA0067.jpg" alt="بارفان مميز" loading="lazy">
             </div>
@@ -436,7 +437,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان مميز 160">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0068.jpg')">
                 <img src="Prfa/IMG-20261116-WA0068.jpg" alt="بارفان مميز" loading="lazy">
             </div>
@@ -449,7 +450,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان مميز 160">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0069.jpg')">
                 <img src="Prfa/IMG-20261116-WA0069.jpg" alt="بارفان مميز" loading="lazy">
             </div>
@@ -462,7 +463,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان فخم 200">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0077.jpg')">
                 <img src="Prfa/IMG-20261116-WA0077.jpg" alt="بارفان فخم" loading="lazy">
             </div>
@@ -475,7 +476,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان صغير 45">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0078.jpg')">
                 <img src="Prfa/IMG-20261116-WA0078.jpg" alt="بارفان صغير" loading="lazy">
             </div>
@@ -488,7 +489,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان فخم 200">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0079.jpg')">
                 <img src="Prfa/IMG-20261116-WA0079.jpg" alt="بارفان فخم" loading="lazy">
             </div>
@@ -501,7 +502,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان فخم 200">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0080.jpg')">
                 <img src="Prfa/IMG-20261116-WA0080.jpg" alt="بارفان فخم" loading="lazy">
             </div>
@@ -514,7 +515,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان أنيق 150">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0083.jpg')">
                 <img src="Prfa/IMG-20261116-WA0083.jpg" alt="بارفان أنيق" loading="lazy">
             </div>
@@ -527,7 +528,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان أنيق 150">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0084.jpg')">
                 <img src="Prfa/IMG-20261116-WA0084.jpg" alt="بارفان أنيق" loading="lazy">
             </div>
@@ -540,7 +541,7 @@
             </div>
         </div>
 
-        <div class="product-card">
+        <div class="product-card" data-keywords="بارفان كلاسيك 100">
             <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0102.jpg')">
                 <img src="Prfa/IMG-20261116-WA0102.jpg" alt="بارفان كلاسيك" loading="lazy">
             </div>
@@ -553,13 +554,4 @@
             </div>
         </div>
 
-        <div class="product-card">
-            <div class="product-img-box" onclick="openModal('Prfa/IMG-20261116-WA0103.jpg')">
-                <img src="Prfa/IMG-20261116-WA0103.jpg" alt="بارفان كلاسيك" loading="lazy">
-            </div>
-            <div class="product-details">
-                <div>
-                    <div class="product-title">بارفان كلاسيك</div>
-                    <div class="product-price">100<span>جنيه</span></div>
-                </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20100%20جنيه" class="order-btn" target="_blank
+        <div class="product-card" data-keywords=
