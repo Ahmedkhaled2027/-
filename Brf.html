@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10251f">
+<meta name="theme-color" content="#132e26">
 <title>العطور والبرفانات | CARAMEL</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,16 +12,18 @@
 
 <style>
 :root {
-    --green: #153b30;
-    --green2: #214e3e;
+    --green: #14362c;
+    --green2: #1f4e3f;
     --gold: #c6a66a;
-    --gold-light: #e6d2a5;
-    --cream: #f7f4ed;
-    --white: #fffefa;
-    --ink: #202923;
-    --muted: #858a80;
-    --line: #e9e4d9;
-    --shadow: 0 12px 35px rgba(29, 48, 37, .09);
+    --gold-light: #edd9ad;
+    --perfume-bg-1: #fbf6f9;
+    --perfume-bg-2: #f4eef7;
+    --perfume-bg-3: #f9f2f4;
+    --white: #ffffff;
+    --ink: #1e2823;
+    --muted: #767d78;
+    --line: #eae2ea;
+    --shadow: 0 12px 35px rgba(20, 54, 44, .09);
 }
 
 * {
@@ -36,7 +38,11 @@ html {
 
 body {
     font-family: 'Cairo', sans-serif;
-    background: var(--cream);
+    background:
+        radial-gradient(circle at 12% 10%, rgba(235, 198, 214, 0.34), transparent 38%),
+        radial-gradient(circle at 88% 16%, rgba(213, 198, 232, 0.32), transparent 42%),
+        radial-gradient(circle at 50% 85%, rgba(238, 214, 196, 0.24), transparent 45%),
+        linear-gradient(180deg, var(--perfume-bg-1) 0%, var(--perfume-bg-2) 55%, var(--perfume-bg-3) 100%);
     color: var(--ink);
     min-height: 100vh;
 }
@@ -57,7 +63,7 @@ button {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(198,166,106,.3);
+    border-bottom: 1px solid rgba(198,166,106,.35);
     box-shadow: 0 5px 25px rgba(0,0,0,.12);
 }
 
@@ -128,7 +134,8 @@ button {
     padding: 30px 25px;
     border-radius: 23px;
     background:
-        radial-gradient(circle at 12% 20%, rgba(198,166,106,.22), transparent 30%),
+        radial-gradient(circle at 12% 20%, rgba(198,166,106,.24), transparent 32%),
+        radial-gradient(circle at 85% 75%, rgba(212,175,205,.16), transparent 38%),
         linear-gradient(120deg, #102b23, #1d4938 70%, #17372d);
     color: white;
     box-shadow: 0 15px 35px rgba(18,48,37,.16);
@@ -213,29 +220,30 @@ button {
 .product-card {
     min-width: 0;
     background: var(--white);
-    border: 1px solid #ebe7dd;
+    border: 1px solid var(--line);
     border-radius: 17px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 5px 17px rgba(26,45,34,.045);
+    box-shadow: 0 6px 18px rgba(20, 54, 44, .05);
     transition: transform .25s, box-shadow .25s, border-color .25s;
     animation: appear .45s both;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(198,166,106,.65);
+    border-color: rgba(198,166,106,.7);
     box-shadow: var(--shadow);
 }
 
 .product-img-box {
     aspect-ratio: 1 / 1;
     width: 100%;
-    background: radial-gradient(circle at center, #fff 0%, #f4f0e7 100%);
+    background: radial-gradient(circle at center, #ffffff 0%, #f9f3f7 100%);
     position: relative;
     overflow: hidden;
     cursor: zoom-in;
     padding: 0;
+    touch-action: manipulation;
 }
 
 .product-img-box::after {
@@ -243,7 +251,7 @@ button {
     position: absolute;
     bottom: 9px;
     right: 9px;
-    background: rgba(21,59,48,.88);
+    background: rgba(20, 54, 44, .88);
     color: var(--gold-light);
     padding: 4px 10px;
     border-radius: 20px;
@@ -265,6 +273,7 @@ button {
     object-fit: cover;
     object-position: center;
     transition: transform .35s ease;
+    pointer-events: none;
 }
 
 .product-card:hover .product-img-box img {
@@ -306,7 +315,7 @@ button {
 
 .product-price span {
     font-size: 9px;
-    color: #898d82;
+    color: #858a82;
     font-weight: 600;
     margin-right: 3px;
 }
@@ -335,7 +344,7 @@ button {
 
 .order-btn:hover {
     background: #1f5c43;
-    box-shadow: 0 5px 14px rgba(21,59,48,.18);
+    box-shadow: 0 5px 14px rgba(20, 54, 44, .18);
 }
 
 .whatsapp-icon {
@@ -379,7 +388,7 @@ button {
 .image-modal {
     position: fixed;
     inset: 0;
-    z-index: 99999;
+    z-index: 999999;
     background: rgba(7, 17, 14, .92);
     display: none;
     align-items: center;
@@ -389,7 +398,7 @@ button {
 }
 
 .image-modal.open {
-    display: flex;
+    display: flex !important;
     animation: fadeIn .22s ease;
 }
 
@@ -411,7 +420,7 @@ button {
     max-height: 70vh;
     object-fit: contain;
     border-radius: 15px;
-    background: #f7f4ed;
+    background: #fbf6f9;
 }
 
 .modal-caption {
@@ -582,7 +591,7 @@ button {
 
         <article class="product-card">
             <div class="product-img-box">
-                <img src="Prfa/compressed_1794950472010.webp" alt="Lively For Men Paris" loading="lazy">
+                <img src="Prfa/compressed_1794950472010.webp" alt="Lively For Men Paris" loading="eager">
             </div>
             <div class="product-details">
                 <div class="product-title">عطر Lively For Men Paris</div>
@@ -596,7 +605,7 @@ button {
 
         <article class="product-card">
             <div class="product-img-box">
-                <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود Black Intense من لطافة" loading="lazy">
+                <img src="Prfa/compressed_1794950096546.webp" alt="مصمم الأسود Black Intense من لطافة" loading="eager">
             </div>
             <div class="product-details">
                 <div class="product-title">عطر مصمم الأسود Black Intense من لطافة</div>
@@ -610,7 +619,7 @@ button {
 
         <article class="product-card">
             <div class="product-img-box">
-                <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب من لطافة" loading="lazy">
+                <img src="Prfa/compressed_1794950096662.webp" alt="مصمم الذهب من لطافة" loading="eager">
             </div>
             <div class="product-details">
                 <div class="product-title">عطر مصمم الذهب من لطافة</div>
@@ -624,7 +633,7 @@ button {
 
         <article class="product-card">
             <div class="product-img-box">
-                <img src="Prfa/compressed_1794950096748.webp" alt="قصة الوردي" loading="lazy">
+                <img src="Prfa/compressed_1794950096748.webp" alt="قصة الوردي" loading="eager">
             </div>
             <div class="product-details">
                 <div class="product-title">عطر قصة الوردي</div>
@@ -638,7 +647,7 @@ button {
 
         <article class="product-card">
             <div class="product-img-box">
-                <img src="Prfa/compressed_1794950096833.webp" alt="يارا من لطافة" loading="lazy">
+                <img src="Prfa/compressed_1794950096833.webp" alt="يارا من لطافة" loading="eager">
             </div>
             <div class="product-details">
                 <div class="product-title">عطر يارا من لطافة</div>
@@ -650,14 +659,4 @@ button {
             </div>
         </article>
 
-        <article class="product-card">
-            <div class="product-img-box">
-                <img src="Prfa/IMG-20261116-WA0067.jpg" alt="بارفان مميز" loading="lazy">
-            </div>
-            <div class="product-details">
-                <div class="product-title">بارفان مميز</div>
-                <div class="price-row">
-                    <div class="product-price">160<span>جنيه</span></div>
-                    <div class="price-decoration"></div>
-                </div>
-                <a href="https://wa.me/201055436305?text=اريد%20شراء%20بارفان%20160%20جنيه" class="order-btn" 
+        
