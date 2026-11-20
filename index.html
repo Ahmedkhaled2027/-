@@ -655,9 +655,7 @@
             bottom: 20px;
             left: 20px;
             z-index: 150;
-            height: 46px;
-            min-width: 46px;
-            max-width: 150px;
+            height: 48px;
             padding: 0 18px;
             border-radius: 999px;
             background: linear-gradient(135deg, var(--espresso), var(--espresso-soft));
@@ -667,22 +665,30 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             font-size: 0.88rem;
             font-weight: 900;
             white-space: nowrap;
-            overflow: hidden;
-            transition: max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1), padding 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease, color 0.2s ease;
-        }
-
-        .floating-cart-pill.compact {
-            max-width: 46px;
-            padding: 0;
-            color: #ffffff;
-            font-size: 0.95rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .floating-cart-pill:hover {
-            transform: translateY(-3px) scale(1.04);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 16px 30px rgba(24, 21, 18, 0.42), 0 0 22px rgba(200, 150, 102, 0.65);
+        }
+
+        .cart-badge-count {
+            background: var(--caramel);
+            color: var(--espresso);
+            min-width: 24px;
+            height: 24px;
+            padding: 0 7px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cart-backdrop {
@@ -1044,7 +1050,8 @@
     </main>
 
     <button type="button" class="floating-cart-pill" id="floatingCartPill" onclick="openCart()" aria-label="سلة المشتريات">
-        المشتريات
+        <span>المشتريات</span>
+        <span class="cart-badge-count" id="floatingCartCount">0</span>
     </button>
 
     <div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
@@ -1246,12 +1253,18 @@
             seenIds: []
         };
 
-        try {
-            const savedCart = localStorage.getItem(CART_STORAGE_KEY);
-            if (savedCart) cart = JSON.parse(savedCart);
-        } catch (e) {
-            cart = [];
+        function loadCartFromStorage() {
+            try {
+                const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+                if (!savedCart) return [];
+                const parsed = JSON.parse(savedCart);
+                return Array.isArray(parsed) ? parsed.filter(item => item && item.id) : [];
+            } catch (e) {
+                return [];
+            }
         }
+
+        cart = loadCartFromStorage();
 
         try {
             const savedInterest = localStorage.getItem(INTEREST_STORAGE_KEY);
@@ -1571,21 +1584,6 @@
             if (product) trackProductInterest(product, 3, true);
         }
 
-        let shrinkTimer = null;
-        function triggerCartPillAnimation(count) {
-            const pill = document.getElementById("floatingCartPill");
-            if (!pill) return;
-
-            clearTimeout(shrinkTimer);
-            pill.classList.remove("compact");
-            pill.textContent = "المشتريات";
-
-            shrinkTimer = setTimeout(() => {
-                pill.textContent = String(count);
-                pill.classList.add("compact");
-            }, 1300);
-        }
-
         function addToCart(productId, clickedBtnId = null) {
             const product = PRODUCTS.find(p => p.id === productId);
             if (!product) return;
@@ -1594,19 +1592,19 @@
 
             const existing = cart.find(item => item.id === productId);
             if (existing) {
-                existing.qty += 1;
+                existing.qty = (Number(existing.qty) || 1) + 1;
             } else {
                 cart.push({
                     id: product.id,
                     title: product.title,
-                    price: product.price,
+                    price: Number(product.price) || 0,
                     img: product.img,
                     qty: 1
                 });
             }
 
             saveCart();
-            updateCartUI(true);
+            updateCartUI();
 
             const targets = clickedBtnId ? [clickedBtnId] : [`btn-p0-${productId}`, `smart-btn-${productId}`];
             targets.forEach(id => {
@@ -1626,63 +1624,69 @@
         function changeQty(productId, delta) {
             const item = cart.find(i => i.id === productId);
             if (!item) return;
-            item.qty += delta;
-            if (item.qty <= 0) {
+            const nextQty = (Number(item.qty) || 1) + delta;
+            if (nextQty <= 0) {
                 cart = cart.filter(i => i.id !== productId);
+            } else {
+                item.qty = nextQty;
             }
             saveCart();
-            updateCartUI(true);
+            updateCartUI();
         }
 
         function removeFromCart(productId) {
             cart = cart.filter(i => i.id !== productId);
             saveCart();
-            updateCartUI(true);
+            updateCartUI();
         }
 
         function clearCart() {
             cart = [];
             saveCart();
-            updateCartUI(true);
+            updateCartUI();
         }
 
-        function updateCartUI(animatePill = false) {
-            const totalQty = cart.reduce((sum, i) => sum + (Number(i.qty) || 1), 0);
-            const totalPrice = cart.reduce((sum, i) => sum + ((Number(i.price) || 0) * (Number(i.qty) || 1)), 0);
+        function updateCartUI() {
+            const totalQty = cart.reduce((sum, item) => sum + (Number(item.qty) || 1), 0);
+            const totalPrice = cart.reduce((sum, item) => sum + ((Number(item.price) || 0) * (Number(item.qty) || 1)), 0);
 
+            const countBadge = document.getElementById("floatingCartCount");
             const totalAmountEl = document.getElementById("cartTotalAmount");
             const container = document.getElementById("cartItemsContainer");
 
-            totalAmountEl.textContent = `${totalPrice} جنيه`;
+            if (countBadge) countBadge.textContent = String(totalQty);
+            if (totalAmountEl) totalAmountEl.textContent = `${totalPrice} جنيه`;
 
-            if (animatePill) {
-                triggerCartPillAnimation(totalQty);
-            } else {
-                const pill = document.getElementById("floatingCartPill");
-                pill.textContent = String(totalQty);
-                pill.classList.add("compact");
-            }
+            if (!container) return;
 
             if (cart.length === 0) {
                 container.innerHTML = `<div class="cart-empty">المشتريات فاضية حاليًا.. أضف المنتجات اللي تعجبك وابدأ طلبك.</div>`;
                 return;
             }
 
-            container.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <img src="${item.img}" alt="${item.title}">
-                    <div class="cart-item-info">
-                        <div class="cart-item-title">${item.title}</div>
-                        <div class="cart-item-price">${(Number(item.price) || 0) * (Number(i.qty) || 1)} جنيه</div>
+            container.innerHTML = cart.map(item => {
+                const q = Number(item.qty) || 1;
+                const p = Number(item.price) || 0;
+                const catalogMatch = PRODUCTS.find(prod => prod.id === item.id);
+                const title = item.title || (catalogMatch ? catalogMatch.title : "منتج كارامل");
+                const img = item.img || (catalogMatch ? catalogMatch.img : "IMG-20261116-WA0032.jpg");
+
+                return `
+                    <div class="cart-item">
+                        <img src="${img}" alt="${title}">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${title}</div>
+                            <div class="cart-item-price">${p * q} جنيه</div>
+                        </div>
+                        <div class="qty-controls">
+                            <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+                            <span class="qty-val">${q}</span>
+                            <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+                        </div>
+                        <button type="button" class="remove-item-btn" onclick="removeFromCart('${item.id}')" aria-label="حذف">✕</button>
                     </div>
-                    <div class="qty-controls">
-                        <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
-                        <span class="qty-val">${item.qty || 1}</span>
-                        <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
-                    </div>
-                    <button type="button" class="remove-item-btn" onclick="removeFromCart('${item.id}')" aria-label="حذف">✕</button>
-                </div>
-            `).join("");
+                `;
+            }).join("");
         }
 
         function checkoutOnWhatsApp() {
@@ -1708,6 +1712,8 @@
         }
 
         function openCart() {
+            cart = loadCartFromStorage();
+            updateCartUI();
             document.getElementById("cartDrawer").classList.add("open");
             document.getElementById("cartBackdrop").classList.add("open");
             document.body.style.overflow = "hidden";
@@ -1742,13 +1748,8 @@
 
         window.addEventListener("storage", e => {
             if (!e.key || e.key === CART_STORAGE_KEY) {
-                try {
-                    const saved = localStorage.getItem(CART_STORAGE_KEY);
-                    cart = saved ? JSON.parse(saved) : [];
-                } catch (err) {
-                    cart = [];
-                }
-                updateCartUI(false);
+                cart = loadCartFromStorage();
+                updateCartUI();
             }
         });
 
@@ -1764,8 +1765,7 @@
 
         renderProducts("all");
         renderSmartRecommendations();
-        updateCartUI(false);
-        triggerCartPillAnimation(cart.reduce((sum, i) => sum + (Number(i.qty) || 1), 0));
+        updateCartUI();
     </script>
 </body>
 </html>
