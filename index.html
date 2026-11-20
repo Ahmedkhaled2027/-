@@ -286,7 +286,7 @@
             padding: 10px 18px;
             max-width: 820px;
             position: relative;
-            overflow-x: clip;
+            overflow: visible;
         }
 
         .slogan-track-line {
@@ -297,14 +297,14 @@
             border-radius: 999px;
             background: linear-gradient(90deg, rgba(200, 150, 102, 0.12), var(--caramel-dark));
             opacity: 0;
-            transform: translateX(48px) scaleX(0.4);
-            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+            transform: translateX(calc(50vw + 40px)) scaleX(0.5);
+            transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
             will-change: transform, opacity;
         }
 
         .slogan-track-line.end {
             background: linear-gradient(270deg, rgba(200, 150, 102, 0.12), var(--caramel-dark));
-            transform: translateX(-48px) scaleX(0.4);
+            transform: translateX(calc(-50vw - 40px)) scaleX(0.5);
         }
 
         .slogan-piece-node {
@@ -315,7 +315,7 @@
             background: var(--caramel-dark);
             border: 1.5px solid var(--caramel-light);
             opacity: 0;
-            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, opacity 0.45s ease 0.15s;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.22s, opacity 0.45s ease 0.22s;
             flex-shrink: 0;
             will-change: transform, opacity;
         }
@@ -329,19 +329,19 @@
         .store-slogan-showcase.is-docked .slogan-piece-node {
             opacity: 1;
             transform: rotate(45deg) scale(1);
-            animation: nodeLockPulse 2.8s infinite ease-in-out 0.6s;
+            animation: nodeLockPulse 2.8s infinite ease-in-out 0.75s;
         }
 
         .store-slogan-showcase.exit-sides .slogan-track-line {
             opacity: 0;
-            transform: translateX(75px) scaleX(0.5);
-            transition: transform 0.55s cubic-bezier(0.4, 0, 1, 1), opacity 0.4s ease;
+            transform: translateX(calc(50vw + 60px)) scaleX(0.6);
+            transition: transform 0.65s cubic-bezier(0.4, 0, 1, 1), opacity 0.45s ease;
         }
 
         .store-slogan-showcase.exit-sides .slogan-track-line.end {
             opacity: 0;
-            transform: translateX(-75px) scaleX(0.5);
-            transition: transform 0.55s cubic-bezier(0.4, 0, 1, 1), opacity 0.4s ease;
+            transform: translateX(calc(-50vw - 60px)) scaleX(0.6);
+            transition: transform 0.65s cubic-bezier(0.4, 0, 1, 1), opacity 0.45s ease;
         }
 
         .store-slogan-showcase.exit-sides .slogan-piece-node {
