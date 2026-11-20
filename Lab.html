@@ -328,6 +328,35 @@
             margin-right: 4px;
         }
 
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .add-cart-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            padding: 8px;
+            background: var(--ice-soft);
+            color: var(--ink-deep);
+            border: 1px solid var(--border-school);
+            border-radius: 11px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .add-cart-btn:hover {
+            background: var(--school-blue);
+            color: #ffffff;
+        }
+
         .order-btn {
             display: flex;
             align-items: center;
@@ -729,6 +758,12 @@
             .trim();
     }
 
+    function parseNumericPrice(priceVal) {
+        if (typeof priceVal === "number") return priceVal;
+        const match = String(priceVal || "").match(/[\d.]+/);
+        return match ? parseFloat(match[0]) : 0;
+    }
+
     function openModal(imgSrc) {
         modalImg.src = imgSrc;
         modal.style.display = "flex";
@@ -769,9 +804,10 @@
         grid.innerHTML = "";
         const fragment = document.createDocumentFragment();
 
-        productsData.forEach((product) => {
+        productsData.forEach((product, idx) => {
             const message = `اريد طلب ${product.name} بسعر ${product.price} جنيه`;
             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            const numericPrice = parseNumericPrice(product.price);
 
             const card = document.createElement("div");
             card.className = "product-card";
@@ -807,6 +843,25 @@
             infoTop.appendChild(line);
             infoTop.appendChild(price);
 
+            const actionsWrap = document.createElement("div");
+            actionsWrap.className = "card-actions";
+
+            const addBtn = document.createElement("button");
+            addBtn.type = "button";
+            addBtn.className = "add-cart-btn";
+            addBtn.textContent = "أضف للسلة";
+            addBtn.addEventListener("click", () => {
+                if (typeof window.addToCart === "function") {
+                    window.addToCart({
+                        id: `libr-${idx + 1}`,
+                        name: product.name,
+                        price: numericPrice,
+                        qty: 1,
+                        image: product.image
+                    });
+                }
+            });
+
             const orderLink = document.createElement("a");
             orderLink.className = "order-btn";
             orderLink.href = whatsappLink;
@@ -817,8 +872,11 @@
                 <span>اطلب الآن</span>
             `;
 
+            actionsWrap.appendChild(addBtn);
+            actionsWrap.appendChild(orderLink);
+
             details.appendChild(infoTop);
-            details.appendChild(orderLink);
+            details.appendChild(actionsWrap);
 
             card.appendChild(imgBox);
             card.appendChild(details);
@@ -839,6 +897,7 @@
 
     renderProducts();
 </script>
+<script src="cart.js"></script>
 
 </body>
 </html>
