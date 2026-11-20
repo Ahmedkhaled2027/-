@@ -561,6 +561,57 @@
             gap: 5px;
         }
 
+        .special-request-card {
+            background: linear-gradient(150deg, var(--espresso) 0%, var(--espresso-soft) 65%, var(--caramel-dark) 100%);
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 16px 14px;
+            border: 1.5px solid rgba(229, 190, 150, 0.45);
+            box-shadow: var(--shadow-main);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .special-request-card h3 {
+            font-size: 0.96rem;
+            font-weight: 900;
+            color: var(--caramel-light);
+            line-height: 1.35;
+        }
+
+        .special-request-card p {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.45;
+            margin-top: 6px;
+        }
+
+        .special-request-btn {
+            width: 100%;
+            padding: 9px 10px;
+            border-radius: 11px;
+            background: linear-gradient(135deg, var(--caramel-light), var(--caramel));
+            color: var(--espresso);
+            font-size: 0.8rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feed-sentinel {
+            height: 24px;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
         .floating-cart-pill {
             position: fixed;
             bottom: 20px;
@@ -935,6 +986,7 @@
         </div>
 
         <section class="products-grid" id="productsGrid"></section>
+        <div class="feed-sentinel" id="feedSentinel"></div>
     </main>
 
     <button type="button" class="floating-cart-pill" id="floatingCartPill" onclick="openCart()" aria-label="سلة المشتريات">
@@ -973,6 +1025,7 @@
         const WHATSAPP_NUMBER = "201055436305";
         const CART_STORAGE_KEY = "caramel_store_cart_v1";
         const INTEREST_STORAGE_KEY = "caramel_smart_interest_v1";
+        const BATCH_SIZE = 12;
 
         const CATEGORY_NAMES = {
             all: "كل المنتجات",
@@ -1126,6 +1179,9 @@
         ];
 
         let currentCategory = "all";
+        let currentFeedItems = [];
+        let renderedCount = 0;
+        let feedCycle = 0;
         let cart = [];
         let interestData = {
             categories: {},
@@ -1212,7 +1268,7 @@
             renderSmartRecommendations();
         }
 
-        function scoreProductForUser(product) {
+        function scoreProductForUser(product, seedOffset = 0) {
             const catScore = (interestData.categories[product.category] || 0) * 10;
             const tokens = extractTokens(product.title);
             let kwScore = 0;
@@ -1222,8 +1278,9 @@
 
             const isSeen = interestData.seenIds.includes(product.id);
             const freshnessBonus = isSeen ? -6 : 12;
+            const waveVariation = ((product.id.charCodeAt(product.id.length - 1) + seedOffset * 7) % 5) * 0.6;
 
-            return catScore + kwScore + freshnessBonus;
+            return catScore + kwScore + freshnessBonus + waveVariation;
         }
 
         function getSmartRecommendations(limit = 4) {
@@ -1238,17 +1295,32 @@
                 const aSeen = interestData.seenIds.includes(a.id) ? 1 : 0;
                 const bSeen = interestData.seenIds.includes(b.id) ? 1 : 0;
                 if (aSeen !== bSeen) return aSeen - bSeen;
-                return scoreProductForUser(b) - scoreProductForUser(a);
+                return scoreProductForUser(b, 1) - scoreProductForUser(a, 1);
             });
 
             return ranked.slice(0, limit);
         }
 
-        function buildProductCardHTML(product, isSmartCard = false) {
+        function buildSpecialRequestCardHTML() {
+            const waSpecial = encodeURIComponent("أريد طلب منتج غير موجود في المتجر أو طلب خاص");
+            return `
+                <article class="special-request-card">
+                    <div>
+                        <h3>حتى لو المنتج مش موجود بنجيبهولك</h3>
+                        <p>لو لفيت ومالقيتش اللي في بالك، ابعتلنا اسم المنتج أو صورته واحنا نوفرهولك بأفضل سعر.</p>
+                    </div>
+                    <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waSpecial}" class="special-request-btn" target="_blank" rel="noopener noreferrer">
+                        اطلب منتجك الخاص دلوقتي
+                    </a>
+                </article>
+            `;
+        }
+
+        function buildProductCardHTML(product, isSmartCard = false, instanceTag = "base") {
             const displayPrice = product.priceLabel || product.price;
             const waText = encodeURIComponent(`أريد طلب ${product.title} بسعر ${displayPrice} جنيه من متجر كارامل`);
             const isFreshForUser = !interestData.seenIds.includes(product.id);
-            const btnId = isSmartCard ? `smart-btn-${product.id}` : `btn-${product.id}`;
+            const btnId = isSmartCard ? `smart-btn-${product.id}` : `btn-${instanceTag}-${product.id}`;
 
             return `
                 <article class="product-card">
@@ -1264,7 +1336,7 @@
                             ${product.subPrice ? `<div class="product-sub">${product.subPrice}</div>` : ""}
                         </div>
                         <div class="card-btns">
-                            <button type="button" class="add-cart-btn" id="${btnId}" onclick="addToCart('${product.id}')">
+                            <button type="button" class="add-cart-btn" id="${btnId}" onclick="addToCart('${product.id}', '${btnId}')">
                                 <span>+ أضف للمشتريات</span>
                             </button>
                             <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waText}" class="direct-wa-link" target="_blank" rel="noopener noreferrer" onclick="onDirectWhatsAppClick('${product.id}')">
@@ -1289,28 +1361,93 @@
             }
 
             section.classList.add("visible");
-            grid.innerHTML = recs.map(p => buildProductCardHTML(p, true)).join("");
+            grid.innerHTML = recs.map(p => buildProductCardHTML(p, true, "smart")).join("");
         }
 
-        function renderProducts(category = currentCategory) {
-            currentCategory = category;
-            const grid = document.getElementById("productsGrid");
-            const titleEl = document.getElementById("activeCategoryTitle");
-            const query = normalizeText(document.getElementById("homeSearchInput")?.value || "");
-
-            const filtered = PRODUCTS.filter(p => {
+        function buildFeedPool(category, query) {
+            const base = PRODUCTS.filter(p => {
                 const catMatch = category === "all" || p.category === category;
                 const textMatch = !query || normalizeText(`${p.title} ${p.price} ${p.priceLabel || ""} ${p.subPrice || ""} ${CATEGORY_NAMES[p.category] || ""}`).includes(query);
                 return catMatch && textMatch;
             });
 
-            if (category === "all" && !query && interestData.seenIds.length > 0) {
-                filtered.sort((a, b) => scoreProductForUser(b) - scoreProductForUser(a));
+            if (base.length === 0) return [];
+
+            const firstPass = [...base];
+            if (!query && interestData.seenIds.length > 0) {
+                firstPass.sort((a, b) => scoreProductForUser(b, 0) - scoreProductForUser(a, 0));
             }
 
-            titleEl.textContent = CATEGORY_NAMES[category] || "المنتجات";
+            const items = firstPass.map(product => ({ type: "product", product, tag: "p0" }));
+            items.splice(Math.min(7, items.length), 0, { type: "special", id: "special-0" });
 
-            if (filtered.length === 0) {
+            return items;
+        }
+
+        function appendContinuationWave(category, query) {
+            const sourcePool = PRODUCTS.filter(p => {
+                const catMatch = category === "all" || p.category === category;
+                const textMatch = !query || normalizeText(`${p.title} ${p.price} ${p.priceLabel || ""} ${p.subPrice || ""} ${CATEGORY_NAMES[p.category] || ""}`).includes(query);
+                return catMatch && textMatch;
+            });
+
+            if (sourcePool.length === 0) return;
+
+            feedCycle += 1;
+            const waveSorted = [...sourcePool].sort((a, b) => scoreProductForUser(b, feedCycle) - scoreProductForUser(a, feedCycle));
+            const waveItems = waveSorted.map(product => ({
+                type: "product",
+                product,
+                tag: `w${feedCycle}`
+            }));
+
+            waveItems.push({ type: "special", id: `special-${feedCycle}` });
+            currentFeedItems.push(...waveItems);
+        }
+
+        function renderMoreFeedItems() {
+            const grid = document.getElementById("productsGrid");
+            const sentinel = document.getElementById("feedSentinel");
+            if (!grid) return;
+
+            const query = normalizeText(document.getElementById("homeSearchInput")?.value || "");
+            if (currentFeedItems.length === 0) return;
+
+            if (renderedCount >= currentFeedItems.length) {
+                appendContinuationWave(currentCategory, query);
+            }
+
+            const nextSlice = currentFeedItems.slice(renderedCount, renderedCount + BATCH_SIZE);
+            if (!nextSlice.length) return;
+
+            const htmlChunk = nextSlice.map(entry => {
+                if (entry.type === "special") return buildSpecialRequestCardHTML();
+                return buildProductCardHTML(entry.product, false, entry.tag);
+            }).join("");
+
+            grid.insertAdjacentHTML("beforeend", htmlChunk);
+            renderedCount += nextSlice.length;
+
+            if (sentinel) {
+                sentinel.textContent = "اكتشف المزيد بالأسفل أو اطلب أي منتج خاص";
+            }
+        }
+
+        function renderProducts(category = currentCategory) {
+            currentCategory = category;
+            feedCycle = 0;
+            renderedCount = 0;
+
+            const grid = document.getElementById("productsGrid");
+            const titleEl = document.getElementById("activeCategoryTitle");
+            const sentinel = document.getElementById("feedSentinel");
+            const query = normalizeText(document.getElementById("homeSearchInput")?.value || "");
+
+            titleEl.textContent = CATEGORY_NAMES[category] || "المنتجات";
+            currentFeedItems = buildFeedPool(category, query);
+
+            if (currentFeedItems.length === 0) {
+                if (sentinel) sentinel.textContent = "";
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; background: #fff; padding: 26px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
                         <p style="font-weight: 800; margin-bottom: 10px;">حتى لو المنتج مش موجود بنجيبهولك! ابعتلنا طلبك الخاص دلوقتي.</p>
@@ -1323,7 +1460,8 @@
                 return;
             }
 
-            grid.innerHTML = filtered.map(product => buildProductCardHTML(product, false)).join("");
+            grid.innerHTML = "";
+            renderMoreFeedItems();
         }
 
         function resetFilters() {
@@ -1366,7 +1504,7 @@
             }, 1300);
         }
 
-        function addToCart(productId) {
+        function addToCart(productId, clickedBtnId = null) {
             const product = PRODUCTS.find(p => p.id === productId);
             if (!product) return;
 
@@ -1388,7 +1526,8 @@
             saveCart();
             updateCartUI(true);
 
-            [`btn-${productId}`, `smart-btn-${productId}`].forEach(id => {
+            const targets = clickedBtnId ? [clickedBtnId] : [`btn-p0-${productId}`, `smart-btn-${productId}`];
+            targets.forEach(id => {
                 const btn = document.getElementById(id);
                 if (btn) {
                     const original = btn.innerHTML;
@@ -1530,6 +1669,16 @@
                 updateCartUI(false);
             }
         });
+
+        const sentinelEl = document.getElementById("feedSentinel");
+        if (sentinelEl && "IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(entries => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    renderMoreFeedItems();
+                }
+            }, { rootMargin: "320px" });
+            observer.observe(sentinelEl);
+        }
 
         renderProducts("all");
         renderSmartRecommendations();
