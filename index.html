@@ -353,7 +353,6 @@
             overflow: clip;
         }
 
-        /* الخط الأيمن: يظهر تدريجياً ويتمدد بهدوء نحو السلوچان */
         .slogan-track-line {
             width: 72px;
             flex: 0 0 72px;
@@ -367,7 +366,6 @@
             will-change: transform, opacity;
         }
 
-        /* الخط الأيسر: يظهر تدريجياً ويتمدد بهدوء نحو السلوچان */
         .slogan-track-line.end {
             background: linear-gradient(270deg, rgba(200, 150, 102, 0.12), var(--caramel-dark));
             transform: scaleX(0);
@@ -940,6 +938,18 @@
             font-weight: 700;
             color: var(--text-muted);
             margin-top: 2px;
+        }
+
+        .product-desc {
+            font-size: 0.73rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .card-btns {
@@ -1634,146 +1644,146 @@
         };
 
         const PRODUCTS = [
-            { id: "hm-1", title: "جوانتي سيليكون حراري للمطبخ", price: 155, category: "home", img: "Kit/compressed_1795117656213.jpg" },
-            { id: "hm-2", title: "شماعة لوكس 3*1", price: 40, category: "home", img: "Kit/compressed_1794957387150.webp" },
-            { id: "hm-3", title: "شماعة ميدو 6*1", price: 35, category: "home", img: "Kit/compressed_1794957386430.webp" },
-            { id: "hm-4", title: "شماعة أبو الخير أطفال 6*1", price: 35, category: "home", img: "Kit/compressed_1794957387291.webp" },
-            { id: "hm-5", title: "شماعة بنطلون جينز", price: 35, category: "home", img: "Kit/compressed_1794957387004.webp" },
-            { id: "hm-6", title: "شماعة تفاح", price: 75, category: "home", img: "Kit/compressed_1794957388762.webp" },
-            { id: "hm-7", title: "شماعة استايل", price: 65, category: "home", img: "Kit/compressed_1794957391461.webp" },
-            { id: "hm-8", title: "شماعة استالس", price: 25, category: "home", img: "Kit/compressed_1794957386669.webp" },
-            { id: "hm-9", title: "صفاية عصير وطماطم", price: 70, category: "home", img: "Kit/compressed_1794957389980.webp" },
-            { id: "hm-10", title: "صفاية عصير وأعشاب ستانلس", price: 75, category: "home", img: "Kit/compressed_1794957387551.webp" },
-            { id: "hm-11", title: "طقم مصافي 3 قطع", price: 50, category: "home", img: "Kit/compressed_1794957389359.webp" },
-            { id: "hm-12", title: "طقم مصافي 3 قطع متنوعة", price: 40, category: "home", img: "Kit/compressed_1794957389498.webp" },
-            { id: "hm-13", title: "شيالة بطاطس (مقاسات)", price: 65, category: "home", img: "Kit/compressed_1794957390132.webp" },
-            { id: "hm-14", title: "منشر خير هوم فولاز مقاوم للصدأ", price: 950, category: "home", img: "Kit/compressed_1794957390685.webp" },
-            { id: "hm-15", title: "منشر دهب", price: 365, category: "home", img: "Kit/compressed_1794957389681.webp" },
-            { id: "hm-16", title: "منشر خير هوم مقاوم للصدأ", price: 1200, category: "home", img: "Kit/compressed_1794957390318.webp" },
-            { id: "hm-17", title: "منشر حائط حبل استانلس", price: 530, category: "home", img: "Kit/compressed_1794957391622.webp" },
-            { id: "hm-18", title: "رف زاوية للحمام / المطبخ (أركان)", price: 330, category: "home", img: "Kit/compressed_1794957392279.webp" },
-            { id: "hm-19", title: "شماعة أمريكانا ملابس وجزامة 4 دور", price: 285, category: "home", img: "Kit/compressed_1794957391035.webp" },
-            { id: "hm-20", title: "ستاند ملابس وجزامة 5 دور", price: 310, category: "home", img: "Kit/compressed_1794957387416.webp" },
-            { id: "hm-21", title: "منظم متعدد دوار", price: 200, category: "home", img: "Kit/compressed_1794957388217.webp" },
-            { id: "hm-22", title: "شنطة حفظ حراري (بنفسجي/باندا)", price: 200, category: "home", img: "Kit/compressed_1794957387731.webp" },
-            { id: "hm-23", title: "شنطة حفظ حراري (أسود Safeer)", price: 230, category: "home", img: "Kit/compressed_1794957388552.webp" },
-            { id: "hm-24", title: "ستاند /مايكرويف", price: 285, category: "home", img: "Kit/compressed_1794957387972.webp" },
-            { id: "hm-25", title: "جزامة شي ان معدن 7 دور", price: 450, category: "home", img: "Kit/compressed_1794957389198.webp" },
-            { id: "hm-26", title: "شنطة حفظ حراري كبييرة (أسود Safeer)", price: 270, category: "home", img: "Kit/compressed_1794957392433.webp" },
-            { id: "hm-27", title: "سلة بيض فرخة", price: 440, category: "home", img: "Kit/compressed_1794957391917.webp" },
-            { id: "hm-28", title: "شيالة كحك 2 دور دهبي", price: 500, category: "home", img: "Kit/compressed_1794957388953.webp" },
-            { id: "hm-29", title: "شيالة كحك 3 دور لوكس", price: 900, category: "home", img: "Kit/compressed_1794957391263.webp" },
-            { id: "hm-30", title: "شيالة تيرير زجاج أخضر 3 دور", price: 235, category: "home", img: "Kit/compressed_1794957392115.webp" },
-            { id: "hm-31", title: "شيالة فاكهة 2 دور دهبي", price: 255, category: "home", img: "Kit/compressed_1794957386839.webp" },
-            { id: "hm-32", title: "سجادة أنيقة مقاس 120 × 350", price: 1100, category: "home", img: "Kit/compressed_1794955137769.webp" },
-            { id: "hm-33", title: "طقم كبايات زجاج 6 قطع فخم", price: 450, category: "home", img: "Kit/compressed_1794955137591.webp" },
-            { id: "hm-34", title: "مصفاه متحركه", price: 300, category: "home", img: "Kit/IMG-20261116-WA0059.jpg" },
-            { id: "hm-35", title: "طقم 6 قطع", price: 350, category: "home", img: "Kit/IMG-20261116-WA0056.jpg" },
-            { id: "hm-36", title: "طقم 6 قطع", price: 250, category: "home", img: "Kit/IMG-20261116-WA0057.jpg" },
-            { id: "hm-37", title: "قطع 3", price: 40, category: "home", img: "Kit/IMG-20261116-WA0060.jpg" },
-            { id: "hm-38", title: "مصفاه 3 احجام", price: 140, category: "home", img: "Kit/IMG-20261116-WA0061.jpg" },
-            { id: "hm-39", title: "طبق بلاستيك متين", price: 95, category: "home", img: "Kit/IMG-20261116-WA0062.jpg" },
-            { id: "hm-40", title: "صنيه تحمير بالشبكه داخل الفرن", price: 260, category: "home", img: "Kit/IMG-20261116-WA0063.jpg" },
-            { id: "hm-41", title: "طقم تركى جرانيت", price: 2200, category: "home", img: "Kit/IMG-20261116-WA0064.jpg" },
-            { id: "hm-42", title: "طقم 6 قطع", price: 240, category: "home", img: "Kit/IMG-20261116-WA0065.jpg" },
-            { id: "hm-43", title: "طقم سكاكين أسماك", price: 850, category: "home", img: "Kit/IMG-20261116-WA0066.jpg" },
-            { id: "hm-44", title: "طقم مميز", price: 1800, category: "home", img: "Kit/IMG-20261116-WA0071.jpg" },
-            { id: "hm-45", title: "طقم 12 قطعه", price: 1500, category: "home", img: "Kit/IMG-20261116-WA0075.jpg" },
-            { id: "hm-46", title: "6 قطع", price: 80, category: "home", img: "Kit/IMG-20261116-WA0076.jpg" },
-            { id: "hm-47", title: "طقم 6 قطع بلانك ماكس", price: 250, category: "home", img: "Kit/IMG-20261116-WA0081.jpg" },
-            { id: "hm-48", title: "معطر روائح طبيعية", price: 100, category: "home", img: "Kit/IMG-20261116-WA0082.jpg" },
-            { id: "hm-49", title: "طقم صواني استانلس", price: 1600, category: "home", img: "Kit/IMG-20261116-WA0085.jpg" },
-            { id: "hm-50", title: "زيت مساج", price: 70, category: "home", img: "Kit/IMG-20261116-WA0104.jpg" },
-            { id: "hm-51", title: "طقم 6 قطع", price: 500, category: "home", img: "Kit/IMG-20261116-WA0101.jpg" },
-            { id: "hm-52", title: "منظمات تخزين بغطاء وردي (3 قطع)", price: 180, category: "home", img: "Kit/compressed_1795113635317.webp" },
-            { id: "hm-53", title: "طقم صواني ألومنيوم مدورة (3 مقاسات)", price: 320, category: "home", img: "Kit/compressed_1795113635223.webp" },
-            { id: "hm-54", title: "علبة تخزين شيف بوكس 2.5 لتر بغطاء أسود", price: 120, category: "home", img: "Kit/compressed_1795113635125.webp" },
-            { id: "hm-55", title: "منظمات تخزين شيف بوكس 2 لتر", price: 150, category: "home", img: "Kit/compressed_1795113634977.webp" },
-            { id: "hm-56", title: "طقم توابل الوطنية", price: 225, category: "home", img: "Kit/compressed_1795115045908.webp" },
-            { id: "hm-57", title: "مخرطة استاليس", price: 200, category: "home", img: "Kit/compressed_1795115046069.webp" },
-            { id: "hm-58", title: "هراسة بطاطس", price: 25, category: "home", img: "Kit/compressed_1795115069644.webp" },
+            { id: "hm-1", title: "جوانتي سيليكون حراري للمطبخ", desc: "عازل للحرارة ومريح في المسك للتعامل الآمن مع الصواني والأواني السخنة.", price: 155, category: "home", img: "Kit/compressed_1795117656213.jpg" },
+            { id: "hm-2", title: "شماعة لوكس 3×1", desc: "تصميم عملي بيوفّر مساحة الدولاب وينظّم أكثر من قطعة في مكان واحد.", price: 40, category: "home", img: "Kit/compressed_1794957387150.webp" },
+            { id: "hm-3", title: "شماعة ميدو 6×1", desc: "تنظيم ذكي للقطع المتعددة داخل الدولاب بشكل مرتب وسهل الوصول.", price: 35, category: "home", img: "Kit/compressed_1794957386430.webp" },
+            { id: "hm-4", title: "شماعة أبو الخير أطفال 6×1", desc: "مقاس مناسب لملابس الأطفال يحافظ على ترتيبها ويوفر مساحة واضحة.", price: 35, category: "home", img: "Kit/compressed_1794957387291.webp" },
+            { id: "hm-5", title: "شماعة بنطلون جينز", desc: "تحافظ على شكل البنطلون بدون كرمشة وتسهّل تعليقه وسحبه يومياً.", price: 35, category: "home", img: "Kit/compressed_1794957387004.webp" },
+            { id: "hm-6", title: "شماعة تفاح", desc: "شكل أنيق وثبات عملي لتعليق الملابس وتنسيق الدولاب بلمسة مرتبة.", price: 75, category: "home", img: "Kit/compressed_1794957388762.webp" },
+            { id: "hm-7", title: "شماعة استايل", desc: "لمسة عصرية وعملية لتنظيم الملابس اليومية والعبايات بسهولة.", price: 65, category: "home", img: "Kit/compressed_1794957391461.webp" },
+            { id: "hm-8", title: "شماعة استالس", desc: "خامة معدنية متينة تتحمل الاستخدام اليومي وتدوم لفترة طويلة.", price: 25, category: "home", img: "Kit/compressed_1794957386669.webp" },
+            { id: "hm-9", title: "صفاية عصير وطماطم", desc: "تصفية سريعة ونظيفة للعصائر والصلصة بدون شوائب أو بذر.", price: 70, category: "home", img: "Kit/compressed_1794957389980.webp" },
+            { id: "hm-10", title: "صفاية عصير وأعشاب ستانلس", desc: "ستانلس عملي وسهل التنظيف لتصفية المشروبات والأعشاب بدقة.", price: 75, category: "home", img: "Kit/compressed_1794957387551.webp" },
+            { id: "hm-11", title: "طقم مصافي 3 قطع", desc: "ثلاثة أحجام متنوعة تناسب مختلف استخدامات المطبخ اليومية.", price: 50, category: "home", img: "Kit/compressed_1794957389359.webp" },
+            { id: "hm-12", title: "طقم مصافي 3 قطع متنوعة", desc: "مجموعة عملية بتصميم خفيف وسهل التخزين في أدراج المطبخ.", price: 40, category: "home", img: "Kit/compressed_1794957389498.webp" },
+            { id: "hm-13", title: "شيالة بطاطس (مقاسات)", desc: "تقديم مريح وسهل للبطاطس والأكلات المقلية والمحمّرة.", price: 65, category: "home", img: "Kit/compressed_1794957390132.webp" },
+            { id: "hm-14", title: "منشر خير هوم فولاز مقاوم للصدأ", desc: "هيكل فولاذي قوي مقاوم للصدأ ومساحة رحبة لنشر الغسيل بثبات.", price: 950, category: "home", img: "Kit/compressed_1794957390685.webp" },
+            { id: "hm-15", title: "منشر دهب", desc: "تصميم متين وسهل الطي والتخزين للاستخدام اليومي داخل المنزل أو البلكونة.", price: 365, category: "home", img: "Kit/compressed_1794957389681.webp" },
+            { id: "hm-16", title: "منشر خير هوم مقاوم للصدأ", desc: "تحمل عالي للأوزان وخامة مقاومة للصدأ لراحة بال تدوم طويلاً.", price: 1200, category: "home", img: "Kit/compressed_1794957390318.webp" },
+            { id: "hm-17", title: "منشر حائط حبل استانلس", desc: "موفر للمساحة ويُثبت على الحائط مع حبال عملية تتحمل الاستخدام.", price: 530, category: "home", img: "Kit/compressed_1794957391622.webp" },
+            { id: "hm-18", title: "رف زاوية للحمام / المطبخ (أركان)", desc: "يستغل أركان الحمام أو المطبخ لترتيب الشامبوهات والمنظفات والأدوات.", price: 330, category: "home", img: "Kit/compressed_1794957392279.webp" },
+            { id: "hm-19", title: "شماعة أمريكانا ملابس وجزامة 4 دور", desc: "منظم متعدد الاستخدامات يجمع بين تعليق الملابس وترتيب الأحذية في 4 أدوار.", price: 285, category: "home", img: "Kit/compressed_1794957391035.webp" },
+            { id: "hm-20", title: "ستاند ملابس وجزامة 5 دور", desc: "سعة أكبر بـ 5 أدوار لتنظيم الملابس والأحذية والشنط في ركن واحد مرتب.", price: 310, category: "home", img: "Kit/compressed_1794957387416.webp" },
+            { id: "hm-21", title: "منظم متعدد دوار", desc: "حركة دوران سلسة توصل لأغراضك بلمسة واحدة وتوفر مساحة واضحة.", price: 200, category: "home", img: "Kit/compressed_1794957388217.webp" },
+            { id: "hm-22", title: "شنطة حفظ حراري (بنفسجي / باندا)", desc: "تحافظ على حرارة أو برودة الأكل والمشروبات أثناء الخروج أو العمل.", price: 200, category: "home", img: "Kit/compressed_1794957387731.webp" },
+            { id: "hm-23", title: "شنطة حفظ حراري (أسود Safeer)", desc: "تصميم أنيق باللون الأسود يحفظ درجة حرارة الوجبات للعمل والرحلات.", price: 230, category: "home", img: "Kit/compressed_1794957388552.webp" },
+            { id: "hm-24", title: "ستاند مايكرويف", desc: "قاعدة ثابتة ترفع المايكرويف وتمنحك مساحة إضافية أسفله للتخزين.", price: 285, category: "home", img: "Kit/compressed_1794957387972.webp" },
+            { id: "hm-25", title: "جزامة شي ان معدن 7 دور", desc: "7 أدوار عملية لترتيب عدد كبير من الأحذية بشكل أنيق وموفر للمساحة.", price: 450, category: "home", img: "Kit/compressed_1794957389198.webp" },
+            { id: "hm-26", title: "شنطة حفظ حراري كبيرة (أسود Safeer)", desc: "حجم أوسع مناسب للوجبات الكبيرة أو المشاوير الطويلة مع حفظ الحرارة.", price: 270, category: "home", img: "Kit/compressed_1794957392433.webp" },
+            { id: "hm-27", title: "سلة بيض فرخة", desc: "قطعة ديكور وعملية في آنٍ واحد لحفظ البيض وتنظيمه بشكل جذاب.", price: 440, category: "home", img: "Kit/compressed_1794957391917.webp" },
+            { id: "hm-28", title: "شيالة كحك 2 دور دهبي", desc: "دورين بلون ذهبي أنيق لتقديم الكحك والبسكويت والحلويات في المناسبات.", price: 500, category: "home", img: "Kit/compressed_1794957388953.webp" },
+            { id: "hm-29", title: "شيالة كحك 3 دور لوكس", desc: "إطلالة فاخرة بـ 3 أدوار تبرز الضيافة والحلويات على السفرة.", price: 900, category: "home", img: "Kit/compressed_1794957391263.webp" },
+            { id: "hm-30", title: "شيالة تيرير زجاج أخضر 3 دور", desc: "أدوار زجاجية باللون الأخضر تضيف لمسة مميزة لتقديم الحلويات والضيافة.", price: 235, category: "home", img: "Kit/compressed_1794957392115.webp" },
+            { id: "hm-31", title: "شيالة فاكهة 2 دور دهبي", desc: "تقديم أنيق للفاكهة والتسالي بدورين وقاعدة ثابتة بلمسة ذهبية.", price: 255, category: "home", img: "Kit/compressed_1794957386839.webp" },
+            { id: "hm-32", title: "سجادة أنيقة مقاس 120 × 350", desc: "مقاس طولي مثالي للممرات والطرقة بلمسة دافئة وشكل مرتب.", price: 1100, category: "home", img: "Kit/compressed_1794955137769.webp" },
+            { id: "hm-33", title: "طقم كبايات زجاج 6 قطع فخم", desc: "6 كؤوس زجاجية بتصميم راقٍ يناسب العصائر والمشروبات وتقديم الضيوف.", price: 450, category: "home", img: "Kit/compressed_1794955137591.webp" },
+            { id: "hm-34", title: "مصفاة متحركة للمطبخ", desc: "تسهّل شطف وتصفية الخضار والفاكهة والأطباق بمرونة وسرعة.", price: 300, category: "home", img: "Kit/IMG-20261116-WA0059.jpg" },
+            { id: "hm-35", title: "طقم تقديم منزلي 6 قطع", desc: "مجموعة متكاملة من 6 قطع عملية تضيف ترتيباً وجمالاً للمطبخ أو السفرة.", price: 350, category: "home", img: "Kit/IMG-20261116-WA0056.jpg" },
+            { id: "hm-36", title: "طقم أدوات منزلية 6 قطع", desc: "6 قطع متنوعة للاستخدام اليومي بخامة عملية وسهلة التنظيف.", price: 250, category: "home", img: "Kit/IMG-20261116-WA0057.jpg" },
+            { id: "hm-37", title: "مجموعة أدوات مطبخ 3 قطع", desc: "3 قطع صغيرة وعملية تسد احتياجات سريعة في المطبخ بسعر اقتصادي.", price: 40, category: "home", img: "Kit/IMG-20261116-WA0060.jpg" },
+            { id: "hm-38", title: "طقم مصافي 3 أحجام", desc: "ثلاثة مقاسات متدرجة لتصفية الكميات الصغيرة والمتوسطة والكبيرة.", price: 140, category: "home", img: "Kit/IMG-20261116-WA0061.jpg" },
+            { id: "hm-39", title: "طبق بلاستيك متين", desc: "خامة بلاستيك قوية تتحمل الاستخدام المتكرر وخفيفة في التقديم اليومي.", price: 95, category: "home", img: "Kit/IMG-20261116-WA0062.jpg" },
+            { id: "hm-40", title: "صينية تحمير بالشبكة داخل الفرن", desc: "تسمح بتوزيع الحرارة وتصريف الدهون لتحمير مثالي ومقرمش داخل الفرن.", price: 260, category: "home", img: "Kit/IMG-20261116-WA0063.jpg" },
+            { id: "hm-41", title: "طقم حِلل تركي جرانيت", desc: "توزيع حرارة متوازن وسطح جرانيت يساعد على طهي صحي وسهل التنظيف.", price: 2200, category: "home", img: "Kit/IMG-20261116-WA0064.jpg" },
+            { id: "hm-42", title: "طقم سفرة وتقديم 6 قطع", desc: "6 قطع بتصميم عملي أنيق يناسب الاستخدام اليومي والعائلي.", price: 240, category: "home", img: "Kit/IMG-20261116-WA0065.jpg" },
+            { id: "hm-43", title: "طقم سكاكين أسماك", desc: "شفرات مصممة لتقطيع وتنظيف وتحضير الأسماك بدقة وسلاسة.", price: 850, category: "home", img: "Kit/IMG-20261116-WA0066.jpg" },
+            { id: "hm-44", title: "طقم منزلي مميز متكامل", desc: "اختيار مميز يجمع بين الشكل الأنيق والاعتمادية في الاستخدام اليومي.", price: 1800, category: "home", img: "Kit/IMG-20261116-WA0071.jpg" },
+            { id: "hm-45", title: "طقم منزلي 12 قطعة", desc: "مجموعة كبيرة من 12 قطعة لتجهيز المطبخ أو التقديم بشكل منظم.", price: 1500, category: "home", img: "Kit/IMG-20261116-WA0075.jpg" },
+            { id: "hm-46", title: "مجموعة 6 قطع عملية", desc: "6 قطع صغيرة مفيدة للبيت والمطبخ بسعر مناسب جداً.", price: 80, category: "home", img: "Kit/IMG-20261116-WA0076.jpg" },
+            { id: "hm-47", title: "طقم بلانك ماكس 6 قطع", desc: "6 قطع بتصميم عملي يتحمل التحضير والتقطيع والاستخدام اليومي.", price: 250, category: "home", img: "Kit/IMG-20261116-WA0081.jpg" },
+            { id: "hm-48", title: "معطر روائح طبيعية للبيت", desc: "يمنح الغرف والمنزل رائحة منعشة ومريحة تدوم طوال اليوم.", price: 100, category: "home", img: "Kit/IMG-20261116-WA0082.jpg" },
+            { id: "hm-49", title: "طقم صواني فرن وتقديم استانلس", desc: "خامة استانلس متينة تتحمل الحرارة وتناسب الخبز والتقديم بأناقة.", price: 1600, category: "home", img: "Kit/IMG-20261116-WA0085.jpg" },
+            { id: "hm-50", title: "زيت مساج للجسم", desc: "قوام ناعم يساعد على الانزلاق المريح وتنعيم البشرة أثناء جلسات المساج.", price: 70, category: "home", img: "Kit/IMG-20261116-WA0104.jpg" },
+            { id: "hm-51", title: "طقم ضيافة وتقديم 6 قطع", desc: "6 قطع متناسقة تبرز شكل التقديم على المائدة في المناسبات والزيارات.", price: 500, category: "home", img: "Kit/IMG-20261116-WA0101.jpg" },
+            { id: "hm-52", title: "منظمات تخزين بغطاء وردي (3 قطع)", desc: "3 علب بأغطية محكمة بلون وردي هادئ لحفظ وتنظيم الأغراض بوضوح.", price: 180, category: "home", img: "Kit/compressed_1795113635317.webp" },
+            { id: "hm-53", title: "طقم صواني ألومنيوم مدورة (3 مقاسات)", desc: "ثلاثة أحجام مدورة مثالية للكيك والصواني والمخبوزات المنزلية.", price: 320, category: "home", img: "Kit/compressed_1795113635223.webp" },
+            { id: "hm-54", title: "علبة تخزين شيف بوكس 2.5 لتر بغطاء أسود", desc: "سعة 2.5 لتر لحفظ البقوليات والمواد الجافة وتنظيم رفوف المطبخ.", price: 120, category: "home", img: "Kit/compressed_1795113635125.webp" },
+            { id: "hm-55", title: "منظمات تخزين شيف بوكس 2 لتر", desc: "علب بسعة 2 لتر تحافظ على ترتيب المكونات وتسهّل رصّها في الدواليب.", price: 150, category: "home", img: "Kit/compressed_1795113634977.webp" },
+            { id: "hm-56", title: "طقم توابل الوطنية", desc: "يحفظ البهارات والتوابل منظمة وسهلة الاستخدام أثناء الطبخ.", price: 225, category: "home", img: "Kit/compressed_1795115045908.webp" },
+            { id: "hm-57", title: "مخرطة ملوخية استانلس", desc: "شفرة استانلس حادة ومريحة لفرم الملوخية والخضرة بسرعة وسهولة.", price: 200, category: "home", img: "Kit/compressed_1795115046069.webp" },
+            { id: "hm-58", title: "هراسة بطاطس يدوية", desc: "تهرس البطاطس المسلوقة بقوام ناعم وسريع بدون مجهود.", price: 25, category: "home", img: "Kit/compressed_1795115069644.webp" },
 
-            { id: "libr-1", title: "قلم جاف سحري", price: 10, category: "school", img: "Libr/compressed_1795160031886.webp" },
-            { id: "libr-2", title: "زمزمية مياه رياضية MOT", price: 140, category: "school", img: "Libr/compressed_1795160031599.webp" },
-            { id: "libr-3", title: "ورق فلوسكاب زاد ZAD", price: 30, category: "school", img: "Libr/compressed_1795160031301.webp" },
-            { id: "libr-4", title: "نوت بوك سلك 100 ورقة", price: 100, priceLabel: "100 / 120 / 150", category: "school", img: "Libr/compressed_1795160031025.webp" },
-            { id: "libr-5", title: "مقلمة أميرات ديزني", price: 120, category: "school", img: "Libr/compressed_1795160030736.webp" },
-            { id: "libr-6", title: "لانش بوكس ملون", price: 120, category: "school", img: "Libr/compressed_1795160030424.webp" },
-            { id: "libr-7", title: "سبورة كتابة LCD PANEL", price: 65, category: "school", img: "Libr/compressed_1795160030099.webp" },
-            { id: "libr-8", title: "نوت بوك سلك 80 / 100 ورقة", price: 65, category: "school", img: "Libr/compressed_1795160029820.webp" },
-            { id: "libr-9", title: "زمزمية مياه متدرجة بمؤشر ساعات", price: 140, category: "school", img: "Libr/compressed_1795160029544.webp" },
-            { id: "libr-10", title: "باكو كشاكيل 10 كشاكيل", price: 70, category: "school", img: "Libr/compressed_1795160029204.webp" },
-            { id: "libr-11", title: "زمزمية مياه متدرجة بينك وأزرق", price: 140, category: "school", img: "Libr/compressed_1795160028924.webp" },
-            { id: "libr-12", title: "رش ثلج للأفراح GALA", price: 30, category: "school", img: "Libr/compressed_1795160028621.webp" },
-            { id: "libr-13", title: "مقلمة Kawai وردية", price: 50, category: "school", img: "Libr/compressed_1795160028347.webp" },
-            { id: "libr-14", title: "زمزمية مياه متدرجة Winning", price: 140, category: "school", img: "Libr/compressed_1795160028072.webp" },
-            { id: "libr-15", title: "دبل فيس Mounting Tape", price: 30, category: "school", img: "Libr/compressed_1795160027793.webp" },
-            { id: "libr-16", title: "منظم / مقلمة SUN GROUP", price: 70, category: "school", img: "Libr/compressed_1795160027493.webp" },
-            { id: "libr-17", title: "زمزميات أطفال فضاء قطعتين", price: 100, category: "school", img: "Libr/compressed_1795160027187.webp" },
-            { id: "libr-18", title: "كيس بالونات 100 قطعة", price: 85, category: "school", img: "Libr/compressed_1795160026903.webp" },
-            { id: "libr-19", title: "صلصال أطفال NARA", price: 45, category: "school", img: "Libr/compressed_1795160026583.webp" },
-            { id: "libr-20", title: "قلم جاف شكل باندا", price: 10, category: "school", img: "Libr/compressed_1795160026304.webp" },
-            { id: "libr-21", title: "ورق كوخ باكو", price: 65, category: "school", img: "Libr/compressed_1795160026004.webp" },
-            { id: "libr-22", title: "لانش بوكس CAMEL LUNCH BOX", price: 120, category: "school", img: "Libr/compressed_1795160025726.webp" },
-            { id: "libr-23", title: "مقص أطفال SCISSORS", price: 20, category: "school", img: "Libr/compressed_1795160025453.webp" },
-            { id: "libr-24", title: "فوم جليتر باكو ألوان", price: 65, category: "school", img: "Libr/compressed_1795160025160.webp" },
-            { id: "libr-25", title: "شريط لاصق سيلتيب Falcon", price: 20, category: "school", img: "Libr/compressed_1795160024869.webp" },
-            { id: "libr-26", title: "نوت بوك سلك غلاف أنمي", price: 125, priceLabel: "125 / 100 / 150", category: "school", img: "Libr/compressed_1795160024565.webp" },
-            { id: "libr-27", title: "مقلمة Andiosya Group بناتي", price: 65, category: "school", img: "Libr/compressed_1795160024235.webp" },
-            { id: "libr-28", title: "ألوان فلوماستر دومس DOMS Aqua 12 لون", price: 50, category: "school", img: "Libr/compressed_1795160023862.webp" },
+            { id: "libr-1", title: "قلم جاف سحري", desc: "كتابة سلسة وممتعة تناسب الملاحظات اليومية والاستخدام المدرسي.", price: 10, category: "school", img: "Libr/compressed_1795160031886.webp" },
+            { id: "libr-2", title: "زمزمية مياه رياضية MOT", desc: "عملية وسهلة الحمل للتمارين والمدرسة والخروجات اليومية.", price: 140, category: "school", img: "Libr/compressed_1795160031599.webp" },
+            { id: "libr-3", title: "ورق فلوسكاب زاد ZAD", desc: "ورق كتابة مناسب للواجبات والامتحانات والتدوين اليومي.", price: 30, category: "school", img: "Libr/compressed_1795160031301.webp" },
+            { id: "libr-4", title: "نوت بوك سلك 100 ورقة", desc: "تجليد سلك مريح يفتح بالكامل لكتابة المحاضرات والمذاكرة بسهولة.", price: 100, priceLabel: "100 / 120 / 150", category: "school", img: "Libr/compressed_1795160031025.webp" },
+            { id: "libr-5", title: "مقلمة أميرات ديزني", desc: "تصميم بناتي جذاب يجمع الأقلام والأدوات المدرسية في مكان واحد.", price: 120, category: "school", img: "Libr/compressed_1795160030736.webp" },
+            { id: "libr-6", title: "لانش بوكس ملون", desc: "يحفظ ساندويتشات وفواكه المدرسة بشكل مرتب ومبهج للأطفال.", price: 120, category: "school", img: "Libr/compressed_1795160030424.webp" },
+            { id: "libr-7", title: "سبورة كتابة LCD PANEL", desc: "لوح رسم وكتابة إلكتروني خفيف وممتع للأطفال والطلاب مع زر مسح فوري.", price: 65, category: "school", img: "Libr/compressed_1795160030099.webp" },
+            { id: "libr-8", title: "نوت بوك سلك 80 / 100 ورقة", desc: "دفتر سلك عملي وخفيف للمذاكرة وتدوين الأفكار اليومية.", price: 65, category: "school", img: "Libr/compressed_1795160029820.webp" },
+            { id: "libr-9", title: "زمزمية مياه متدرجة بمؤشر ساعات", desc: "ألوان متدرجة مع علامات زمنية تشجع على شرب المياه بانتظام طوال اليوم.", price: 140, category: "school", img: "Libr/compressed_1795160029544.webp" },
+            { id: "libr-10", title: "باكو كشاكيل 10 كشاكيل", desc: "توفير عملي بـ 10 كشاكيل جاهزة للمدرسة والدروس والمذاكرة.", price: 70, category: "school", img: "Libr/compressed_1795160029204.webp" },
+            { id: "libr-11", title: "زمزمية مياه متدرجة بينك وأزرق", desc: "تدرج لوني جذاب وشكل عصري مناسب للمدرسة والنادي والجامعة.", price: 140, category: "school", img: "Libr/compressed_1795160028924.webp" },
+            { id: "libr-12", title: "رش ثلج للأفراح GALA", desc: "يضيف أجواء احتفالية ومبهجة لأعياد الميلاد والحفلات والمناسبات.", price: 30, category: "school", img: "Libr/compressed_1795160028621.webp" },
+            { id: "libr-13", title: "مقلمة Kawai وردية", desc: "تصميم لطيف باللون الوردي لحفظ الأقلام والمسطرة والممحاة بترتيب.", price: 50, category: "school", img: "Libr/compressed_1795160028347.webp" },
+            { id: "libr-14", title: "زمزمية مياه متدرجة Winning", desc: "شكل رياضي عملي وتدرج ألوان مميز لاصطحابها في كل مكان.", price: 140, category: "school", img: "Libr/compressed_1795160028072.webp" },
+            { id: "libr-15", title: "دبل فيس Mounting Tape", desc: "شريط لاصق مزدوج الوجه لتثبيت البوسترات والأدوات الخفيفة بسهولة.", price: 30, category: "school", img: "Libr/compressed_1795160027793.webp" },
+            { id: "libr-16", title: "منظم / مقلمة SUN GROUP", desc: "يجمع الأدوات المكتبية أو المدرسية بشكل منظم وسهل الوصول.", price: 70, category: "school", img: "Libr/compressed_1795160027493.webp" },
+            { id: "libr-17", title: "زمزميات أطفال فضاء قطعتين", desc: "قطعتان برسومات فضاء محببة للأطفال للمدرسة والخروجات.", price: 100, category: "school", img: "Libr/compressed_1795160027187.webp" },
+            { id: "libr-18", title: "كيس بالونات 100 قطعة", desc: "100 بالونة لتزيين حفلات أعياد الميلاد والمفاجآت والمناسبات السعيدة.", price: 85, category: "school", img: "Libr/compressed_1795160026903.webp" },
+            { id: "libr-19", title: "صلصال أطفال NARA", desc: "يشجع الأطفال على الإبداع وتشكيل المجسمات وتنمية المهارات اليدوية.", price: 45, category: "school", img: "Libr/compressed_1795160026583.webp" },
+            { id: "libr-20", title: "قلم جاف شكل باندا", desc: "قلم بتصميم باندا يضيف لمسة مرحة للكتابة والمذاكرة.", price: 10, category: "school", img: "Libr/compressed_1795160026304.webp" },
+            { id: "libr-21", title: "ورق كوخ باكو", desc: "باكو ورق مناسب للأنشطة المدرسية والأعمال الفنية والتطبيقات.", price: 65, category: "school", img: "Libr/compressed_1795160026004.webp" },
+            { id: "libr-22", title: "لانش بوكس CAMEL LUNCH BOX", desc: "علبة طعام عملية للمدرسة تحافظ على وجبة طفلك منظمة وسهلة الفتح.", price: 120, category: "school", img: "Libr/compressed_1795160025726.webp" },
+            { id: "libr-23", title: "مقص أطفال SCISSORS", desc: "تصميم مريح ليد الأطفال لقص الورق والأعمال الفنية بأمان.", price: 20, category: "school", img: "Libr/compressed_1795160025453.webp" },
+            { id: "libr-24", title: "فوم جليتر باكو ألوان", desc: "ألوان لامعة جذابة للأشغال اليدوية والوسائل التعليمية وتزيين اللوحات.", price: 65, category: "school", img: "Libr/compressed_1795160025160.webp" },
+            { id: "libr-25", title: "شريط لاصق سيلتيب Falcon", desc: "رول لاصق شفاف عملي لتغليف الأوراق والرسائل والأعمال اليومية.", price: 20, category: "school", img: "Libr/compressed_1795160024869.webp" },
+            { id: "libr-26", title: "نوت بوك سلك غلاف أنمي", desc: "غلاف أنمي عصري وأوراق سلك مريحة للدراسة وتدوين الملاحظات.", price: 125, priceLabel: "125 / 100 / 150", category: "school", img: "Libr/compressed_1795160024565.webp" },
+            { id: "libr-27", title: "مقلمة Andiosya Group بناتي", desc: "مقلمة بناتي أنيقة لحفظ الأقلام والأدوات المدرسية بشكل مرتب.", price: 65, category: "school", img: "Libr/compressed_1795160024235.webp" },
+            { id: "libr-28", title: "ألوان فلوماستر دومس DOMS Aqua 12 لون", desc: "12 لوناً زاهياً للرسم والتلوين والأنشطة المدرسية بوضوح جميل.", price: 50, category: "school", img: "Libr/compressed_1795160023862.webp" },
 
-            { id: "tafse-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
-            { id: "tafse-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
-            { id: "tafse-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
-            { id: "tafse-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
-            { id: "tafse-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
-            { id: "tafse-6", title: "موديل أسود بقصة كشكشة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044923.webp" },
-            { id: "tafse-7", title: "عباية بشت قطيفة موف مع طرحة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044497.webp" },
-            { id: "tafse-8", title: "فستان لبني بكشكشة وأكمام", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044682.webp" },
-            { id: "tafse-9", title: "عباية قطيفة نبيتي ببروش", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044361.webp" },
-            { id: "tafse-10", title: "عباية بني قماش بليسيه بأكمام واسعة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044174.webp" },
-            { id: "tafse-11", title: "عباية سوداء قماش جاكار مموج", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044287.webp" },
-            { id: "tafse-12", title: "فستان أصفر فاتح برباط جانبي", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043951.webp" },
-            { id: "tafse-13", title: "عباية قطيفة موف غامق مع طرحة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043669.webp" },
-            { id: "tafse-14", title: "عباية قطيفة بني برباط على الأكمام", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043790.webp" },
-            { id: "tafse-15", title: "فستان أزرق بليسيه برباط جانبي", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043481.webp" },
-            { id: "tafse-16", title: "عباية كحلي بأزرار أمامية وأكمام واسعة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043346.webp" },
-            { id: "tafse-17", title: "عباية قطيفة موف مطرزة مع طرحة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043197.webp" },
-            { id: "tafse-18", title: "عباية سوداء قماش مضلع بأكمام واسعة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094042876.webp" },
-            { id: "tafse-19", title: "شنطة هاند ميد خرز", price: 50, category: "tafse", img: "Tafse/compressed_1795180558469.webp" },
-            { id: "tafse-20", title: "مراية حسب الطلب (تصميم أسماء وورد)", price: 500, category: "tafse", img: "Tafse/compressed_1795180558100.webp" },
-            { id: "tafse-21", title: "مراية حسب الطلب (تصميم ذهبي وفراشات)", price: 500, category: "tafse", img: "Tafse/compressed_1795180558884.webp" },
-            { id: "tafse-22", title: "مراية حسب الطلب (تصميم قلوب وصور)", price: 500, category: "tafse", img: "Tafse/compressed_1795180558694.webp" },
+            { id: "tafse-1", title: "مكرمية حائط هاند ميد 1×2 متر", desc: "شغل يدوي مميز بمقاس 1×2 متر مع قطعتين رباط لتزيين الحوائط بلمسة دافئة.", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
+            { id: "tafse-2", title: "مكرمية ديكور هاند ميد 1×2 متر مع عصايا", desc: "مقاس 1×2 متر شغل يدوي متقن ومعاها قطعتين رباط وعصايا هدية لتعليق فخم.", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
+            { id: "tafse-3", title: "مكرمية فاخرة هاند ميد 1×2 متر مع عصايا", desc: "قطعة ديكور يدوية بارزة بمقاس 1×2 متر ومعاها قطعتين رباط وعصايا هدية.", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
+            { id: "tafse-4", title: "مكرمية يدوية 1×2 متر مع رباط هدية", desc: "تصميم بوهيمي أنيق بمقاس 1×2 متر يضيف روحاً مميزة للريسبشن أو الغرف.", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
+            { id: "tafse-5", title: "مكرمية ديكور 1×2 متر مع عصايا ورباط", desc: "شغل هاند ميد متكامل بمقاس 1×2 متر ومعاها قطعتين رباط وعصايا هدية.", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
+            { id: "tafse-6", title: "موديل أسود بقصة كشكشة", desc: "إطلالة أنثوية راقية باللون الأسود مع تفاصيل كشكشة ناعمة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044923.webp" },
+            { id: "tafse-7", title: "عباية بشت قطيفة موف مع طرحة", desc: "خامة قطيفة دافئة بلون موف جذاب مع طرحة متناسقة لإطلالة شتوية أنيقة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044497.webp" },
+            { id: "tafse-8", title: "فستان لبني بكشكشة وأكمام", desc: "لون لبني هادئ مع كشكشة وأكمام تمنحك حضوراً رقيقاً ومميزاً.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044682.webp" },
+            { id: "tafse-9", title: "عباية قطيفة نبيتي ببروش", desc: "قطيفة نبيتي غنية مع لمسة بروش تضيف فخامة واضحة للإطلالة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044361.webp" },
+            { id: "tafse-10", title: "عباية بني قماش بليسيه بأكمام واسعة", desc: "خامة بليسيه انسيابية باللون البني مع أكمام واسعة مريحة وأنيقة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044174.webp" },
+            { id: "tafse-11", title: "عباية سوداء قماش جاكار مموج", desc: "قماش جاكار مموج يمنح العباية السوداء ملمساً غنياً وحضوراً مميزاً.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044287.webp" },
+            { id: "tafse-12", title: "فستان أصفر فاتح برباط جانبي", desc: "لون أصفر فاتح مشرق مع رباط جانبي يحدد القصة بأناقة ناعمة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043951.webp" },
+            { id: "tafse-13", title: "عباية قطيفة موف غامق مع طرحة", desc: "درجة موف غامق أنيقة بخامة قطيفة مريحة ودافئة مع طرحتها.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043669.webp" },
+            { id: "tafse-14", title: "عباية قطيفة بني برباط على الأكمام", desc: "قطيفة بنية ناعمة مزينة برباط على الأكمام لإطلالة متوازنة ومريحة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043790.webp" },
+            { id: "tafse-15", title: "فستان أزرق بليسيه برباط جانبي", desc: "قصة بليسيه جذابة باللون الأزرق مع رباط جانبي لإطلالة عصرية أنيقة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043481.webp" },
+            { id: "tafse-16", title: "عباية كحلي بأزرار أمامية وأكمام واسعة", desc: "لون كحلي كلاسيكي عملي بأزرار أمامية وأكمام واسعة تمنحك حرية حركة.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043346.webp" },
+            { id: "tafse-17", title: "عباية قطيفة موف مطرزة مع طرحة", desc: "تطريز أنيق على قطيفة موف فخمة مع طرحة متناسقة للمناسبات والخروجات.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043197.webp" },
+            { id: "tafse-18", title: "عباية سوداء قماش مضلع بأكمام واسعة", desc: "قماش مضلع عملي بلون أسود أنيق وأكمام واسعة تناسب اللبس اليومي.", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094042876.webp" },
+            { id: "tafse-19", title: "شنطة هاند ميد خرز", desc: "شنطة يدوية مشغولة بالخرز بلمسة مميزة تناسب الخروجات والهدايا.", price: 50, category: "tafse", img: "Tafse/compressed_1795180558469.webp" },
+            { id: "tafse-20", title: "مراية هاند ميد حسب الطلب (أسماء وورد)", desc: "تنفيذ خاص حسب الطلب بتصميم أسماء وورد لهدية شخصية مميزة.", price: 500, category: "tafse", img: "Tafse/compressed_1795180558100.webp" },
+            { id: "tafse-21", title: "مراية هاند ميد حسب الطلب (ذهبي وفراشات)", desc: "تصميم يدوي حسب الطلب بلمسات ذهبية وفراشات لديكور أنيق ولافت.", price: 500, category: "tafse", img: "Tafse/compressed_1795180558884.webp" },
+            { id: "tafse-22", title: "مراية هاند ميد حسب الطلب (قلوب وصور)", desc: "قطعة هاند ميد مخصصة حسب الطلب بقلوب وصور لتخليد الذكريات.", price: 500, category: "tafse", img: "Tafse/compressed_1795180558694.webp" },
 
-            { id: "wmn-1", title: "أندر نسائي مشجر دباغ / كاندي", price: 65, category: "women", img: "Clswmn/compressed_1795114616012.webp" },
+            { id: "wmn-1", title: "أندر نسائي مشجر دباغ / كاندي", desc: "خامة ناعمة ومريحة بتصميم مشجر أنيق للاستخدام اليومي.", price: 65, category: "women", img: "Clswmn/compressed_1795114616012.webp" },
 
-            { id: "amn-1", title: "محفظه بالاسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
-            { id: "amn-2", title: "مرايا سحريه بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
-            { id: "amn-3", title: "ساعة بصورتك 30 في 40", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
-            { id: "amn-4", title: "مج أبيض بصورتك", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
-            { id: "amn-5", title: "منديل العرسان", price: 130, category: "gifts", img: "Amnh/IMG-20261117-WA0018.jpg" },
-            { id: "amn-6", title: "تابلوه 30 في 40", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
-            { id: "amn-7", title: "تابلوه 60 في 90", price: 500, category: "gifts", img: "Amnh/IMG-20261117-WA0016.jpg" },
-            { id: "amn-8", title: "برواز 21 في 15", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0014.jpg" },
-            { id: "amn-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
-            { id: "amn-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
+            { id: "amn-1", title: "محفظة بالأسماء حسب الطلب", desc: "هدية عملية وشخصية بتحديد الاسم اللي تختاره بشكل أنيق ومميز.", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
+            { id: "amn-2", title: "مرايا سحرية بصورتك", desc: "تظهر صورتك بوضوح عند الإضاءة لتكون فكرة هدية غير تقليدية.", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
+            { id: "amn-3", title: "ساعة حائط بصورتك 30×40", desc: "تجمع بين وظيفة الساعة وجمال صورتك المفضلة في مقاس 30×40.", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
+            { id: "amn-4", title: "مج أبيض مطبوع بصورتك", desc: "مج يومي أنيق مطبوع بصورتك أو تصميمك لهدية قريبة من القلب.", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
+            { id: "amn-5", title: "منديل العرسان", desc: "لمسة مميزة وذكرى جميلة ليوم الفرح والمناسبات الخاصة.", price: 130, category: "gifts", img: "Amnh/IMG-20261117-WA0018.jpg" },
+            { id: "amn-6", title: "تابلوه ديكور 30×40", desc: "مقاس عملي ومناسب لتزيين الحوائط والمكاتب وإهداء الأحباب.", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
+            { id: "amn-7", title: "تابلوه ديكور كبير 60×90", desc: "مساحة عرض بارزة بمقاس 60×90 تمنح المكان حضوراً فخماً.", price: 500, category: "gifts", img: "Amnh/IMG-20261117-WA0016.jpg" },
+            { id: "amn-8", title: "برواز صور 21×15", desc: "مقاس لطيف ومناسب للمكاتب والأرفف والهدايا التذكارية.", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0014.jpg" },
+            { id: "amn-9", title: "طباعة جراب موبايل بصورتك", desc: "حوّل جراب موبايلك لقطعة شخصية مطبوعة بصورتك أو ذكرياتك.", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
+            { id: "amn-10", title: "مج سحري بصورتك", desc: "يكشف الصورة تدريجياً مع السخونة لهدية ممتعة ومفاجئة.", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
 
-            { id: "brf-1", title: "عطر Lively For Men Paris", price: 175, category: "perfume", img: "Prfa/compressed_1794950472010.webp" },
-            { id: "brf-2", title: "عطر مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096546.webp" },
-            { id: "brf-3", title: "عطر مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096662.webp" },
-            { id: "brf-4", title: "عطر قصة الوردي", price: 375, category: "perfume", img: "Prfa/compressed_1794950096748.webp" },
-            { id: "brf-5", title: "عطر يارا من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
-            { id: "brf-6", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
-            { id: "brf-7", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
-            { id: "brf-8", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
-            { id: "brf-9", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
-            { id: "brf-10", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
-            { id: "brf-11", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
-            { id: "brf-12", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0080.jpg" },
-            { id: "brf-13", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
-            { id: "brf-14", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
-            { id: "brf-15", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
-            { id: "brf-16", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" }
+            { id: "brf-1", title: "عطر Lively For Men Paris", desc: "إطلالة عطرية رجالية منعشة وعصرية تناسب الاستخدام اليومي والمشاوير.", price: 175, category: "perfume", img: "Prfa/compressed_1794950472010.webp" },
+            { id: "brf-2", title: "عطر مصمم الأسود Black Intense من لطافة", desc: "طابع شرقي عميق وجذاب بلمسة جريئة مناسبة للمساء والمناسبات.", price: 375, category: "perfume", img: "Prfa/compressed_1794950096546.webp" },
+            { id: "brf-3", title: "عطر مصمم الذهب من لطافة", desc: "رائحة غنية وفخمة بلمسة ذهبية راقية تبرز حضورك في المناسبات.", price: 375, category: "perfume", img: "Prfa/compressed_1794950096662.webp" },
+            { id: "brf-4", title: "عطر قصة الوردي", desc: "نفحات ناعمة وأنثوية رقيقة تضيف لمسة رقة وجاذبية يومية.", price: 375, category: "perfume", img: "Prfa/compressed_1794950096748.webp" },
+            { id: "brf-5", title: "عطر يارا من لطافة", desc: "من أشهر العطور النسائية برائحة كريمية ناعمة ومحببة تدوم طويلاً.", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
+            { id: "brf-6", title: "بارفان مميز — اختيار يومي راقٍ", desc: "رائحة متوازنة ومريحة مناسبة للدوام والخروجات اليومية بسعر مناسب.", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
+            { id: "brf-7", title: "بارفان مميز — لمسة عطرية جذابة", desc: "ثبات لطيف ورائحة جذابة تمنحك إحساساً بالانتعاش طوال اليوم.", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
+            { id: "brf-8", title: "بارفان مميز — عبير أنيق ومتجدد", desc: "اختيار عملي ومميز للاستخدام اليومي أو كهدية عطرية بسيطة.", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
+            { id: "brf-9", title: "بارفان فخم — حضور مسائي مميز", desc: "تركيبة عطرية غنية تناسب السهرات والمناسبات والذوق الفخم.", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
+            { id: "brf-10", title: "بارفان صغير — عملي للشنطة والجيب", desc: "حجم صغير وسهل الحمل في الشنطة أو الجيب لتجديد الرائحة في أي وقت.", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
+            { id: "brf-11", title: "بارفان فخم — نفحات دافئة وجذابة", desc: "رائحة متماسكة تمنحك طابعاً مميزاً في الخروجات والمناسبات الخاصة.", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
+            { id: "brf-12", title: "بارفان فخم — إطلالة عطرية لافتة", desc: "توليفة أنيقة وواضحة تترك أثراً جميلاً ومناسباً للذوق المميز.", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0080.jpg" },
+            { id: "brf-13", title: "بارفان أنيق — انتعاش يومي متوازن", desc: "رائحة هادئة وعملية تناسب الاستخدام اليومي والمشاوير الخفيفة.", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
+            { id: "brf-14", title: "بارفان أنيق — لمسة ناعمة ومريحة", desc: "اختيار لطيف وسهل الاستخدام يومياً برائحة متوازنة.", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
+            { id: "brf-15", title: "بارفان كلاسيك — طابع هادئ ومألوف", desc: "رائحة كلاسيكية خفيفة مناسبة للاستخدام اليومي بسعر اقتصادي.", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
+            { id: "brf-16", title: "بارفان كلاسيك — اختيار عملي وبسيط", desc: "عبير كلاسيكي مريح يناسب الروتين اليومي والمشاوير السريعة.", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" }
         ];
 
         let currentCategory = "all";
@@ -1870,7 +1880,7 @@
 
             const catLabel = CATEGORY_NAMES[product.category] || "";
             const searchableHaystack = normalizeText(
-                `${product.title} ${product.price} ${product.priceLabel || ""} ${product.subPrice || ""} ${catLabel} ${product.category}`
+                `${product.title} ${product.desc || ""} ${product.price} ${product.priceLabel || ""} ${product.subPrice || ""} ${catLabel} ${product.category}`
             );
 
             const terms = normalizedQuery.split(" ").filter(Boolean);
@@ -2013,6 +2023,7 @@
                             <div class="product-title">${product.title}</div>
                             <div class="product-price">${displayPrice}<span>جنيه</span></div>
                             ${product.subPrice ? `<div class="product-sub">${product.subPrice}</div>` : ""}
+                            ${product.desc ? `<div class="product-desc">${product.desc}</div>` : ""}
                         </div>
                         <div class="card-btns">
                             <button type="button" class="add-cart-btn" id="${btnId}" onclick="addToCart('${product.id}', '${btnId}')">
