@@ -1581,24 +1581,42 @@
             window.addEventListener("load", async () => {
                 try {
                     const reg = await navigator.serviceWorker.register("./sw.js", { updateViaCache: "none" });
-                    reg.update().catch(() => {});
+                    let didReload = false;
 
-                    setInterval(() => {
+                    const forceReloadOnce = () => {
+                        if (didReload) return;
+                        didReload = true;
+                        window.location.reload();
+                    };
+
+                    const checkForUpdateNow = () => {
                         reg.update().catch(() => {});
-                    }, 60000);
+                        if (reg.waiting && navigator.serviceWorker.controller) {
+                            reg.waiting.postMessage({ type: "SKIP_WAITING" });
+                        }
+                    };
 
+                    checkForUpdateNow();
+                    setInterval(checkForUpdateNow, 30000);
+
+                    window.addEventListener("focus", checkForUpdateNow);
                     document.addEventListener("visibilitychange", () => {
                         if (document.visibilityState === "visible") {
-                            reg.update().catch(() => {});
+                            checkForUpdateNow();
                         }
                     });
 
-                    let refreshing = false;
-                    navigator.serviceWorker.addEventListener("controllerchange", () => {
-                        if (refreshing) return;
-                        refreshing = true;
-                        window.location.reload();
+                    reg.addEventListener("updatefound", () => {
+                        const newWorker = reg.installing;
+                        if (!newWorker) return;
+                        newWorker.addEventListener("statechange", () => {
+                            if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                                newWorker.postMessage({ type: "SKIP_WAITING" });
+                            }
+                        });
                     });
+
+                    navigator.serviceWorker.addEventListener("controllerchange", forceReloadOnce);
                 } catch (e) {}
             });
         }
