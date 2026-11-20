@@ -38,7 +38,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-bottom: 110px;
+            padding-bottom: 100px;
         }
 
         a {
@@ -180,7 +180,7 @@
 
         @media (min-width: 768px) {
             .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -272,7 +272,6 @@
             color: #ffffff;
         }
 
-        /* زر سلة عائم يدخل بحركة انسيابية مميزة */
         .floating-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -280,52 +279,39 @@
             z-index: 950;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: var(--olive-deep);
             color: #ffffff;
-            border: 2px solid var(--linen-soft);
-            padding: 12px 20px;
+            border: 1.5px solid var(--linen-soft);
+            padding: 10px 16px;
             border-radius: 999px;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(35, 40, 32, 0.4);
-            animation: slideInFromSide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            box-shadow: 0 8px 20px rgba(35, 40, 32, 0.25);
             transition: transform 0.2s ease, background 0.2s ease;
         }
 
         .floating-cart-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             background: var(--caramel-dark);
-        }
-
-        @keyframes slideInFromSide {
-            0% {
-                opacity: 0;
-                transform: translateX(-50px) scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-            }
         }
 
         .cart-badge {
             background: var(--caramel);
             color: #ffffff;
-            min-width: 24px;
-            height: 24px;
-            padding: 0 8px;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
             border-radius: 999px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 800;
+            font-size: 0.78rem;
+            font-weight: 850;
         }
 
-        /* نافذة السلة */
         .cart-modal {
             display: none;
             position: fixed;
@@ -376,7 +362,7 @@
         }
 
         .cart-header h2 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 800;
         }
 
@@ -384,45 +370,45 @@
             background: rgba(255, 255, 255, 0.12);
             color: #ffffff;
             border: none;
-            width: 34px;
-            height: 34px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 1;
             cursor: pointer;
         }
 
         .cart-items {
-            padding: 16px;
+            padding: 14px 16px;
             overflow-y: auto;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .cart-empty {
             text-align: center;
-            padding: 40px 20px;
+            padding: 36px 14px;
             color: var(--text-muted);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .cart-item {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: var(--bg-main);
             border: 1px solid rgba(59, 71, 54, 0.12);
-            border-radius: 16px;
-            padding: 10px;
+            border-radius: 14px;
+            padding: 9px;
         }
 
         .cart-item img {
-            width: 64px;
-            height: 64px;
-            border-radius: 12px;
+            width: 58px;
+            height: 58px;
+            border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
         }
@@ -434,7 +420,7 @@
         }
 
         .cart-item-title {
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             font-weight: 700;
             color: var(--text-main);
             white-space: nowrap;
@@ -443,36 +429,32 @@
         }
 
         .cart-item-price {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 800;
             color: var(--caramel-dark);
-            margin-top: 4px;
         }
 
         .qty-controls {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .qty-btn {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 8px;
             border: 1px solid var(--border-craft);
             background: #ffffff;
             color: var(--olive-deep);
             font-weight: 800;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .qty-val {
-            min-width: 24px;
+            min-width: 20px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 800;
         }
 
@@ -480,14 +462,14 @@
             background: transparent;
             border: none;
             color: #b43232;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
             cursor: pointer;
-            padding: 4px;
+            padding: 0 4px;
         }
 
         .cart-footer {
-            padding: 16px 20px;
+            padding: 14px 16px;
             border-top: 1px solid rgba(59, 71, 54, 0.14);
             background: #faf8f4;
         }
@@ -496,30 +478,30 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             font-weight: 800;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
         }
 
         .cart-summary-total {
             color: var(--caramel-dark);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .cart-actions-row {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
         .clear-cart-btn {
             background: #ece7de;
             color: var(--text-main);
             border: none;
-            padding: 12px 18px;
+            padding: 10px 14px;
             border-radius: 12px;
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             cursor: pointer;
         }
 
@@ -528,15 +510,15 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             background: var(--olive-deep);
             color: #ffffff;
             border: none;
-            padding: 12px 20px;
+            padding: 10px 16px;
             border-radius: 12px;
             font-family: 'Cairo', sans-serif;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.86rem;
             cursor: pointer;
         }
 
@@ -581,7 +563,6 @@
     </div>
 
     <div class="categories-grid">
-        <!-- 01 مستلزمات المنزل -->
         <a href="Home.html" class="category-card">
             <div class="cat-img-wrap">
                 <img src="compressed_1794899088358.webp" alt="مستلزمات المنزل" loading="lazy">
@@ -596,7 +577,6 @@
             </div>
         </a>
 
-        <!-- 02 مستلزمات الدراسة -->
         <a href="Lab.html" class="category-card">
             <div class="cat-img-wrap">
                 <img src="compressed_1794939645943.webp" alt="مستلزمات الدراسة" loading="lazy">
@@ -614,13 +594,11 @@
 
 </main>
 
-<!-- الزر العائم للسلة -->
 <button type="button" class="floating-cart-btn" id="floatingCartBtn" aria-label="فتح سلة المشتريات">
     <span>🛒 السلة</span>
     <span class="cart-badge" id="cartCountBadge">0</span>
 </button>
 
-<!-- نافذة السلة -->
 <div class="cart-modal" id="cartModal">
     <div class="cart-drawer">
         <div class="cart-header">
@@ -635,7 +613,7 @@
             </div>
             <div class="cart-actions-row">
                 <button type="button" class="clear-cart-btn" id="clearCartBtn">تفريغ السلة</button>
-                <button type="button" class="checkout-wa-btn" id="checkoutWaBtn">إرسال الطلب في رسالة واحدة على واتساب</button>
+                <button type="button" class="checkout-wa-btn" id="checkoutWaBtn">إرسال الطلب واتساب</button>
             </div>
         </div>
     </div>
