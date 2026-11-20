@@ -786,7 +786,7 @@
 
     </main>
 
-    <!-- الزر العائم الآن عبارة عن دائرة تعرض الرقم فقط -->
+    <!-- الزر العائم عبارة عن دائرة تعرض الرقم فقط -->
     <button type="button" class="floating-cart-btn" id="floatingCartBtn" aria-label="فتح سلة المشتريات">
         <span class="cart-badge" id="cartCountBadge">0</span>
     </button>
@@ -816,14 +816,32 @@
     </footer>
 
     <script>
-        const CART_STORAGE_KEY = "caramela_cart_items";
+        const PRIMARY_CART_KEY = "caramel_store_cart_v1";
+        const LEGACY_CART_KEY = "caramela_cart_items";
         let localCart = [];
+
+        function parseCartRaw(raw) {
+            try {
+                const parsed = raw ? JSON.parse(raw) : [];
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (err) {
+                return [];
+            }
+        }
 
         function readCart() {
             try {
-                const raw = localStorage.getItem(CART_STORAGE_KEY);
-                localCart = raw ? JSON.parse(raw) : [];
-                if (!Array.isArray(localCart)) localCart = [];
+                const primaryItems = parseCartRaw(localStorage.getItem(PRIMARY_CART_KEY));
+                const legacyItems = parseCartRaw(localStorage.getItem(LEGACY_CART_KEY));
+
+                if (primaryItems.length > 0) {
+                    localCart = primaryItems;
+                } else if (legacyItems.length > 0) {
+                    localCart = legacyItems;
+                    localStorage.setItem(PRIMARY_CART_KEY, JSON.stringify(legacyItems));
+                } else {
+                    localCart = [];
+                }
             } catch (err) {
                 localCart = [];
             }
@@ -833,7 +851,9 @@
         function writeCart(items) {
             localCart = Array.isArray(items) ? items : [];
             try {
-                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(localCart));
+                const serialized = JSON.stringify(localCart);
+                localStorage.setItem(PRIMARY_CART_KEY, serialized);
+                localStorage.setItem(LEGACY_CART_KEY, serialized);
             } catch (err) {}
         }
 
@@ -941,6 +961,17 @@
                 window.open(`https://wa.me/201055436305?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
             });
         }
+
+        window.addEventListener("pageshow", updateCartUI);
+        window.addEventListener("focus", updateCartUI);
+        document.addEventListener("visibilitychange", () => {
+            if (!document.hidden) updateCartUI();
+        });
+        window.addEventListener("storage", (e) => {
+            if (!e.key || e.key === PRIMARY_CART_KEY || e.key === LEGACY_CART_KEY) {
+                updateCartUI();
+            }
+        });
 
         updateCartUI();
     </script>
