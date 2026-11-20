@@ -70,6 +70,17 @@
             }
         }
 
+        @keyframes compactBadgeEntry {
+            0% {
+                opacity: 0;
+                transform: translateX(-40px) scale(0.6);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
         header {
             background: rgba(28, 23, 20, 0.96);
             backdrop-filter: blur(12px);
@@ -336,7 +347,6 @@
             transform: translateX(-3px) scale(1.06);
         }
 
-        /* تخصيص ألوان وتأثيرات كل قسم */
         .card-home { border: 2px solid rgba(184, 134, 86, 0.32); }
         .card-home:hover { box-shadow: 0 16px 34px -10px rgba(184, 134, 86, 0.3); border-color: #b88656; }
         .card-home .arrow-icon { background: #fcf9f5; color: #946940; border: 1px solid rgba(184, 134, 86, 0.35); }
@@ -377,44 +387,40 @@
         .card-perfume .arrow-icon { background: #f0f7ff; color: #1d4ed8; border: 1px solid rgba(59, 130, 246, 0.35); }
         .card-perfume:hover .arrow-icon { background: #1e293b; color: #fff; }
 
-        /* زر السلة العائم الفوري */
+        /* زر السلة العائم دائرة تعرض العدد فقط */
         .floating-cart-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 24px;
+            left: 24px;
             z-index: 9990;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--caramel-light), var(--caramel));
-            color: var(--espresso);
-            border: 1.5px solid var(--espresso);
-            border-radius: 999px;
-            padding: 11px 16px;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--espresso), var(--espresso-soft));
+            color: var(--caramel-light);
+            border: 2px solid var(--caramel);
             font-family: 'Cairo', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(28, 23, 20, 0.35);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 12px 28px rgba(28, 23, 20, 0.4), 0 0 16px var(--glow);
+            animation: compactBadgeEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .floating-cart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px rgba(28, 23, 20, 0.42);
+            transform: translateY(-4px) scale(1.05);
+            border-color: var(--caramel-light);
+            box-shadow: 0 16px 34px rgba(28, 23, 20, 0.5), 0 0 22px var(--glow);
         }
 
         .floating-cart-count {
-            background: var(--espresso);
-            color: #ffffff;
-            min-width: 24px;
-            height: 24px;
-            border-radius: 999px;
-            display: inline-grid;
-            place-items: center;
-            padding: 0 6px;
-            font-size: 0.82rem;
-            font-weight: 800;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--caramel-light);
+            line-height: 1;
         }
 
         .cart-backdrop {
@@ -727,7 +733,6 @@
     </footer>
 
     <button id="caramel-floating-cart-btn" class="floating-cart-btn" type="button" aria-label="فتح سلة المشتريات">
-        <span>السلة</span>
         <span id="caramel-cart-count" class="floating-cart-count">0</span>
     </button>
 
