@@ -111,7 +111,6 @@
             }
         }
 
-        /* دخول الزرار واستقراره كدائرة صغيرة مخصصة للرقم فقط */
         @keyframes compactBadgeEntry {
             0% {
                 opacity: 0;
@@ -120,6 +119,20 @@
             100% {
                 opacity: 1;
                 transform: translateX(0) scale(1);
+            }
+        }
+
+        /* نبض وإضاءة مستمرة للدائرة */
+        @keyframes cartGlowPulse {
+            0%, 100% {
+                transform: scale(1);
+                border-color: var(--caramel);
+                box-shadow: 0 10px 24px rgba(28, 22, 18, 0.45), 0 0 14px rgba(200, 150, 102, 0.45), inset 0 0 10px rgba(229, 190, 150, 0.15);
+            }
+            50% {
+                transform: scale(1.07);
+                border-color: #ffd8a8;
+                box-shadow: 0 14px 30px rgba(28, 22, 18, 0.55), 0 0 28px rgba(255, 216, 168, 0.85), inset 0 0 16px rgba(229, 190, 150, 0.35);
             }
         }
 
@@ -431,39 +444,67 @@
             box-shadow: 0 0 25px rgba(229, 190, 150, 1);
         }
 
-        /* الزر العائم عبارة عن دائرة تعرض الرقم فقط */
+        /* الدائرة النابضة المضيئة مع تأثير تبديل السلة والرقم */
         .floating-cart-btn {
             position: fixed;
             bottom: 24px;
             left: 24px;
             z-index: 950;
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--espresso), var(--roast));
+            background: linear-gradient(145deg, var(--espresso), var(--roast));
             color: #ffffff;
             border: 2px solid var(--caramel);
             cursor: pointer;
-            box-shadow: 0 12px 28px rgba(28, 22, 18, 0.45), 0 0 16px var(--glow);
-            animation: compactBadgeEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+            animation: compactBadgeEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards, cartGlowPulse 2.2s infinite ease-in-out 0.5s;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .floating-cart-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            border-color: var(--caramel-light);
-            box-shadow: 0 16px 34px rgba(28, 22, 18, 0.55), 0 0 22px var(--glow);
+            animation-play-state: paused;
+            transform: scale(1.1);
+            border-color: #ffd8a8;
+        }
+
+        .cart-label-intro,
+        .cart-badge {
+            position: absolute;
+            font-family: 'Cairo', sans-serif;
+            transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .cart-label-intro {
+            font-size: 0.88rem;
+            font-weight: 900;
+            color: #ffd8a8;
+            letter-spacing: 0.3px;
+            opacity: 0;
+            transform: scale(0.4) rotate(12deg);
         }
 
         .cart-badge {
-            font-family: 'Cairo', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 900;
             color: var(--caramel-light);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .floating-cart-btn.show-label .cart-label-intro {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .floating-cart-btn.show-label .cart-badge {
+            opacity: 0;
+            transform: scale(0.4) rotate(-12deg);
         }
 
         /* نافذة السلة */
@@ -786,8 +827,9 @@
 
     </main>
 
-    <!-- الزر العائم عبارة عن دائرة تعرض الرقم فقط -->
-    <button type="button" class="floating-cart-btn" id="floatingCartBtn" aria-label="فتح سلة المشتريات">
+    <!-- الزر العائم النابض المضيء مع تأثير "السلة" ثم الرقم -->
+    <button type="button" class="floating-cart-btn show-label" id="floatingCartBtn" aria-label="فتح سلة المشتريات">
+        <span class="cart-label-intro">السلة</span>
         <span class="cart-badge" id="cartCountBadge">0</span>
     </button>
 
@@ -819,6 +861,7 @@
         const PRIMARY_CART_KEY = "caramel_store_cart_v1";
         const LEGACY_CART_KEY = "caramela_cart_items";
         let localCart = [];
+        let introTimer = null;
 
         function parseCartRaw(raw) {
             try {
@@ -855,6 +898,16 @@
                 localStorage.setItem(PRIMARY_CART_KEY, serialized);
                 localStorage.setItem(LEGACY_CART_KEY, serialized);
             } catch (err) {}
+        }
+
+        function triggerCartLabelIntro() {
+            const btn = document.getElementById("floatingCartBtn");
+            if (!btn) return;
+            clearTimeout(introTimer);
+            btn.classList.add("show-label");
+            introTimer = setTimeout(() => {
+                btn.classList.remove("show-label");
+            }, 1500);
         }
 
         function updateCartUI() {
@@ -962,7 +1015,10 @@
             });
         }
 
-        window.addEventListener("pageshow", updateCartUI);
+        window.addEventListener("pageshow", () => {
+            updateCartUI();
+            triggerCartLabelIntro();
+        });
         window.addEventListener("focus", updateCartUI);
         document.addEventListener("visibilitychange", () => {
             if (!document.hidden) updateCartUI();
@@ -974,6 +1030,7 @@
         });
 
         updateCartUI();
+        triggerCartLabelIntro();
     </script>
 
 </body>
