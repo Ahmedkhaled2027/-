@@ -403,9 +403,9 @@
 
         .quick-search-box {
             background: #ffffff;
-            border: 1px solid var(--border-gold);
+            border: 1.5px solid var(--border-gold);
             border-radius: 16px;
-            padding: 8px 12px;
+            padding: 6px 10px 6px 14px;
             margin-bottom: 16px;
             box-shadow: var(--shadow-main);
             display: flex;
@@ -418,10 +418,28 @@
             border: none;
             outline: none;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.86rem;
             font-weight: 700;
             color: var(--text-main);
             background: transparent;
+            min-width: 0;
+        }
+
+        .search-clear-btn {
+            background: #f3ede6;
+            color: var(--espresso-soft);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: none;
+            flex-shrink: 0;
+        }
+
+        .search-clear-btn.visible {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .products-grid {
@@ -998,8 +1016,8 @@
                 </div>
 
                 <div class="cat-circle-item ring-tafse" data-cat="tafse" onclick="filterByCategory('tafse', this)">
-                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0042.jpg" alt="المكرميات" loading="lazy"></div></div>
-                    <span class="cat-circle-label">المكرميات</span>
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0042.jpg" alt="هاند ميد" loading="lazy"></div></div>
+                    <span class="cat-circle-label">هاند ميد</span>
                 </div>
 
                 <div class="cat-circle-item ring-kids" data-cat="kids" onclick="filterByCategory('kids', this)">
@@ -1030,7 +1048,8 @@
         </div>
 
         <div class="quick-search-box">
-            <input type="text" id="homeSearchInput" placeholder="ابحث بالاسم أو السعر أو القسم..." oninput="handleSearchInput()">
+            <input type="text" id="homeSearchInput" placeholder="ابحث بالاسم أو السعر أو القسم..." oninput="handleSearchInput()" onkeydown="handleSearchKeyDown(event)">
+            <button type="button" class="search-clear-btn" id="searchClearBtn" onclick="clearSearchInput()">مسح</button>
         </div>
 
         <section class="smart-section" id="smartRecommendationsSection">
@@ -1095,7 +1114,7 @@
             all: "كل المنتجات",
             home: "مستلزمات المنزل",
             school: "المكتبة والمدارس",
-            tafse: "التفصيل والمكرميات",
+            tafse: "هاند ميد",
             kids: "الأطفال",
             women: "أزياء وموضة النساء",
             men: "الرجال",
@@ -1299,12 +1318,26 @@
             return arr;
         }
 
+        function normalizeArabicDigits(str) {
+            const arabicMap = {
+                "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4",
+                "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9",
+                "۰": "0", "۱": "1", "۲": "2", "۳": "3", "۴": "4",
+                "۵": "5", "۶": "6", "۷": "7", "۸": "8", "۹": "9"
+            };
+            return String(str || "").replace(/[٠-٩۰-۹]/g, ch => arabicMap[ch] || ch);
+        }
+
         function normalizeText(str) {
-            return String(str || "")
+            return normalizeArabicDigits(str || "")
                 .toLowerCase()
-                .replace(/[إأآا]/g, "ا")
+                .replace(/[\u064B-\u065F\u0670]/g, "")
+                .replace(/[إأآاٱ]/g, "ا")
                 .replace(/ة/g, "ه")
                 .replace(/ى/g, "ي")
+                .replace(/ؤ/g, "و")
+                .replace(/ئ/g, "ي")
+                .replace(/\s+/g, " ")
                 .trim();
         }
 
@@ -1312,14 +1345,73 @@
             return normalizeText(text)
                 .split(/[\s،,./\\\-*()]+/)
                 .map(t => t.trim())
-                .filter(t => t.length >= 2);
+                .filter(t => t.length >= 1);
+        }
+
+        function matchesSearchQuery(product, rawQuery) {
+            const normalizedQuery = normalizeText(rawQuery);
+            if (!normalizedQuery) return true;
+
+            const catLabel = CATEGORY_NAMES[product.category] || "";
+            const searchableHaystack = normalizeText(
+                `${product.title} ${product.price} ${product.priceLabel || ""} ${product.subPrice || ""} ${catLabel} ${product.category}`
+            );
+
+            const terms = normalizedQuery.split(" ").filter(Boolean);
+            return terms.every(term => searchableHaystack.includes(term));
+        }
+
+        function updateSearchClearButton() {
+            const input = document.getElementById("homeSearchInput");
+            const btn = document.getElementById("searchClearBtn");
+            if (!input || !btn) return;
+            if (input.value.trim().length > 0) {
+                btn.classList.add("visible");
+            } else {
+                btn.classList.remove("visible");
+            }
+        }
+
+        function handleSearchInput() {
+            updateSearchClearButton();
+            const val = document.getElementById("homeSearchInput")?.value || "";
+            const tokens = extractTokens(val).filter(t => t.length >= 2);
+            if (tokens.length > 0) {
+                tokens.forEach(token => {
+                    interestData.keywords[token] = (interestData.keywords[token] || 0) + 0.5;
+                });
+                saveInterest();
+            }
+            renderProducts(currentCategory);
+            renderSmartRecommendations();
+        }
+
+        function handleSearchKeyDown(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                handleSearchInput();
+                scrollToProductsTop();
+            } else if (event.key === "Escape") {
+                clearSearchInput();
+            }
+        }
+
+        function clearSearchInput() {
+            const input = document.getElementById("homeSearchInput");
+            if (input) {
+                input.value = "";
+                input.focus();
+            }
+            updateSearchClearButton();
+            renderProducts(currentCategory);
+            renderSmartRecommendations();
         }
 
         function trackProductInterest(product, weight = 1, markSeen = true) {
             if (!product) return;
             interestData.categories[product.category] = (interestData.categories[product.category] || 0) + weight;
 
-            extractTokens(product.title).forEach(token => {
+            extractTokens(product.title).filter(t => t.length >= 2).forEach(token => {
                 interestData.keywords[token] = (interestData.keywords[token] || 0) + weight;
             });
 
@@ -1334,22 +1426,9 @@
             renderSmartRecommendations();
         }
 
-        function handleSearchInput() {
-            const val = document.getElementById("homeSearchInput")?.value || "";
-            const tokens = extractTokens(val);
-            if (tokens.length > 0) {
-                tokens.forEach(token => {
-                    interestData.keywords[token] = (interestData.keywords[token] || 0) + 0.5;
-                });
-                saveInterest();
-            }
-            renderProducts();
-            renderSmartRecommendations();
-        }
-
         function scoreProductForUser(product, seedOffset = 0) {
             const catScore = (interestData.categories[product.category] || 0) * 10;
-            const tokens = extractTokens(product.title);
+            const tokens = extractTokens(product.title).filter(t => t.length >= 2);
             let kwScore = 0;
             tokens.forEach(t => {
                 kwScore += (interestData.keywords[t] || 0) * 4;
@@ -1443,13 +1522,15 @@
             grid.innerHTML = recs.map(p => buildProductCardHTML(p, true, "smart")).join("");
         }
 
-        function buildFeedPool(category, query) {
-            const base = PRODUCTS.filter(p => {
+        function getFilteredProducts(category, rawQuery) {
+            return PRODUCTS.filter(p => {
                 const catMatch = category === "all" || p.category === category;
-                const textMatch = !query || normalizeText(`${p.title} ${p.price} ${p.priceLabel || ""} ${p.subPrice || ""} ${CATEGORY_NAMES[p.category] || ""}`).includes(query);
-                return catMatch && textMatch;
+                return catMatch && matchesSearchQuery(p, rawQuery);
             });
+        }
 
+        function buildFeedPool(category, rawQuery) {
+            const base = getFilteredProducts(category, rawQuery);
             if (base.length === 0) return [];
 
             const shuffledBase = shuffleArray(base);
@@ -1459,13 +1540,8 @@
             return items;
         }
 
-        function appendContinuationWave(category, query) {
-            const sourcePool = PRODUCTS.filter(p => {
-                const catMatch = category === "all" || p.category === category;
-                const textMatch = !query || normalizeText(`${p.title} ${p.price} ${p.priceLabel || ""} ${p.subPrice || ""} ${CATEGORY_NAMES[p.category] || ""}`).includes(query);
-                return catMatch && textMatch;
-            });
-
+        function appendContinuationWave(category, rawQuery) {
+            const sourcePool = getFilteredProducts(category, rawQuery);
             if (sourcePool.length === 0) return;
 
             feedCycle += 1;
@@ -1485,11 +1561,11 @@
             const sentinel = document.getElementById("feedSentinel");
             if (!grid) return;
 
-            const query = normalizeText(document.getElementById("homeSearchInput")?.value || "");
+            const rawQuery = document.getElementById("homeSearchInput")?.value || "";
             if (currentFeedItems.length === 0) return;
 
             if (renderedCount >= currentFeedItems.length) {
-                appendContinuationWave(currentCategory, query);
+                appendContinuationWave(currentCategory, rawQuery);
             }
 
             const nextSlice = currentFeedItems.slice(renderedCount, renderedCount + BATCH_SIZE);
@@ -1516,18 +1592,21 @@
             const grid = document.getElementById("productsGrid");
             const titleEl = document.getElementById("activeCategoryTitle");
             const sentinel = document.getElementById("feedSentinel");
-            const query = normalizeText(document.getElementById("homeSearchInput")?.value || "");
+            const rawQuery = document.getElementById("homeSearchInput")?.value || "";
+            const trimmedQuery = rawQuery.trim();
 
-            titleEl.textContent = CATEGORY_NAMES[category] || "المنتجات";
-            currentFeedItems = buildFeedPool(category, query);
+            const baseCatTitle = CATEGORY_NAMES[category] || "المنتجات";
+            titleEl.textContent = trimmedQuery ? `${baseCatTitle} — نتائج البحث عن: "${trimmedQuery}"` : baseCatTitle;
+
+            currentFeedItems = buildFeedPool(category, rawQuery);
 
             if (currentFeedItems.length === 0) {
                 if (sentinel) sentinel.textContent = "";
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; background: #fff; padding: 26px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
-                        <p style="font-weight: 800; margin-bottom: 10px;">حتى لو المنتج مش موجود بنجيبهولك! ابعتلنا طلبك الخاص دلوقتي.</p>
+                        <p style="font-weight: 800; margin-bottom: 10px;">ملقيناش نتيجة مطابقة${trimmedQuery ? ` لـ "${trimmedQuery}"` : ""}.. وحتى لو المنتج مش موجود بنجيبهولك!</p>
                         <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
-                            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("أريد طلب منتج غير موجود في المتجر: " + (document.getElementById("homeSearchInput")?.value || ""))}" class="add-cart-btn" style="max-width: 220px;" target="_blank" rel="noopener noreferrer">طلب خاص على واتساب</a>
+                            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("أريد طلب منتج غير موجود في المتجر: " + trimmedQuery)}" class="add-cart-btn" style="max-width: 220px;" target="_blank" rel="noopener noreferrer">طلب خاص على واتساب</a>
                             <button type="button" class="direct-wa-link" style="max-width: 170px;" onclick="resetFilters()">عرض كل المنتجات</button>
                         </div>
                     </div>
@@ -1542,6 +1621,7 @@
         function resetFilters() {
             const input = document.getElementById("homeSearchInput");
             if (input) input.value = "";
+            updateSearchClearButton();
             const allCircle = document.querySelector('[data-cat="all"]');
             filterByCategory("all", allCircle, false);
         }
@@ -1766,6 +1846,7 @@
         renderProducts("all");
         renderSmartRecommendations();
         updateCartUI();
+        updateSearchClearButton();
     </script>
 </body>
 </html>
