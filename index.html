@@ -91,6 +91,12 @@
             }
         }
 
+        @keyframes cartPop {
+            0% { transform: scale(1); }
+            45% { transform: scale(1.14); }
+            100% { transform: scale(1); }
+        }
+
         header {
             background: rgba(24, 21, 18, 0.97);
             backdrop-filter: blur(14px);
@@ -721,9 +727,9 @@
             bottom: 20px;
             left: 20px;
             z-index: 150;
-            height: 48px;
-            padding: 0 18px;
-            border-radius: 999px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--espresso), var(--espresso-soft));
             color: var(--caramel-light);
             border: 1.5px solid var(--caramel);
@@ -731,30 +737,49 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 0.88rem;
-            font-weight: 900;
-            white-space: nowrap;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .floating-cart-pill:hover {
-            transform: translateY(-3px) scale(1.03);
+            transform: translateY(-3px) scale(1.04);
             box-shadow: 0 16px 30px rgba(24, 21, 18, 0.42), 0 0 22px rgba(200, 150, 102, 0.65);
         }
 
+        .floating-cart-pill.pop {
+            animation: cartPop 0.32s ease;
+        }
+
+        .floating-cart-pill svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.1;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
         .cart-badge-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
             background: var(--caramel);
             color: var(--espresso);
-            min-width: 24px;
-            height: 24px;
-            padding: 0 7px;
+            border: 2px solid var(--espresso);
+            min-width: 22px;
+            height: 22px;
+            padding: 0 5px;
             border-radius: 999px;
-            font-size: 0.8rem;
+            font-size: 0.74rem;
             font-weight: 900;
-            display: inline-flex;
+            display: none;
             align-items: center;
             justify-content: center;
+            line-height: 1;
+        }
+
+        .cart-badge-count.visible {
+            display: inline-flex;
         }
 
         .cart-backdrop {
@@ -1117,8 +1142,12 @@
     </main>
 
     <button type="button" class="floating-cart-pill" id="floatingCartPill" onclick="openCart()" aria-label="سلة المشتريات">
-        <span>المشتريات</span>
-        <span class="cart-badge-count" id="floatingCartCount">0</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="9" cy="20" r="1.6"></circle>
+            <circle cx="18" cy="20" r="1.6"></circle>
+            <path d="M2.5 3h2.3l2.4 11.4a1.8 1.8 0 0 0 1.8 1.4h9.2a1.8 1.8 0 0 0 1.7-1.3L21.5 7H6.1"></path>
+        </svg>
+        <span class="cart-badge-count" id="floatingCartCount"></span>
     </button>
 
     <div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
@@ -1730,6 +1759,14 @@
             if (product) trackProductInterest(product, 3, true);
         }
 
+        function pulseCartButton() {
+            const pill = document.getElementById("floatingCartPill");
+            if (!pill) return;
+            pill.classList.remove("pop");
+            void pill.offsetWidth;
+            pill.classList.add("pop");
+        }
+
         function addToCart(productId, clickedBtnId = null) {
             const product = PRODUCTS.find(p => p.id === productId);
             if (!product) return;
@@ -1751,6 +1788,7 @@
 
             saveCart();
             updateCartUI();
+            pulseCartButton();
 
             const targets = clickedBtnId ? [clickedBtnId] : [`btn-p0-${productId}`, `smart-btn-${productId}`];
             targets.forEach(id => {
@@ -1800,7 +1838,15 @@
             const totalAmountEl = document.getElementById("cartTotalAmount");
             const container = document.getElementById("cartItemsContainer");
 
-            if (countBadge) countBadge.textContent = String(totalQty);
+            if (countBadge) {
+                if (totalQty > 0) {
+                    countBadge.textContent = String(totalQty);
+                    countBadge.classList.add("visible");
+                } else {
+                    countBadge.textContent = "";
+                    countBadge.classList.remove("visible");
+                }
+            }
             if (totalAmountEl) totalAmountEl.textContent = `${totalPrice} جنيه`;
 
             if (!container) return;
