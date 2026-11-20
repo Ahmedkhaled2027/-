@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#181512">
     <title>متجر كارامل - Caramel Store</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/1794896897256crop.png">
 
     <meta property="og:title" content="متجر كارامل - Caramel Store">
     <meta property="og:description" content="كل حاجة تحتاجها عند كارامل بأرخص الأسعار والتوصيل لباب المنزل في أسرع وقت، وحتى لو المنتج مش موجود بنجيبهولك.">
@@ -172,6 +176,36 @@
             text-transform: uppercase;
         }
 
+        .header-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .install-app-btn {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--caramel-light), var(--caramel));
+            color: var(--espresso);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            padding: 7px 13px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 900;
+            box-shadow: 0 4px 14px rgba(200, 150, 102, 0.35);
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .install-app-btn.visible {
+            display: inline-flex;
+        }
+
+        .install-app-btn:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.04);
+        }
+
         .complaint-btn {
             display: inline-flex;
             align-items: center;
@@ -259,6 +293,23 @@
             border-radius: 12px;
             font-size: 0.82rem;
             font-weight: 900;
+        }
+
+        .hero-install-btn {
+            display: none;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border: 1.5px solid var(--caramel-light);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.82rem;
+            font-weight: 900;
+        }
+
+        .hero-install-btn.visible {
+            display: inline-flex;
         }
 
         .trust-strip {
@@ -1089,9 +1140,14 @@
             </div>
         </button>
 
-        <a href="https://wa.me/201112348224?text=%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%B4%D9%83%D9%88%D9%89%20%D9%81%D9%8A%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="complaint-btn" target="_blank" rel="noopener noreferrer">
-            <span>الشكاوى</span>
-        </a>
+        <div class="header-actions">
+            <button type="button" class="install-app-btn" id="headerInstallBtn" onclick="triggerInstallApp()" aria-label="تثبيت التطبيق">
+                <span>تثبيت</span>
+            </button>
+            <a href="https://wa.me/201112348224?text=%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%B4%D9%83%D9%88%D9%89%20%D9%81%D9%8A%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="complaint-btn" target="_blank" rel="noopener noreferrer">
+                <span>الشكاوى</span>
+            </a>
+        </div>
     </header>
 
     <main class="container">
@@ -1106,6 +1162,9 @@
                 <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%84%D9%84%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9%20%28%D9%85%D9%86%D8%AA%D8%AC%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%88%D8%AC%D9%88%D8%AF%29" class="hero-btn-primary" target="_blank" rel="noopener noreferrer">
                     تواصل للطلبات الخاصة
                 </a>
+                <button type="button" class="hero-install-btn" id="heroInstallBtn" onclick="triggerInstallApp()">
+                    تثبيت المتجر كتطبيق
+                </button>
             </div>
         </section>
 
@@ -1236,6 +1295,42 @@
         const CART_STORAGE_KEY = "caramel_store_cart_v1";
         const INTEREST_STORAGE_KEY = "caramel_smart_interest_v1";
         const BATCH_SIZE = 12;
+
+        let deferredInstallPrompt = null;
+
+        function setInstallButtonsVisible(show) {
+            const headerBtn = document.getElementById("headerInstallBtn");
+            const heroBtn = document.getElementById("heroInstallBtn");
+            if (headerBtn) headerBtn.classList.toggle("visible", Boolean(show));
+            if (heroBtn) heroBtn.classList.toggle("visible", Boolean(show));
+        }
+
+        window.addEventListener("beforeinstallprompt", e => {
+            e.preventDefault();
+            deferredInstallPrompt = e;
+            setInstallButtonsVisible(true);
+        });
+
+        async function triggerInstallApp() {
+            if (!deferredInstallPrompt) return;
+            deferredInstallPrompt.prompt();
+            try {
+                await deferredInstallPrompt.userChoice;
+            } catch (e) {}
+            deferredInstallPrompt = null;
+            setInstallButtonsVisible(false);
+        }
+
+        window.addEventListener("appinstalled", () => {
+            deferredInstallPrompt = null;
+            setInstallButtonsVisible(false);
+        });
+
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js").catch(() => {});
+            });
+        }
 
         const CATEGORY_NAMES = {
             all: "كل المنتجات",
