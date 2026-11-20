@@ -929,49 +929,107 @@
         const CATEGORY_NAMES = {
             all: "كل المنتجات",
             home: "مستلزمات المنزل",
-            school: "مستلزمات الدراسة",
+            school: "المكتبة والمدارس",
             tafse: "التفصيل والمكرميات",
             kids: "الأطفال",
             women: "أزياء وموضة النساء",
             men: "الرجال",
             gifts: "الإكسسوارات والهدايا",
-            perfume: "العطور"
+            perfume: "العطور والبرفانات"
         };
 
         const PRODUCTS = [
-            // [1..18] مستلزمات المنزل
-            { id: "hm-1", title: "مصفاه متحركه", price: 300, category: "home", img: "Kit/IMG-20261116-WA0059.jpg" },
-            { id: "hm-2", title: "طقم 6 قطع", price: 350, category: "home", img: "Kit/IMG-20261116-WA0056.jpg" },
-            { id: "hm-3", title: "طقم 6 قطع", price: 250, category: "home", img: "Kit/IMG-20261116-WA0057.jpg" },
-            { id: "hm-4", title: "قطع 3", price: 40, category: "home", img: "Kit/IMG-20261116-WA0060.jpg" },
-            { id: "hm-5", title: "مصفاه 3 احجام", price: 140, category: "home", img: "Kit/IMG-20261116-WA0061.jpg" },
-            { id: "hm-6", title: "طبق بلاستيك متين", price: 95, category: "home", img: "Kit/IMG-20261116-WA0062.jpg" },
-            { id: "hm-7", title: "صنيه تحمير بالشبكه داخل الفرن", price: 260, category: "home", img: "Kit/IMG-20261116-WA0063.jpg" },
-            { id: "hm-8", title: "طقم تركى جرانيت", price: 2200, category: "home", img: "Kit/IMG-20261116-WA0064.jpg" },
-            { id: "hm-9", title: "طقم 6 قطع", price: 240, category: "home", img: "Kit/IMG-20261116-WA0065.jpg" },
-            { id: "hm-10", title: "طقم سكاكين أسماك", price: 850, category: "home", img: "Kit/IMG-20261116-WA0066.jpg" },
-            { id: "hm-11", title: "طقم مميز", price: 1800, category: "home", img: "Kit/IMG-20261116-WA0071.jpg" },
-            { id: "hm-12", title: "طقم 12 قطعه", price: 1500, category: "home", img: "Kit/IMG-20261116-WA0075.jpg" },
-            { id: "hm-13", title: "6 قطع", price: 80, category: "home", img: "Kit/IMG-20261116-WA0076.jpg" },
-            { id: "hm-14", title: "طقم 6 قطع بلانك ماكس", price: 250, category: "home", img: "Kit/IMG-20261116-WA0081.jpg" },
-            { id: "hm-15", title: "معطر روائح طبيعية", price: 100, category: "home", img: "Kit/IMG-20261116-WA0082.jpg" },
-            { id: "hm-16", title: "طقم صواني استانلس", price: 1600, category: "home", img: "Kit/IMG-20261116-WA0085.jpg" },
-            { id: "hm-17", title: "زيت مساج", price: 70, category: "home", img: "Kit/IMG-20261116-WA0104.jpg" },
-            { id: "hm-18", title: "طقم 6 قطع", price: 500, category: "home", img: "Kit/IMG-20261116-WA0101.jpg" },
+            // [1..58] مستلزمات المنزل (كامل من كود المنزل)
+            { id: "hm-1", title: "جوانتي سيليكون حراري للمطبخ", price: 155, category: "home", img: "Kit/compressed_1795117656213.jpg" },
+            { id: "hm-2", title: "شماعة لوكس 3*1", price: 40, category: "home", img: "Kit/compressed_1794957387150.webp" },
+            { id: "hm-3", title: "شماعة ميدو 6*1", price: 35, category: "home", img: "Kit/compressed_1794957386430.webp" },
+            { id: "hm-4", title: "شماعة أبو الخير أطفال 6*1", price: 35, category: "home", img: "Kit/compressed_1794957387291.webp" },
+            { id: "hm-5", title: "شماعة بنطلون جينز", price: 35, category: "home", img: "Kit/compressed_1794957387004.webp" },
+            { id: "hm-6", title: "شماعة تفاح", price: 75, category: "home", img: "Kit/compressed_1794957388762.webp" },
+            { id: "hm-7", title: "شماعة استايل", price: 65, category: "home", img: "Kit/compressed_1794957391461.webp" },
+            { id: "hm-8", title: "شماعة استالس", price: 25, category: "home", img: "Kit/compressed_1794957386669.webp" },
+            { id: "hm-9", title: "صفاية عصير وطماطم", price: 70, category: "home", img: "Kit/compressed_1794957389980.webp" },
+            { id: "hm-10", title: "صفاية عصير وأعشاب ستانلس", price: 75, category: "home", img: "Kit/compressed_1794957387551.webp" },
+            { id: "hm-11", title: "طقم مصافي 3 قطع", price: 50, category: "home", img: "Kit/compressed_1794957389359.webp" },
+            { id: "hm-12", title: "طقم مصافي 3 قطع متنوعة", price: 40, category: "home", img: "Kit/compressed_1794957389498.webp" },
+            { id: "hm-13", title: "شيالة بطاطس (مقاسات)", price: 65, category: "home", img: "Kit/compressed_1794957390132.webp" },
+            { id: "hm-14", title: "منشر خير هوم فولاز مقاوم للصدأ", price: 950, category: "home", img: "Kit/compressed_1794957390685.webp" },
+            { id: "hm-15", title: "منشر دهب", price: 365, category: "home", img: "Kit/compressed_1794957389681.webp" },
+            { id: "hm-16", title: "منشر خير هوم مقاوم للصدأ", price: 1200, category: "home", img: "Kit/compressed_1794957390318.webp" },
+            { id: "hm-17", title: "منشر حائط حبل استانلس", price: 530, category: "home", img: "Kit/compressed_1794957391622.webp" },
+            { id: "hm-18", title: "رف زاوية للحمام / المطبخ (أركان)", price: 330, category: "home", img: "Kit/compressed_1794957392279.webp" },
+            { id: "hm-19", title: "شماعة أمريكانا ملابس وجزامة 4 دور", price: 285, category: "home", img: "Kit/compressed_1794957391035.webp" },
+            { id: "hm-20", title: "ستاند ملابس وجزامة 5 دور", price: 310, category: "home", img: "Kit/compressed_1794957387416.webp" },
+            { id: "hm-21", title: "منظم متعدد دوار", price: 200, category: "home", img: "Kit/compressed_1794957388217.webp" },
+            { id: "hm-22", title: "شنطة حفظ حراري (بنفسجي/باندا)", price: 200, category: "home", img: "Kit/compressed_1794957387731.webp" },
+            { id: "hm-23", title: "شنطة حفظ حراري (أسود Safeer)", price: 230, category: "home", img: "Kit/compressed_1794957388552.webp" },
+            { id: "hm-24", title: "ستاند /مايكرويف", price: 285, category: "home", img: "Kit/compressed_1794957387972.webp" },
+            { id: "hm-25", title: "جزامة شي ان معدن 7 دور", price: 450, category: "home", img: "Kit/compressed_1794957389198.webp" },
+            { id: "hm-26", title: "شنطة حفظ حراري كبييرة (أسود Safeer)", price: 270, category: "home", img: "Kit/compressed_1794957392433.webp" },
+            { id: "hm-27", title: "سلة بيض فرخة", price: 440, category: "home", img: "Kit/compressed_1794957391917.webp" },
+            { id: "hm-28", title: "شيالة كحك 2 دور دهبي", price: 500, category: "home", img: "Kit/compressed_1794957388953.webp" },
+            { id: "hm-29", title: "شيالة كحك 3 دور لوكس", price: 900, category: "home", img: "Kit/compressed_1794957391263.webp" },
+            { id: "hm-30", title: "شيالة تيرير زجاج أخضر 3 دور", price: 235, category: "home", img: "Kit/compressed_1794957392115.webp" },
+            { id: "hm-31", title: "شيالة فاكهة 2 دور دهبي", price: 255, category: "home", img: "Kit/compressed_1794957386839.webp" },
+            { id: "hm-32", title: "سجادة أنيقة مقاس 120 × 350", price: 1100, category: "home", img: "Kit/compressed_1794955137769.webp" },
+            { id: "hm-33", title: "طقم كبايات زجاج 6 قطع فخم", price: 450, category: "home", img: "Kit/compressed_1794955137591.webp" },
+            { id: "hm-34", title: "مصفاه متحركه", price: 300, category: "home", img: "Kit/IMG-20261116-WA0059.jpg" },
+            { id: "hm-35", title: "طقم 6 قطع", price: 350, category: "home", img: "Kit/IMG-20261116-WA0056.jpg" },
+            { id: "hm-36", title: "طقم 6 قطع", price: 250, category: "home", img: "Kit/IMG-20261116-WA0057.jpg" },
+            { id: "hm-37", title: "قطع 3", price: 40, category: "home", img: "Kit/IMG-20261116-WA0060.jpg" },
+            { id: "hm-38", title: "مصفاه 3 احجام", price: 140, category: "home", img: "Kit/IMG-20261116-WA0061.jpg" },
+            { id: "hm-39", title: "طبق بلاستيك متين", price: 95, category: "home", img: "Kit/IMG-20261116-WA0062.jpg" },
+            { id: "hm-40", title: "صنيه تحمير بالشبكه داخل الفرن", price: 260, category: "home", img: "Kit/IMG-20261116-WA0063.jpg" },
+            { id: "hm-41", title: "طقم تركى جرانيت", price: 2200, category: "home", img: "Kit/IMG-20261116-WA0064.jpg" },
+            { id: "hm-42", title: "طقم 6 قطع", price: 240, category: "home", img: "Kit/IMG-20261116-WA0065.jpg" },
+            { id: "hm-43", title: "طقم سكاكين أسماك", price: 850, category: "home", img: "Kit/IMG-20261116-WA0066.jpg" },
+            { id: "hm-44", title: "طقم مميز", price: 1800, category: "home", img: "Kit/IMG-20261116-WA0071.jpg" },
+            { id: "hm-45", title: "طقم 12 قطعه", price: 1500, category: "home", img: "Kit/IMG-20261116-WA0075.jpg" },
+            { id: "hm-46", title: "6 قطع", price: 80, category: "home", img: "Kit/IMG-20261116-WA0076.jpg" },
+            { id: "hm-47", title: "طقم 6 قطع بلانك ماكس", price: 250, category: "home", img: "Kit/IMG-20261116-WA0081.jpg" },
+            { id: "hm-48", title: "معطر روائح طبيعية", price: 100, category: "home", img: "Kit/IMG-20261116-WA0082.jpg" },
+            { id: "hm-49", title: "طقم صواني استانلس", price: 1600, category: "home", img: "Kit/IMG-20261116-WA0085.jpg" },
+            { id: "hm-50", title: "زيت مساج", price: 70, category: "home", img: "Kit/IMG-20261116-WA0104.jpg" },
+            { id: "hm-51", title: "طقم 6 قطع", price: 500, category: "home", img: "Kit/IMG-20261116-WA0101.jpg" },
+            { id: "hm-52", title: "منظمات تخزين بغطاء وردي (3 قطع)", price: 180, category: "home", img: "Kit/compressed_1795113635317.webp" },
+            { id: "hm-53", title: "طقم صواني ألومنيوم مدورة (3 مقاسات)", price: 320, category: "home", img: "Kit/compressed_1795113635223.webp" },
+            { id: "hm-54", title: "علبة تخزين شيف بوكس 2.5 لتر بغطاء أسود", price: 120, category: "home", img: "Kit/compressed_1795113635125.webp" },
+            { id: "hm-55", title: "منظمات تخزين شيف بوكس 2 لتر", price: 150, category: "home", img: "Kit/compressed_1795113634977.webp" },
+            { id: "hm-56", title: "طقم توابل الوطنية", price: 225, category: "home", img: "Kit/compressed_1795115045908.webp" },
+            { id: "hm-57", title: "مخرطة استاليس", price: 200, category: "home", img: "Kit/compressed_1795115046069.webp" },
+            { id: "hm-58", title: "هراسة بطاطس", price: 25, category: "home", img: "Kit/compressed_1795115069644.webp" },
 
-            // [19..28] الإكسسوارات والهدايا
-            { id: "amn-1", title: "محفظه بالاسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
-            { id: "amn-2", title: "مرايا سحريه بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
-            { id: "amn-3", title: "ساعة بصورتك 30 في 40", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
-            { id: "amn-4", title: "مج أبيض بصورتك", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
-            { id: "amn-5", title: "منديل العرسان", price: 130, category: "gifts", img: "Amnh/IMG-20261117-WA0018.jpg" },
-            { id: "amn-6", title: "تابلوه 30 في 40", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
-            { id: "amn-7", title: "تابلوه 60 في 90", price: 500, category: "gifts", img: "Amnh/IMG-20261117-WA0016.jpg" },
-            { id: "amn-8", title: "برواز 21 في 15", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0014.jpg" },
-            { id: "amn-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
-            { id: "amn-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
+            // [59..86] المكتبة والمدارس (كامل 28 منتج من كود المكتبة)
+            { id: "libr-1", title: "قلم جاف سحري", price: 10, category: "school", img: "Libr/compressed_1795160031886.webp" },
+            { id: "libr-2", title: "زمزمية مياه رياضية MOT", price: 140, category: "school", img: "Libr/compressed_1795160031599.webp" },
+            { id: "libr-3", title: "ورق فلوسكاب زاد ZAD", price: 30, category: "school", img: "Libr/compressed_1795160031301.webp" },
+            { id: "libr-4", title: "نوت بوك سلك 100 ورقة", price: 100, priceLabel: "100 / 120 / 150", category: "school", img: "Libr/compressed_1795160031025.webp" },
+            { id: "libr-5", title: "مقلمة أميرات ديزني", price: 120, category: "school", img: "Libr/compressed_1795160030736.webp" },
+            { id: "libr-6", title: "لانش بوكس ملون", price: 120, category: "school", img: "Libr/compressed_1795160030424.webp" },
+            { id: "libr-7", title: "سبورة كتابة LCD PANEL", price: 65, category: "school", img: "Libr/compressed_1795160030099.webp" },
+            { id: "libr-8", title: "نوت بوك سلك 80 / 100 ورقة", price: 65, category: "school", img: "Libr/compressed_1795160029820.webp" },
+            { id: "libr-9", title: "زمزمية مياه متدرجة بمؤشر ساعات", price: 140, category: "school", img: "Libr/compressed_1795160029544.webp" },
+            { id: "libr-10", title: "باكو كشاكيل 10 كشاكيل", price: 70, category: "school", img: "Libr/compressed_1795160029204.webp" },
+            { id: "libr-11", title: "زمزمية مياه متدرجة بينك وأزرق", price: 140, category: "school", img: "Libr/compressed_1795160028924.webp" },
+            { id: "libr-12", title: "رش ثلج للأفراح GALA", price: 30, category: "school", img: "Libr/compressed_1795160028621.webp" },
+            { id: "libr-13", title: "مقلمة Kawai وردية", price: 50, category: "school", img: "Libr/compressed_1795160028347.webp" },
+            { id: "libr-14", title: "زمزمية مياه متدرجة Winning", price: 140, category: "school", img: "Libr/compressed_1795160028072.webp" },
+            { id: "libr-15", title: "دبل فيس Mounting Tape", price: 30, category: "school", img: "Libr/compressed_1795160027793.webp" },
+            { id: "libr-16", title: "منظم / مقلمة SUN GROUP", price: 70, category: "school", img: "Libr/compressed_1795160027493.webp" },
+            { id: "libr-17", title: "زمزميات أطفال فضاء قطعتين", price: 100, category: "school", img: "Libr/compressed_1795160027187.webp" },
+            { id: "libr-18", title: "كيس بالونات 100 قطعة", price: 85, category: "school", img: "Libr/compressed_1795160026903.webp" },
+            { id: "libr-19", title: "صلصال أطفال NARA", price: 45, category: "school", img: "Libr/compressed_1795160026583.webp" },
+            { id: "libr-20", title: "قلم جاف شكل باندا", price: 10, category: "school", img: "Libr/compressed_1795160026304.webp" },
+            { id: "libr-21", title: "ورق كوخ باكو", price: 65, category: "school", img: "Libr/compressed_1795160026004.webp" },
+            { id: "libr-22", title: "لانش بوكس CAMEL LUNCH BOX", price: 120, category: "school", img: "Libr/compressed_1795160025726.webp" },
+            { id: "libr-23", title: "مقص أطفال SCISSORS", price: 20, category: "school", img: "Libr/compressed_1795160025453.webp" },
+            { id: "libr-24", title: "فوم جليتر باكو ألوان", price: 65, category: "school", img: "Libr/compressed_1795160025160.webp" },
+            { id: "libr-25", title: "شريط لاصق سيلتيب Falcon", price: 20, category: "school", img: "Libr/compressed_1795160024869.webp" },
+            { id: "libr-26", title: "نوت بوك سلك غلاف أنمي", price: 125, priceLabel: "125 / 100 / 150", category: "school", img: "Libr/compressed_1795160024565.webp" },
+            { id: "libr-27", title: "مقلمة Andiosya Group بناتي", price: 65, category: "school", img: "Libr/compressed_1795160024235.webp" },
+            { id: "libr-28", title: "ألوان فلوماستر دومس DOMS Aqua 12 لون", price: 50, category: "school", img: "Libr/compressed_1795160023862.webp" },
 
-            // [29..46] التفصيل والمكرميات (كامل 18 منتج من الكود)
+            // [87..104] التفصيل والمكرميات (كامل 18 منتج)
             { id: "tafse-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
             { id: "tafse-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
             { id: "tafse-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
@@ -991,21 +1049,38 @@
             { id: "tafse-17", title: "عباية قطيفة موف مطرزة مع طرحة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043197.webp" },
             { id: "tafse-18", title: "عباية سوداء قماش مضلع بأكمام واسعة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094042876.webp" },
 
-            // [47] أزياء وموضة النساء (من الكود المرسل)
+            // [105] أزياء وموضة النساء
             { id: "wmn-1", title: "أندر نسائي مشجر دباغ / كاندي", price: 65, category: "women", img: "Clswmn/compressed_1795114616012.webp" },
 
-            // [48..58] العطور والبرفانات
-            { id: "brf-1", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
-            { id: "brf-2", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
-            { id: "brf-3", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
-            { id: "brf-4", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
-            { id: "brf-5", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
-            { id: "brf-6", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
-            { id: "brf-7", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0080.jpg" },
-            { id: "brf-8", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
-            { id: "brf-9", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
-            { id: "brf-10", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
-            { id: "brf-11", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" }
+            // [106..115] الإكسسوارات والهدايا
+            { id: "amn-1", title: "محفظه بالاسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
+            { id: "amn-2", title: "مرايا سحريه بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
+            { id: "amn-3", title: "ساعة بصورتك 30 في 40", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
+            { id: "amn-4", title: "مج أبيض بصورتك", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
+            { id: "amn-5", title: "منديل العرسان", price: 130, category: "gifts", img: "Amnh/IMG-20261117-WA0018.jpg" },
+            { id: "amn-6", title: "تابلوه 30 في 40", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
+            { id: "amn-7", title: "تابلوه 60 في 90", price: 500, category: "gifts", img: "Amnh/IMG-20261117-WA0016.jpg" },
+            { id: "amn-8", title: "برواز 21 في 15", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0014.jpg" },
+            { id: "amn-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
+            { id: "amn-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
+
+            // [116..131] العطور والبرفانات (كامل 16 منتج من كود العطور)
+            { id: "brf-1", title: "عطر Lively For Men Paris", price: 175, category: "perfume", img: "Prfa/compressed_1794950472010.webp" },
+            { id: "brf-2", title: "عطر مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096546.webp" },
+            { id: "brf-3", title: "عطر مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096662.webp" },
+            { id: "brf-4", title: "عطر قصة الوردي", price: 375, category: "perfume", img: "Prfa/compressed_1794950096748.webp" },
+            { id: "brf-5", title: "عطر يارا من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
+            { id: "brf-6", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
+            { id: "brf-7", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
+            { id: "brf-8", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
+            { id: "brf-9", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
+            { id: "brf-10", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
+            { id: "brf-11", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
+            { id: "brf-12", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0080.jpg" },
+            { id: "brf-13", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
+            { id: "brf-14", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
+            { id: "brf-15", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
+            { id: "brf-16", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" }
         ];
 
         let currentCategory = "all";
@@ -1042,7 +1117,7 @@
 
             const filtered = PRODUCTS.filter(p => {
                 const catMatch = category === "all" || p.category === category;
-                const textMatch = !query || normalizeText(`${p.title} ${p.price} ${p.subPrice || ""} ${CATEGORY_NAMES[p.category] || ""}`).includes(query);
+                const textMatch = !query || normalizeText(`${p.title} ${p.price} ${p.priceLabel || ""} ${p.subPrice || ""} ${CATEGORY_NAMES[p.category] || ""}`).includes(query);
                 return catMatch && textMatch;
             });
 
@@ -1062,7 +1137,8 @@
             countEl.textContent = `${filtered.length} منتج`;
 
             grid.innerHTML = filtered.map(product => {
-                const waText = encodeURIComponent(`أريد طلب ${product.title} بسعر ${product.price} جنيه من متجر كارامل`);
+                const displayPrice = product.priceLabel || product.price;
+                const waText = encodeURIComponent(`أريد طلب ${product.title} بسعر ${displayPrice} جنيه من متجر كارامل`);
                 return `
                     <article class="product-card">
                         <div class="product-img-box" onclick="openImageModal('${product.img}')">
@@ -1072,7 +1148,7 @@
                         <div class="product-details">
                             <div>
                                 <div class="product-title">${product.title}</div>
-                                <div class="product-price">${product.price}<span>جنيه</span></div>
+                                <div class="product-price">${displayPrice}<span>جنيه</span></div>
                                 ${product.subPrice ? `<div class="product-sub">${product.subPrice}</div>` : ""}
                             </div>
                             <div class="card-btns">
