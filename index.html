@@ -917,49 +917,83 @@
             perfume: "العطور"
         };
 
+        // جميع المنتجات المستخرجة من الملفات المرسلة (64 منتجًا)
         const PRODUCTS = [
-            // الإكسسوارات والهدايا
-            { id: "g-1", title: "محفظه بالاسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
-            { id: "g-2", title: "مرايا سحريه بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
-            { id: "g-3", title: "ساعة بصورتك 30 في 40", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
-            { id: "g-4", title: "مج أبيض بصورتك", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
-            { id: "g-5", title: "منديل العرسان", price: 130, category: "gifts", img: "Amnh/IMG-20261117-WA0018.jpg" },
-            { id: "g-6", title: "تابلوه 30 في 40", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
-            { id: "g-7", title: "تابلوه 60 في 90", price: 500, category: "gifts", img: "Amnh/IMG-20261117-WA0016.jpg" },
-            { id: "g-8", title: "برواز 21 في 15", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0014.jpg" },
-            { id: "g-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
-            { id: "g-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
+            // [1..18] من Home.html (مستلزمات المنزل)
+            { id: "hm-1", title: "مصفاه متحركه", price: 300, category: "home", img: "Kit/IMG-20261116-WA0059.jpg" },
+            { id: "hm-2", title: "طقم 6 قطع", price: 350, category: "home", img: "Kit/IMG-20261116-WA0056.jpg" },
+            { id: "hm-3", title: "طقم 6 قطع", price: 250, category: "home", img: "Kit/IMG-20261116-WA0057.jpg" },
+            { id: "hm-4", title: "قطع 3", price: 40, category: "home", img: "Kit/IMG-20261116-WA0060.jpg" },
+            { id: "hm-5", title: "مصفاه 3 احجام", price: 140, category: "home", img: "Kit/IMG-20261116-WA0061.jpg" },
+            { id: "hm-6", title: "طبق بلاستيك متين", price: 95, category: "home", img: "Kit/IMG-20261116-WA0062.jpg" },
+            { id: "hm-7", title: "صنيه تحمير بالشبكه داخل الفرن", price: 260, category: "home", img: "Kit/IMG-20261116-WA0063.jpg" },
+            { id: "hm-8", title: "طقم تركى جرانيت", price: 2200, category: "home", img: "Kit/IMG-20261116-WA0064.jpg" },
+            { id: "hm-9", title: "طقم 6 قطع", price: 240, category: "home", img: "Kit/IMG-20261116-WA0065.jpg" },
+            { id: "hm-10", title: "طقم سكاكين أسماك", price: 850, category: "home", img: "Kit/IMG-20261116-WA0066.jpg" },
+            { id: "hm-11", title: "طقم مميز", price: 1800, category: "home", img: "Kit/IMG-20261116-WA0071.jpg" },
+            { id: "hm-12", title: "طقم 12 قطعه", price: 1500, category: "home", img: "Kit/IMG-20261116-WA0075.jpg" },
+            { id: "hm-13", title: "6 قطع", price: 80, category: "home", img: "Kit/IMG-20261116-WA0076.jpg" },
+            { id: "hm-14", title: "طقم 6 قطع بلانك ماكس", price: 250, category: "home", img: "Kit/IMG-20261116-WA0081.jpg" },
+            { id: "hm-15", title: "معطر روائح طبيعية", price: 100, category: "home", img: "Kit/IMG-20261116-WA0082.jpg" },
+            { id: "hm-16", title: "طقم صواني استانلس", price: 1600, category: "home", img: "Kit/IMG-20261116-WA0085.jpg" },
+            { id: "hm-17", title: "زيت مساج", price: 70, category: "home", img: "Kit/IMG-20261116-WA0104.jpg" },
+            { id: "hm-18", title: "طقم 6 قطع", price: 500, category: "home", img: "Kit/IMG-20261116-WA0101.jpg" },
 
-            // العطور والبرفانات
-            { id: "p-1", title: "عطر Lively For Men Paris", price: 175, category: "perfume", img: "Prfa/compressed_1794950472010.webp" },
-            { id: "p-2", title: "عطر مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096546.webp" },
-            { id: "p-3", title: "عطر مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096662.webp" },
-            { id: "p-4", title: "عطر قصة الوردي", price: 375, category: "perfume", img: "Prfa/compressed_1794950096748.webp" },
-            { id: "p-5", title: "عطر يارا من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
-            { id: "p-6", title: "بارفان مميز 1", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
-            { id: "p-7", title: "بارفان مميز 2", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
-            { id: "p-8", title: "بارفان مميز 3", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
-            { id: "p-9", title: "بارفان فخم 1", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
-            { id: "p-10", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
-            { id: "p-11", title: "بارفان فخم 2", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
-            { id: "p-12", title: "بارفان فخم 3", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0080.jpg" },
-            { id: "p-13", title: "بارفان أنيق 1", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
-            { id: "p-14", title: "بارفان أنيق 2", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
-            { id: "p-15", title: "بارفان كلاسيك 1", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
-            { id: "p-16", title: "بارفان كلاسيك 2", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" },
+            // [19..28] من Amn.html (الإكسسوارات والهدايا)
+            { id: "amn-1", title: "محفظه بالاسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
+            { id: "amn-2", title: "مرايا سحريه بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
+            { id: "amn-3", title: "ساعة بصورتك 30 في 40", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
+            { id: "amn-4", title: "مج أبيض بصورتك", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
+            { id: "amn-5", title: "منديل العرسان", price: 130, category: "gifts", img: "Amnh/IMG-20261117-WA0018.jpg" },
+            { id: "amn-6", title: "تابلوه 30 في 40", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
+            { id: "amn-7", title: "تابلوه 60 في 90", price: 500, category: "gifts", img: "Amnh/IMG-20261117-WA0016.jpg" },
+            { id: "amn-8", title: "برواز 21 في 15", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0014.jpg" },
+            { id: "amn-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
+            { id: "amn-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
 
-            // التفصيل والمكرميات
-            { id: "t-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
-            { id: "t-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
-            { id: "t-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه (موديل 2)", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
-            { id: "t-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
-            { id: "t-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه (موديل 3)", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
+            // [29..39] من caramel_perfumes_smart_search.html (العطور والبرفانات)
+            { id: "prf-1", title: "عطر Lively For Men Paris", price: 175, category: "perfume", img: "Prfa/compressed_1794950472010.webp" },
+            { id: "prf-2", title: "عطر مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096546.webp" },
+            { id: "prf-3", title: "عطر مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096662.webp" },
+            { id: "prf-4", title: "عطر قصة الوردي", price: 375, category: "perfume", img: "Prfa/compressed_1794950096748.webp" },
+            { id: "prf-5", title: "عطر يارا من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
+            { id: "prf-6", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
+            { id: "prf-7", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
+            { id: "prf-8", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
+            { id: "prf-9", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
+            { id: "prf-10", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
+            { id: "prf-11", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
 
-            // النساء
-            { id: "w-1", title: "ساعة حريمي", price: 1025, category: "women", img: "IMG-20261116-WA0023(1).jpg" },
-            { id: "w-2", title: "ساعة حريمي", price: 985, category: "women", img: "IMG-20261116-WA0022(1).jpg" },
-            { id: "w-3", title: "ساعة حريمي", price: 945, category: "women", img: "IMG-20261116-WA0021(1).jpg" },
-            { id: "w-4", title: "ساعة حريمي", price: 820, category: "women", img: "IMG-20261116-WA0020(1).jpg" }
+            // [40..55] من Brf_updated(1).html (العطور والبرفانات)
+            { id: "brf-1", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
+            { id: "brf-2", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
+            { id: "brf-3", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
+            { id: "brf-4", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
+            { id: "brf-5", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
+            { id: "brf-6", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
+            { id: "brf-7", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0080.jpg" },
+            { id: "brf-8", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
+            { id: "brf-9", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
+            { id: "brf-10", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
+            { id: "brf-11", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" },
+            { id: "brf-12", title: "Lively For Men Paris", price: 175, category: "perfume", img: "Brf/77750.webp" },
+            { id: "brf-13", title: "مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Brf/77741.webp" },
+            { id: "brf-14", title: "قصة الوردي", price: 375, category: "perfume", img: "Brf/77742.webp" },
+            { id: "brf-15", title: "مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Brf/77740.webp" },
+            { id: "brf-16", title: "يارا من لطافة", price: 375, category: "perfume", img: "Brf/77743.webp" },
+
+            // [56..60] من Tfs.html / Tfs_2.html (التفصيل والمكرميات)
+            { id: "tfs-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
+            { id: "tfs-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
+            { id: "tfs-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
+            { id: "tfs-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
+            { id: "tfs-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
+
+            // [61..64] من girls_clothes.html / girls_clothes_2.html (النساء)
+            { id: "wmn-1", title: "ساعة حريمي", price: 1025, category: "women", img: "IMG-20261116-WA0023(1).jpg" },
+            { id: "wmn-2", title: "ساعة حريمي", price: 985, category: "women", img: "IMG-20261116-WA0022(1).jpg" },
+            { id: "wmn-3", title: "ساعة حريمي", price: 945, category: "women", img: "IMG-20261116-WA0021(1).jpg" },
+            { id: "wmn-4", title: "ساعة حريمي", price: 820, category: "women", img: "IMG-20261116-WA0020(1).jpg" }
         ];
 
         let cart = [];
@@ -991,7 +1025,7 @@
                 countEl.textContent = "0 منتج";
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; background: #fff; padding: 26px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
-                        <p style="font-weight: 800; margin-bottom: 10px;">لا توجد منتجات مضافة لهذا القسم حاليًا في القائمة.</p>
+                        <p style="font-weight: 800; margin-bottom: 10px;">لا توجد منتجات مضافة لهذا القسم حاليًا في الملفات المرسلة.</p>
                         <button type="button" class="add-cart-btn" style="max-width: 210px; margin: 0 auto;" onclick="filterByCategory('all', document.querySelector('[data-cat=\"all\"]'))">عرض كل المنتجات</button>
                     </div>
                 `;
