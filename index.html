@@ -74,18 +74,12 @@
         @keyframes catRingPulse {
             0%, 100% {
                 transform: scale(1);
-                box-shadow: 0 0 0 0 var(--ring-glow, rgba(200, 150, 102, 0.45)), 0 8px 20px -6px var(--ring-glow, rgba(200, 150, 102, 0.35));
+                box-shadow: 0 0 0 0 var(--ring-glow, rgba(200, 150, 102, 0.45)), 0 6px 14px -4px var(--ring-glow, rgba(200, 150, 102, 0.35));
             }
             50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 7px rgba(255, 255, 255, 0), 0 12px 28px -4px var(--ring-glow, rgba(200, 150, 102, 0.65));
+                transform: scale(1.06);
+                box-shadow: 0 0 0 5px rgba(255, 255, 255, 0), 0 10px 20px -3px var(--ring-glow, rgba(200, 150, 102, 0.65));
             }
-        }
-
-        @keyframes cartBadgePop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.25); }
-            100% { transform: scale(1); }
         }
 
         /* الهيدر */
@@ -132,12 +126,6 @@
             text-transform: uppercase;
         }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .header-wa-btn {
             display: inline-flex;
             align-items: center;
@@ -145,7 +133,7 @@
             background: rgba(255, 255, 255, 0.08);
             color: var(--cream-soft);
             border: 1px solid rgba(200, 150, 102, 0.35);
-            padding: 7px 12px;
+            padding: 7px 13px;
             border-radius: 12px;
             font-size: 0.8rem;
             font-weight: 700;
@@ -157,47 +145,10 @@
             color: var(--espresso);
         }
 
-        .header-cart-btn {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: linear-gradient(135deg, var(--caramel-light), var(--caramel));
-            color: var(--espresso);
-            padding: 7px 14px;
-            border-radius: 12px;
-            font-size: 0.84rem;
-            font-weight: 800;
-            box-shadow: 0 6px 18px -6px rgba(200, 150, 102, 0.55);
-            transition: transform 0.2s ease;
-        }
-
-        .header-cart-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .cart-count-pill {
-            background: var(--espresso);
-            color: #ffffff;
-            min-width: 21px;
-            height: 21px;
-            padding: 0 6px;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 900;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cart-count-pill.bump {
-            animation: cartBadgePop 0.35s ease;
-        }
-
         .container {
             max-width: 1180px;
             margin: 0 auto;
-            padding: 20px 14px 90px;
+            padding: 18px 14px 96px;
             width: 100%;
             flex: 1;
         }
@@ -206,36 +157,36 @@
         .hero-banner {
             background: linear-gradient(130deg, var(--espresso) 0%, var(--espresso-soft) 60%, var(--caramel-dark) 100%);
             color: #ffffff;
-            padding: 26px 20px;
-            border-radius: 24px;
+            padding: 22px 18px;
+            border-radius: 22px;
             border: 1.5px solid rgba(200, 150, 102, 0.42);
             box-shadow: 0 14px 32px -12px rgba(24, 21, 18, 0.26), 0 0 24px -6px var(--glow);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 9px;
         }
 
         .hero-badge {
             display: inline-block;
             width: fit-content;
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             font-weight: 800;
             color: var(--caramel-light);
             background: rgba(255, 255, 255, 0.09);
             border: 1px solid rgba(200, 150, 102, 0.35);
-            padding: 4px 12px;
+            padding: 3px 11px;
             border-radius: 999px;
         }
 
         .hero-banner h1 {
-            font-size: 1.55rem;
+            font-size: 1.45rem;
             font-weight: 900;
             line-height: 1.3;
         }
 
         .hero-banner p {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: rgba(255, 255, 255, 0.88);
             max-width: 720px;
             font-weight: 600;
@@ -245,7 +196,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         .hero-btn-primary {
@@ -254,15 +205,10 @@
             gap: 7px;
             background: linear-gradient(135deg, var(--caramel-light), var(--caramel));
             color: var(--espresso);
-            padding: 8px 16px;
+            padding: 7px 15px;
             border-radius: 12px;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             font-weight: 800;
-            transition: transform 0.2s ease;
-        }
-
-        .hero-btn-primary:hover {
-            transform: translateY(-2px);
         }
 
         .hero-btn-ghost {
@@ -272,49 +218,57 @@
             background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 15px;
+            padding: 7px 14px;
             border-radius: 12px;
-            font-size: 0.83rem;
+            font-size: 0.82rem;
             font-weight: 700;
-            transition: background 0.2s ease;
         }
 
-        .hero-btn-ghost:hover {
-            background: rgba(255, 255, 255, 0.18);
-        }
-
-        /* دواير الأقسام الملونة والنابضة */
+        /* عناوين الأقسام */
         .section-heading {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 10px;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             flex-wrap: wrap;
         }
 
         .section-heading h2 {
-            font-size: 1.18rem;
+            font-size: 1.12rem;
             font-weight: 900;
             color: var(--text-main);
         }
 
         .section-heading span {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             color: var(--text-muted);
         }
 
-        .circles-strip {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
-            gap: 16px 12px;
+        /* شريط الدوائر الصغيرة في سطر واحد */
+        .circles-row-wrapper {
             background: #ffffff;
-            padding: 20px 14px;
-            border-radius: 22px;
+            padding: 12px 10px;
+            border-radius: 20px;
             border: 1px solid var(--border-gold);
             box-shadow: var(--shadow-main);
-            margin-bottom: 26px;
+            margin-bottom: 22px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .circles-row-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .circles-single-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 12px;
+            min-width: max-content;
+            padding: 2px 4px;
         }
 
         .cat-circle-item {
@@ -322,29 +276,28 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 8px;
-            padding: 4px;
-            border-radius: 16px;
-            transition: transform 0.22s ease;
+            gap: 5px;
+            width: 72px;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
         }
 
         .cat-circle-item:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         .cat-ring {
-            width: 74px;
-            height: 74px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            padding: 3px;
+            padding: 2.5px;
             background: var(--ring-color, var(--caramel));
-            animation: catRingPulse 2.6s infinite ease-in-out;
-            position: relative;
+            animation: catRingPulse 2.5s infinite ease-in-out;
         }
 
         .cat-circle-item.active .cat-ring {
             transform: scale(1.08);
-            box-shadow: 0 0 0 4px #ffffff, 0 0 22px var(--ring-glow, rgba(200, 150, 102, 0.85));
+            box-shadow: 0 0 0 3px #ffffff, 0 0 16px var(--ring-glow, rgba(200, 150, 102, 0.85));
         }
 
         .cat-ring-inner {
@@ -353,7 +306,7 @@
             border-radius: 50%;
             overflow: hidden;
             background: #f5efe8;
-            border: 2px solid #ffffff;
+            border: 1.5px solid #ffffff;
         }
 
         .cat-ring-inner img {
@@ -364,30 +317,15 @@
         }
 
         .cat-circle-label {
-            font-size: 0.78rem;
+            font-size: 0.68rem;
             font-weight: 800;
             color: var(--text-main);
-            line-height: 1.25;
+            line-height: 1.2;
+            max-width: 72px;
         }
 
         .cat-circle-item.active .cat-circle-label {
             color: var(--ring-color, var(--caramel-dark));
-        }
-
-        .cat-page-link {
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            background: #faf7f2;
-            border: 1px solid rgba(28, 23, 20, 0.08);
-            padding: 2px 8px;
-            border-radius: 999px;
-            transition: all 0.2s ease;
-        }
-
-        .cat-page-link:hover {
-            background: var(--espresso);
-            color: #ffffff;
         }
 
         /* ألوان وتوهج كل قسم */
@@ -401,7 +339,7 @@
         .ring-gifts { --ring-color: #db2777; --ring-glow: rgba(219, 39, 119, 0.55); }
         .ring-perfume { --ring-color: #3b82f6; --ring-glow: rgba(59, 130, 246, 0.55); }
 
-        /* شبكة المنتجات المباشرة */
+        /* شبكة المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -471,9 +409,9 @@
             background: rgba(24, 21, 18, 0.82);
             backdrop-filter: blur(6px);
             color: var(--caramel-light);
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             font-weight: 800;
-            padding: 2px 9px;
+            padding: 2px 8px;
             border-radius: 999px;
             border: 1px solid rgba(200, 150, 102, 0.35);
         }
@@ -488,7 +426,7 @@
         }
 
         .product-title {
-            font-size: 0.86rem;
+            font-size: 0.85rem;
             font-weight: 800;
             color: var(--text-main);
             display: -webkit-box;
@@ -500,7 +438,7 @@
         }
 
         .product-price {
-            font-size: 1.1rem;
+            font-size: 1.08rem;
             font-weight: 900;
             color: var(--caramel-dark);
             margin-top: 4px;
@@ -556,35 +494,42 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
-            transition: background 0.2s ease;
         }
 
-        .direct-wa-link:hover {
-            background: #eadbc8;
-        }
-
-        /* زر السلة العائم */
-        .floating-cart-btn {
+        /* زر السلة العائم: يظهر بكلمة "المشتريات" ثم يصغر ليصبح "الرقم" فقط */
+        .floating-cart-pill {
             position: fixed;
             bottom: 20px;
             left: 20px;
             z-index: 150;
+            height: 46px;
+            min-width: 46px;
+            max-width: 150px;
+            padding: 0 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--espresso), var(--espresso-soft));
+            color: var(--caramel-light);
+            border: 1.5px solid var(--caramel);
+            box-shadow: 0 12px 26px rgba(24, 21, 18, 0.35), 0 0 18px rgba(200, 150, 102, 0.45);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--espresso), var(--espresso-soft));
-            color: #ffffff;
-            border: 1.5px solid var(--caramel);
-            padding: 12px 18px;
-            border-radius: 999px;
+            justify-content: center;
             font-size: 0.88rem;
-            font-weight: 800;
-            box-shadow: 0 12px 28px rgba(24, 21, 18, 0.35), 0 0 20px rgba(200, 150, 102, 0.45);
-            transition: transform 0.2s ease;
+            font-weight: 900;
+            white-space: nowrap;
+            overflow: hidden;
+            transition: max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1), padding 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease, color 0.2s ease;
         }
 
-        .floating-cart-btn:hover {
-            transform: translateY(-3px) scale(1.02);
+        .floating-cart-pill.compact {
+            max-width: 46px;
+            padding: 0;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .floating-cart-pill:hover {
+            transform: translateY(-3px) scale(1.04);
         }
 
         /* درج السلة الجانبي */
@@ -774,7 +719,6 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 8px 20px -6px rgba(21, 128, 61, 0.45);
         }
 
         .clear-cart-btn {
@@ -829,25 +773,6 @@
             border-top: 1px solid rgba(28, 23, 20, 0.08);
             background: #f2ede6;
         }
-
-        @media (max-width: 540px) {
-            .header-wa-btn span {
-                display: none;
-            }
-            .cat-ring {
-                width: 64px;
-                height: 64px;
-            }
-            .cat-circle-label {
-                font-size: 0.72rem;
-            }
-            .floating-cart-btn {
-                bottom: 14px;
-                left: 14px;
-                padding: 10px 15px;
-                font-size: 0.82rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -858,22 +783,16 @@
             <div class="logo-sub">CARAMEL STORE</div>
         </div>
 
-        <div class="header-actions">
-            <a href="https://wa.me/201055436305?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="header-wa-btn" target="_blank" rel="noopener noreferrer">
-                <span>واتساب</span>
-            </a>
-            <button type="button" class="header-cart-btn" onclick="openCart()">
-                <span>السلة</span>
-                <span class="cart-count-pill" id="headerCartCount">0</span>
-            </button>
-        </div>
+        <a href="https://wa.me/201055436305?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="header-wa-btn" target="_blank" rel="noopener noreferrer">
+            <span>واتساب</span>
+        </a>
     </header>
 
     <main class="container">
         <section class="hero-banner">
             <span class="hero-badge">CARAMEL STORE • تسوق مباشر</span>
             <h1>أهلاً بك في متجر كارامل</h1>
-            <p>تصفح المنتجات مباشرة واختر القسم اللي يعجبك، أضف للسلة واطلب دفعة واحدة على واتساب أو اطلب من شي إن بدون جمارك.</p>
+            <p>كل المنتجات معروضة من بره مباشرة؛ اختر من الدوائر، أضف للمشتريات، واطلب على واتساب أو اطلب من شي إن بدون جمارك.</p>
             <div class="hero-actions">
                 <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B4%D9%8A%20%D8%A5%D9%86" class="hero-btn-primary" target="_blank" rel="noopener noreferrer">
                     طلبات شي إن (SHEIN)
@@ -884,123 +803,80 @@
             </div>
         </section>
 
-        <!-- دواير الأقسام الملونة والنابضة -->
+        <!-- دواير الأقسام الصغيرة في سطر واحد -->
         <div class="section-heading">
             <h2>أقسام المتجر</h2>
-            <span>اضغط على الدايرة لفلترة المنتجات أو افتح صفحة القسم</span>
+            <span>اضغط على أي دايرة للتصفية</span>
         </div>
 
-        <section class="circles-strip" id="categoryCircles">
-            <div class="cat-circle-item ring-all active" data-cat="all" onclick="filterByCategory('all', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0032.jpg" alt="الكل" loading="lazy">
-                    </div>
+        <div class="circles-row-wrapper">
+            <div class="circles-single-row" id="categoryCircles">
+                <div class="cat-circle-item ring-all active" data-cat="all" onclick="filterByCategory('all', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0032.jpg" alt="الكل" loading="lazy"></div></div>
+                    <span class="cat-circle-label">الكل</span>
                 </div>
-                <span class="cat-circle-label">كل المنتجات</span>
-            </div>
 
-            <div class="cat-circle-item ring-home" data-cat="home" onclick="filterByCategory('home', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0036.jpg" alt="مستلزمات المنزل" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-home" data-cat="home" onclick="filterByCategory('home', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0036.jpg" alt="المنزل" loading="lazy"></div></div>
+                    <span class="cat-circle-label">المنزل</span>
                 </div>
-                <span class="cat-circle-label">مستلزمات المنزل</span>
-                <a href="Home.html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
-            </div>
 
-            <div class="cat-circle-item ring-school" data-cat="school" onclick="filterByCategory('school', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0040.jpg" alt="مستلزمات الدراسة" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-school" data-cat="school" onclick="filterByCategory('school', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0040.jpg" alt="الدراسة" loading="lazy"></div></div>
+                    <span class="cat-circle-label">الدراسة</span>
                 </div>
-                <span class="cat-circle-label">مستلزمات الدراسة</span>
-                <a href="Lab.html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
-            </div>
 
-            <div class="cat-circle-item ring-tafse" data-cat="tafse" onclick="filterByCategory('tafse', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0042.jpg" alt="التفصيل والمكرميات" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-tafse" data-cat="tafse" onclick="filterByCategory('tafse', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0042.jpg" alt="المكرميات" loading="lazy"></div></div>
+                    <span class="cat-circle-label">المكرميات</span>
                 </div>
-                <span class="cat-circle-label">التفصيل والمكرميات</span>
-                <a href="Tfs.html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
-            </div>
 
-            <div class="cat-circle-item ring-kids" data-cat="kids" onclick="filterByCategory('kids', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0038.jpg" alt="الأطفال" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-kids" data-cat="kids" onclick="filterByCategory('kids', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0038.jpg" alt="الأطفال" loading="lazy"></div></div>
+                    <span class="cat-circle-label">الأطفال</span>
                 </div>
-                <span class="cat-circle-label">الأطفال</span>
-                <a href="kids.html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
-            </div>
 
-            <div class="cat-circle-item ring-women" data-cat="women" onclick="filterByCategory('women', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0035.jpg" alt="النساء" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-women" data-cat="women" onclick="filterByCategory('women', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0035.jpg" alt="النساء" loading="lazy"></div></div>
+                    <span class="cat-circle-label">النساء</span>
                 </div>
-                <span class="cat-circle-label">النساء</span>
-                <a href="girls_clothes.html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
-            </div>
 
-            <div class="cat-circle-item ring-men" data-cat="men" onclick="filterByCategory('men', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0037.jpg" alt="الرجال" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-men" data-cat="men" onclick="filterByCategory('men', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0037.jpg" alt="الرجال" loading="lazy"></div></div>
+                    <span class="cat-circle-label">الرجال</span>
                 </div>
-                <span class="cat-circle-label">الرجال</span>
-                <a href="Mn.html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
-            </div>
 
-            <div class="cat-circle-item ring-gifts" data-cat="gifts" onclick="filterByCategory('gifts', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="1794812775286.jpg" alt="الإكسسوارات والهدايا" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-gifts" data-cat="gifts" onclick="filterByCategory('gifts', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="1794812775286.jpg" alt="الهدايا" loading="lazy"></div></div>
+                    <span class="cat-circle-label">الهدايا</span>
                 </div>
-                <span class="cat-circle-label">الإكسسوارات والهدايا</span>
-                <a href="Amn.html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
-            </div>
 
-            <div class="cat-circle-item ring-perfume" data-cat="perfume" onclick="filterByCategory('perfume', this)">
-                <div class="cat-ring">
-                    <div class="cat-ring-inner">
-                        <img src="IMG-20261116-WA0039.jpg" alt="العطور" loading="lazy">
-                    </div>
+                <div class="cat-circle-item ring-perfume" data-cat="perfume" onclick="filterByCategory('perfume', this)">
+                    <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0039.jpg" alt="العطور" loading="lazy"></div></div>
+                    <span class="cat-circle-label">العطور</span>
                 </div>
-                <span class="cat-circle-label">العطور</span>
-                <a href="Brf_updated(1).html" class="cat-page-link" onclick="event.stopPropagation()">صفحة القسم</a>
             </div>
-        </section>
+        </div>
 
-        <!-- عرض المنتجات مباشرة -->
+        <!-- عرض كل المنتجات مباشرة -->
         <div class="section-heading">
-            <h2 id="activeCategoryTitle">أحدث المنتجات</h2>
+            <h2 id="activeCategoryTitle">كل المنتجات</h2>
             <span id="productsCountLabel">0 منتج</span>
         </div>
 
         <section class="products-grid" id="productsGrid"></section>
     </main>
 
-    <!-- زر السلة العائم -->
-    <button type="button" class="floating-cart-btn" onclick="openCart()">
-        <span>سلة المشتريات</span>
-        <span class="cart-count-pill" id="floatingCartCount">0</span>
+    <!-- زر السلة العائم: يظهر بكلمة "المشتريات" ثم يصغر للرقم -->
+    <button type="button" class="floating-cart-pill" id="floatingCartPill" onclick="openCart()" aria-label="سلة المشتريات">
+        المشتريات
     </button>
 
     <!-- خلفية ودرج السلة -->
     <div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
     <aside class="cart-drawer" id="cartDrawer" aria-label="سلة المشتريات">
         <div class="cart-header">
-            <h3>سلة متجر كارامل</h3>
+            <h3>المشتريات - متجر كارامل</h3>
             <button type="button" class="close-cart-btn" onclick="closeCart()" aria-label="إغلاق السلة">&times;</button>
         </div>
         <div class="cart-body" id="cartItemsContainer"></div>
@@ -1012,7 +888,7 @@
             <button type="button" class="checkout-wa-btn" onclick="checkoutOnWhatsApp()">
                 إتمام الطلب عبر واتساب
             </button>
-            <button type="button" class="clear-cart-btn" onclick="clearCart()">تفريغ السلة</button>
+            <button type="button" class="clear-cart-btn" onclick="clearCart()">تفريغ المشتريات</button>
         </div>
     </aside>
 
@@ -1030,7 +906,7 @@
         const WHATSAPP_NUMBER = "201055436305";
 
         const CATEGORY_NAMES = {
-            all: "أحدث المنتجات",
+            all: "كل المنتجات",
             home: "مستلزمات المنزل",
             school: "مستلزمات الدراسة",
             tafse: "التفصيل والمكرميات",
@@ -1042,22 +918,48 @@
         };
 
         const PRODUCTS = [
+            // الإكسسوارات والهدايا
+            { id: "g-1", title: "محفظه بالاسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
+            { id: "g-2", title: "مرايا سحريه بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
+            { id: "g-3", title: "ساعة بصورتك 30 في 40", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
+            { id: "g-4", title: "مج أبيض بصورتك", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
+            { id: "g-5", title: "منديل العرسان", price: 130, category: "gifts", img: "Amnh/IMG-20261117-WA0018.jpg" },
+            { id: "g-6", title: "تابلوه 30 في 40", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
+            { id: "g-7", title: "تابلوه 60 في 90", price: 500, category: "gifts", img: "Amnh/IMG-20261117-WA0016.jpg" },
+            { id: "g-8", title: "برواز 21 في 15", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0014.jpg" },
+            { id: "g-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
+            { id: "g-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
+
+            // العطور والبرفانات
             { id: "p-1", title: "عطر Lively For Men Paris", price: 175, category: "perfume", img: "Prfa/compressed_1794950472010.webp" },
             { id: "p-2", title: "عطر مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096546.webp" },
             { id: "p-3", title: "عطر مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096662.webp" },
-            { id: "p-4", title: "عطر يارا من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
-            { id: "p-5", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
-            { id: "p-6", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
-            { id: "p-7", title: "مكرمية قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
-            { id: "p-8", title: "متر في مترين ومعاها قطعتين رباط وعصايا هدية", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
-            { id: "p-9", title: "متر في مترين مع رباط هدية", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
-            { id: "p-10", title: "محفظة بالأسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
-            { id: "p-11", title: "مرايا سحرية بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
-            { id: "p-12", title: "مج أبيض بصورتك", price: 160, category: "gifts", img: "Amnh/IMG-20261117-WA0003.jpg" },
-            { id: "p-13", title: "تابلوه 30 في 40", price: 220, category: "gifts", img: "Amnh/IMG-20261117-WA0017.jpg" },
-            { id: "p-14", title: "ساعة حريمي مميزة", price: 1025, category: "women", img: "IMG-20261116-WA0023(1).jpg" },
-            { id: "p-15", title: "ساعة حريمي كلاسيك", price: 985, category: "women", img: "IMG-20261116-WA0022(1).jpg" },
-            { id: "p-16", title: "ساعة حريمي أنيقة", price: 820, category: "women", img: "IMG-20261116-WA0020(1).jpg" }
+            { id: "p-4", title: "عطر قصة الوردي", price: 375, category: "perfume", img: "Prfa/compressed_1794950096748.webp" },
+            { id: "p-5", title: "عطر يارا من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
+            { id: "p-6", title: "بارفان مميز 1", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
+            { id: "p-7", title: "بارفان مميز 2", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
+            { id: "p-8", title: "بارفان مميز 3", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
+            { id: "p-9", title: "بارفان فخم 1", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
+            { id: "p-10", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
+            { id: "p-11", title: "بارفان فخم 2", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
+            { id: "p-12", title: "بارفان فخم 3", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0080.jpg" },
+            { id: "p-13", title: "بارفان أنيق 1", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
+            { id: "p-14", title: "بارفان أنيق 2", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
+            { id: "p-15", title: "بارفان كلاسيك 1", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
+            { id: "p-16", title: "بارفان كلاسيك 2", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" },
+
+            // التفصيل والمكرميات
+            { id: "t-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
+            { id: "t-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
+            { id: "t-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه (موديل 2)", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
+            { id: "t-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
+            { id: "t-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه (موديل 3)", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
+
+            // النساء
+            { id: "w-1", title: "ساعة حريمي", price: 1025, category: "women", img: "IMG-20261116-WA0023(1).jpg" },
+            { id: "w-2", title: "ساعة حريمي", price: 985, category: "women", img: "IMG-20261116-WA0022(1).jpg" },
+            { id: "w-3", title: "ساعة حريمي", price: 945, category: "women", img: "IMG-20261116-WA0021(1).jpg" },
+            { id: "w-4", title: "ساعة حريمي", price: 820, category: "women", img: "IMG-20261116-WA0020(1).jpg" }
         ];
 
         let cart = [];
@@ -1086,11 +988,11 @@
             titleEl.textContent = CATEGORY_NAMES[category] || "المنتجات";
 
             if (filtered.length === 0) {
-                countEl.textContent = "تصفح صفحة القسم الكاملة";
+                countEl.textContent = "0 منتج";
                 grid.innerHTML = `
-                    <div style="grid-column: 1 / -1; background: #fff; padding: 28px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
-                        <p style="font-weight: 800; margin-bottom: 10px;">منتجات هذا القسم متوفرة في صفحته المخصصة أو جاري إضافتها هنا.</p>
-                        <button type="button" class="add-cart-btn" style="max-width: 220px; margin: 0 auto;" onclick="filterByCategory('all', document.querySelector('[data-cat=\"all\"]'))">عرض كل المنتجات</button>
+                    <div style="grid-column: 1 / -1; background: #fff; padding: 26px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
+                        <p style="font-weight: 800; margin-bottom: 10px;">لا توجد منتجات مضافة لهذا القسم حاليًا في القائمة.</p>
+                        <button type="button" class="add-cart-btn" style="max-width: 210px; margin: 0 auto;" onclick="filterByCategory('all', document.querySelector('[data-cat=\"all\"]'))">عرض كل المنتجات</button>
                     </div>
                 `;
                 return;
@@ -1113,7 +1015,7 @@
                             </div>
                             <div class="card-btns">
                                 <button type="button" class="add-cart-btn" id="btn-${product.id}" onclick="addToCart('${product.id}')">
-                                    <span>+ أضف إلى السلة</span>
+                                    <span>+ أضف للمشتريات</span>
                                 </button>
                                 <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waText}" class="direct-wa-link" target="_blank" rel="noopener noreferrer">
                                     <span>طلب سريع واتساب</span>
@@ -1129,6 +1031,22 @@
             document.querySelectorAll(".cat-circle-item").forEach(item => item.classList.remove("active"));
             if (element) element.classList.add("active");
             renderProducts(category);
+        }
+
+        /* إظهار "المشتريات" ثم تصغير الزر ليصبح الرقم فقط */
+        let shrinkTimer = null;
+        function triggerCartPillAnimation(count) {
+            const pill = document.getElementById("floatingCartPill");
+            if (!pill) return;
+
+            clearTimeout(shrinkTimer);
+            pill.classList.remove("compact");
+            pill.textContent = "المشتريات";
+
+            shrinkTimer = setTimeout(() => {
+                pill.textContent = String(count);
+                pill.classList.add("compact");
+            }, 1300);
         }
 
         function addToCart(productId) {
@@ -1149,7 +1067,7 @@
             }
 
             saveCart();
-            updateCartUI();
+            updateCartUI(true);
 
             const btn = document.getElementById(`btn-${productId}`);
             if (btn) {
@@ -1171,42 +1089,40 @@
                 cart = cart.filter(i => i.id !== productId);
             }
             saveCart();
-            updateCartUI();
+            updateCartUI(true);
         }
 
         function removeFromCart(productId) {
             cart = cart.filter(i => i.id !== productId);
             saveCart();
-            updateCartUI();
+            updateCartUI(true);
         }
 
         function clearCart() {
             cart = [];
             saveCart();
-            updateCartUI();
+            updateCartUI(true);
         }
 
-        function updateCartUI() {
+        function updateCartUI(animatePill = false) {
             const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
             const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
 
-            const headerCount = document.getElementById("headerCartCount");
-            const floatingCount = document.getElementById("floatingCartCount");
             const totalAmountEl = document.getElementById("cartTotalAmount");
             const container = document.getElementById("cartItemsContainer");
 
-            headerCount.textContent = totalQty;
-            floatingCount.textContent = totalQty;
             totalAmountEl.textContent = `${totalPrice} جنيه`;
 
-            headerCount.classList.remove("bump");
-            floatingCount.classList.remove("bump");
-            void headerCount.offsetWidth;
-            headerCount.classList.add("bump");
-            floatingCount.classList.add("bump");
+            if (animatePill) {
+                triggerCartPillAnimation(totalQty);
+            } else {
+                const pill = document.getElementById("floatingCartPill");
+                pill.textContent = String(totalQty);
+                pill.classList.add("compact");
+            }
 
             if (cart.length === 0) {
-                container.innerHTML = `<div class="cart-empty">السلة فاضية حاليًا.. أضف المنتجات اللي تعجبك وابدأ طلبك.</div>`;
+                container.innerHTML = `<div class="cart-empty">المشتريات فاضية حاليًا.. أضف المنتجات اللي تعجبك وابدأ طلبك.</div>`;
                 return;
             }
 
@@ -1277,7 +1193,8 @@
         });
 
         renderProducts("all");
-        updateCartUI();
+        updateCartUI(false);
+        triggerCartPillAnimation(cart.reduce((sum, i) => sum + i.qty, 0));
     </script>
 </body>
 </html>
