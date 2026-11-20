@@ -1,4 +1,4 @@
-const CACHE_NAME = "caramel-store-v1";
+const CACHE_NAME = "caramel-store-v2";
 
 self.addEventListener("install", event => {
   self.skipWaiting();
@@ -16,7 +16,23 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
+  if (event.request.cache === "only-if-cached" && event.request.mode !== "same-origin") return;
+
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request)
+      .then(networkResponse => {
+        if (
+          networkResponse &&
+          networkResponse.status === 200 &&
+          networkResponse.type === "basic"
+        ) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone).catch(() => {});
+          });
+        }
+        return networkResponse;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
