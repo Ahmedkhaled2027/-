@@ -82,7 +82,6 @@
             }
         }
 
-        /* الهيدر */
         header {
             background: rgba(24, 21, 18, 0.96);
             backdrop-filter: blur(14px);
@@ -153,7 +152,6 @@
             flex: 1;
         }
 
-        /* بانر الترحيب */
         .hero-banner {
             background: linear-gradient(130deg, var(--espresso) 0%, var(--espresso-soft) 60%, var(--caramel-dark) 100%);
             color: #ffffff;
@@ -224,7 +222,6 @@
             font-weight: 700;
         }
 
-        /* عناوين الأقسام */
         .section-heading {
             display: flex;
             align-items: center;
@@ -246,14 +243,13 @@
             color: var(--text-muted);
         }
 
-        /* شريط الدوائر الصغيرة في سطر واحد */
         .circles-row-wrapper {
             background: #ffffff;
             padding: 12px 10px;
             border-radius: 20px;
             border: 1px solid var(--border-gold);
             box-shadow: var(--shadow-main);
-            margin-bottom: 22px;
+            margin-bottom: 16px;
             overflow-x: auto;
             scrollbar-width: none;
         }
@@ -328,7 +324,6 @@
             color: var(--ring-color, var(--caramel-dark));
         }
 
-        /* ألوان وتوهج كل قسم */
         .ring-all { --ring-color: #c89666; --ring-glow: rgba(200, 150, 102, 0.55); }
         .ring-home { --ring-color: #b88656; --ring-glow: rgba(184, 134, 86, 0.55); }
         .ring-school { --ring-color: #0284c7; --ring-glow: rgba(2, 132, 199, 0.55); }
@@ -339,7 +334,29 @@
         .ring-gifts { --ring-color: #db2777; --ring-glow: rgba(219, 39, 119, 0.55); }
         .ring-perfume { --ring-color: #3b82f6; --ring-glow: rgba(59, 130, 246, 0.55); }
 
-        /* شبكة المنتجات */
+        .quick-search-box {
+            background: #ffffff;
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 8px 12px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+            background: transparent;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -451,6 +468,13 @@
             margin-right: 3px;
         }
 
+        .product-sub {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
         .card-btns {
             display: flex;
             flex-direction: column;
@@ -496,7 +520,6 @@
             gap: 5px;
         }
 
-        /* زر السلة العائم: يظهر بكلمة "المشتريات" ثم يصغر ليصبح "الرقم" فقط */
         .floating-cart-pill {
             position: fixed;
             bottom: 20px;
@@ -532,7 +555,6 @@
             transform: translateY(-3px) scale(1.04);
         }
 
-        /* درج السلة الجانبي */
         .cart-backdrop {
             display: none;
             position: fixed;
@@ -731,7 +753,6 @@
             font-weight: 800;
         }
 
-        /* مودال تكبير الصورة */
         .image-modal {
             display: none;
             position: fixed;
@@ -792,7 +813,7 @@
         <section class="hero-banner">
             <span class="hero-badge">CARAMEL STORE • تسوق مباشر</span>
             <h1>أهلاً بك في متجر كارامل</h1>
-            <p>كل المنتجات معروضة من بره مباشرة؛ اختر من الدوائر، أضف للمشتريات، واطلب على واتساب أو اطلب من شي إن بدون جمارك.</p>
+            <p>كل المنتجات والصور متاحة مباشرة هنا؛ اختر من الدوائر، أضف للمشتريات، واطلب على واتساب أو اطلب من شي إن بدون جمارك.</p>
             <div class="hero-actions">
                 <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B4%D9%8A%20%D8%A5%D9%86" class="hero-btn-primary" target="_blank" rel="noopener noreferrer">
                     طلبات شي إن (SHEIN)
@@ -803,7 +824,6 @@
             </div>
         </section>
 
-        <!-- دواير الأقسام الصغيرة في سطر واحد -->
         <div class="section-heading">
             <h2>أقسام المتجر</h2>
             <span>اضغط على أي دايرة للتصفية</span>
@@ -858,7 +878,10 @@
             </div>
         </div>
 
-        <!-- عرض كل المنتجات مباشرة -->
+        <div class="quick-search-box">
+            <input type="text" id="homeSearchInput" placeholder="ابحث بالاسم أو السعر أو القسم..." oninput="renderProducts()">
+        </div>
+
         <div class="section-heading">
             <h2 id="activeCategoryTitle">كل المنتجات</h2>
             <span id="productsCountLabel">0 منتج</span>
@@ -867,12 +890,10 @@
         <section class="products-grid" id="productsGrid"></section>
     </main>
 
-    <!-- زر السلة العائم: يظهر بكلمة "المشتريات" ثم يصغر للرقم -->
     <button type="button" class="floating-cart-pill" id="floatingCartPill" onclick="openCart()" aria-label="سلة المشتريات">
         المشتريات
     </button>
 
-    <!-- خلفية ودرج السلة -->
     <div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
     <aside class="cart-drawer" id="cartDrawer" aria-label="سلة المشتريات">
         <div class="cart-header">
@@ -892,7 +913,6 @@
         </div>
     </aside>
 
-    <!-- نافذة تكبير الصورة -->
     <div class="image-modal" id="imageModal" onclick="closeImageModal()">
         <button type="button" class="modal-close" onclick="closeImageModal()" aria-label="إغلاق">&times;</button>
         <img id="modalImagePreview" src="" alt="معاينة المنتج" onclick="event.stopPropagation()">
@@ -904,6 +924,7 @@
 
     <script>
         const WHATSAPP_NUMBER = "201055436305";
+        const CART_STORAGE_KEY = "caramel_store_cart_v1";
 
         const CATEGORY_NAMES = {
             all: "كل المنتجات",
@@ -911,15 +932,14 @@
             school: "مستلزمات الدراسة",
             tafse: "التفصيل والمكرميات",
             kids: "الأطفال",
-            women: "النساء",
+            women: "أزياء وموضة النساء",
             men: "الرجال",
             gifts: "الإكسسوارات والهدايا",
             perfume: "العطور"
         };
 
-        // المنتجات المحدّثة (34 منتجًا: 18 منزل + 10 هدايا + 5 مكرميات + 11 عطور، بدون ساعات النساء)
         const PRODUCTS = [
-            // [1..18] من Home.html (مستلزمات المنزل)
+            // [1..18] مستلزمات المنزل
             { id: "hm-1", title: "مصفاه متحركه", price: 300, category: "home", img: "Kit/IMG-20261116-WA0059.jpg" },
             { id: "hm-2", title: "طقم 6 قطع", price: 350, category: "home", img: "Kit/IMG-20261116-WA0056.jpg" },
             { id: "hm-3", title: "طقم 6 قطع", price: 250, category: "home", img: "Kit/IMG-20261116-WA0057.jpg" },
@@ -939,7 +959,7 @@
             { id: "hm-17", title: "زيت مساج", price: 70, category: "home", img: "Kit/IMG-20261116-WA0104.jpg" },
             { id: "hm-18", title: "طقم 6 قطع", price: 500, category: "home", img: "Kit/IMG-20261116-WA0101.jpg" },
 
-            // [19..28] من Amn.html (الإكسسوارات والهدايا)
+            // [19..28] الإكسسوارات والهدايا
             { id: "amn-1", title: "محفظه بالاسماء مع تحديد الاسم", price: 200, category: "gifts", img: "Amnh/IMG-20261117-WA0007.jpg" },
             { id: "amn-2", title: "مرايا سحريه بصورتك", price: 300, category: "gifts", img: "Amnh/IMG-20261117-WA0006.jpg" },
             { id: "amn-3", title: "ساعة بصورتك 30 في 40", price: 280, category: "gifts", img: "Amnh/IMG-20261117-WA0019.jpg" },
@@ -951,14 +971,30 @@
             { id: "amn-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
             { id: "amn-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
 
-            // [29..33] من Tfs_3.html (التفصيل والمكرميات)
-            { id: "tfs-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
-            { id: "tfs-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
-            { id: "tfs-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
-            { id: "tfs-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
-            { id: "tfs-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
+            // [29..46] التفصيل والمكرميات (كامل 18 منتج من الكود)
+            { id: "tafse-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
+            { id: "tafse-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
+            { id: "tafse-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
+            { id: "tafse-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
+            { id: "tafse-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
+            { id: "tafse-6", title: "موديل أسود بقصة كشكشة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044923.webp" },
+            { id: "tafse-7", title: "عباية بشت قطيفة موف مع طرحة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044497.webp" },
+            { id: "tafse-8", title: "فستان لبني بكشكشة وأكمام", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044682.webp" },
+            { id: "tafse-9", title: "عباية قطيفة نبيتي ببروش", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044361.webp" },
+            { id: "tafse-10", title: "عباية بني قماش بليسيه بأكمام واسعة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044174.webp" },
+            { id: "tafse-11", title: "عباية سوداء قماش جاكار مموج", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094044287.webp" },
+            { id: "tafse-12", title: "فستان أصفر فاتح برباط جانبي", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043951.webp" },
+            { id: "tafse-13", title: "عباية قطيفة موف غامق مع طرحة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043669.webp" },
+            { id: "tafse-14", title: "عباية قطيفة بني برباط على الأكمام", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043790.webp" },
+            { id: "tafse-15", title: "فستان أزرق بليسيه برباط جانبي", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043481.webp" },
+            { id: "tafse-16", title: "عباية كحلي بأزرار أمامية وأكمام واسعة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043346.webp" },
+            { id: "tafse-17", title: "عباية قطيفة موف مطرزة مع طرحة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094043197.webp" },
+            { id: "tafse-18", title: "عباية سوداء قماش مضلع بأكمام واسعة", price: 850, subPrice: "السن المحير: 650 جنيه", category: "tafse", img: "Tafse/compressed_1795094042876.webp" },
 
-            // [34..44] من Brf.html (العطور والبرفانات)
+            // [47] أزياء وموضة النساء (من الكود المرسل)
+            { id: "wmn-1", title: "أندر نسائي مشجر دباغ / كاندي", price: 65, category: "women", img: "Clswmn/compressed_1795114616012.webp" },
+
+            // [48..58] العطور والبرفانات
             { id: "brf-1", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
             { id: "brf-2", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
             { id: "brf-3", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
@@ -972,9 +1008,11 @@
             { id: "brf-11", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" }
         ];
 
+        let currentCategory = "all";
         let cart = [];
+
         try {
-            const saved = localStorage.getItem("caramel_store_cart");
+            const saved = localStorage.getItem(CART_STORAGE_KEY);
             if (saved) cart = JSON.parse(saved);
         } catch (e) {
             cart = [];
@@ -982,18 +1020,31 @@
 
         function saveCart() {
             try {
-                localStorage.setItem("caramel_store_cart", JSON.stringify(cart));
+                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
             } catch (e) {}
         }
 
-        function renderProducts(category = "all") {
+        function normalizeText(str) {
+            return String(str || "")
+                .toLowerCase()
+                .replace(/[إأآا]/g, "ا")
+                .replace(/ة/g, "ه")
+                .replace(/ى/g, "ي")
+                .trim();
+        }
+
+        function renderProducts(category = currentCategory) {
+            currentCategory = category;
             const grid = document.getElementById("productsGrid");
             const titleEl = document.getElementById("activeCategoryTitle");
             const countEl = document.getElementById("productsCountLabel");
+            const query = normalizeText(document.getElementById("homeSearchInput")?.value || "");
 
-            const filtered = category === "all"
-                ? PRODUCTS
-                : PRODUCTS.filter(p => p.category === category);
+            const filtered = PRODUCTS.filter(p => {
+                const catMatch = category === "all" || p.category === category;
+                const textMatch = !query || normalizeText(`${p.title} ${p.price} ${p.subPrice || ""} ${CATEGORY_NAMES[p.category] || ""}`).includes(query);
+                return catMatch && textMatch;
+            });
 
             titleEl.textContent = CATEGORY_NAMES[category] || "المنتجات";
 
@@ -1001,8 +1052,8 @@
                 countEl.textContent = "0 منتج";
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; background: #fff; padding: 26px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
-                        <p style="font-weight: 800; margin-bottom: 10px;">لا توجد منتجات معروضة في هذا القسم حاليًا.</p>
-                        <button type="button" class="add-cart-btn" style="max-width: 210px; margin: 0 auto;" onclick="filterByCategory('all', document.querySelector('[data-cat=\"all\"]'))">عرض كل المنتجات</button>
+                        <p style="font-weight: 800; margin-bottom: 10px;">لا توجد منتجات مطابقة حاليًا.</p>
+                        <button type="button" class="add-cart-btn" style="max-width: 210px; margin: 0 auto;" onclick="resetFilters()">عرض كل المنتجات</button>
                     </div>
                 `;
                 return;
@@ -1022,6 +1073,7 @@
                             <div>
                                 <div class="product-title">${product.title}</div>
                                 <div class="product-price">${product.price}<span>جنيه</span></div>
+                                ${product.subPrice ? `<div class="product-sub">${product.subPrice}</div>` : ""}
                             </div>
                             <div class="card-btns">
                                 <button type="button" class="add-cart-btn" id="btn-${product.id}" onclick="addToCart('${product.id}')">
@@ -1037,13 +1089,19 @@
             }).join("");
         }
 
+        function resetFilters() {
+            const input = document.getElementById("homeSearchInput");
+            if (input) input.value = "";
+            const allCircle = document.querySelector('[data-cat="all"]');
+            filterByCategory("all", allCircle);
+        }
+
         function filterByCategory(category, element) {
             document.querySelectorAll(".cat-circle-item").forEach(item => item.classList.remove("active"));
             if (element) element.classList.add("active");
             renderProducts(category);
         }
 
-        /* إظهار "المشتريات" ثم تصغير الزر ليصبح الرقم فقط */
         let shrinkTimer = null;
         function triggerCartPillAnimation(count) {
             const pill = document.getElementById("floatingCartPill");
@@ -1115,8 +1173,8 @@
         }
 
         function updateCartUI(animatePill = false) {
-            const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-            const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            const totalQty = cart.reduce((sum, i) => sum + (Number(i.qty) || 1), 0);
+            const totalPrice = cart.reduce((sum, i) => sum + ((Number(i.price) || 0) * (Number(i.qty) || 1)), 0);
 
             const totalAmountEl = document.getElementById("cartTotalAmount");
             const container = document.getElementById("cartItemsContainer");
@@ -1141,11 +1199,11 @@
                     <img src="${item.img}" alt="${item.title}">
                     <div class="cart-item-info">
                         <div class="cart-item-title">${item.title}</div>
-                        <div class="cart-item-price">${item.price * item.qty} جنيه</div>
+                        <div class="cart-item-price">${(Number(item.price) || 0) * (Number(item.qty) || 1)} جنيه</div>
                     </div>
                     <div class="qty-controls">
                         <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
-                        <span class="qty-val">${item.qty}</span>
+                        <span class="qty-val">${item.qty || 1}</span>
                         <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
                     </div>
                     <button type="button" class="remove-item-btn" onclick="removeFromCart('${item.id}')" aria-label="حذف">✕</button>
@@ -1163,9 +1221,11 @@
             let total = 0;
 
             cart.forEach((item, idx) => {
-                const sub = item.price * item.qty;
+                const q = Number(item.qty) || 1;
+                const p = Number(item.price) || 0;
+                const sub = p * q;
                 total += sub;
-                lines.push(`${idx + 1}. ${item.title} × ${item.qty} = ${sub} جنيه`);
+                lines.push(`${idx + 1}. ${item.title} × ${q} = ${sub} جنيه`);
             });
 
             lines.push("", `الإجمالي: ${total} جنيه`);
@@ -1202,9 +1262,21 @@
             }
         });
 
+        window.addEventListener("storage", e => {
+            if (!e.key || e.key === CART_STORAGE_KEY) {
+                try {
+                    const saved = localStorage.getItem(CART_STORAGE_KEY);
+                    cart = saved ? JSON.parse(saved) : [];
+                } catch (err) {
+                    cart = [];
+                }
+                updateCartUI(false);
+            }
+        });
+
         renderProducts("all");
         updateCartUI(false);
-        triggerCartPillAnimation(cart.reduce((sum, i) => sum + i.qty, 0));
+        triggerCartPillAnimation(cart.reduce((sum, i) => sum + (Number(i.qty) || 1), 0));
     </script>
 </body>
 </html>
