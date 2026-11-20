@@ -26,7 +26,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -110,6 +110,49 @@
             0% { transform: scale(1); }
             45% { transform: scale(1.14); }
             100% { transform: scale(1); }
+        }
+
+        /* تأثير تلاقي القطع واستقرارها مع لمعة ذهبية هادئة */
+        @keyframes pieceSettleLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(18px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes pieceSettleRight {
+            0% {
+                opacity: 0;
+                transform: translateX(-18px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes nodeLockPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(158, 109, 64, 0.45);
+            }
+            50% {
+                transform: scale(1.25);
+                box-shadow: 0 0 0 5px rgba(158, 109, 64, 0);
+            }
+        }
+
+        @keyframes sloganSheen {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         header {
@@ -233,42 +276,74 @@
             flex: 1;
         }
 
-        /* سلوچان فخم وواضح في منتصف الشاشة خارج مربع الوصف */
+        /* سلوچان واضح وحازم في منتصف الشاشة فوق الهيرو بانر */
         .store-slogan-showcase {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            flex-wrap: wrap;
+            gap: 10px 14px;
             text-align: center;
             margin: 4px auto 14px;
-            padding: 8px 16px;
-            max-width: 760px;
+            padding: 10px 18px;
+            max-width: 820px;
+            position: relative;
         }
 
-        .slogan-ornament {
+        .slogan-track-line {
             flex: 1;
-            max-width: 90px;
-            height: 1.5px;
-            background: linear-gradient(90deg, transparent, var(--caramel), var(--caramel-light));
+            min-width: 36px;
+            max-width: 88px;
+            height: 2px;
             border-radius: 999px;
-            opacity: 0.85;
+            background: linear-gradient(90deg, rgba(200, 150, 102, 0.12), var(--caramel-dark));
+            position: relative;
         }
 
-        .slogan-ornament.left {
-            background: linear-gradient(270deg, transparent, var(--caramel), var(--caramel-light));
+        .slogan-track-line.end {
+            background: linear-gradient(270deg, rgba(200, 150, 102, 0.12), var(--caramel-dark));
+        }
+
+        .slogan-piece-node {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            transform: rotate(45deg);
+            background: var(--caramel-dark);
+            border: 1.5px solid var(--caramel-light);
+            animation: nodeLockPulse 2.8s infinite ease-in-out;
+            flex-shrink: 0;
         }
 
         .store-slogan-heading {
-            font-family: 'Aref Ruqaa', 'Cairo', serif;
-            font-size: clamp(1.38rem, 3.6vw, 2.05rem);
-            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(1.12rem, 2.7vw, 1.56rem);
+            font-weight: 900;
             line-height: 1.35;
-            letter-spacing: 0.3px;
-            background: linear-gradient(120deg, var(--espresso) 0%, var(--caramel-dark) 48%, #7a4e26 100%);
+            letter-spacing: -0.2px;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .slogan-brand-part {
+            color: var(--espresso);
+            animation: pieceSettleLeft 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .slogan-role-part {
+            background: linear-gradient(100deg, var(--caramel-dark) 0%, #c48549 42%, #7d522b 50%, var(--caramel-dark) 100%);
+            background-size: 220% 100%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 12px rgba(200, 150, 102, 0.22);
+            padding: 2px 10px;
+            border-radius: 8px;
+            background-color: rgba(200, 150, 102, 0.12);
+            border-bottom: 2px solid var(--caramel);
+            animation: pieceSettleRight 0.72s cubic-bezier(0.22, 1, 0.36, 1) both, sloganSheen 4.5s ease-in-out infinite;
         }
 
         .hero-banner {
@@ -1190,9 +1265,14 @@
 
     <main class="container">
         <div class="store-slogan-showcase" aria-label="شعار المتجر">
-            <span class="slogan-ornament" aria-hidden="true"></span>
-            <h2 class="store-slogan-heading">كارامل ستور.. كل قطعة وليها دور</h2>
-            <span class="slogan-ornament left" aria-hidden="true"></span>
+            <span class="slogan-track-line" aria-hidden="true"></span>
+            <span class="slogan-piece-node" aria-hidden="true"></span>
+            <h2 class="store-slogan-heading">
+                <span class="slogan-brand-part">كارامل ستور..</span>
+                <span class="slogan-role-part">كل قطعة وليها دور</span>
+            </h2>
+            <span class="slogan-piece-node" aria-hidden="true"></span>
+            <span class="slogan-track-line end" aria-hidden="true"></span>
         </div>
 
         <section class="hero-banner">
