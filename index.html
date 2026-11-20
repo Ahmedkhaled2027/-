@@ -917,7 +917,7 @@
             perfume: "العطور"
         };
 
-        // جميع المنتجات المستخرجة من الملفات المرسلة (64 منتجًا)
+        // المنتجات المحدّثة (34 منتجًا: 18 منزل + 10 هدايا + 5 مكرميات + 11 عطور، بدون ساعات النساء)
         const PRODUCTS = [
             // [1..18] من Home.html (مستلزمات المنزل)
             { id: "hm-1", title: "مصفاه متحركه", price: 300, category: "home", img: "Kit/IMG-20261116-WA0059.jpg" },
@@ -951,20 +951,14 @@
             { id: "amn-9", title: "طباعه جراب بصورتك", price: 100, category: "gifts", img: "Amnh/IMG-20261117-WA0009.jpg" },
             { id: "amn-10", title: "مج سحري بصورتك", price: 230, category: "gifts", img: "Amnh/IMG-20261117-WA0004.jpg" },
 
-            // [29..39] من caramel_perfumes_smart_search.html (العطور والبرفانات)
-            { id: "prf-1", title: "عطر Lively For Men Paris", price: 175, category: "perfume", img: "Prfa/compressed_1794950472010.webp" },
-            { id: "prf-2", title: "عطر مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096546.webp" },
-            { id: "prf-3", title: "عطر مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096662.webp" },
-            { id: "prf-4", title: "عطر قصة الوردي", price: 375, category: "perfume", img: "Prfa/compressed_1794950096748.webp" },
-            { id: "prf-5", title: "عطر يارا من لطافة", price: 375, category: "perfume", img: "Prfa/compressed_1794950096833.webp" },
-            { id: "prf-6", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
-            { id: "prf-7", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
-            { id: "prf-8", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
-            { id: "prf-9", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0077.jpg" },
-            { id: "prf-10", title: "بارفان صغير", price: 45, category: "perfume", img: "Prfa/IMG-20261116-WA0078.jpg" },
-            { id: "prf-11", title: "بارفان فخم", price: 200, category: "perfume", img: "Prfa/IMG-20261116-WA0079.jpg" },
+            // [29..33] من Tfs_3.html (التفصيل والمكرميات)
+            { id: "tfs-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
+            { id: "tfs-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
+            { id: "tfs-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
+            { id: "tfs-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
+            { id: "tfs-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
 
-            // [40..55] من Brf_updated(1).html (العطور والبرفانات)
+            // [34..44] من Brf.html (العطور والبرفانات)
             { id: "brf-1", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0067.jpg" },
             { id: "brf-2", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0068.jpg" },
             { id: "brf-3", title: "بارفان مميز", price: 160, category: "perfume", img: "Prfa/IMG-20261116-WA0069.jpg" },
@@ -975,25 +969,7 @@
             { id: "brf-8", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0083.jpg" },
             { id: "brf-9", title: "بارفان أنيق", price: 150, category: "perfume", img: "Prfa/IMG-20261116-WA0084.jpg" },
             { id: "brf-10", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0102.jpg" },
-            { id: "brf-11", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" },
-            { id: "brf-12", title: "Lively For Men Paris", price: 175, category: "perfume", img: "Brf/77750.webp" },
-            { id: "brf-13", title: "مصمم الذهب من لطافة", price: 375, category: "perfume", img: "Brf/77741.webp" },
-            { id: "brf-14", title: "قصة الوردي", price: 375, category: "perfume", img: "Brf/77742.webp" },
-            { id: "brf-15", title: "مصمم الأسود Black Intense من لطافة", price: 375, category: "perfume", img: "Brf/77740.webp" },
-            { id: "brf-16", title: "يارا من لطافة", price: 375, category: "perfume", img: "Brf/77743.webp" },
-
-            // [56..60] من Tfs.html / Tfs_2.html (التفصيل والمكرميات)
-            { id: "tfs-1", title: "مكرمية معاها قطعتين رباط متر في مترين", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0029.jpg" },
-            { id: "tfs-2", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1550, category: "tafse", img: "Tafse/IMG-20261117-WA0027.jpg" },
-            { id: "tfs-3", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1700, category: "tafse", img: "Tafse/IMG-20261117-WA0024.jpg" },
-            { id: "tfs-4", title: "متر في مترين ومعاها رباط هديه", price: 900, category: "tafse", img: "Tafse/IMG-20261117-WA0023.jpg" },
-            { id: "tfs-5", title: "متر في مترين ومعاها قطعتين رباط وعصايا هديه", price: 1600, category: "tafse", img: "Tafse/IMG-20261117-WA0034.jpg" },
-
-            // [61..64] من girls_clothes.html / girls_clothes_2.html (النساء)
-            { id: "wmn-1", title: "ساعة حريمي", price: 1025, category: "women", img: "IMG-20261116-WA0023(1).jpg" },
-            { id: "wmn-2", title: "ساعة حريمي", price: 985, category: "women", img: "IMG-20261116-WA0022(1).jpg" },
-            { id: "wmn-3", title: "ساعة حريمي", price: 945, category: "women", img: "IMG-20261116-WA0021(1).jpg" },
-            { id: "wmn-4", title: "ساعة حريمي", price: 820, category: "women", img: "IMG-20261116-WA0020(1).jpg" }
+            { id: "brf-11", title: "بارفان كلاسيك", price: 100, category: "perfume", img: "Prfa/IMG-20261116-WA0103.jpg" }
         ];
 
         let cart = [];
@@ -1025,7 +1001,7 @@
                 countEl.textContent = "0 منتج";
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; background: #fff; padding: 26px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
-                        <p style="font-weight: 800; margin-bottom: 10px;">لا توجد منتجات مضافة لهذا القسم حاليًا في الملفات المرسلة.</p>
+                        <p style="font-weight: 800; margin-bottom: 10px;">لا توجد منتجات معروضة في هذا القسم حاليًا.</p>
                         <button type="button" class="add-cart-btn" style="max-width: 210px; margin: 0 auto;" onclick="filterByCategory('all', document.querySelector('[data-cat=\"all\"]'))">عرض كل المنتجات</button>
                     </div>
                 `;
