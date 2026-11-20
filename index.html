@@ -8,6 +8,14 @@
     <meta property="og:title" content="متجر كارامل - Caramel Store">
     <meta property="og:description" content="كل حاجة تحتاجها عند كارامل بأرخص الأسعار والتوصيل لباب المنزل في أسرع وقت، وحتى لو المنتج مش موجود بنجيبهولك.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://caramelashinstore.github.io/Carmela.store/">
+    <meta property="og:image" content="https://caramelashinstore.github.io/Carmela.store/1794896897256crop.png">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="متجر كارامل - Caramel Store">
+    <meta name="twitter:description" content="كل حاجة تحتاجها عند كارامل بأرخص الأسعار والتوصيل لباب المنزل في أسرع وقت، وحتى لو المنتج مش موجود بنجيبهولك.">
+    <meta name="twitter:image" content="https://caramelashinstore.github.io/Carmela.store/1794896897256crop.png">
+    <link rel="icon" type="image/png" href="1794896897256crop.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,9 +123,9 @@
 
         .logo-pill {
             display: inline-flex;
-            flex-direction: column;
             align-items: center;
-            padding: 5px 18px;
+            gap: 10px;
+            padding: 5px 14px 5px 18px;
             border-radius: 999px;
             background: linear-gradient(135deg, rgba(200, 150, 102, 0.18), rgba(43, 35, 30, 0.95));
             border: 1.5px solid var(--caramel);
@@ -130,19 +138,34 @@
             transform: scale(1.03);
         }
 
+        .header-brand-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--caramel-light);
+            flex-shrink: 0;
+        }
+
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .logo {
-            font-size: 1.25rem;
+            font-size: 1.18rem;
             font-weight: 900;
             color: #ffffff;
-            letter-spacing: 2.5px;
+            letter-spacing: 2.2px;
             line-height: 1.1;
         }
 
         .logo-sub {
-            font-size: 0.56rem;
+            font-size: 0.54rem;
             font-weight: 700;
             color: var(--caramel-light);
-            letter-spacing: 1.8px;
+            letter-spacing: 1.6px;
             text-transform: uppercase;
         }
 
@@ -1056,8 +1079,11 @@
 
     <header>
         <button type="button" class="logo-pill" onclick="resetHomeFresh()" aria-label="العودة للصفحة الرئيسية">
-            <div class="logo">CARAMEL</div>
-            <div class="logo-sub">CARAMEL STORE</div>
+            <img src="1794896897256crop.png" alt="لوجو متجر كارامل" class="header-brand-img">
+            <div class="logo-text-group">
+                <div class="logo">CARAMEL</div>
+                <div class="logo-sub">CARAMEL STORE</div>
+            </div>
         </button>
 
         <a href="https://wa.me/201112348224?text=%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%B4%D9%83%D9%88%D9%89%20%D9%81%D9%8A%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="complaint-btn" target="_blank" rel="noopener noreferrer">
@@ -1068,7 +1094,7 @@
     <main class="container">
         <section class="hero-banner">
             <span class="hero-badge">CARAMEL STORE • كل اللي يخطر على بالك</span>
-            <h1>أهلاً بك في متجر كارامل بالسويس</h1>
+            <h1>أهلاً بك في متجر كارامل</h1>
             <p>
                 دلع بيتك ونفسك بأحلى المنتجات وأقل الأسعار مع توصيل سريع لباب البيت —
                 <span class="hero-highlight">وحتى لو المنتج اللي بتدور عليه مش موجود، ابعتلنا واحنا بنجيبهولك!</span>
