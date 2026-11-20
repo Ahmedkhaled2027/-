@@ -111,32 +111,15 @@
             }
         }
 
-        /* أنيمشن يظهر الزر كامل ثم ينكمش ليصبح دائرة صغيرة */
-        @keyframes morphToCompactCart {
+        /* دخول الزرار واستقراره كدائرة صغيرة مخصصة للرقم فقط */
+        @keyframes compactBadgeEntry {
             0% {
                 opacity: 0;
-                transform: translateX(-50px) scale(0.8);
-                border-radius: 999px;
-                padding: 12px 20px;
-            }
-            30% {
-                opacity: 1;
-                transform: translateX(0) scale(1.05);
-                border-radius: 999px;
-                padding: 12px 20px;
-            }
-            70% {
-                padding: 12px 20px;
-                border-radius: 999px;
+                transform: translateX(-40px) scale(0.6);
             }
             100% {
                 opacity: 1;
                 transform: translateX(0) scale(1);
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-                padding: 0;
-                justify-content: center;
             }
         }
 
@@ -448,55 +431,39 @@
             box-shadow: 0 0 25px rgba(229, 190, 150, 1);
         }
 
-        /* تنسيق الزر العائم بالتأثير الجديد */
+        /* الزر العائم عبارة عن دائرة تعرض الرقم فقط */
         .floating-cart-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 24px;
+            left: 24px;
             z-index: 950;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
             background: linear-gradient(135deg, var(--espresso), var(--roast));
             color: #ffffff;
-            border: 1.5px solid var(--caramel);
-            overflow: hidden;
-            white-space: nowrap;
+            border: 2px solid var(--caramel);
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(28, 22, 18, 0.4);
-            animation: morphToCompactCart 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            box-shadow: 0 12px 28px rgba(28, 22, 18, 0.45), 0 0 16px var(--glow);
+            animation: compactBadgeEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .floating-cart-btn:hover {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-4px) scale(1.05);
             border-color: var(--caramel-light);
-            box-shadow: 0 15px 30px rgba(28, 22, 18, 0.5), 0 0 20px var(--glow);
-            border-radius: 999px !important;
-            width: auto !important;
-            padding: 12px 24px !important;
-        }
-
-        .cart-icon-text {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 800;
+            box-shadow: 0 16px 34px rgba(28, 22, 18, 0.55), 0 0 22px var(--glow);
         }
 
         .cart-badge {
-            background: linear-gradient(135deg, var(--caramel-light), var(--caramel));
-            color: var(--espresso);
-            min-width: 24px;
-            height: 24px;
-            padding: 0 6px;
-            border-radius: 999px;
-            display: inline-grid;
-            place-items: center;
-            font-size: 0.85rem;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.3rem;
             font-weight: 900;
+            color: var(--caramel-light);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         /* نافذة السلة */
@@ -768,7 +735,7 @@
 
         <section class="top-rect-hero anim-up">
             <span class="hero-badge">✦ متجر كارامل الرسمي</span>
-            <h1>كل اللي تحتوجه عند كارميلا بأرخص الأسعار ولتوصيل باب البيت</h1>
+            <h1>كل اللي تحتاجه عند كارميلا بأرخص الأسعار ولتوصيل باب البيت</h1>
             <p>
                 كل حاجة تحتاجها عند كارميلا بأرخص الأسعار واللي مش موجود هنجبهولك والتوصيل لباب المنزل في أسرع وقت، ولو حابب تطلب من شي إن هنجيبهالك بنفس سعر الأبلكيشن وبدون جمارك.
             </p>
@@ -819,8 +786,8 @@
 
     </main>
 
+    <!-- الزر العائم الآن عبارة عن دائرة تعرض الرقم فقط -->
     <button type="button" class="floating-cart-btn" id="floatingCartBtn" aria-label="فتح سلة المشتريات">
-        <span class="cart-icon-text"><span>🛒</span><span>السلة</span></span>
         <span class="cart-badge" id="cartCountBadge">0</span>
     </button>
 
