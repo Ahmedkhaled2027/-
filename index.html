@@ -107,6 +107,12 @@
             background: linear-gradient(135deg, rgba(200, 150, 102, 0.18), rgba(43, 35, 30, 0.95));
             border: 1.5px solid var(--caramel);
             animation: logoPulse 3s infinite ease-in-out;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .logo-pill:hover {
+            transform: scale(1.03);
         }
 
         .logo {
@@ -159,7 +165,7 @@
             border-radius: 22px;
             border: 1.5px solid rgba(200, 150, 102, 0.42);
             box-shadow: 0 14px 32px -12px rgba(24, 21, 18, 0.26), 0 0 24px -6px var(--glow);
-            margin-bottom: 18px;
+            margin-bottom: 12px;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -212,6 +218,37 @@
             border-radius: 12px;
             font-size: 0.82rem;
             font-weight: 900;
+        }
+
+        .trust-strip {
+            background: #ffffff;
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-main);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--espresso-soft);
+        }
+
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trust-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--caramel-dark);
+            flex-shrink: 0;
         }
 
         .section-heading {
@@ -807,6 +844,17 @@
             gap: 10px;
         }
 
+        .cart-policy-note {
+            background: #faf7f2;
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            padding: 8px 10px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--espresso-soft);
+            line-height: 1.45;
+        }
+
         .cart-total-row {
             display: flex;
             align-items: center;
@@ -891,10 +939,10 @@
 <body>
 
     <header>
-        <div class="logo-pill">
+        <button type="button" class="logo-pill" onclick="resetHomeFresh()" aria-label="العودة للصفحة الرئيسية">
             <div class="logo">CARAMEL</div>
             <div class="logo-sub">CARAMEL STORE</div>
-        </div>
+        </button>
 
         <a href="https://wa.me/201112348224?text=%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%B4%D9%83%D9%88%D9%89%20%D9%81%D9%8A%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="complaint-btn" target="_blank" rel="noopener noreferrer">
             <span>الشكاوى</span>
@@ -915,6 +963,11 @@
                 </a>
             </div>
         </section>
+
+        <div class="trust-strip">
+            <span class="trust-pill"><span class="trust-dot"></span>الدفع عند الاستلام</span>
+            <span class="trust-pill"><span class="trust-dot"></span>استرجاع خلال أسبوع لو المنتج غير التفاصيل الموجودة</span>
+        </div>
 
         <div class="section-heading">
             <h2>أقسام المتجر</h2>
@@ -1001,6 +1054,9 @@
         </div>
         <div class="cart-body" id="cartItemsContainer"></div>
         <div class="cart-footer">
+            <div class="cart-policy-note">
+                الدفع عند الاستلام • استرجاع خلال أسبوع لو المنتج غير التفاصيل الموجودة.
+            </div>
             <div class="cart-total-row">
                 <span>الإجمالي:</span>
                 <span class="cart-total-amount" id="cartTotalAmount">0 جنيه</span>
@@ -1471,6 +1527,14 @@
             filterByCategory("all", allCircle);
         }
 
+        function resetHomeFresh() {
+            closeCart();
+            closeImageModal();
+            resetFilters();
+            renderSmartRecommendations();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
         function filterByCategory(category, element) {
             document.querySelectorAll(".cat-circle-item").forEach(item => item.classList.remove("active"));
             if (element) element.classList.add("active");
@@ -1620,7 +1684,7 @@
                 lines.push(`${idx + 1}. ${item.title} × ${q} = ${sub} جنيه`);
             });
 
-            lines.push("", `الإجمالي: ${total} جنيه`);
+            lines.push("", `الإجمالي: ${total} جنيه`, "الدفع عند الاستلام • استرجاع خلال أسبوع لو المنتج غير التفاصيل الموجودة");
             const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
             window.open(url, "_blank", "noopener,noreferrer");
         }
