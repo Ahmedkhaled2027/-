@@ -174,17 +174,19 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 5px 14px 5px 18px;
+            padding: 5px 14px 5px 16px;
             border-radius: 999px;
             background: linear-gradient(135deg, rgba(200, 150, 102, 0.18), rgba(43, 35, 30, 0.95));
             border: 1.5px solid var(--caramel);
             animation: logoPulse 3s infinite ease-in-out;
             cursor: pointer;
             transition: transform 0.2s ease;
+            min-width: 0;
+            max-width: calc(100% - 92px);
         }
 
         .logo-pill:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         .header-brand-img {
@@ -200,6 +202,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .logo {
@@ -216,12 +219,51 @@
             color: var(--caramel-light);
             letter-spacing: 1.6px;
             text-transform: uppercase;
+            transition: opacity 0.25s ease, transform 0.25s ease, letter-spacing 0.25s ease;
+        }
+
+        header.scrolled-slogan .logo-sub {
+            font-size: 0.68rem;
+            letter-spacing: 0;
+            font-weight: 800;
+        }
+
+        .header-docked-role {
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0.78rem;
+            font-weight: 900;
+            color: #ffffff;
+            background: rgba(200, 150, 102, 0.16);
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 2px 0;
+            margin-right: 0;
+            transform: translateX(-8px);
+            transition: max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                        opacity 0.35s ease,
+                        padding 0.35s ease,
+                        margin-right 0.35s ease,
+                        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color 0.35s ease;
+        }
+
+        header.scrolled-slogan .header-docked-role {
+            max-width: 170px;
+            opacity: 1;
+            padding: 2px 10px;
+            margin-right: 2px;
+            border-color: rgba(229, 190, 150, 0.45);
+            transform: translateX(0);
         }
 
         .header-actions {
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            flex-shrink: 0;
         }
 
         .install-app-btn {
@@ -251,20 +293,51 @@
         .complaint-btn {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            padding: 0;
+            border-radius: 50%;
             background: rgba(255, 255, 255, 0.08);
             color: var(--cream-soft);
-            border: 1px solid rgba(200, 150, 102, 0.38);
-            padding: 7px 14px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            transition: all 0.2s ease;
+            border: 1px solid rgba(200, 150, 102, 0.42);
+            flex-shrink: 0;
+            transition: all 0.22s ease;
         }
 
         .complaint-btn:hover {
             background: var(--caramel);
             color: var(--espresso);
+            border-color: var(--caramel-light);
+            transform: scale(1.06);
+        }
+
+        .complaint-dot-icon {
+            font-size: 0.92rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        @media (max-width: 420px) {
+            header {
+                padding: 10px 12px;
+            }
+            .logo {
+                font-size: 1.02rem;
+                letter-spacing: 1.4px;
+            }
+            header.scrolled-slogan .header-docked-role {
+                font-size: 0.68rem;
+                padding: 2px 7px;
+                max-width: 135px;
+            }
+            .complaint-btn {
+                width: 30px;
+                height: 30px;
+            }
+            .complaint-dot-icon {
+                font-size: 0.84rem;
+            }
         }
 
         .container {
@@ -286,36 +359,39 @@
             padding: 10px 18px;
             max-width: 820px;
             position: relative;
-            overflow: visible;
+            overflow: clip;
         }
 
+        /* الخط الأيمن: يظهر تدريجياً ويتمدد بهدوء نحو السلوچان */
         .slogan-track-line {
-            flex: 1;
-            min-width: 36px;
-            max-width: 88px;
+            width: 72px;
+            flex: 0 0 72px;
             height: 2px;
             border-radius: 999px;
             background: linear-gradient(90deg, rgba(200, 150, 102, 0.12), var(--caramel-dark));
             opacity: 0;
-            transform: translateX(calc(50vw + 40px)) scaleX(0.5);
-            transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+            transform: scaleX(0);
+            transform-origin: right center;
+            transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
             will-change: transform, opacity;
         }
 
+        /* الخط الأيسر: يظهر تدريجياً ويتمدد بهدوء نحو السلوچان */
         .slogan-track-line.end {
             background: linear-gradient(270deg, rgba(200, 150, 102, 0.12), var(--caramel-dark));
-            transform: translateX(calc(-50vw - 40px)) scaleX(0.5);
+            transform: scaleX(0);
+            transform-origin: left center;
         }
 
         .slogan-piece-node {
             width: 8px;
             height: 8px;
             border-radius: 2px;
-            transform: rotate(45deg) scale(0.3);
+            transform: rotate(45deg) scale(0.35);
             background: var(--caramel-dark);
             border: 1.5px solid var(--caramel-light);
             opacity: 0;
-            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.22s, opacity 0.45s ease 0.22s;
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s, opacity 0.65s ease 0.35s;
             flex-shrink: 0;
             will-change: transform, opacity;
         }
@@ -323,32 +399,13 @@
         .store-slogan-showcase.is-docked .slogan-track-line,
         .store-slogan-showcase.is-docked .slogan-track-line.end {
             opacity: 1;
-            transform: translateX(0) scaleX(1);
+            transform: scaleX(1);
         }
 
         .store-slogan-showcase.is-docked .slogan-piece-node {
             opacity: 1;
             transform: rotate(45deg) scale(1);
-            animation: nodeLockPulse 2.8s infinite ease-in-out 0.75s;
-        }
-
-        .store-slogan-showcase.exit-sides .slogan-track-line {
-            opacity: 0;
-            transform: translateX(calc(50vw + 60px)) scaleX(0.6);
-            transition: transform 0.65s cubic-bezier(0.4, 0, 1, 1), opacity 0.45s ease;
-        }
-
-        .store-slogan-showcase.exit-sides .slogan-track-line.end {
-            opacity: 0;
-            transform: translateX(calc(-50vw - 60px)) scaleX(0.6);
-            transition: transform 0.65s cubic-bezier(0.4, 0, 1, 1), opacity 0.45s ease;
-        }
-
-        .store-slogan-showcase.exit-sides .slogan-piece-node {
-            opacity: 0;
-            transform: rotate(45deg) scale(0.2);
-            animation: none;
-            transition: transform 0.4s ease, opacity 0.35s ease;
+            animation: nodeLockPulse 2.8s infinite ease-in-out 1s;
         }
 
         .store-slogan-heading {
@@ -366,7 +423,10 @@
 
         .slogan-brand-part {
             color: var(--espresso);
+            display: inline-block;
             animation: pieceSettleLeft 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+            will-change: transform, opacity;
         }
 
         .slogan-role-part {
@@ -375,10 +435,50 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            display: inline-block;
             padding: 2px 10px;
             border-radius: 8px;
             border-bottom: 2px solid var(--caramel);
             animation: pieceSettleRight 0.72s cubic-bezier(0.22, 1, 0.36, 1) both, sloganSheen 4.5s ease-in-out infinite;
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+            will-change: transform, opacity;
+        }
+
+        .store-slogan-showcase.is-docked .slogan-brand-part,
+        .store-slogan-showcase.is-docked .slogan-role-part {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .store-slogan-showcase.exit-sides .slogan-track-line {
+            opacity: 0;
+            transform: translateX(42px) scaleX(0.35);
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+        }
+
+        .store-slogan-showcase.exit-sides .slogan-track-line.end {
+            opacity: 0;
+            transform: translateX(-42px) scaleX(0.35);
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+        }
+
+        .store-slogan-showcase.exit-sides .slogan-brand-part {
+            opacity: 0;
+            transform: translateX(36px);
+            animation: none;
+        }
+
+        .store-slogan-showcase.exit-sides .slogan-role-part {
+            opacity: 0;
+            transform: translateX(-36px);
+            animation: none;
+        }
+
+        .store-slogan-showcase.exit-sides .slogan-piece-node {
+            opacity: 0;
+            transform: rotate(45deg) scale(0.25);
+            animation: none;
+            transition: transform 0.45s ease, opacity 0.35s ease;
         }
 
         .hero-banner {
@@ -1284,16 +1384,17 @@
             <img src="https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/80512-cutout.png" alt="لوجو متجر كارامل" class="header-brand-img">
             <div class="logo-text-group">
                 <div class="logo">CARAMEL</div>
-                <div class="logo-sub">CARAMEL STORE</div>
+                <div class="logo-sub" id="headerBrandSub" data-en="CARAMEL STORE" data-ar="كارامل ستور">CARAMEL STORE</div>
             </div>
+            <span class="header-docked-role" id="headerDockedRole">كل قطعة وليها دور</span>
         </button>
 
         <div class="header-actions">
             <button type="button" class="install-app-btn" id="headerInstallBtn" onclick="triggerInstallApp()" aria-label="تثبيت التطبيق">
                 <span>تثبيت</span>
             </button>
-            <a href="https://wa.me/201112348224?text=%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%B4%D9%83%D9%88%D9%89%20%D9%81%D9%8A%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="complaint-btn" target="_blank" rel="noopener noreferrer">
-                <span>الشكاوى</span>
+            <a href="https://wa.me/201112348224?text=%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%B4%D9%83%D9%88%D9%89%20%D9%81%D9%8A%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%83%D8%A7%D8%B1%D8%A7%D9%85%D9%84" class="complaint-btn" title="الشكاوى" aria-label="الشكاوى" target="_blank" rel="noopener noreferrer">
+                <span class="complaint-dot-icon" aria-hidden="true">!</span>
             </a>
         </div>
     </header>
@@ -2348,20 +2449,51 @@
 
         (function initSloganLinesMotion() {
             const sloganEl = document.getElementById("storeSloganShowcase");
+            const headerEl = document.querySelector("header");
+            const brandSubEl = document.getElementById("headerBrandSub");
             if (!sloganEl) return;
 
             let lastScrollY = window.scrollY;
+            let isHeaderDocked = false;
+            let subSwapTimer = null;
+
+            function setHeaderSloganMode(active) {
+                if (isHeaderDocked === active) return;
+                isHeaderDocked = active;
+
+                if (headerEl) {
+                    headerEl.classList.toggle("scrolled-slogan", active);
+                }
+
+                if (brandSubEl) {
+                    const nextText = active
+                        ? (brandSubEl.dataset.ar || "كارامل ستور")
+                        : (brandSubEl.dataset.en || "CARAMEL STORE");
+
+                    clearTimeout(subSwapTimer);
+                    brandSubEl.style.opacity = "0";
+                    brandSubEl.style.transform = "translateY(-3px)";
+
+                    subSwapTimer = setTimeout(() => {
+                        brandSubEl.textContent = nextText;
+                        brandSubEl.style.opacity = "1";
+                        brandSubEl.style.transform = "translateY(0)";
+                    }, 120);
+                }
+            }
 
             function dockSloganLines() {
                 sloganEl.classList.remove("exit-sides");
                 requestAnimationFrame(() => {
                     sloganEl.classList.add("is-docked");
                 });
+                setHeaderSloganMode(false);
             }
 
             function releaseSloganToSides() {
                 sloganEl.classList.remove("is-docked");
                 sloganEl.classList.add("exit-sides");
+                setHeaderSloganMode(true);
             }
 
             requestAnimationFrame(() => {
@@ -2371,19 +2503,33 @@
             if ("IntersectionObserver" in window) {
                 const sloganObserver = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
-                        const scrollingDown = window.scrollY > lastScrollY;
-                        lastScrollY = window.scrollY;
+                        const currentScrollY = window.scrollY;
+                        const scrollingDown = currentScrollY > lastScrollY;
+                        lastScrollY = currentScrollY;
 
-                        if (entry.isIntersecting) {
+                        if (entry.isIntersecting && currentScrollY < 90) {
                             dockSloganLines();
-                        } else if (scrollingDown && entry.boundingClientRect.top < 0) {
+                        } else if (!entry.isIntersecting && (scrollingDown || entry.boundingClientRect.top < 0)) {
                             releaseSloganToSides();
+                        } else if (entry.isIntersecting && !scrollingDown) {
+                            dockSloganLines();
                         }
                     });
-                }, { threshold: 0.15 });
+                }, { threshold: [0, 0.15] });
 
                 sloganObserver.observe(sloganEl);
             }
+
+            window.addEventListener("scroll", () => {
+                const currentY = window.scrollY;
+                const rect = sloganEl.getBoundingClientRect();
+                if (rect.bottom < 70 || currentY > 150) {
+                    releaseSloganToSides();
+                } else if (currentY <= 35) {
+                    dockSloganLines();
+                }
+                lastScrollY = currentY;
+            }, { passive: true });
 
             const origResetHomeFresh = window.resetHomeFresh;
             if (typeof origResetHomeFresh === "function") {
