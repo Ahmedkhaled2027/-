@@ -6,7 +6,7 @@
     <title>متجر كارامل - Caramel Store</title>
 
     <meta property="og:title" content="متجر كارامل - Caramel Store">
-    <meta property="og:description" content="كل حاجة تحتاجها عند كارامل بأرخص الأسعار والتوصيل لباب المنزل في أسرع وقت، وطلبات شي إن بدون جمارك، وحتى لو المنتج مش موجود بنجيبهولك.">
+    <meta property="og:description" content="كل حاجة تحتاجها عند كارامل بأرخص الأسعار والتوصيل لباب المنزل في أسرع وقت، وحتى لو المنتج مش موجود بنجيبهولك.">
     <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -214,32 +214,6 @@
             font-weight: 900;
         }
 
-        .hero-btn-special {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(229, 190, 150, 0.16);
-            color: var(--caramel-light);
-            border: 1px solid rgba(229, 190, 150, 0.45);
-            padding: 8px 15px;
-            border-radius: 12px;
-            font-size: 0.82rem;
-            font-weight: 800;
-        }
-
-        .hero-btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 14px;
-            border-radius: 12px;
-            font-size: 0.82rem;
-            font-weight: 700;
-        }
-
         .section-heading {
             display: flex;
             align-items: center;
@@ -253,12 +227,6 @@
             font-size: 1.12rem;
             font-weight: 900;
             color: var(--text-main);
-        }
-
-        .section-heading span {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--text-muted);
         }
 
         .circles-row-wrapper {
@@ -837,25 +805,18 @@
             <span class="hero-badge">CARAMEL STORE • كل اللي يخطر على بالك</span>
             <h1>أهلاً بك في متجر كارامل</h1>
             <p>
-                دلع بيتك ونفسك بأحلى المنتجات وأقل الأسعار مع توصيل سريع لباب البيت وطلبات شي إن بدون جمارك —
+                دلع بيتك ونفسك بأحلى المنتجات وأقل الأسعار مع توصيل سريع لباب البيت —
                 <span class="hero-highlight">وحتى لو المنتج اللي بتدور عليه مش موجود، ابعتلنا واحنا بنجيبهولك!</span>
             </p>
             <div class="hero-actions">
-                <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%84%D9%84%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9%20%28%D9%85%D9%86%D8%AA%D8%AC%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%88%D8%AC%D9%88%D8%AF%20%D8%A3%D9%88%20%D8%B4%D9%8A%20%D8%A5%D9%86%29" class="hero-btn-primary" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%84%D9%84%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%D8%A9%20%28%D9%85%D9%86%D8%AA%D8%AC%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%88%D8%AC%D9%88%D8%AF%29" class="hero-btn-primary" target="_blank" rel="noopener noreferrer">
                     تواصل للطلبات الخاصة
-                </a>
-                <a href="https://wa.me/201055436305?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%20%D8%B4%D9%8A%20%D8%A5%D9%86" class="hero-btn-special" target="_blank" rel="noopener noreferrer">
-                    طلبات شي إن (SHEIN)
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.zzkko" class="hero-btn-ghost" target="_blank" rel="noopener noreferrer">
-                    تنزيل تطبيق شي إن
                 </a>
             </div>
         </section>
 
         <div class="section-heading">
             <h2>أقسام المتجر</h2>
-            <span>شريط ثابت لتسهيل التنقل بين الأقسام</span>
         </div>
 
         <div class="circles-row-wrapper">
@@ -913,7 +874,6 @@
 
         <div class="section-heading">
             <h2 id="activeCategoryTitle">كل المنتجات</h2>
-            <span id="productsCountLabel">0 منتج</span>
         </div>
 
         <section class="products-grid" id="productsGrid"></section>
@@ -1135,7 +1095,6 @@
             currentCategory = category;
             const grid = document.getElementById("productsGrid");
             const titleEl = document.getElementById("activeCategoryTitle");
-            const countEl = document.getElementById("productsCountLabel");
             const query = normalizeText(document.getElementById("homeSearchInput")?.value || "");
 
             const filtered = PRODUCTS.filter(p => {
@@ -1147,7 +1106,6 @@
             titleEl.textContent = CATEGORY_NAMES[category] || "المنتجات";
 
             if (filtered.length === 0) {
-                countEl.textContent = "0 منتج";
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; background: #fff; padding: 26px; border-radius: 18px; text-align: center; border: 1px solid var(--border-gold);">
                         <p style="font-weight: 800; margin-bottom: 10px;">حتى لو المنتج مش موجود بنجيبهولك! ابعتلنا طلبك الخاص دلوقتي.</p>
@@ -1159,8 +1117,6 @@
                 `;
                 return;
             }
-
-            countEl.textContent = `${filtered.length} منتج`;
 
             grid.innerHTML = filtered.map(product => {
                 const displayPrice = product.priceLabel || product.price;
