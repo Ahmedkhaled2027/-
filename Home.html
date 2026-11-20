@@ -45,6 +45,17 @@
             color: inherit;
         }
 
+        @keyframes compactBadgeEntry {
+            0% {
+                opacity: 0;
+                transform: translateX(-40px) scale(0.6);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
         header {
             background: var(--home-deep);
             padding: 14px 20px;
@@ -454,44 +465,40 @@
             color: #ffffff;
         }
 
-        /* زر السلة العائم الفوري */
+        /* زر السلة العائم عبارة عن دائرة تعرض العدد فقط */
         .floating-cart-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 24px;
+            left: 24px;
             z-index: 9990;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--copper-soft), var(--copper));
-            color: var(--home-deep);
-            border: 1.5px solid var(--home-deep);
-            border-radius: 999px;
-            padding: 11px 16px;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--home-deep), var(--home-mid));
+            color: var(--copper-soft);
+            border: 2px solid var(--copper);
             font-family: 'Cairo', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(27, 40, 35, 0.35);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 12px 28px rgba(27, 40, 35, 0.4), 0 0 16px rgba(184, 107, 53, 0.35);
+            animation: compactBadgeEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .floating-cart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px rgba(27, 40, 35, 0.42);
+            transform: translateY(-4px) scale(1.05);
+            border-color: var(--copper-soft);
+            box-shadow: 0 16px 34px rgba(27, 40, 35, 0.5), 0 0 22px rgba(184, 107, 53, 0.45);
         }
 
         .floating-cart-count {
-            background: var(--home-deep);
-            color: #ffffff;
-            min-width: 24px;
-            height: 24px;
-            border-radius: 999px;
-            display: inline-grid;
-            place-items: center;
-            padding: 0 6px;
-            font-size: 0.82rem;
-            font-weight: 800;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--copper-soft);
+            line-height: 1;
         }
 
         .cart-backdrop {
@@ -602,6 +609,13 @@
             background: #eef2f0;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .floating-cart-btn {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
         @media (min-width: 768px) {
             .search-box-wrapper {
                 max-width: 580px;
@@ -694,7 +708,6 @@
 </footer>
 
 <button id="caramel-floating-cart-btn" class="floating-cart-btn" type="button" aria-label="فتح سلة المشتريات">
-    <span>السلة</span>
     <span id="caramel-cart-count" class="floating-cart-count">0</span>
 </button>
 
@@ -747,7 +760,7 @@
             if (!toast) {
                 toast = document.createElement('div');
                 toast.id = 'caramel-cart-toast';
-                toast.style.cssText = 'position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:#264237;color:#fff;border:1px solid #b86b35;padding:10px 18px;border-radius:999px;font-family:Cairo,sans-serif;font-size:0.88rem;font-weight:700;z-index:10000;box-shadow:0 10px 24px rgba(0,0,0,0.28);white-space:nowrap;';
+                toast.style.cssText = 'position:fixed;bottom:88px;left:50%;transform:translateX(-50%);background:#264237;color:#fff;border:1px solid #b86b35;padding:10px 18px;border-radius:999px;font-family:Cairo,sans-serif;font-size:0.88rem;font-weight:700;z-index:10000;box-shadow:0 10px 24px rgba(0,0,0,0.28);white-space:nowrap;';
                 document.body.appendChild(toast);
             }
             toast.textContent = msg;
