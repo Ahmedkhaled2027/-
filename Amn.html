@@ -766,8 +766,8 @@
 
 </main>
 
-<div class="image-modal" id="imageModal" onclick="closeModal()">
-    <span class="modal-close">&times;</span>
+<div class="image-modal" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
     <img id="modalImg" src="" alt="صورة مكبرة">
 </div>
 
@@ -778,6 +778,7 @@
 <script>
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
+    const modalClose = document.getElementById("modalClose");
     const searchInput = document.getElementById("searchQuery");
     const emptyState = document.getElementById("emptyState");
     const visibleCount = document.getElementById("visibleCount");
@@ -811,6 +812,10 @@
         modalImg.src = "";
     }
 
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && modal.style.display === "flex") {
             closeModal();
