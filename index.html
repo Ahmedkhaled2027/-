@@ -77,8 +77,17 @@
                 box-shadow: 0 0 0 0 var(--ring-glow, rgba(200, 150, 102, 0.45)), 0 6px 14px -4px var(--ring-glow, rgba(200, 150, 102, 0.35));
             }
             50% {
-                transform: scale(1.06);
-                box-shadow: 0 0 0 5px rgba(255, 255, 255, 0), 0 10px 20px -3px var(--ring-glow, rgba(200, 150, 102, 0.65));
+                transform: scale(1.05);
+                box-shadow: 0 0 0 4px rgba(255, 255, 255, 0), 0 8px 18px -3px var(--ring-glow, rgba(200, 150, 102, 0.6));
+            }
+        }
+
+        @keyframes activeCatGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 3px #ffffff, 0 0 0 5.5px var(--ring-color, var(--caramel)), 0 0 18px var(--ring-glow, rgba(200, 150, 102, 0.85));
+            }
+            50% {
+                box-shadow: 0 0 0 3px #ffffff, 0 0 0 6.5px var(--ring-color, var(--caramel)), 0 0 26px var(--ring-glow, rgba(200, 150, 102, 1));
             }
         }
 
@@ -312,7 +321,7 @@
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 11px 10px;
+            padding: 12px 10px;
             border-radius: 20px;
             border: 1.5px solid var(--border-gold);
             box-shadow: 0 10px 24px -8px rgba(24, 21, 18, 0.16);
@@ -331,7 +340,7 @@
             align-items: flex-start;
             gap: 12px;
             min-width: max-content;
-            padding: 2px 4px;
+            padding: 4px 6px;
         }
 
         .cat-circle-item {
@@ -340,12 +349,19 @@
             align-items: center;
             text-align: center;
             gap: 5px;
-            width: 72px;
+            width: 74px;
             flex-shrink: 0;
-            transition: transform 0.2s ease;
+            opacity: 0.78;
+            transition: transform 0.22s ease, opacity 0.22s ease;
         }
 
         .cat-circle-item:hover {
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+
+        .cat-circle-item.active {
+            opacity: 1;
             transform: translateY(-2px);
         }
 
@@ -355,12 +371,13 @@
             border-radius: 50%;
             padding: 2.5px;
             background: var(--ring-color, var(--caramel));
-            animation: catRingPulse 2.5s infinite ease-in-out;
+            animation: catRingPulse 2.6s infinite ease-in-out;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
         }
 
         .cat-circle-item.active .cat-ring {
-            transform: scale(1.08);
-            box-shadow: 0 0 0 3px #ffffff, 0 0 16px var(--ring-glow, rgba(200, 150, 102, 0.85));
+            transform: scale(1.1);
+            animation: activeCatGlow 2s infinite ease-in-out;
         }
 
         .cat-ring-inner {
@@ -370,6 +387,10 @@
             overflow: hidden;
             background: #f5efe8;
             border: 1.5px solid #ffffff;
+        }
+
+        .cat-circle-item.active .cat-ring-inner {
+            border-width: 2px;
         }
 
         .cat-ring-inner img {
@@ -384,26 +405,41 @@
             font-weight: 800;
             color: var(--text-main);
             line-height: 1.2;
-            max-width: 72px;
+            max-width: 74px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            transition: color 0.2s ease, font-weight 0.2s ease;
         }
 
         .cat-circle-item.active .cat-circle-label {
             color: var(--ring-color, var(--caramel-dark));
+            font-weight: 900;
         }
 
-        .ring-all { --ring-color: #c89666; --ring-glow: rgba(200, 150, 102, 0.55); }
-        .ring-home { --ring-color: #b88656; --ring-glow: rgba(184, 134, 86, 0.55); }
-        .ring-school { --ring-color: #0284c7; --ring-glow: rgba(2, 132, 199, 0.55); }
-        .ring-tafse { --ring-color: #52624b; --ring-glow: rgba(82, 98, 75, 0.55); }
-        .ring-kids { --ring-color: #1d6f8a; --ring-glow: rgba(29, 111, 138, 0.55); }
-        .ring-women { --ring-color: #d97706; --ring-glow: rgba(217, 119, 6, 0.55); }
-        .ring-men { --ring-color: #2d3a4b; --ring-glow: rgba(45, 58, 75, 0.55); }
-        .ring-gifts { --ring-color: #db2777; --ring-glow: rgba(219, 39, 119, 0.55); }
-        .ring-perfume { --ring-color: #3b82f6; --ring-glow: rgba(59, 130, 246, 0.55); }
+        .cat-circle-item.active .cat-circle-label::after {
+            content: "";
+            width: 14px;
+            height: 3px;
+            border-radius: 999px;
+            background: var(--ring-color, var(--caramel-dark));
+            margin-top: 1px;
+        }
+
+        .ring-all { --ring-color: #c89666; --ring-glow: rgba(200, 150, 102, 0.65); }
+        .ring-home { --ring-color: #b88656; --ring-glow: rgba(184, 134, 86, 0.65); }
+        .ring-school { --ring-color: #0284c7; --ring-glow: rgba(2, 132, 199, 0.65); }
+        .ring-tafse { --ring-color: #52624b; --ring-glow: rgba(82, 98, 75, 0.65); }
+        .ring-kids { --ring-color: #1d6f8a; --ring-glow: rgba(29, 111, 138, 0.65); }
+        .ring-women { --ring-color: #d97706; --ring-glow: rgba(217, 119, 6, 0.65); }
+        .ring-men { --ring-color: #2d3a4b; --ring-glow: rgba(45, 58, 75, 0.65); }
+        .ring-gifts { --ring-color: #db2777; --ring-glow: rgba(219, 39, 119, 0.65); }
+        .ring-perfume { --ring-color: #3b82f6; --ring-glow: rgba(59, 130, 246, 0.65); }
 
         .quick-search-box {
             position: sticky;
-            top: 162px;
+            top: 164px;
             z-index: 104;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(12px);
@@ -1010,7 +1046,7 @@
             <h2>أقسام المتجر</h2>
         </div>
 
-        <div class="circles-row-wrapper">
+        <div class="circles-row-wrapper" id="circlesRowWrapper">
             <div class="circles-single-row" id="categoryCircles">
                 <div class="cat-circle-item ring-all active" data-cat="all" onclick="filterByCategory('all', this)">
                     <div class="cat-ring"><div class="cat-ring-inner"><img src="IMG-20261116-WA0032.jpg" alt="الكل" loading="lazy"></div></div>
@@ -1659,9 +1695,18 @@
             window.scrollTo({ top: targetTop, behavior: "smooth" });
         }
 
+        function centerActiveCategoryCircle(element) {
+            const wrapper = document.getElementById("circlesRowWrapper");
+            if (!wrapper || !element || typeof element.scrollIntoView !== "function") return;
+            element.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
+
         function filterByCategory(category, element, shouldScroll = true) {
             document.querySelectorAll(".cat-circle-item").forEach(item => item.classList.remove("active"));
-            if (element) element.classList.add("active");
+            if (element) {
+                element.classList.add("active");
+                centerActiveCategoryCircle(element);
+            }
 
             if (category !== "all") {
                 interestData.categories[category] = (interestData.categories[category] || 0) + 1;
