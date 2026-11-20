@@ -12,13 +12,13 @@
   "lang": "ar",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/compressed_1795202444501.png",
+      "src": "https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/80512-cutout.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/compressed_1795202444501.png",
+      "src": "https://raw.githubusercontent.com/CaramelaSHINStore/Carmela.store/refs/heads/main/80512-cutout.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
