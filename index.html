@@ -430,18 +430,25 @@
             min-width: 0;
         }
 
-        .search-clear-btn {
-            background: #f3ede6;
-            color: var(--espresso-soft);
-            font-size: 0.75rem;
+        .search-cancel-btn {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid rgba(185, 28, 28, 0.22);
+            font-size: 0.76rem;
             font-weight: 800;
-            padding: 5px 10px;
+            padding: 5px 11px;
             border-radius: 10px;
             display: none;
             flex-shrink: 0;
+            transition: background 0.18s ease, color 0.18s ease;
         }
 
-        .search-clear-btn.visible {
+        .search-cancel-btn:hover {
+            background: #b91c1c;
+            color: #ffffff;
+        }
+
+        .search-cancel-btn.visible {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1054,7 +1061,7 @@
 
         <div class="quick-search-box">
             <input type="text" id="homeSearchInput" placeholder="اكتب للبحث الفوري بالاسم أو السعر أو القسم..." oninput="handleSearchInput()" onkeydown="handleSearchKeyDown(event)">
-            <button type="button" class="search-clear-btn" id="searchClearBtn" onclick="clearSearchInput()">مسح</button>
+            <button type="button" class="search-cancel-btn" id="searchCancelBtn" onclick="cancelSearchMode()">إلغاء</button>
         </div>
 
         <section class="smart-section" id="smartRecommendationsSection">
@@ -1366,11 +1373,11 @@
             return terms.every(term => searchableHaystack.includes(term));
         }
 
-        function updateSearchClearButton() {
+        function updateSearchCancelButton() {
             const input = document.getElementById("homeSearchInput");
-            const btn = document.getElementById("searchClearBtn");
+            const btn = document.getElementById("searchCancelBtn");
             if (!input || !btn) return;
-            if (input.value.trim().length > 0) {
+            if (input.value.length > 0) {
                 btn.classList.add("visible");
             } else {
                 btn.classList.remove("visible");
@@ -1378,7 +1385,7 @@
         }
 
         function handleSearchInput() {
-            updateSearchClearButton();
+            updateSearchCancelButton();
             const val = document.getElementById("homeSearchInput")?.value || "";
             const tokens = extractTokens(val).filter(t => t.length >= 2);
             if (tokens.length > 0) {
@@ -1397,17 +1404,22 @@
                 handleSearchInput();
                 scrollToProductsTop();
             } else if (event.key === "Escape") {
-                clearSearchInput();
+                event.preventDefault();
+                cancelSearchMode();
             }
         }
 
-        function clearSearchInput() {
+        function cancelSearchMode(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
             const input = document.getElementById("homeSearchInput");
             if (input) {
                 input.value = "";
-                input.focus();
+                input.blur();
             }
-            updateSearchClearButton();
+            updateSearchCancelButton();
             renderProducts(currentCategory);
             renderSmartRecommendations();
         }
@@ -1612,7 +1624,7 @@
                         <p style="font-weight: 800; margin-bottom: 10px;">ملقيناش نتيجة مطابقة${trimmedQuery ? ` لـ "${trimmedQuery}"` : ""}.. وحتى لو المنتج مش موجود بنجيبهولك!</p>
                         <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
                             <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("أريد طلب منتج غير موجود في المتجر: " + trimmedQuery)}" class="add-cart-btn" style="max-width: 220px;" target="_blank" rel="noopener noreferrer">طلب خاص على واتساب</a>
-                            <button type="button" class="direct-wa-link" style="max-width: 170px;" onclick="resetFilters()">عرض كل المنتجات</button>
+                            <button type="button" class="direct-wa-link" style="max-width: 170px;" onclick="cancelSearchMode()">إلغاء البحث والعودة</button>
                         </div>
                     </div>
                 `;
@@ -1626,7 +1638,7 @@
         function resetFilters() {
             const input = document.getElementById("homeSearchInput");
             if (input) input.value = "";
-            updateSearchClearButton();
+            updateSearchCancelButton();
             const allCircle = document.querySelector('[data-cat="all"]');
             filterByCategory("all", allCircle, false);
         }
@@ -1851,7 +1863,7 @@
         renderProducts("all");
         renderSmartRecommendations();
         updateCartUI();
-        updateSearchClearButton();
+        updateSearchCancelButton();
     </script>
 </body>
 </html>
